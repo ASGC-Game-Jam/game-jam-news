@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly Digest: full report</title>
+<style>
+  :root { --bg:#f6f5f2; --card:#fff; --ink:#1f2328; --muted:#636c76; --accent:#5865f2; --rule:#e3e1dc; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16171a; --card:#1f2024; --ink:#e6e6e6; --muted:#9ba1a6; --accent:#8b95ff; --rule:#33353a; }
+  }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:17px/1.6 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  main { max-width:720px; margin:32px auto; padding:32px 40px; background:var(--card); border-radius:12px; }
+  @media (max-width:760px) { main { margin:0; padding:20px 16px; border-radius:0; } }
+  h1 { font-size:2rem; line-height:1.2; margin:0 0 4px; }
+  h1 + p em { color:var(--muted); font-style:normal; font-size:.95rem; }
+  h2 { margin-top:2.2em; padding-bottom:6px; border-bottom:2px solid var(--rule); }
+  a { color:var(--accent); }
+  img { max-width:100%; border-radius:8px; display:block; margin:16px 0 4px; }
+  img + em, p > em:only-child { color:var(--muted); font-size:.9rem; }
+  blockquote { margin:16px 0; padding:8px 16px; border-left:4px solid var(--accent);
+               background:color-mix(in srgb, var(--accent) 7%, transparent); border-radius:0 8px 8px 0; }
+  hr { border:0; border-top:1px solid var(--rule); margin:32px 0; }
+</style>
+</head>
+<body><main>
+<h1>Server report: Jul 05 – Jul 12, 2026</h1>
+<h2>First-milestone decisions locked: Underwater, steampunk, Unreal 5.7.4 and ClickUp go live as the ASGC Game Jam gears up for July 20</h2>
+<p><strong>586</strong> messages · <strong>45</strong> active members · <strong>24</strong> active channels</p>
+<p>This was a heavy organizing week for the ASGC Community Game Jam 2026 leadership team, with 586 messages from 45 members. The biggest moment came on Wed Jul 8, when shadowarrior announced in #leads-discussion that all first-milestone decisions are locked (+38 reactions). The game will be an underwater steampunk adventure/exploration game aiming for a clever, cozy feel and a mystery/detective story. It will use Stylized 3D rendering and humanoid characters, and it is built in Unreal 5.7.4, rated PG, for Steam on Windows PC. That unblocked Tech to set up the dev environment and Analytics to prepare SDK integration. Zef's synthesis of the scattered design docs (elevator pitch, four pillars, core loop) helped pull everyone onto the same page. Xelnath set the overall arc: a Steam-testable build by July 21, playtests from July 25, a feedback pipeline by July 28, something playable by end of August, and a big sit-down in early October.</p>
+<p>Production confirmed ClickUp as the source of truth, and by Jul 10 Cafedunoir and shadowarrior had sprints and a task board running. Cafedunoir finalized the Project Milestones and Timeline in the Master Game Direction Doc. Deputy producers delivered the risk and communication drafts, and Felix produced a copy-paste-ready risk doc with 48h/72h inactivity triggers. Attention is now shifting to the public onboarding checklist ahead of the jam timeline: signups close July 14, holding room invites go out July 17, and the jam starts July 20.</p>
+<p>The tech leads, led by VibeBlind, spent the week on a trunk-based branch model, task ownership rules (about a workday of effort, with a 24-hour 'white flag' rule) and planning for an expected ~60 contributors. They also evaluated Friendshipper and concluded its AWS and GitHub dependencies make it a poor fit for the Gitea VPS and no-budget setup. On the creative side, Sabian and Diana started Miro mood boards, coral-inspired and Art Nouveau ideas came up, Atlantis emerged as a tonal north star, and narrative and design teams scheduled their first official meetings. Scope came up as a real concern: VibeBlind questioned whether the planned features fit in 6 weeks, and shadowarrior committed to defining an MVP with Diana Donado.</p>
+<h2>Themes</h2>
+<ul>
+<li><strong>Locking the game's vision</strong> — Theme, genre, render style, engine (UE 5.7.4), rating and platform were locked on Jul 8. Before that, Zef's doc synthesis and alignment threads gathered input, and Discipline Leads were asked to confirm they are aligned. Camera perspective is still open. (#🎯│leads-discussion, #🎯│director-discussion, #Project Alignment, #🎨│art-lead-discussion, #📄│design-lead-discussion, #Project Milestones: 3rd July PST)</li>
+<li><strong>ClickUp as the source of truth</strong> — ClickUp was approved on the free tier, and sprints and a task board went live. The tech team agreed Git issues and the wiki should sync to it. There were some hiccups: Sprint 1 seemed locked to a two-week cycle until the Sprint Folder settings were found, QA leads couldn't access their space, and Cafedunoir had questions about saving a template. (#🗓️│production-lead-discussion, #🎯│director-discussion, #💻│tech-lead-discussion, #🪲│qa-lead-discussion, #you want help? I know clickup weird, #Production Drive Backup)</li>
+<li><strong>Preparing to onboard a crowd</strong> — Work covered a public onboarding checklist (owned by Impyral), the 'ASGCGJ participants onboarding process' doc, a UE5 version-control tutorial, C++ learning resources, and department preference collection. Leads were told to assume participants are new to game dev. (#Master Game Direction Doc, #Leads Only, #🎯│tech-discussions, #Department Preference, #🗓️│production-lead-discussion)</li>
+<li><strong>Tech infrastructure and workflow</strong> — Topics included a trunk-based branching proposal, strategies to avoid merge conflicts, and the Friendshipper evaluation, which was ruled a poor fit. The Gitea VPS has 38GB with about 3GB used, and cheap S3 storage was suggested for builds. Tech Sync pt2 was recorded with Fireflies, and Carlos Ortiz demoed a tool the team loved. (#💻│tech-lead-discussion, #🎯│tech-discussions)</li>
+<li><strong>Risk, scope and accountability</strong> — The team discussed scope concerns and the need for an MVP, plus ghosting detection with 48h warning / 72h strip triggers. Other topics were the 24-hour task rule, alternating dev and stabilization weeks, and a mismatch of about 17 deputy producers versus 7 slots in the org structure. (#Project Alignment, #@Production Deputy Leads:, #💻│tech-lead-discussion, #🎯│director-discussion)</li>
+<li><strong>Aesthetic and world exploration</strong> — Inspirations included Abzu + Shadow of the Colossus, Disney's Atlantis, coral-inspired materials, and an inherited insolvent sea base concept. Miro mood boards were started, and Donkey Kong Country's Aquatic Ambience was suggested as an audio reference. World and story decisions were routed to Narrative Design. (#🎨│art-lead-discussion, #🎯│design-discussions, #📝│narrative-lead-discussion, #🎯│audio-discussions, #🎯│narrative-discussions)</li>
+</ul>
+<h2>Shoutouts</h2>
+<ul>
+<li><strong>shadowarrior (Sidds)</strong> — Drove alignment across departments, announced the locked first-milestone decisions, defined the Drive structure, and gave detailed feedback to the deputy producers.</li>
+<li><strong>VibeBlind</strong> — Top poster with 149 messages. He led tech planning (branch model, team org sheet, Friendshipper evaluation), shared learning resources, and raised the scope concern that prompted MVP work.</li>
+<li><strong>Cafedunoir (Lori)</strong> — Finalized the Project Milestones and Timeline, got ClickUp sprints and the task board running, and coordinated the producer team and syncs.</li>
+<li><strong>Zef</strong> — Compiled the scattered design docs into a widely praised high-level summary with pitch, pillars and core loop (+7 reactions).</li>
+<li><strong>Felix</strong> — Took the lead on risk planning and delivered a copy-paste-ready risk document with inactivity triggers and Plan B/C reallocation.</li>
+</ul>
+<h2>Most active</h2>
+<ul>
+<li>VibeBlind: 149 messages</li>
+<li>shadowarrior: 51 messages</li>
+<li>Carlos Ortiz: 44 messages</li>
+<li>Cafedunoir: 39 messages</li>
+<li>Oldladies7: 27 messages</li>
+</ul>
+<hr />
+<h1>Channels</h1>
+<h2>#💻│tech-lead-discussion</h2>
+<p><em>167 messages from 9 people</em></p>
+<p>The week in #💻│tech-lead-discussion was about getting the tech side of the ASGC Game Jam 2026 ready to onboard contributors. pulsegenerator updated the GitHub defect/bug report template. VibeBlind approved it, noted the old template is gone so the "_test" suffix can be dropped, and suggested making Summary a large text field. VibeBlind ran a when2meet poll for regular tech syncs and proposed a trunk-leaning branch model: a protected main, no dev branch, short-lived feature/<task or bug> branches, and temporary release/<milestone> branches. On task ownership, Xelnath clarified that tasks should be about a workday of effort, with the rule to finish it or "raise a white flag within 24 hours." Co-owners act as backups when life happens. VibeBlind also floated alternating dev and stabilize weeks to match Sidds' pitch for 1-week and 2-week QA teams. Xelnath stressed that keeping the build shippable is the only way that works. GrandHawk suggested tiered per-lead repos, but VibeBlind and GrandHawk agreed it would delay integration and turn leads into full-time merge operators.</p>
+<p>A big chunk of the week went into evaluating Friendshipper. dyzzy fought AppImage and Wayland issues on CachyOS, and Carlos Ortiz dug into the Rust process-kill logic. klight got the server running on Windows and found a known-issue workaround. VibeBlind concluded Friendshipper probably doesn't fit current constraints: it depends on AWS (S3, EKS), SSO, GitHub merge queues and Argo Workflows, while the team runs Gitea on a VPS and has no AWS budget. Ark VCS was mentioned as another option. The Gitea VPS has 38GB, about 3GB already used. Adrian said he'll add storage once usage hits 50% and could get generic S3 storage (about 6 EUR/month per TB) for builds. Tech Sync pt1 on Saturday was cancelled after nobody showed up; pt2 went ahead and was recorded with Fireflies (notes linked). At pt2 Carlos showed a tool people loved. He plans to push it to a repo and live servers so the team can test it ahead of "the 20th." Afterwards the group discussed meeting on Discord vs Google Meet (note-taker bots struggle with Discord; Carlos offered his Google Workspace with Gemini). They also agreed ClickUp should be the source of truth, with Git issues and the wiki synced to it.</p>
+<p><strong>Highlights</strong>
+- VibeBlind proposed a trunk-based branch model: protected main, no dev branch, short-lived feature branches, and temporary release/<milestone> branches.
+- Xelnath framed task ownership as about a workday of labor with a 24-hour rule: finish it, get help, or "raise a white flag."
+- VibeBlind floated alternating feature-dev and stabilization weeks to pair with Sidds' 1-week/2-week QA team split.
+- Friendshipper evaluation: dyzzy, klight and Carlos Ortiz debugged setup, but its AWS, GitHub merge queue, SSO and Argo dependencies make it a poor fit for the Gitea plus no-budget setup.
+- The Gitea VPS has 38GB (about 3GB used); Adrian will expand storage at 50% use and suggested cheap S3 storage for builds.
+- Tech Sync pt1 was cancelled for lack of attendance; pt2 happened, with Fireflies notes shared.
+- Carlos Ortiz demoed a tool at the sync that impressed everyone; he'll host it on live servers so the team can test it before the 20th.
+- The group agreed ClickUp should be the source of truth, with Git issues and the wiki auto-synced to it.</p>
+<p><strong>Topics:</strong> Bug report templates, Branching strategy, Task ownership and 24h rule, Dev/stabilize cadence, Friendshipper evaluation, Gitea VPS storage, Tech Sync meetings, Meeting note-taking tools, ClickUp sync</p>
+<p><strong>Open questions</strong>
+- Who will set up the initial Unreal project in the repo (VibeBlind or Adrian), and when?
+- Will there be shared testing environments, or will the game run locally only? (pulsegenerator)
+- Is Ark VCS or another tool a viable alternative to Friendshipper?
+- Can Friendshipper work with generic S3 instead of AWS? (Adrian)
+- Should future syncs move to Discord or Carlos' Google Workspace instead of Google Meet with Fireflies?
+- Will the existing ClickUp–Git integration carry over extra material such as TDD links?
+- Carlos needs admin access to the Miro board to set up syncing there.</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>a workday's amount of labor (4hrs, 8 max) and 24 hours to get it done is probably a more literal interpretation of what I was paraphrasing.  And I think in the case of someone actively working on it, slipping a day won't be fatal, but the point is to start with very tight expectations, rather than loose ones of 'if you take something, you finish it, then go, or get help/ raise a white flag within 24 hours'</p>
+<p>— <strong>Xelnath</strong> in #💻│tech-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557141429551186/1524228115168100392">jump</a>)</p>
+<p>Keeping the build shippable is the only way this works</p>
+<p>— <strong>Xelnath</strong> in #💻│tech-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557141429551186/1524295592103383151">jump</a>)</p>
+<p>side note, listening to you work on stuff while I'm at work is really exciting. You guys are so smart 🔥</p>
+<p>— <strong>VibeBlind</strong> in #💻│tech-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557141429551186/1524810672716910674">jump</a>)</p>
+<p>Is there a reason we don't just meet over discord next time?</p>
+<p>— <strong>GrandHawk</strong> in #💻│tech-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557141429551186/1525653333388296314">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong>
+- <a href="https://discord.com/channels/1511905718419198013/1517557141429551186/1524802076243267736">Carlos Ortiz digs into Friendshipper's process-kill source code</a>
+- <a href="https://discord.com/channels/1511905718419198013/1517557141429551186/1524980987186905109">Gitea VPS storage allocation screenshot</a></p>
+<h2>#🗓️│production-lead-discussion</h2>
+<p><em>79 messages from 17 people</em></p>
+<p>The production team spent the week getting organized ahead of the ASGC Community Game Jam (signups close July 14, holding room invites July 17, jam starts July 20). ClickUp was confirmed as the production tool. Cafedunoir (Lori) collected producer emails and timezones in a 'Deputy Producers' Google Sheet to grant access, and finalized the Project Milestones and Timeline in the Master Game Direction Doc. Setting Sprint 1's dates in ClickUp was a struggle at first, since it seemed locked to a two-week cycle. shadowarrior (Sidds) pointed to the Sprint Folder settings, and by Friday Lori announced working sprints and a task board. Impyral noted that ClickUp's free tier lacks custom fields but is workable. A producer sync was scheduled via vote, with an agenda covering the Producer Org Doc, the Comms and Risks plans, and assigning producers to groups. Devang asked for a recording for India-based members, and OBS or Craig were suggested.</p>
+<p>shadowarrior explained that each department (Tech, Art, Design, Audio, Narrative, QA, Analytics, with Community/Marketing likely next) gets a deputy lead producer. Allocations are flexible and may rotate every couple of sprints. Next priorities are building the public onboarding checklist (tool docs, access details, quick-start guides), signing off on the Comms and Risk plans, and finding a low-pressure way to assess participant skill levels. Leads should assume participants are new to game dev. Other threads included Carlos Ortiz asking for a custom tools wishlist and pitching a sponsor's Discord-summarizing tool, which was redirected to organizers GreenCat and Michal Fried. klight suggested Believer's Friendshipper/Ethos for Unreal Git workflows, with an open question about Gitea compatibility. shadowarrior also asked for a volunteer to test Air Cluster + Air Explorer for hourly Google Drive backups. Daniel Beahn shared sobering news of major layoffs at ZOS, Fallout 76 and customer service.</p>
+<p><strong>Highlights</strong>
+- ClickUp was confirmed as the production tool, and by Jul 10 Cafedunoir and Sidds had sprints and a task board running that producers can self-assign from.
+- The jam timeline was shared: signups close July 14, holding room invites go out July 17, and the jam starts July 20.
+- shadowarrior outlined flexible department allocations with deputy lead producers per department, possibly rotating every two sprints.
+- Discipline leads locked the main jam decisions; the next focus is the public onboarding checklist with tool docs, access info and quick-start guides.
+- Leads were advised to plan assuming all participants are new to game dev, so any experienced members are a bonus.
+- Daniel Beahn reported heavy layoffs: ZOS lost about two-thirds of the studio, Fallout 76 was hit similarly, and customer service was let go entirely.
+- Carlos Ortiz pitched a sponsor's Discord-summarizing tool, and the decision was routed to organizers GreenCat and Michal Fried.
+- Peppy, who thought they weren't a QA lead after all, was welcomed as a QA deputy by pulsegenerator and sabishi_angel.</p>
+<p><strong>Topics:</strong> ClickUp setup and sprints, Producer sync meeting, Department allocations, Onboarding checklist, Jam timeline, Unreal Git tooling (Friendshipper), Google Drive backups, Risk and comms plans, Industry layoffs, Sponsorship tool offer</p>
+<p><strong>Open questions</strong>
+- Will the producer sync be recorded (OBS/Craig) for members in incompatible timezones, and who will take notes?
+- Does Believer's Friendshipper/Ethos work with the existing Gitea VPS?
+- Who will own testing the Air Cluster + Air Explorer backup setup?
+- Who is filling in the documentation, access details and quick-start guides for each tool?
+- How will participant skill levels be assessed beyond years of experience on the signup forms?
+- Is anyone already committed to producing for the Design or Narrative teams (klight's question)?
+- Have KyotoRando and Ricchio received ClickUp access yet?
+- Could someone post a summary of the current priorities for catching up, as YosephAlex4nder requested?
+- What is the wishlist of custom tools Carlos requested for launch?</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>@Production Lead  The discipline leads have locked in the main decisions for the game jam. The next thing to resolve on our list is to gather all the tools details, documentation links, information required to grant access, project information - to coordinate the onboarding checklist with the Discord Admins for the public participants. Lori and Daniel will be coordinating with you to build this up. 
+https://docs.google.com/document/d/1b-JkOnvFxvFJYBGD6AVugeWNOAoAWceZUwmyQ9n-8Mk/edit?disco=AAAB_VGUn-8</p>
+<p>I still have the following on my list to coordinate with you:
+- Finalize and sign off on Comms plan
+- Finalize and sign off on Risk mitigation plan
+- Finalize department allocation</p>
+<p>We will also need to build an easy, non-intrusive/non-confronting way to assess skill and experience level of participants joining in, so we can plan with each of the departments their workforce. We can ask @GreenCat  and @Michal Fried  to check if their sign up forms have any information we can use. </p>
+<p>I have stated this to the department leads before; go with the assumption that all the joining team members are still learning/new to game dev. That helps us to create a base dev plan without high deliverable expectation: we will spend time assisting, mentoring, guiding the team members. If we get skilled/experienced team members, that's bonus points - will boost our production efficiency and help us polish our features and content better.</p>
+<p>— <strong>shadowarrior</strong> in #🗓️│production-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517558685956706534/1524558159279034538">jump</a>)</p>
+<p>Thanks.  Today was insane.  ZOS lost about 2/3rds of the studio, Fallout 76 also got hit about that hard, customer service was let go - the whole department from sr director on down.  It’s bad.</p>
+<p>— <strong>Daniel Beahn</strong> in #🗓️│production-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517558685956706534/1523848629452931153">jump</a>)</p>
+<p>hey @Production Lead ! Hope everyone is doing well! Just a reminder for our meeting coming up! I added the details to the Events here on Discord: https://discord.com/events/1511905718419198013/1525041814711566366 AND shout out to Sidds we whipped the Click Up into shape! 💪  NOW WE HAVE SPRINTS!!! And tasks on a board! And people can grab the tasks! And it is organized! Should be much easier for folks now to grab a task and assign to to themselves and for us to keep track https://app.clickup.com/90141389150/v/b/6-901417959674-2 Let me know if you still need access and I'll add your email in. Thanks again everyone and looking forward to chatting soon! 😊</p>
+<p>— <strong>Cafedunoir</strong> in #🗓️│production-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517558685956706534/1525046225857019974">jump</a>)</p>
+<p>Well when it's 300 people strong, yeah custom tools seem pretty justified lol 😂</p>
+<p>— <strong>Carlos Ortiz</strong> in #🗓️│production-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517558685956706534/1524081460724891809">jump</a>)</p>
+</blockquote>
+<h2>#🎨│art-lead-discussion</h2>
+<p><em>54 messages from 7 people</em></p>
+<p>The art leads spent the week pinning down technical direction and starting visual exploration. VibeBlind pushed for a decision on 2D vs 3D and render style, sharing an Architecture Decision Records doc (ADR-001 still pending) and later a Master Game Direction Doc proposing Stylized 3D rendering, humanoid characters, Unreal 5.7.4, PG rating and Steam on Windows PC. Zef and Sabian said this matched the direction they were leaning, and Diana Donado said she was fine with that UE version. She told VibeBlind to confirm it once he has checked that everyone else is on board with it. Sabian synced with Diana and started Miro mood boards. He upgraded to a personal plan and invited Diana and Zef as editors. Diana reviewed the boards, left comments and direction, and Sabian posted an update by Thursday night.</p>
+<p>On aesthetics, Oldladies7 shared steampunk iron lungs as reference. Xelnath suggested moving away from rusty brown-green tones toward coral-inspired, more chromatic materials. That led to ideas about coral bleaching as a narrative point and Art Nouveau or Arts &amp; Crafts movement influences. Oldladies7 also suggested furniture made from driftwood and sunken-ship debris. Zef asked Diana several worldbuilding questions: one-way progression, NPC interaction, the role of steampunk, and how realistic the game should be. VibeBlind and sokky debated whether the underwater people are steampunk or Disney-Atlantis-style crystal users. Diana redirected Zef to get briefed by Gerritt and the Master Game Document before raising design questions with the wider team.</p>
+<p><strong>Highlights</strong>
+- VibeBlind proposed Stylized 3D, humanoid characters, Unreal 5.7.4, PG and Steam Windows PC; Diana is fine with the UE version, pending VibeBlind checking that everyone agrees.
+- Sabian created Miro mood boards, upgraded to a personal plan, and invited Diana and Zef as editors.
+- Diana reviewed the mood boards and left comments, and Sabian posted an update on Thursday.
+- Xelnath suggested coral-inspired, more colorful materials instead of the classic rusty steampunk look.
+- Zef and Oldladies7 got excited about Arts &amp; Crafts and Art Nouveau influences, plus driftwood and shipwreck-debris furniture.
+- Zef asked about progression, NPCs, the role of steampunk and how realistic the game should be; Diana pointed him to Gerritt and the Master Game Document.
+- VibeBlind and sokky discussed whether the underwater civilization uses steampunk tech or Atlantis-style crystals.
+- sokky is holding off on concept art until people start being brought in at the end of the month.</p>
+<p><strong>Topics:</strong> Render style &amp; engine decision, Architecture Decision Records, Miro mood boards, Steampunk aesthetic &amp; materials, Art Nouveau / Arts &amp; Crafts influences, Coral &amp; underwater theme, Worldbuilding questions, Team process &amp; points of contact</p>
+<p><strong>Open questions</strong>
+- ADR-001 is still pending: is the render style / 2D vs 3D decision formally locked?
+- Has VibeBlind confirmed that everyone is on board with Unreal 5.7.4?
+- Is progression one-way, or can players revisit earlier areas?
+- Are NPCs limited to dialogue, or are there deeper interactions?
+- What role does steampunk play: surface only, underwater, or the whole world?
+- Are the underwater citizens steampunk or crystal/magic users?
+- How realistic or educational versus fantastical should the game be?
+- Will Miro collaboration need paid seats for more members?</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>perhaps more coral inspired, with different chromatic elements</p>
+<p>— <strong>Xelnath</strong> in #🎨│art-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557587023892580/1523552065249476688">jump</a>)</p>
+<p>Honestly with how many wooden elements there are in the design trend, it would be cool if a bunch of furniture is made from repurposed drift wood. Or sunken ships debris.</p>
+<p>— <strong>Oldladies7</strong> in #🎨│art-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557587023892580/1523850590818668657">jump</a>)</p>
+<p>Arts &amp; Crafts movement could be interesting, as it was a counter-movement to the mass production and Industrial Revolution</p>
+<p>— <strong>Zef</strong> in #🎨│art-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557587023892580/1523846627520020590">jump</a>)</p>
+<p>I mean, it’s consistently in my DNA so…..</p>
+<p>— <strong>Zef</strong> in #🎨│art-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557587023892580/1524830914620948560">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong>
+- <a href="https://discord.com/channels/1511905718419198013/1517557587023892580/1523525474574139453">Vintage iron lungs shared by Oldladies7 as steampunk design reference</a></p>
+<h2>#🎯│tech-discussions</h2>
+<p><em>46 messages from 5 people</em></p>
+<p>VibeBlind kicked off the week by sharing a WIP Tech Team Organization spreadsheet for slotting people into roles. dyzzy and Adrian volunteered to co-own Tools. Adrian also offered to help with Architecture, Standards and Mentorship, and shared notes on Game Engineering: he's comfortable with gameplay systems and UI/UX, likes AI the least, and isn't confident about Unreal replication optimization. Carlos Ortiz echoed Adrian on architecture, standards and mentorship, said he's passionate about mentoring juniors, and offered to help with UI/UX. VibeBlind expects around 60 tech contributors in the coming weeks, tapering to about 15 within roughly 3 months. He flagged git merge conflicts and deciding who handles code reviews (to spare the QA team headaches) as big concerns, and said gameplay is being kept open and shared. Carlos suggested dependency management to avoid parallel tasks touching the same classes/blueprints, regular rebases, on-call conflict resolution with a deputy, and above all a modular architecture. VibeBlind is already working with design on planning for parallel development.</p>
+<p>On Friday VibeBlind proposed a YouTube video on version control in UE5 (Git/GitHub/GitLab) as the onboarding tutorial for new contributors. His one reservation was its Static/Dynamic folder approach: he'd rather <code>.gitattributes</code> track Unreal binary types by extension. Alan H. Diniz asked for Unreal C++ resources, and VibeBlind shared Tom Looman's guide, Epic's C++ tutorials and an older Class Central list, promising a fuller list after his homework. He warned that many YouTube tutorials use poor patterns like calling GetWorld()-&gt;GetFirstPlayerController() in every Actor, and noted that the coding standards and architecture docs aren't written yet. The chat closed on a humble, encouraging note ('the game isn't the product here. We are') and some Kamen Rider talk. Earlier, Alan mentioned he plans to switch his OS to Windows later.</p>
+<p><strong>Highlights</strong>
+- VibeBlind shared a WIP Tech Team Organization spreadsheet for assigning people to tech roles.
+- dyzzy and Adrian volunteered to co-own Tools; Adrian and Carlos Ortiz offered to help with Architecture, Standards and Mentorship.
+- VibeBlind estimates about 60 tech contributors soon, dropping to about 15 within roughly 3 months.
+- Carlos proposed dependency management, regular rebases, on-call conflict resolution and, above all, modular architecture to handle merge conflicts.
+- VibeBlind is keeping gameplay open and shared, and is working with design on planning for parallel development.
+- A UE5 version-control YouTube video was proposed as the contributor tutorial, with a preference for tracking binaries by extension in .gitattributes rather than by folder.
+- Unreal C++ learning resources were shared (Tom Looman's guide, Epic docs), with a warning about bad YouTube patterns like GetWorld()-&gt;GetFirstPlayerController() in every Actor.
+- Coding standards and architecture docs are not yet written.</p>
+<p><strong>Topics:</strong> Tech team organization, Git workflow &amp; merge conflicts, Code review process, Onboarding tutorials, Unreal C++ learning resources, Coding standards &amp; architecture, Kamen Rider</p>
+<p><strong>Open questions</strong>
+- Who will handle code reviews, and how?
+- Does anyone have opinions on using the proposed UE5 version control video as the contributor tutorial?
+- When will the coding standards and architecture docs be published?
+- VibeBlind's promised fuller list of Unreal C++ resources is still pending.
+- Who will own Game Engineering areas such as replication and technical art?</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Let us remember that the game isn't the product here. We are</p>
+<p>— <strong>VibeBlind</strong> in #🎯│tech-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254441703968888/1525306835819696175">jump</a>)</p>
+<p>it's a mosaic not a davinci</p>
+<p>— <strong>VibeBlind</strong> in #🎯│tech-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254441703968888/1525308076737953793">jump</a>)</p>
+<p>It's like a Kamen Rider crossover movie, they play five transformation jingles at the same time and you can understand s**t, but it's still very cool lol</p>
+<p>— <strong>Alan H. Diniz</strong> in #🎯│tech-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254441703968888/1525308580759339188">jump</a>)</p>
+<p>A good modular architecture is the number one best mitigation imo.</p>
+<p>— <strong>Carlos Ortiz</strong> in #🎯│tech-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254441703968888/1524074253438291978">jump</a>)</p>
+</blockquote>
+<h2>#🎯│director-discussion</h2>
+<p><em>37 messages from 10 people</em></p>
+<p>The week opened with Cafedunoir asking Xelnath about target dates for the schedule. Xelnath laid out a timeline. The team should ship something playable by the end of August, refine it through September, then hold a big sit-down in early October to see who is left and decide what the game needs to be fun. He also set nearer milestones: a Steam-testable build by July 21 (even if it's just a loading screen), regular team playtests starting July 25, and a feedback pipeline by July 28. He suggested a non-Discord channel for project updates and urged using the red team. shadowarrior drove a lot of the organizing. They requested <department>Leads Discord roles, which Michal Fried implemented, with a Narrative exception so it covers deputies only. They flagged overdue July 3 deliverables (Theme and Genre, Game Pillars, Project Milestones, Project Timeline) as Blocked; Tools was done. By Wednesday they reported that Diana and the creative departments had locked in theme, genre, render style and core gameplay, and asked every Discipline Lead to confirm they are aligned on the game's vision.</p>
+<p>ClickUp setup got the go-ahead from Matt Barnes, shadowarrior and Cafedunoir. It runs on the free tier for now, and shadowarrior created a sprint folder. exackley asked where to put an audio "Sonic Vision" doc without adding to document bloat. Michal Fried added an Audio folder to the shared Drive, but write-permission problems surfaced; Cafedunoir had hit similar issues. shadowarrior then explained the Drive structure: Project Files for department dev docs, a Leads folder for planning, and a Comms folder for communications. They also announced work on a Sources of Truth list and backup options. The week closed with a When2Meet call for the next Leads Sync before public signups begin.</p>
+<p><strong>Highlights</strong>
+- Xelnath set the arc: a playable build by end of August, refinement through September, and a team sit-down in early October to decide what makes the game fun.
+- Near-term targets: Steam-testable build by July 21, regular playtests from July 25, feedback pipeline by July 28.
+- Xelnath stressed that '6 weeks' means 6 focused weeks on must-have features, since normal dev budgets take far longer.
+- Michal Fried implemented <department>Leads Discord roles for group tagging, with a NarrativeLeads exception at Leslie's request.
+- The July 3 deliverables (Theme and Genre, Game Pillars, Project Milestones, Project Timeline) were marked Blocked; Tools was completed.
+- Creative departments, led by Diana, locked theme, genre, render style and core gameplay, and Discipline Leads were asked to confirm alignment.
+- ClickUp was approved for team task tracking on the free tier, so Ashley and Olivier can start trackable work.
+- shadowarrior defined the Drive structure (Project Files, Leads, Comms) and announced a Sources of Truth list and backup evaluation.</p>
+<p><strong>Topics:</strong> Project schedule and milestones, Playtests and Steam build, Discord lead roles, Overdue deliverables, Vision alignment, ClickUp setup, Google Drive organization and permissions, Leads Sync scheduling, Learning resources</p>
+<p><strong>Open questions</strong>
+- Will Discipline Leads confirm they are aligned on the game vision? No replies to shadowarrior's thread appear in the transcript.
+- exackley's Drive write-access problem was not confirmed resolved; is it affecting other leads too?
+- Which non-Discord communications channel (email, social media, etc.) will be used for project updates?
+- Will GrandHawk's paid Niagara Liquids course be useful, and is there a place for learning resources?
+- Which backup solution and frequency will be chosen for the Drive folders?</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I think you should look to be shipping something playable by the end of august. Refining it through sept. Then having a big sit-down with the team, seeing who is left at at the beginning of Oct and deciding what the game needs to be fun</p>
+<p>— <strong>Xelnath</strong> in #🎯│director-discussion (<a href="https://discord.com/channels/1511905718419198013/1512105827257946273/1523585779379470388">jump</a>)</p>
+<p>When I say 6 weeks of work, I genuinely mean, 6 focused weeks to nail the must-have features for the game. I believe that no matter what you do, 6 weeks of normal dev budget will take far more time.</p>
+<p>— <strong>Xelnath</strong> in #🎯│director-discussion (<a href="https://discord.com/channels/1511905718419198013/1512105827257946273/1523585980051886150">jump</a>)</p>
+<p>@Cafedunoir I would say: 
+Have a working steam testable (even if its has nothing but a loading screen) by July 21st. 
+Regular team playtests (either sliding day times or regular) scheduled starting July 25th.
+Feedback tools and pipeline setup by July 28th.</p>
+<p>You should also find a non-discord communications channel. (Email, social media, etc) to give project updates </p>
+<p>Up to you - but you have an entire red team, so make use of em</p>
+<p>— <strong>Xelnath</strong> in #🎯│director-discussion (<a href="https://discord.com/channels/1511905718419198013/1512105827257946273/1523587038207803463">jump</a>)</p>
+<ul>
+<li>Project Files: All department dev related docs should go there. You can organize your department folders to have Briefs, GDD, TDD, Mood boards etc. Access should be given to all participants.</li>
+<li>Leads Folder: This is a folder for Leads and Deputy Leads for any planning docs etc related to the project. We have been using this folder for all planning till now. You can use this to manage and track your team's resources (personnel) for example. Discord admins are right now testing backup options and to make sure files deleted can be restored by an admin. Deputy Leads will have write access to this doc as well. No access for other participants. You may also use this folder to create things to be reviewed by other discipline leads/deputy leads before broadcasting to other team members. </li>
+<li>Comms Folder: All communications will be moved here. Meeting notes, Release notes, Public messaging and assets etc. Discipline Leads, Deputy Leads, and ASGC community and marketing team will have access to this. We will organize the subfolders with relevant tags as they get setup.</li>
+</ul>
+<p>— <strong>shadowarrior</strong> in #🎯│director-discussion (<a href="https://discord.com/channels/1511905718419198013/1512105827257946273/1524910913638109347">jump</a>)</p>
+</blockquote>
+<h2>#📝│narrative-lead-discussion</h2>
+<p><em>32 messages from 6 people</em></p>
+<p>The week opened with Mia Gobble (iGottic), biestibelzer and Corvid Quill holding an informal call to brainstorm narrative and design ideas, with Mia sharing notes in a 'Narrative &amp; Design Notes (07-05-26)' doc. Zef pointed to Pokopia as an example of their ideas fitting a cozy game. Oldladies7 then clarified that the cozy element came from the community polls. She said these work like a game jam theme: they are expected constraints, not loose guidance. Mia had heard otherwise in another chat, and Oldladies7 put it down to miscommunication. She plans to keep expanding the FAQ and to set up future writing rooms that these members will help lead.</p>
+<p>Oldladies7 scheduled the first official Narrative meeting for Sunday, July 12, aiming for about an hour. The agenda is project goals, team composition and more brainstorming, and she confirmed the time on July 11. She also asked people to keep adding to the Narrative Team Research/Resource Repo, and sadegun93 added a few points. Sabian said he and Diana would have mood boards and sketches by the 10th and offered to act as the team's visual guide. Oldladies7 invited him to Tuesday's design lead meeting. On July 9 she opened a Theme Document for brainstorming theme options, which she planned to finalize and send to production the next night. She also shared a pending Player Experience Goal doc, co-written with Seb and awaiting approval from Creative and Design.</p>
+<p><strong>Highlights</strong>
+- Mia, biestibelzer and Corvid Quill held an informal brainstorm call and shared notes in a Google Doc.
+- Oldladies7 clarified that the community poll results (including the cozy game element) are expected constraints, like a game jam theme, not just guidance.
+- The first official Narrative meeting was set for Sunday, July 12, covering project goals, team composition and brainstorming.
+- Oldladies7 plans future writing rooms led by team members and an expanded FAQ to reduce miscommunication.
+- Sabian said he and Diana would have mood boards and sketches by the 10th and offered to be the narrative team's visual guide.
+- Oldladies7 invited the Narrative team to brainstorm theme options in a Theme Document before sending a final version to production.
+- A pending Player Experience Goal doc, co-created by Oldladies7 and Seb, was shared as a reference while it awaits approval from Creative and Design.
+- Oldladies7 lost a night's sleep to illegal 4th of July fireworks, and biestibelzer joked that earmuffs are now the obvious gift.</p>
+<p><strong>Topics:</strong> Brainstorm call notes, Community poll constraints, Cozy game direction, First official Narrative meeting, Research repo, Art and narrative collaboration, Theme brainstorming, Player experience goal</p>
+<p><strong>Open questions</strong>
+- What is the process, if any, for changing or working around poll-decided constraints like the cozy game element?
+- Did the team contribute more theme options to the Theme Document before it went to production?
+- Will Sabian join the Tuesday design lead meeting with Diana, Matt and Oldladies7?
+- Has the Player Experience Goal been approved by Creative and Design?</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Yes, in that we get to work within them, but I believe Alex was looking at them as fundamental expectations for the jam, i.e. like a game jam's theme where your game needs to have that theme element included for it to be sumitted.</p>
+<p>— <strong>Oldladies7</strong> in #📝│narrative-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557907036836082/1523432313554342002">jump</a>)</p>
+<p>It was probably just some amount of miscommunication. Since we have very few clear operational definitions to refer back to. It doesn't matter too much. Leads are all generally on the same page, so tackling differences in understanding should trickle down from up top. We are going to keep having miscommunication issues for a while, which is why I'm going to hopefully keep adding elements to our FAQ so that as things pop up we can direct new people to it.</p>
+<p>— <strong>Oldladies7</strong> in #📝│narrative-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557907036836082/1523467999942541513">jump</a>)</p>
+<p>I lost like 6 hours of productive work just because the sounds give me incredible anxiety. I usually spend the 4th outside of the city... not this year. I'm like the pet dogs people have to give earmuffs because it makes them anxious xD</p>
+<p>— <strong>Oldladies7</strong> in #📝│narrative-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557907036836082/1523733471040766023">jump</a>)</p>
+<p>I'm so sorry :I but we now know what to gift you for your birthday or christmas, whichever happens first</p>
+<p>— <strong>biestibelzer</strong> in #📝│narrative-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557907036836082/1523737143149723698">jump</a>)</p>
+</blockquote>
+<h2>#@Production Deputy Leads:</h2>
+<p><em>32 messages from 8 people</em></p>
+<p>Cafedunoir returned from a 36-hour train trip and set up a When2Meet to schedule a Producers sync this week. She reported to shadowarrior (Sidds) that the deputy leads had delivered the requested items: tools were copied from Miro into the Master Game Doc, Risk Mitigation and Communication Plan drafts are on the Miro board, and Milestone and Timeline drafts are in the doc. Sidds gave detailed feedback. On communication, he asked for documentation phases on the sprint timeline, automated reminders (e.g., 10 days, 2 days and 24 hours before a GDD is due), and automated ticket notifications via GitHub/ClickUp. He also flagged missing processes for communicating blockers, project risks, sprint code lock and RC status. On risks, he asked for parameters to detect team member ghosting. He shared the Decision Making/Blocker Resolution chart, the Producers Org Structure, and the Feature Implementation Process. He said the main milestone is getting Creative pods to lock their deliverables so tech can move on engine selection.</p>
+<p>Felix took the lead on risks. He proposed a 48-hour warning and 72-hour execution trigger for inactive tasks, with Plan B (hand off to a buddy/secondary or post to a #critical-bounties channel) and Plan C (log the task in a centralized blockers channel). He questioned how the jam's 24-hour rule applies to people with limited time. By Jul 10 he had prepared a copy-paste-ready risk document on Miro; Cafedunoir plans to add it to the Master Game Doc and link it from ClickUp. Other threads: David Thompson (Melbourne/AEST) joined to cover off-hours. Wilsanity returned after an account hack, and Yoseph posted catch-up links. klight raised that there are about 17 deputy producers versus 7 slots in the org structure. Sidds said complex departments may get several deputies, and Yoseph said it will be discussed at the sync. Devang suggested regular lead/deputy sync-ups. Felix's question about backfilling participants who leave was deferred to the weekend meeting.</p>
+<p><strong>Highlights</strong>
+- Deputy leads delivered the tools, Risk Mitigation and Communication drafts, plus Milestone and Timeline drafts, as Sidds had requested.
+- Sidds posted detailed feedback calling for automated reminders, ticket notifications, and processes for blockers, risks, code lock and RC status.
+- Sidds asked for ghosting-detection parameters that would trigger Plan B/C reallocation.
+- Felix proposed 48h warning / 72h strip triggers, a buddy system, and a #critical-bounties channel for reassigning tasks.
+- Sidds named the main milestone: Creative pods locking deliverables to unblock tech's engine selection.
+- klight flagged about 17 deputy producers versus 7 roles in the org structure; Sidds said complex departments could get multiple deputies.
+- David Thompson joined from Melbourne to cover AEST hours alongside Sidds.
+- Felix finished a copy-paste-ready risk document on Miro, which will go into the Master Game Doc and be linked from ClickUp.</p>
+<p><strong>Topics:</strong> Producers sync scheduling, Communication plan, Risk mitigation, Ghosting/inactivity triggers, Org structure and deputy assignments, Creative deliverable lock, Onboarding/catch-up</p>
+<p><strong>Open questions</strong>
+- How will about 17 deputy lead producers be assigned against the 7 roles in the org structure?
+- How does the jam's 24-hour rule apply to assignees with limited available time — should there be leeway?
+- Will the jam backfill participants who drop out (e.g., 50 of 200 leave)?
+- What exact X/Y hour thresholds will be adopted for ghosting triggers?
+- Will leads and deputy leads set up a regular sync channel or call, as Devang suggested?</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>ok peeps I'm back! Whew! 36 hours on a train is a long time. I set up this When 2 meet so we can find some time to connect this week and ensure we are all on the same page with any outstanding work, answer any questions, and figure out how we are going to work together moving forward. 😊  Please fill out your availability this week by <t:1783404000:f> Thanks all! https://www.when2meet.com/?37342504-HPttl</p>
+<p>— <strong>Cafedunoir</strong> in #@Production Deputy Leads: (<a href="https://discord.com/channels/1511905718419198013/1522210551693054044/1523555352904204363">jump</a>)</p>
+<p>Risks and Mitigation: We need to define some parameters that pre-identifies team member ghosting. For example, X amount of hours with 0 ack should initiate Plan B - Department Deputy Lead should be tracking this and identify to department PjM and Discipline Lead, start identifying personnel we may need to reallocate the task to. Y hours with 0 ack or previous step might trigger a notification that a deliverable will be delayed, and it could have cascading effect on the sprint and other departments. Part of this identification and triggering of Plan B/C risk mitigation would need a communication process as well</p>
+<p>— <strong>shadowarrior</strong> in #@Production Deputy Leads: (<a href="https://discord.com/channels/1511905718419198013/1522210551693054044/1523820915878789262">jump</a>)</p>
+<ul>
+<li>Trigger X (48 Hours - Warning): If a task sits for 48 hours with zero tracked updates, the Lead/Prod/Deputy pings the assignee directly for acknowledgement.</li>
+<li>Trigger Y (72 Hours - Execution): At 72 hours of silence, the task is officially stripped. Lead/Prod/Deputy initiates Plan B and Plan C simultaneously.</li>
+<li>Plan B: To avoid manual bottlenecks, the Lead/Prod/Deputy immediately transfers the ticket to the pre-assigned "Secondary" (if we use some sort of buddy system like it's suggested in Miro). If no backup exists, the ticket is broadcast to a #critical-bounties Discord channel of sorts where available discipline members can claim it instantly?</li>
+<li>Plan C: Maybe rule that the Lead/Prod/Deputy can strip the ticket and log it on a specialized/centralized channel for blockers to give the heads-up to the other producers/leads? It should be something we could "robot-like", ingrained in our process to stream the communication towards the discipline leads/team leads to adjust their delivery goals for that timeframe, to adjust the forecast and dependencies without the need to sync, more like a "board of fires-sort  of...". </li>
+</ul>
+<p>Any other would like to way in here? I could be missing something.</p>
+<p>— <strong>Felix</strong> in #@Production Deputy Leads: (<a href="https://discord.com/channels/1511905718419198013/1522210551693054044/1524127181654069530">jump</a>)</p>
+<p>I got you.</p>
+<p>https://discord.com/channels/1511905718419198013/1522210551693054044/1522697747701174272
+https://discord.com/channels/1511905718419198013/1522210551693054044/1523975063039377469
+https://discord.com/channels/1511905718419198013/1522210551693054044/1523975536345354283
+https://discord.com/channels/1511905718419198013/1522210551693054044/1523974801985900575
+https://discord.com/channels/1511905718419198013/1517558685956706534/1523979656393523301</p>
+<p>Review the Sprint Plan Scratchpad, The Master Game Direction Doc, the ASGC Game Jam Board, Decision Maker Blocker Chart, and the Feature Implementation Process.</p>
+<p>If bandwidth permits, see if you can contribute to the Risk Mitigation and Communication Brainstorm docs in the Game Jam Board. Sidds left us notes here: https://discord.com/channels/1511905718419198013/1522210551693054044/1523818996078612560</p>
+<p>We have a sync locked in for <t:1783890000:F></p>
+<p>— <strong>YosephAlex4nder</strong> in #@Production Deputy Leads: (<a href="https://discord.com/channels/1511905718419198013/1522210551693054044/1524067099625001242">jump</a>)</p>
+</blockquote>
+<h2>#🎯│design-discussions</h2>
+<p><em>19 messages from 7 people</em></p>
+<p>The week opened with VibeBlind pitching "Abzu + Shadow of the Colossus" as an inspiration combo, which got LordReavan to grab Abzu on sale and offer to stream it while taking design notes. klight shared a Game Maker's Notebook podcast with Giant Squid's Matt Nava about the making of ABZÛ and The Pathless. Matt Barnes set up a When2Meet for the @Design team, and the sync landed on Tuesday Jul 7 at 1:00pm PST in voice. Afterwards he shared an in-progress ClickUp GDD High Level Outline. The first links didn't work for LordReavan because of a publishing issue, so Matt posted a public ClickUp Docs link, which worked for Corvid Quill and LordReavan.</p>
+<p>biestibelzer (Thomas) and KyotoRando missed the meeting ping. On Friday KyotoRando shared a concept they and Thomas had worked out together. The player inherits a sea base from their parents that is financially insolvent ("DOUBLY underwater"), with cozy base-building, intuitive resource loops and real conversations with characters. The goal is to push the base ever deeper to uncover the mystery of the parents' disappearance, pitched as "an underwater Stardew/Animal Crossing, but without an underwater Tom Nook." Matt Barnes replied that he'd post an update covering what's known, what's being finalized and what can start. World and story concepts will mainly be decided by Narrative Design, so ideas should go to their channel, ideally next week once the "major points" are finalized.</p>
+<p><strong>Highlights</strong>
+- VibeBlind pitched "Abzu + Shadow of the Colossus" as an inspiration combo (+3 reactions).
+- LordReavan bought Abzu on sale and offered to stream it while taking design notes.
+- klight shared the Game Maker's Notebook podcast with Matt Nava on ABZÛ and The Pathless.
+- The @Design sync was held Tuesday Jul 7 at 1:00pm PST, scheduled via When2Meet.
+- Matt Barnes shared an in-progress ClickUp GDD High Level Outline; a public ClickUp Docs link fixed the access problems.
+- KyotoRando and Thomas pitched an inherited, insolvent sea base that players push to greater depths to solve the mystery of their parents' fate.
+- Matt Barnes said world and story decisions belong to Narrative Design and asked people to hold ideas until next week, when the major points are finalized.</p>
+<p><strong>Topics:</strong> Game inspirations (Abzu, Shadow of the Colossus), Design team meeting scheduling, ClickUp GDD outline, Sea base concept pitch, Narrative Design ownership</p>
+<p><strong>Open questions</strong>
+- Matt Barnes promised an update on what's known, what's being finalized and what the team can start on; it hasn't been posted yet.
+- No one has said what was discussed in the Jul 7 meeting, which biestibelzer and KyotoRando missed.
+- The team hasn't responded to KyotoRando and Thomas's inherited sea base concept, and it still needs to go to Narrative Design.
+- No one has said why biestibelzer and KyotoRando didn't get the @Design ping.</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Abzu + Shadow of the Colossus</p>
+<p>— <strong>VibeBlind</strong> in #🎯│design-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254315837100123/1523520225616724079">jump</a>)</p>
+<p>So, like Thomas, I didn't get that ping, so I'm not sure what was discussed, but after waiting a couple days to see if anything in the docs had changed, I feel like maybe I should just throw some ideas out. Thomas and I had met prior to the meet up to just bounce ideas off of each other. Within the constraints of things that had already been sort of set, we thought that if the player was coming back to an inherited sea base that their parents had left them, this would allow for cozy base-building, intuitive resource gathering and spending, and characters that they could meet and talk to and have non-boilerplate conversations with. The base would be financially insolvent (DOUBLY underwater) and the player's goal would be to get the base to go to greater and greater depths so they could uncover the mystery of their parents' disappearance/demise. Like an underwater Stardew/Animal Crossing, but without an underwater Tom Nook.</p>
+<p>— <strong>KyotoRando</strong> in #🎯│design-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254315837100123/1525074151486914620">jump</a>)</p>
+<p>I got it for free a while back and loved the exploration / design, the Game Maker's Notebook has a good podcast with Matt talking about his journey too: https://www.youtube.com/watch?v=mMShhPbPWjE</p>
+<p>— <strong>klight</strong> in #🎯│design-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254315837100123/1523739606913257733">jump</a>)</p>
+<p>I will try to provide an update tomorrow that will include what we know know, what is currently getting finalzied, and what we can start doing. Things are still moving pretty slowly but I like ideas coming out. As far as the concepts for the world and story, we have some buy in, but that is primarily going to be decided on by Narritive Design. If you have ideas that you think will help solve some of those issues, I would suggest you add ideas to their channel. I'd wait until next week tho, as the "major points" are currently getting finalized." Once that is done, we will have a much better idea of what we will need to build and major elements</p>
+<p>— <strong>Matt Barnes</strong> in #🎯│design-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254315837100123/1525740620579209268">jump</a>)</p>
+</blockquote>
+<h2>#Project Alignment</h2>
+<p><em>16 messages from 7 people</em></p>
+<p>shadowarrior opened an alignment thread for the core team. Directors and discipline leads were asked to post their replies, or give a green tick if they agree with the plan and direction. VibeBlind said they broadly agree with the vision but worried about scope. They listed the planned features (bump-slash combat, stealth and its subsystems, underwater traversal, dialogue, interaction, journal/clues) and doubted it could all be done in 6 weeks, so they asked whether there is an MVP of core features. Matt Barnes said his approach is to plan the best game first, then cut scope in lead meetings once team size is known. Oldladies7 agreed an MVP would be useful either way. Cafedunoir said they are aligned once a DMed question about sprint structure gets answered.</p>
+<p>On Jul 9 shadowarrior pinged the Directors who hadn't responded yet. He called scope a valid risk and said the process flow for validating ideas into scoped work is there to handle it. He stressed that the project's main goal is learning and guiding the team, but that shipping is still the guiding star. He noted Cafedunoir has already defined milestone deliverables with timelines, and said he will work with Diana Donado to define the MVP for the full deliverable. exackley raised two open points: whether 'Dialog' means recorded voice, which he isn't keen on for a project this size, and which camera perspective has been chosen. shadowarrior agreed recorded voice is risky and suggested text dialogue with short constructed-language audio clips, leaving the final call to Diana. Diana and exackley set up a call for Fri Jul 10 at 2:30 PST to go over his questions.</p>
+<p><strong>Highlights</strong>
+- shadowarrior made input from all discipline leads and co-leads mandatory, saying core-team alignment is essential before leading 'a team of hundreds'.
+- VibeBlind flagged scope risk: the feature list (combat, stealth, underwater traversal, dialogue, journal/clues, etc.) may not fit in 6 weeks.
+- Matt Barnes's philosophy: plan the best game imaginable, then decide in scope meetings what is doable once team counts are known.
+- shadowarrior said learning and guiding are the main goals, but scoping down and actually shipping is part of that lesson.
+- shadowarrior will work with Diana Donado to define the MVP; Cafedunoir has already defined milestone deliverables and timelines.
+- exackley asked whether dialogue means recorded voice and noted that the camera perspective hasn't been locked down.
+- shadowarrior suggested text dialogue plus short constructed-language sound clips instead of full voice acting.
+- Diana Donado and exackley scheduled a call for Fri Jul 10 at 2:30 PST.</p>
+<p><strong>Topics:</strong> Team alignment, Scope and MVP, Feature list, Dialogue and voice acting, Camera perspective, Sprint structure</p>
+<p><strong>Open questions</strong>
+- What is the MVP of core features? (shadowarrior and Diana Donado to define it)
+- Does 'Dialog' mean recorded voice? (deferred to Diana Donado)
+- What camera perspective will the game use (top-down, first person, third person)?
+- Cafedunoir's DMed question about sprint structure is still waiting for an answer.
+- Several Directors had not yet posted their alignment input as of Jul 9: Swart Tigerhorn, Daniel Beahn, Sabian, Imraël, Hailey, pulsegenerator, sabishi_angel, ThatDanNixon and GrandHawk.</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Thanks! We are still missing input from other @Directors! 
+@Swart Tigerhorn @Daniel Beahn @Sabian @Imraël @exackley @Hailey @pulsegenerator @sabishi_angel @ThatDanNixon 
+@GrandHawk 
+This thread needs mandatory input from all discipline leads and co-leads, a green tick is also a valid response that you are in sync with the plan and direction. 
+Without an alignment at the core team, and without giving a platform to resolve any alignment mismatch, we will have a hard time leading a team of hundreds.</p>
+<p>— <strong>shadowarrior</strong> in #Project Alignment (<a href="https://discord.com/channels/1511905718419198013/1524561452298666045/1524918759481938085">jump</a>)</p>
+<p>@VibeBlind @Oldladies7  that is valid risk. Echoing on what @Matt Barnes  mentioned - our Process flow of validating ideas into scoped agreed upon work is there to address exactly that risk. We may also have to scope down based on the team size and skill level of our team members. But again, please plan based on the assumption that we will be spending most of our time guiding and helping the team. If we have skilled personnel join us, then it helps us with better efficiency and polish for our deliverable. </p>
+<p>Ideally, products have MVP definitions to guide timeboxing by. But this project's primary objective is learning, experience and guiding, so we are focusing on that over what we ship. What we ship is still our guiding star, because part of the learning experience through this project is also being able to scope down and deliver, instead of being caught up in bloated features or over scoping and never launching your game. </p>
+<p>@Cafedunoir has already created definitions for each deliverable milestones with timelines. I will be working with @Diana Donado  to define the MVP of the full deliverable, which should address some of your questions as well.</p>
+<p>— <strong>shadowarrior</strong> in #Project Alignment (<a href="https://discord.com/channels/1511905718419198013/1524561452298666045/1524920478345461910">jump</a>)</p>
+<p>IMO, As we outline the features and details, there will be scope meetings along the way. With that, there will be lead discussions on what needs to get cut. Right now things are too abstract to know what the realistic scope will entail, especially since we dont know team counts yet. </p>
+<p>Right now, my philosophy is let's put togethe the plan for the best game we can imagine, then we will determine what is doable. If anyone has a different philosophy, I would love to hear your perspective</p>
+<p>— <strong>Matt Barnes</strong> in #Project Alignment (<a href="https://discord.com/channels/1511905718419198013/1524561452298666045/1524598984566636735">jump</a>)</p>
+<p>Good points James. Recorded voice might be too big of a risk to manage and implement. I'll leave it to @Diana Donado  to comment on both of these questions. </p>
+<p>If we need to capture the experience of audio dialects, I'd suggest constructed languages (record/use few blurbs/clips of sounds and edit them to sound like conversation dialects, don't have to create a full language and dialect) and carry out the actual conversation in text dialogues.</p>
+<p>— <strong>shadowarrior</strong> in #Project Alignment (<a href="https://discord.com/channels/1511905718419198013/1524561452298666045/1524937417889677393">jump</a>)</p>
+</blockquote>
+<h2>#Project Milestones: 3rd July PST</h2>
+<p><em>13 messages from 4 people</em></p>
+<p>shadowarrior kicked off the week by flagging what still needed to be locked in: definitions and dates for each RC milestone, a project timeline built from the proposed Sprint plan (to be reviewed with Producers), and pending updates on Theme/genre and Game Pillars. Oldladies7 expected much of that to be settled at the design meeting on Tuesday. VibeBlind checked whether Tech needed to do anything and shared the Architecture Decision Records doc. shadowarrior said nothing new was needed yet beyond the ongoing work (code-ethics and submission templates, build pipelines, branching). shadowarrior also aimed to unblock Tech on rendering style by Tuesday so the engine and related SDKs could be chosen.</p>
+<p>Cafedunoir posted a draft of the Project Milestones and Project Timeline in the master doc late Monday night. They asked @Daniel Beahn and shadowarrior to help align the timeline with the sprint workflow dates. After an edit-access hiccup, which shadowarrior fixed by adding Cafedunoir separately, Cafedunoir corrected some dates. On Wednesday they reported the milestones and timeline should now be final.</p>
+<p><strong>Highlights</strong>
+- shadowarrior listed the open items: RC milestone definitions and dates, a sprint-based project timeline, Theme and genre, and Game Pillars.
+- Oldladies7 expected most decisions to be made at Tuesday's design meeting.
+- VibeBlind shared the Architecture Decision Records doc for Tech.
+- shadowarrior said Tech should keep working on templates, code-ethics and submission docs, build pipelines and branches.
+- shadowarrior aimed to unblock Tech on rendering style by Tuesday so the engine and SDKs could be locked in.
+- Cafedunoir drafted the Project Milestones and Project Timeline sections in the master doc.
+- Cafedunoir finished revisions on Wednesday and said the milestones and timeline should now be final.</p>
+<p><strong>Topics:</strong> RC milestones, Project timeline, Sprint planning, Theme &amp; genre, Game Pillars, Tech prep &amp; repo, Architecture Decision Records, Rendering style &amp; engine choice, Doc access</p>
+<p><strong>Open questions</strong>
+- Were Theme/genre and Game Pillars actually decided at Tuesday's design meeting? No follow-up was posted.
+- Did Tech get the rendering-style decision needed to lock in the engine and SDKs?
+- Did @Daniel Beahn or shadowarrior review or sign off on Cafedunoir's timeline against the sprint workflow dates?
+- Did the sprint plan review with Producers happen?</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Project Milestones: We need to lock-in definitions of each RC milestones and their dates. </p>
+<p>Project Timeline: Scheduled to review the current proposed Sprint plan with Producers and use that to build out the project dates. </p>
+<p>Pending updates:
+- Theme and genre
+- Game Pillars</p>
+<p>— <strong>shadowarrior</strong> in #Project Milestones: 3rd July PST (<a href="https://discord.com/channels/1511905718419198013/1523831260399665364/1523832386029228236">jump</a>)</p>
+<p>Ok I made a few modifications to the milestones and timeline but they should make sense and be final now</p>
+<p>— <strong>Cafedunoir</strong> in #Project Milestones: 3rd July PST (<a href="https://discord.com/channels/1511905718419198013/1523831260399665364/1524660987817627718">jump</a>)</p>
+<p>Nothing from you yet, apart from stuff you're already doing. Templates and documentation of good code ethics and submission instructions to follow for the team members they join. Planning out the build pipelines and branches etc. 
+I'm aiming to unblock you by tomorrow at max regarding rendering style etc so you can lock-in the engine and any other related sdks.</p>
+<p>— <strong>shadowarrior</strong> in #Project Milestones: 3rd July PST (<a href="https://discord.com/channels/1511905718419198013/1523831260399665364/1523899655832993823">jump</a>)</p>
+</blockquote>
+<h2>#🎯│leads-discussion</h2>
+<p><em>12 messages from 6 people</em></p>
+<p>The week in #leads-discussion opened with biestibelzer asking whether the team wants to make an "Unreal game" or simply use Unreal as the tool; MisterLaddie clarified it's just the engine for building the game. Zef then posted a well-received high-level synthesis of all the scattered design docs: an elevator pitch (a cozy underwater steampunk exploration game about finding fantastic new worlds and meeting new people), game pillars (Wonder through Exploration, Think/Play Smart not Hard, Cozy Mystery, A Living Breathing Depths), design and narrative principles, and a core loop of "go down, get stuff, make/improve stuff, use new stuff, repeat but better." Zef followed up with suggestions and questions, including a 'come home between missions' structure inspired by Disney's Atlantis and 20,000 Leagues, PvE-focused combat with non-lethal options, environmental storytelling, ways to avoid feeling like a roguelike, and open questions like what kind of steampunk this is. sokky loved Disney's Atlantis as an aesthetic and tonal north star, and MisterLaddie suggested borrowing Disney Imagineering park-design methods for wayfinding.</p>
+<p>klight asked how granular level design roles will be (world builder vs level designer vs system designer); shadowarrior said pods and sub-departments will be formed based on the creative team's pillar and core-loop decisions. On Wed Jul 8, shadowarrior announced that all first-milestone decisions are locked: Underwater environment, Steampunk setting, Adventure &amp; Exploration gameplay, 'exploring new worlds and people' as the fun factor, Clever and Cozy player feel, Mystery/Detective/Thriller story, Fantasy music (Elder Scrolls, Dragon Age), Stylized 3D rendering, humanoid characters, Unreal 5.7.4, PG rating, Steam Windows PC. This unblocks Tech to set up the dev environment and Analytics to prepare the Game Analytics SDK integration, and department leads are now to coordinate on the second set of milestones.</p>
+<p><strong>Highlights</strong>
+- MisterLaddie clarified Unreal Engine is the tool for making the game, not a goal to make an 'Unreal game.'
+- Zef compiled all design docs into a high-level summary with elevator pitch, pillars, principles and core loop (+7 reactions).
+- Zef proposed a 'come home between missions' structure inspired by Disney's Atlantis, 20,000 Leagues and Journey to the Center of the Earth.
+- sokky championed Disney's Atlantis as the aesthetic and tonal direction.
+- MisterLaddie suggested adopting Disney Imagineers' park-design methodology for wayfinding and drawing interest.
+- shadowarrior said level design roles will be split into pods/sub-departments once pillars and core loop are settled.
+- shadowarrior announced all first-milestone decisions locked, including Unreal 5.7.4, Stylized 3D, PG rating and Steam Windows PC (+38 reactions).
+- Tech is now unblocked to set up the dev environment, with Analytics preparing Game Analytics SDK integration.</p>
+<p><strong>Topics:</strong> Engine choice (Unreal 5.7.4), Game design summary &amp; pillars, Core gameplay loop, Disney's Atlantis inspiration, Level design roles, First milestone decisions, Preproduction timeline</p>
+<p><strong>Open questions</strong>
+- What kind of steampunk is this (post-apocalyptic, historical, fantastical, etc.)? (Zef)
+- How granular will level design roles be — world builder vs level designer vs system designer? (klight; deferred pending creative decisions)
+- Is 'money' one of the resources that drives traversal alongside oxygen, food/supplies and power?
+- How will the 'Bring back the big thing or don't' overarching goal be handled narratively?</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p><strong><strong>Elevator Pitch:</strong></strong>
+<strong>A cozy underwater steampunk exploration game for anyone who enjoys the adventure and mystery of finding fantastic new worlds and meeting new people.</strong> (now with fantasy audio included!)</p>
+<p><strong><strong>Game Pillars:</strong></strong>
+- Wonder through Exploration
+- Think/Play Smart, not Hard
+- Cozy Mystery
+- A Living Breathing Depths (but what if: literally? 🔍  👀)
+<strong><strong>
+Design Principles:</strong></strong>
+- explore districts/areas
+- core loop: go down, get stuff, make/improve stuff, use new stuff, repeat but better this time
+- resources drive traversal: Oxygen, Food/Supplies, Power, (and "money"?)
+- combat is strategic and uses environment (no stats)
+- avoidance is a supported system
+- speed and reflexes are rewarding, but not foundational
+- Districts are self contained but connected (probably through the player now)</p>
+<p><strong><strong>Narrative Principles:</strong></strong>
+- Every district its own story
+- Discovery over exposition
+- player background unimportant or developed through play
+- Discovering living places, not uncovering dead ones
+- Mystery is curious not grim
+- Narrative should always reward exploration and player choice</p>
+<p><strong><strong>Art and Audio:</strong></strong>
+- I think we make the above come to life, so we need those first (but the design doc lays out good stuff 🙏)
+- So far as I can tell, we're leaning simple 3D stylized (but doesn't meant we cant add more realism) </p>
+<p><strong><strong>Player Experience:</strong></strong>
+- Think first, then execute
+- Safe, even when uneasy. Tension is intriguing, not threatening
+- Play your way
+- Curiosity is rewarded
+- Wonder over Fear
+- They're connecting to the bigger picture</p>
+<p>— <strong>Zef</strong> in #🎯│leads-discussion (<a href="https://discord.com/channels/1511905718419198013/1519398036730675312/1523518701423296662">jump</a>)</p>
+<p>|| Suggestions and questions for the future probably:</p>
+<p><strong>- The player should be stepping into a world the surface knows almost nothing about __BUT __the difference here is that you can "come home" in between missions.</strong> (i.e Disney's Atlantis, 20,000 leagues, Journey to the center of the Earth, Star Trek)
+- ** Combat should be player vs. environment, creatures/monsters, rarely/never other people/races <strong>(non-lethal options)
+- </strong>Environmental storytelling, Relationship character building<strong> (characters don't need to tell you about the world because the environment does that already)
+- </strong>This is an exploration game, mystery and danger are inherent** (extra mystery elements don't really need to be added on top.)</p>
+<p><strong>__Gameplay loop: __
+</strong>Go down, get stuff, make/improve stuff, use new stuff, repeat but better this time (how that happens will vary)
+<strong><strong>How to make it not a rogue-like:</strong></strong> exploration expands your resource access, each place acts as a hub for new resources, new friends, new options. Old places can use new things for more new things. Players shouldn't feel like they're playing Groundhog's Day: The Game.</p>
+<p><strong><strong>Gameplay / Over-arching Goal: </strong></strong>
+<strong>Find the place. </strong>(El dorado, Atlantis, etc.) 
+<strong>Getting there gets you the big thing</strong> (knowledge, money, whatevs) 
+<strong>Bring back the big thing or don't </strong>(That part is entirely narrative)</p>
+<p><strong><strong>More questions:</strong></strong>
+- What kind of steampunk is this? (Post-apocalyptic, historical, fantastical, high-tech, low-tech?)
+- What's the player's main concern? (Resource managing, fixing/cleaning up, puzzle-solving, acquiring, relationships, something else?)
+- Game features? (squad-based strategy, character recruitment, is home-based, is one-directional, open-world, upgrades, cosmetics, skills?)
+- What rewards keep the player invested ad moving forward? ()cosmetics, new features, upgrades, relationships?)
+- Can you win this game? Should you be able to? ||</p>
+<p>— <strong>Zef</strong> in #🎯│leads-discussion (<a href="https://discord.com/channels/1511905718419198013/1519398036730675312/1523520162127413288">jump</a>)</p>
+<p>Funny thing to add but I think it would be a good idea to adopt the methodologies use by the Disney Imagineers to design the Disneyland parks. I know they were big talking point in my game design courses at university from my instructor as the design of the parks help park goers find where they need to go and help capture interest of prominent locations.</p>
+<p>— <strong>MisterLaddie</strong> in #🎯│leads-discussion (<a href="https://discord.com/channels/1511905718419198013/1519398036730675312/1523830027341267156">jump</a>)</p>
+<p>@Director @Lead 
+The team has locked in all the decisions of the first milestone:
+Environment: Underwater
+Setting: Steampunk
+Gameplay: Adventure &amp; Exploration
+Fun Factor: Exploring new worlds and people
+Player Feel: Clever and Cozy
+Story/Tropes: Mystery/Detective/Thriller
+Music/Sound: Fantasy (Elder Scrolls, Dragon Age)</p>
+<p>Render Style: Stylized 3D
+Character Model Style: Humanoid
+World Rendering: Stylized 3D
+Dev Engine: Unreal 5.7.4
+Age Rating: PG
+Platform: Steam Windows PC</p>
+<p>This unblocks @Tech to set up the dev environment and @Analytics to work with Tech to prepare Game Analytics SDK integration. </p>
+<p>Please co-ordinate with each of your department leads to start working towards the second set of milestones. This is shaping up to be a fun dev challenge! Can't wait to play the first slice of the playable build.</p>
+<p>— <strong>shadowarrior</strong> in #🎯│leads-discussion (<a href="https://discord.com/channels/1511905718419198013/1519398036730675312/1524552700488974537">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong>
+- <a href="https://discord.com/channels/1511905718419198013/1519398036730675312/1524552700488974537">Preproduction timeline shared alongside the locked-in first milestone decisions</a></p>
+<h2>#📄│design-lead-discussion</h2>
+<p><em>9 messages from 4 people</em></p>
+<p>Oldladies7 proposed a design lead meeting of about an hour to an hour and a half with Matt Barnes and Diana Donado. Oldladies7 said their main limit is getting off work about 30 minutes before the start. Diana double-checked the time and said she could make it, and Matt said it worked for him. When Matt asked whether they were on for 5PM PST, Oldladies7 confirmed the meeting for Tuesday, July 7 at 5pm PST.</p>
+<p>Separately, exackley asked whether the game's camera perspective (first person, third person, top down, isometric, etc.) had been decided. Matt replied that it hasn't been settled yet. Since it's an investigation game, he could see a mix of perspectives working.</p>
+<p><strong>Highlights</strong>
+- Oldladies7 proposed an hour to hour-and-a-half meeting with Matt Barnes and Diana Donado, timed around getting off work.
+- Diana and Matt both confirmed the proposed time works for them.
+- Oldladies7 confirmed the meeting for Tuesday, July 7 at 5pm PST.
+- exackley asked whether the game's perspective (first person, third person, top down, isometric) has been chosen.
+- Matt said the perspective isn't settled yet and suggested a mix could suit an investigation game.</p>
+<p><strong>Topics:</strong> Design lead meeting scheduling, Game camera perspective, Investigation gameplay</p>
+<p><strong>Open questions</strong>
+- Which camera perspective will the game use: first person, third person, top down, isometric, or a mix?</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I'm assuming "no dumb questions" here, right:)...  I can't see if we've decided on what perspective this game is gonna be?  First Person, 3rd, Top Down, iso, etc?</p>
+<p>— <strong>exackley</strong> in #📄│design-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517558304459591801/1523820536038424778">jump</a>)</p>
+<p>I don't think we have solidified that yet. With it being a game requiring investigation, I can see a mix of both.</p>
+<p>— <strong>Matt Barnes</strong> in #📄│design-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517558304459591801/1523821446692864130">jump</a>)</p>
+</blockquote>
+<h2>#Department Preference</h2>
+<p><em>9 messages from 8 people</em></p>
+<p>Between Wed Jul 08 and Thu Jul 09, members posted their department preferences in #Department Preference. Most people said they were flexible. Impyral listed Art, Design and Tech. Felix offered to help almost anywhere (Tech, Art, Design, QA, Analytics, Community/Marketing) and mentioned a background in agile and lean methods. Jorge Daniel offered Art, Audio and QA. klight prefers Design and Narrative, with Community and Tech next. Peppy prefers QA. AdAstra00 offered Design, plus Narrative and Art if needed. Devang Parikh prefers Design or QA but is happy to go anywhere.</p>
+<p>Hailey, who was selected as an Audio Co-Lead, explained that her background is in audio production rather than audio design. She has already agreed with the Audio Lead to focus on the production side and asked to take responsibility for audio production if it fits the team structure. No final department assignments were announced in the channel during this period.</p>
+<p><strong>Highlights</strong>
+- Impyral shared preferences for Art, Design and Tech and said they were happy to go where needed most (+1 reaction).
+- Felix offered to help in nearly any department and highlighted experience with agile and lean methodologies.
+- Hailey, an Audio Co-Lead, asked to own audio production, matching her professional background, after discussing it with the Audio Lead.
+- Design was the most commonly requested department, chosen by Impyral, Felix, klight, AdAstra00 and Devang Parikh.
+- QA drew interest from Peppy (first choice), Felix, Jorge Daniel and Devang Parikh.
+- No department assignments were finalized in the channel this week.</p>
+<p><strong>Topics:</strong> Department preferences, Team structure, Audio production role, Design, QA</p>
+<p><strong>Open questions</strong>
+- Will Hailey's request to own audio production be confirmed within the team structure?
+- When and how will final department assignments be made, given heavy interest in Design?</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Semi-organized preferences (happy to go where needed most): Art, Design, Tech</p>
+<p>— <strong>Impyral</strong> in #Department Preference (<a href="https://discord.com/channels/1511905718419198013/1524358525596467230/1524380978649497642">jump</a>)</p>
+<p>I’m still learning how the team structure works, but I was selected as an Audio Co-Lead. My professional background is in audio production rather than audio design, and I’ve already discussed with our Audio Lead that I would focus on the production side. If it fits the team structure, I’d like to take responsibility for audio production.</p>
+<p>— <strong>Hailey</strong> in #Department Preference (<a href="https://discord.com/channels/1511905718419198013/1524358525596467230/1524446424564240545">jump</a>)</p>
+<p>I'm a flexible professional, I can help in almost any department, Tech, Art, Design, QA, Analytics, Community/Marketing.
+I've specialized in agility and lean methodologies, so I can adapt my process to any flow and team.</p>
+<p>— <strong>Felix</strong> in #Department Preference (<a href="https://discord.com/channels/1511905718419198013/1524358525596467230/1524387363839541298">jump</a>)</p>
+</blockquote>
+<h2>#Leads Only</h2>
+<p><em>8 messages from 4 people</em></p>
+<p>A short late-night session in #Leads Only on Wed Jul 8 into Thu Jul 9. shadowarrior opened with a greeting and volunteered ("<em>raises hand</em>") after Michal Fried posted an image. Michal Fried then shared a link to a Discord message and a Google Doc titled "ASGCGJ participants onboarding process", which suggests the leads were coordinating how participants get onboarded.</p>
+<p>Cafedunoir cheered the "teamworrrrrrrk". GreenCat shared a Google Drive folder link, and Cafedunoir replied "we want them all". No explicit decisions were recorded, though the leads appear to be gathering onboarding materials and resources.</p>
+<p><strong>Highlights</strong>
+- shadowarrior kicked things off with a greeting and later volunteered with "<em>raises hand</em>".
+- Michal Fried shared an image, then linked a Discord message and the "ASGCGJ participants onboarding process" Google Doc.
+- Cafedunoir celebrated the collaboration with "teamworrrrrrrk".
+- GreenCat shared a Google Drive folder, and Cafedunoir responded "we want them all".</p>
+<p><strong>Topics:</strong> ASGCGJ participant onboarding, Shared docs and resources, Lead coordination</p>
+<p><strong>Open questions</strong>
+- What shadowarrior volunteered for isn't stated in the transcript.
+- What's in GreenCat's Google Drive folder, and what does "we want them all" refer to?</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>teamworrrrrrrk</p>
+<p>— <strong>Cafedunoir</strong> in #Leads Only (<a href="https://discord.com/channels/1511905718419198013/1514893524112248944/1524667302484644001">jump</a>)</p>
+<p>we want them all</p>
+<p>— <strong>Cafedunoir</strong> in #Leads Only (<a href="https://discord.com/channels/1511905718419198013/1514893524112248944/1524676143293136998">jump</a>)</p>
+</blockquote>
+<h2>#Master Game Direction Doc</h2>
+<p><em>8 messages from 4 people</em></p>
+<p>On Thursday, Daniel Beahn asked the Production Leads to pick one owner for building a new flow. Context from the follow-up messages shows it is an onboarding checklist. Daniel suggested naming one person as "Leader" and the rest as "Supporting Leaders," with deputy production leads also able to help. Impyral volunteered to own it. They noted that, given its size, the work will likely run past the team's 24-hour SLA, and proposed confirming readiness by Sunday's Producer meeting.</p>
+<p>shadowarrior pointed out that the earlier exercise collecting each department's tools should feed into the checklist, especially for department-specific items. They created a Google Sheet, "Public Onboarding Checklist Items," to track what the checklist should include. The sheet starts empty and is meant to be filled in. shadowarrior tagged GreenCat and Michal Fried on it, and GreenCat replied with a dancing-bird emoji.</p>
+<p><strong>Highlights</strong>
+- Daniel Beahn asked which Production Lead would own building the onboarding flow, with other leads and deputies supporting.
+- Daniel shared a leadership tip: when peers share a project, designate one "Leader" and the rest "Supporting Leaders," leading by example by knowing when to follow.
+- Impyral volunteered to take ownership and set readiness for Sunday's Producer meeting, noting it will exceed the 24-hour SLA.
+- shadowarrior said the earlier per-department tools inventory should feed into the onboarding checklist.
+- shadowarrior created the "Public Onboarding Checklist Items" Google Sheet to collect checklist items and looped in GreenCat and Michal Fried.</p>
+<p><strong>Topics:</strong> Onboarding checklist, Ownership and leadership roles, Production Leads, Department tools inventory, Producer meeting timeline</p>
+<p><strong>Open questions</strong>
+- Who will act as Supporting Leaders alongside Impyral on the onboarding flow?
+- Will the onboarding checklist be ready by Sunday's Producer meeting?
+- Who will fill in the "Public Onboarding Checklist Items" sheet, which is still empty?</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>(When you have multiple leaders who are at the same level in the org working on the same project, it's effective to designate one as "Leader" and the the others are the "Supporting Leaders" - leading by example by knowing when to follow.)</p>
+<p>— <strong>Daniel Beahn</strong> in #Master Game Direction Doc (<a href="https://discord.com/channels/1511905718419198013/1524682222857228320/1524799092318928968">jump</a>)</p>
+<p>Volunteering to take this on.  But considering the sizing, think it will run past the 24 hour SLA we're striving for.</p>
+<p>Let's pin readiness by Sunday's Producer meeting.</p>
+<p>— <strong>Impyral</strong> in #Master Game Direction Doc (<a href="https://discord.com/channels/1511905718419198013/1524682222857228320/1524819006115287052">jump</a>)</p>
+</blockquote>
+<h2>#you want help? I know clickup weird</h2>
+<p><em>7 messages from 2 people</em></p>
+<p>On Thursday evening (Jul 9), Cafedunoir raised a concern about a ClickUp template, saying it's a nice one but if it can't be saved it's better to decide now before the team gets too far in. VibeBlind offered to help in voice chat, admitting it had been a while since they'd used ClickUp but joking that at least Cafedunoir wouldn't have to suffer alone.</p>
+<p>Cafedunoir joined the Leads voice chat for a short session of about 15 minutes before having to put their kid to bed, then thanked VibeBlind and said they'd be back on later. No final decision on whether the template could be saved was recorded in the channel.</p>
+<p><strong>Highlights</strong>
+- Cafedunoir questioned whether a ClickUp template could be saved and wanted to settle it early before the team got too far in.
+- VibeBlind offered to help live in VC, even though it had been a while since they'd used ClickUp.
+- Cafedunoir hopped into the Leads voice chat for a quick ~15 minute session before bedtime duties.
+- Cafedunoir signed off with thanks and plans to return later to continue.</p>
+<p><strong>Topics:</strong> ClickUp, Templates, Voice chat help, Project setup</p>
+<p><strong>Open questions</strong>
+- Can the ClickUp template be saved, or should the team abandon it before going further?
+- Did Cafedunoir and VibeBlind follow up later as planned?</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>it's been awhile admittedly, but at least you won't have to suffer alone</p>
+<p>— <strong>VibeBlind</strong> in #you want help? I know clickup weird (<a href="https://discord.com/channels/1511905718419198013/1524981561299308716/1524982189866090519">jump</a>)</p>
+<p>I'm in VC if you want to show me</p>
+<p>— <strong>VibeBlind</strong> in #you want help? I know clickup weird (<a href="https://discord.com/channels/1511905718419198013/1524981561299308716/1524982092616826881">jump</a>)</p>
+</blockquote>
+<h2>#🎸│general</h2>
+<p><em>6 messages from 6 people</em></p>
+<p>A very quiet week in #🎸│general. The only real activity was a short GIF exchange on Tuesday, July 7. NitsujyN replied to an earlier message with an "Imposter Detected" dog meme, which got one reaction. A testing account, "Michal Fried Testing Account", answered with Michael Scott's "Can't See Me" GIF, and sokky followed up with the Tole Tole staring cat GIF.</p>
+<p>Later in the week, shadowarrior (Jul 8), LordReavan and Véronique Bélanger (both Jul 9) posted replies to earlier messages, but those replies had no visible text or attachments. No discussions, decisions or announcements took place.</p>
+<p><strong>Highlights</strong>
+- NitsujyN called out an imposter with an "Imposter Detected" dog GIF, the week's only reacted message.
+- "Michal Fried Testing Account" answered the imposter call with Michael Scott's "Can't See Me" GIF.
+- sokky added the Tole Tole staring cat GIF to the exchange.</p>
+<p><strong>Topics:</strong> GIFs and memes, Imposter / testing account banter</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>https://klipy.com/gifs/imposter-detected</p>
+<p>— <strong>NitsujyN</strong> in #🎸│general (<a href="https://discord.com/channels/1511905718419198013/1515509844675661994/1524163719561613394">jump</a>)</p>
+<p>https://klipy.com/gifs/embarrassing-cant-see-me</p>
+<p>— <strong>Michal Fried Testing Account</strong> in #🎸│general (<a href="https://discord.com/channels/1511905718419198013/1515509844675661994/1524174498281160887">jump</a>)</p>
+</blockquote>
+<h2>#🎯│narrative-discussions</h2>
+<p><em>5 messages from 2 people</em></p>
+<p>A short exchange on Sunday, July 5: VibeBlind pitched a game concept mashup of Abzu and Shadow of the Colossus. SabrinaS | Brand Designer hadn't heard of Abzu and asked what it's about. VibeBlind shared an 'ABZU - Before You Buy' YouTube video and explained that it's like Journey, but you play as a diver. They added that it's very pretty and especially strong at environmental storytelling.</p>
+<p>The conversation stopped there. Nobody followed up on how the two games might actually be combined, and nothing was decided.</p>
+<p><strong>Highlights</strong>
+- VibeBlind pitched a mashup idea: Abzu + Shadow of the Colossus.
+- SabrinaS asked what Abzu is, and VibeBlind shared a 'Before You Buy' video (https://www.youtube.com/watch?v=rb4XJD-1-wQ).
+- VibeBlind described Abzu as 'like Journey, but you're a diver' and praised its environmental storytelling.</p>
+<p><strong>Topics:</strong> Game mashup ideas, Abzu, Shadow of the Colossus, Environmental storytelling</p>
+<p><strong>Open questions</strong>
+- What would an Abzu + Shadow of the Colossus mashup actually look like? VibeBlind's pitch wasn't expanded on.</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>ok, so hear me out... Abzu + Shadow of the Colossus</p>
+<p>— <strong>VibeBlind</strong> in #🎯│narrative-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254556477161552/1523520654853279886">jump</a>)</p>
+<p>It's a kind of like Journey, but you're a diver</p>
+<p>— <strong>VibeBlind</strong> in #🎯│narrative-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254556477161552/1523522398031183973">jump</a>)</p>
+</blockquote>
+<h2>#@Production Lead I've got a friend who</h2>
+<p><em>5 messages from 2 people</em></p>
+<p>A brief follow-up exchange on Friday, July 10. Carlos Ortiz checked in with GreenCat and Michal Fried on whether they had passed an earlier request along to the organizers. The original request isn't visible in this window; it was in a message Carlos replied to that has no text here. GreenCat said the matter is being discussed further up the chain and that, if it passes, it will be talked over in more detail. GreenCat also thanked Carlos for raising it, and Carlos thanked them in return, addressing them as Mila.</p>
+<p>No final decision was reached. The proposal is still pending review by higher-ups.</p>
+<p><strong>Highlights</strong>
+- Carlos Ortiz asked GreenCat and Michal Fried whether his earlier suggestion had been passed to the organizers.
+- GreenCat confirmed it is being discussed further up the chain and will be discussed more if it passes.
+- GreenCat thanked Carlos for bringing the issue to their attention, and Carlos thanked them back.</p>
+<p><strong>Topics:</strong> Follow-up on a proposal to organizers, Escalation to leadership</p>
+<p><strong>Open questions</strong>
+- Will the proposal Carlos raised be approved by those higher up the chain?
+- Michal Fried did not respond to Carlos's check-in in this window.</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Carlos, in talks about it further up the chain. If that passes, we will discuss it further~</p>
+<p>— <strong>GreenCat</strong> in #@Production Lead I've got a friend who (<a href="https://discord.com/channels/1511905718419198013/1524939669941391491/1525274902330998897">jump</a>)</p>
+</blockquote>
+<h2>#🪲│qa-lead-discussion</h2>
+<p><em>4 messages from 3 people</em></p>
+<p>A short week in #qa-lead-discussion. On Mon Jul 06, pulsegenerator told @sabishi_angel and @Peppy that he had updated the Bug Report template again. He had also started setting up a ClickUp space for the QA leads and shared the link so they could check whether they had access.</p>
+<p>Neither of them could get in. sabishi_angel replied first, and pulsegenerator guessed that Olivier (Peppy) couldn't either. He said he would work with production to get them added. Peppy confirmed on Tue Jul 07 that he also had no access. By the end of the week, access was still pending on production's side.</p>
+<p><strong>Highlights</strong>
+- pulsegenerator updated the Bug Report template again.
+- pulsegenerator started setting up a ClickUp space for the QA leads and shared the link.
+- sabishi_angel and Peppy both reported they couldn't access the ClickUp space.
+- pulsegenerator said he will work with production to get them added.</p>
+<p><strong>Topics:</strong> Bug Report template, ClickUp setup, Access permissions, QA workflow</p>
+<p><strong>Open questions</strong>
+- When will production grant sabishi_angel and Peppy access to the ClickUp space?
+- Have sabishi_angel and Peppy reviewed the updated Bug Report template yet?</p>
+<h2>#Production Drive Backup</h2>
+<p><em>4 messages from 2 people</em></p>
+<p>A quiet week in #Production Drive Backup. On Thu Jul 09, shadowarrior opened the channel as the place to discuss the production drive backup effort, replying to an earlier message. The post got a +1 reaction.</p>
+<p>On Fri Jul 10, YosephAlex4nder picked up the work and created a ClickUp task for it (https://app.clickup.com/t/90141389150/86baw46d9). He set up the task, story, subtasks and acceptance criteria for each. He then unassigned himself until he can work on it again, so the task is currently unowned.</p>
+<p><strong>Highlights</strong>
+- shadowarrior kicked off the channel as the discussion space for the production drive backup work (Jul 09).
+- YosephAlex4nder picked up the effort and created a ClickUp task: https://app.clickup.com/t/90141389150/86baw46d9 (Jul 10).
+- The ClickUp task now includes a story, subtasks and acceptance criteria for each.
+- YosephAlex4nder unassigned himself until he has time to work on it again, so the task is open for someone else to take.</p>
+<p><strong>Topics:</strong> Production drive backup, ClickUp task planning, Task ownership</p>
+<p><strong>Open questions</strong>
+- Who will take ownership of the production drive backup task now that YosephAlex4nder has unassigned himself?
+- When will work on the backup actually begin?</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I created the task, story, subtasks, and acceptance criteria for each.</p>
+<p>I'm unassigning myself from the task until I am able to work on it again.</p>
+<p>— <strong>YosephAlex4nder</strong> in #Production Drive Backup (<a href="https://discord.com/channels/1511905718419198013/1524916413783998594/1525361172197413037">jump</a>)</p>
+</blockquote>
+<h2>#🎯│audio-discussions</h2>
+<p><em>3 messages from 2 people</em></p>
+<p>exackley introduced themselves as audio lead/director for the game jam project, noting it's their first jam and that they usually bring music in later once pacing, art style and animation are settled. They praised two shared tracks as fitting an underwater steampunk adventure (alone or mixed), acknowledged Diana's preference for a more standard fantasy musical direction, and framed the project as a portfolio and learning opportunity, so they're open to what the group wants and expect the role to be mostly people management once the audio team opens up.</p>
+<p>kitsurei (Marcos), who is gathering info from design discussions, suggested Donkey Kong Country's Aquatic Ambience and its bubbly sound as a reference to pair with Mia's "seasoning" idea. exackley said the playfulness of these ideas was growing on them and brings a comfort/cuddly feel to the space. No final musical direction was decided.</p>
+<p><strong>Highlights</strong>
+- exackley, in their first game jam, explained they normally bring music in after pacing, art style and animation take shape, but accepted this project may work differently.
+- exackley said both shared tracks would suit an underwater steampunk adventure, either alone or blended together.
+- Diana had already favored a more standard fantasy musical direction.
+- exackley described the project as mainly a portfolio and learning opportunity and joked the lead role might be '98% people management'.
+- kitsurei suggested Donkey Kong Country's Aquatic Ambience as a bubbly reference alongside Mia's 'seasoning' idea.
+- exackley warmed to the playful direction, saying it adds comfort and coziness to the space.</p>
+<p><strong>Topics:</strong> Musical direction, Underwater steampunk theme, Audio team leadership, Reference tracks, Game jam workflow</p>
+<p><strong>Open questions</strong>
+- Which musical direction will the team choose: the two shared tracks, a mix of them, Diana's standard fantasy style, or the playful bubbly approach?
+- How big will the audio team get once it opens to the wider community, and how will it be organized?</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Hey there everyone.  I just wanted to say hello and thanks for thinking about audio for this project.  This is my first Game Jam, so some of this I'll be learning as I go.  Normally I'm used to music coming in a little later so we can have some things sorted out first.  Things like pacing, art style and even the animation styles help (imo) to set the mood for a game.  Usually at this point in a project I'm dropping in basic systems and organizing the structure, then as the creative directions start to solidify music becomes a conversation.  I can completely admit though that this project will be nothing like I've experienced before, so my normal, might not work.  </p>
+<p>Both of these tracks are super cool and I can see playing an underwater steampunk adventure game with either (or a mix) of these tracks.  I know that Diana has already expressed her thoughts for a musical direction that is a little more standard fantasy style.</p>
+<p>I am trying to remind myself that this project is mostly about giving people opportunities to work on something for their own portfolio and/or working on something they might not normally get to, to see if they like it.  So, the normal role for a Lead/Director of audio here is a little different.  I have some opinions about what I'd like style wise, but am also completely open to what the group wants to work on.  There is also the point of how big our audio team will be once we open it up to the world, I fear my job might be 98% people management.</p>
+<p>Long answer, sorry.  I love these idea and would love to talk more about using them, but might need a minute to let the direction settle before talking more about it, if that's ok.</p>
+<p>— <strong>exackley</strong> in #🎯│audio-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254504836890664/1523420377391566978">jump</a>)</p>
+<p>Ello, folks.
+I'm collecting a couple of information from the discussions for design, and a thought passed on my mind that I wanted to add with Mia's "seasoning": Donkey Kong Aquatic Ambience. This bubbly sound, yk?</p>
+<p>That's it, thank you for your attention.</p>
+<p>— <strong>kitsurei</strong> in #🎯│audio-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254504836890664/1523586179641901126">jump</a>)</p>
+</blockquote>
+<h2>#03072026_ASGC Game Jam  Leads Sync 2</h2>
+<p><em>3 messages from 2 people</em></p>
+<p>A short exchange in the ASGC Game Jam leads sync channel. Cafedunoir told shadowarrior that the Project Timeline and Project Milestones would be delivered by Monday, July 6 at about 11:00 PM Pacific, and apologized again for the delay.</p>
+<p>shadowarrior said the delay was no problem and suggested a catch-up call the next day, once Cafedunoir was back online, to bring them up to speed. No other decisions were made.</p>
+<p><strong>Highlights</strong>
+- Cafedunoir committed to sending the Project Timeline and Project Milestones to shadowarrior by Monday, July 6 at about 11:00 PM Pacific.
+- Cafedunoir apologized again for the delay on these documents.
+- shadowarrior was fine with the delay and proposed a catch-up call the next day to bring Cafedunoir up to speed.</p>
+<p><strong>Topics:</strong> Project timeline, Project milestones, Leads coordination, Catch-up call</p>
+<p><strong>Open questions</strong>
+- The transcript doesn't confirm whether the Project Timeline and Project Milestones were delivered by the promised deadline.
+- No specific time was set for the proposed catch-up call between shadowarrior and Cafedunoir.</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>No problem at all. Let's catch-up on a call when you're back online tomorrow. Will bring you up to speed</p>
+<p>— <strong>shadowarrior</strong> in #03072026_ASGC Game Jam  Leads Sync 2 (<a href="https://discord.com/channels/1511905718419198013/1522410091364614176/1523565556509179976">jump</a>)</p>
+</blockquote>
+<h2>#Just filled this out, getting my</h2>
+<p><em>3 messages from 2 people</em></p>
+<p>A short exchange about an unclaimed request. On Thu Jul 9, Cafedunoir flagged that an ask from Sidds (linked in another channel) didn't seem to have been picked up by anyone yet. The next morning, YosephAlex4nder offered to carve out time to figure it out that evening if it was still unclaimed, which got a +1 reaction. Nothing was formally assigned, but YosephAlex4nder is the tentative volunteer.</p>
+<p><strong>Highlights</strong>
+- Cafedunoir pointed out that Sidds' ask (linked Discord message) hadn't been grabbed by anyone yet.
+- YosephAlex4nder volunteered to take it on Friday evening if no one else had picked it up, earning a +1.</p>
+<p><strong>Topics:</strong> Unclaimed request from Sidds, Volunteering</p>
+<p><strong>Open questions</strong>
+- Has Sidds' ask (https://discord.com/channels/1511905718419198013/1517558685956706534/1524916413783998594) been picked up, or did YosephAlex4nder end up taking it on Friday evening?</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>If it still hasn't been picked up later this evening. I can certainly carve out time to figure it out</p>
+<p>— <strong>YosephAlex4nder</strong> in #Just filled this out, getting my (<a href="https://discord.com/channels/1511905718419198013/1524987938268643469/1525167427636301894">jump</a>)</p>
+</blockquote>
+</main></body>
+</html>
