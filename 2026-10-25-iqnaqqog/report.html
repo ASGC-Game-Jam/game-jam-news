@@ -1,0 +1,1977 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly Digest: full report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: dark;
+  --abyss:  #071f25;
+  --deep:   #0C343D;
+  --sea:    #134F5C;
+  --tide:   #45818E;
+  --foam:   #76A5AF;
+  --mist:   #D0E0E3;
+  --gold:   #E3B341;
+  --gold-2: #F2CF6B;
+  --ink:    #E6F0F2;
+  --muted:  #9FBCC2;
+  --card:   rgba(12, 52, 61, 0.82);
+  --line:   rgba(227, 179, 65, 0.35);
+}
+* { box-sizing: border-box; }
+html { background: var(--abyss); }
+body {
+  margin: 0; padding: 48px 0; min-height: 100vh; color: var(--ink);
+  font: 400 17px/1.7 "Poppins", "Segoe UI", Helvetica, Arial, sans-serif;
+  background:
+    radial-gradient(ellipse 80% 45% at 50% -5%, rgba(118, 165, 175, 0.35), transparent 70%),
+    radial-gradient(circle at 15% 85%, rgba(69, 129, 142, 0.18), transparent 40%),
+    linear-gradient(180deg, var(--sea) 0%, var(--deep) 35%, var(--abyss) 100%);
+}
+main {
+  position: relative; max-width: 760px; margin: 0 auto; padding: 8px 48px 40px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(208, 224, 227, 0.08);
+}
+@media (max-width: 800px) {
+  body { padding: 0; }
+  main { margin: 0; padding: 4px 16px 32px; border-radius: 0; border-left: 0; border-right: 0; }
+}
+
+/* Masthead: brass double rules like the deck's logo */
+.masthead { text-align: center; padding: 28px 0 6px; }
+.kicker {
+  display: inline-flex; align-items: center; gap: 14px;
+  color: var(--gold); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase;
+}
+.kicker::before, .kicker::after {
+  content: ""; width: 56px; height: 5px;
+  border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
+}
+h1 {
+  margin: 14px 0 8px; text-align: center;
+  font-size: clamp(1.7rem, 4.5vw, 2.5rem); line-height: 1.2; font-weight: 700;
+  color: var(--gold-2); text-shadow: 0 2px 18px rgba(227, 179, 65, 0.25);
+}
+h1 + p { text-align: center; margin: 0 0 28px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+h1 + p em { font-style: normal; color: var(--muted); font-size: 0.9rem; letter-spacing: 0.02em; }
+
+h2 {
+  display: flex; align-items: center; gap: 12px;
+  margin: 2.4em 0 0.8em; color: var(--gold); font-size: 1.35rem; font-weight: 600; line-height: 1.3;
+}
+h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--line), transparent); }
+h3 { color: var(--mist); font-weight: 600; margin: 1.8em 0 0.5em; }
+
+p, li { color: var(--ink); }
+strong { color: #fff; font-weight: 600; }
+a { color: var(--foam); text-decoration-color: rgba(118, 165, 175, 0.5); text-underline-offset: 3px; }
+a:hover { color: var(--gold-2); text-decoration-color: var(--gold-2); }
+ul, ol { padding-left: 1.3em; }
+li { margin: 0.35em 0; }
+li::marker { color: var(--gold); }
+code { background: rgba(7, 31, 37, 0.7); padding: 1px 6px; border-radius: 4px; font-size: 0.9em; }
+
+img {
+  display: block; max-width: 100%; margin: 22px auto 6px; border-radius: 12px;
+  border: 1px solid var(--line); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+img + em, main > p > em:only-child { display: block; text-align: center; color: var(--muted); font-size: 0.85rem; }
+
+blockquote {
+  position: relative; margin: 22px 0; padding: 16px 20px 14px 26px;
+  background: linear-gradient(135deg, rgba(19, 79, 92, 0.75), rgba(7, 31, 37, 0.6));
+  border: 1px solid rgba(118, 165, 175, 0.25); border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0;
+}
+blockquote::before {
+  content: "\201C"; position: absolute; left: 10px; top: -14px;
+  font-size: 3rem; line-height: 1; color: var(--gold); opacity: 0.6;
+}
+blockquote p { margin: 0.3em 0; }
+blockquote p:last-child { color: var(--muted); font-size: 0.9rem; }
+
+hr { border: 0; height: 5px; margin: 40px 0 24px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+hr + p { text-align: center; color: var(--mist); font-style: italic; }
+
+/* Archive list */
+.sub { text-align: center; color: var(--muted); margin: 0 0 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.editions { list-style: none; padding: 0; margin: 0; }
+.editions li { margin: 0; }
+.editions a {
+  display: block; padding: 16px 18px; margin: 10px 0; text-decoration: none;
+  border: 1px solid rgba(118, 165, 175, 0.2); border-radius: 12px; background: rgba(7, 31, 37, 0.45);
+  transition: border-color .15s, transform .15s, background .15s;
+}
+.editions a:hover { border-color: var(--gold); background: rgba(19, 79, 92, 0.6); transform: translateY(-1px); }
+.editions .title { display: block; color: var(--gold-2); font-weight: 600; font-size: 1.08rem; line-height: 1.35; }
+.editions .meta { display: block; color: var(--muted); font-size: 0.85rem; margin-top: 2px; }
+</style>
+</head>
+<body><main>
+<h1>Server report: Oct 18 – Oct 25, 2026</h1>
+<h2>Project Atlantis regroups into three lanes: combat cut, puzzles up, narrative moves to Twine, and the tools switch from ClickUp to GitHub</h2>
+<p><strong>1330</strong> messages · <strong>94</strong> active members · <strong>63</strong> active channels</p>
+<p>This was a restructuring week for the ASGC Game Jam 2026. Alex's refocus video split the jam into three lanes: Gameplay (a playable prototype), Character/Narrative (presentable writing) and Beautiful Corner (a polished environment shot). The Miro board now works as both an attendance sheet and a statement of intent. Combat was confirmed as fully axed, and puzzles and investigation moved up in priority. Matt Barnes turned the old pods into specialist teams that support new deliverable workzones, starting with [Gameplay Deliverable] Puzzle Room 1. Matt also shared the room's greybox in PR #337, with Puzzle 1 defined as Reconnect wire &gt; restore power &gt; Activate switch &gt; Open door. Production agreed to move from ClickUp to GitHub Projects and from Sprints to Kanban after Sprint 7. The Alpha 2 demo is set for Sunday evening: Ricchio will make the Windows build and dbugslayer will try for a Mac build.</p>
+<p>On the tech side, the oxygen system shipped steadily. voymasa's PRs #334 and #357 covered restoring oxygen and capacity changes, and CoffeeAddict's PR #338 added underwater drain. A lively debate followed over whether ballast oxygen is reserved or transferred (issue #358), and it is still unresolved. Git LFS locks took a lot of attention. Teammates coordinated handoffs for PR #348 (hiding spots), sorted out a stuck lock, and walked Jacob Braunhut through his first PR (#365, Crouch). dbugslayer, Matt and Ramiro began testing the ProjectBorealis UEGitPlugin to make locking easier for artists. PR #332 also opened code review to all tech members to clear a bottleneck.</p>
+<p>Narrative moved into Twine (SugarCube). Xelnath launched the narrative-twine site and wrote a guide to writing dialogue scenes, and Pruthvi shared a sample seashell quest. Lianhua announced every character bio complete on Oct 21, then ran a long series of naming brainstorms for Atlantis, the special coral, The Wilds and the districts. biestibelzer (Thomas) left the jam, and Abdullah stepped in as Game Writing lead, with Game Writing working alongside Quest Design for now. Art got clear direction from Zef: Functional, Clear, Whimsical. He also gave feedback on Janitor Snail 'Gary' and scheduled an Art Sync for Mon Oct 26 at 4:30 PM PT. Members also talked openly about onboarding gaps, unclear task ownership and people stepping back for health reasons.</p>
+<h2>Themes</h2>
+<ul>
+<li><strong>Three-lane restructure and the Puzzle Room 1 deliverable</strong> — Alex's refocus split work into Gameplay, Character/Narrative and Beautiful Corner. Combat was cut, and pods became specialist teams that support deliverable workzones. Matt Barnes's Puzzle Room 1 greybox and his planned puzzle manager anchor the gameplay lane. Open questions remain about Puzzle 2, the clue system and level design ownership. (#🎸│general, #Investigation, #[Gameplay Deliverable] Puzzle Room 1, #Journal, #📄│design-lead-discussion, #District Design, #NPC Interactions, #📢│production-announcements)</li>
+<li><strong>Oxygen system implementation and the ballast debate</strong> — voymasa and CoffeeAddict landed oxygen restore, capacity and underwater drain work (PRs #334, #338, #357), with #327 (oxygen charges) still waiting on a design decision. MM found HUD bugs and filed issue #358, which started a debate over whether ballast oxygen is reserved (the cozy-pillar view) or transferred and refillable. No decision has been made. (#Gameplay, #Oxygen System, #🎯│design-discussions)</li>
+<li><strong>Git LFS locks, PR workflow and tooling</strong> — Teammates coordinated file locks around BP_AtlantisInteractable and BP_AtlantisPlayerCharacter, mentored a first-time PR author, and worked on a stuck lock (ID 116). PR #332 widened who can do code reviews. The Borealis UE git plugin is being tested so artists can lock files from inside the editor. (#Coordinating changes in #348, #❔tech-questions❔, #🎯│tech-discussions, #Unlock git lfs file, #@Adrian Popoviciu | [Tech][EEST] We, #ya sure thing! I genuinely love being, #💻│tech-lead-discussion)</li>
+<li><strong>Narrative moves to Twine and the World Bible grows</strong> — Bios were completed and ported to the narrative-twine site, along with dialogue guides, cheat sheets and a sample quest. The Vertical Slice Quest Mock-Up was refined. Lore decisions covered Seayssal's bleaching, Skuttle's age, currency and fashion, and a series of HelmetHeart-vote naming threads opened. (#Characters and Cinematics Pod Discussions, #🎯│narrative-discussions, #📝│narrative-lead-discussion, #Quest Design Pod Discussions, #World Bible - Magic, #World Bible - Currency, #World Bible - Atlantean Fashion, #"Atlantis/Atlantean" Name Ideas)</li>
+<li><strong>Production process: ClickUp to GitHub, Sprints to Kanban, and the Alpha 2 demo</strong> — Production agreed to move to GitHub Projects and Kanban after Sprint 7 and worked through onboarding and offboarding. Weekly builds and the Sunday Alpha 2 demo were scheduled, with Windows and Mac builds arranged, and PR enforcement came up around tagging the version bump. (#🎯│production-discussions, #Production Handoffs, #Starting a thread for the agenda for, #🗓️│production-lead-discussion, #Build/Release Pipeline)</li>
+<li><strong>Engagement, onboarding and morale</strong> — Members asked about accountability, release scope and how to find a way in, given unanswered offers and EU-unfriendly meeting times. Leads answered with a build-first approach ('Defer to action'), called for earlier blocker escalation and for Design and Tech to collaborate from the start, and pointed newcomers toward level design and QA. (#🎸│general, #🎯│tech-discussions, #Gameplay/technical design mostly., #🗓️│production-lead-discussion)</li>
+</ul>
+<h2>Shoutouts</h2>
+<ul>
+<li><strong>dbugslayer</strong> — Top poster and constant unblocker: he fixed the C4459 compile error within minutes, merged #348 and #365, mentored Jacob through his first PR, tested the Borealis plugin and offered to make the Mac build.</li>
+<li><strong>Lianhua</strong> — Announced that every character bio was complete, ported several bios to Twine, and drove the World Bible and naming brainstorms almost single-handedly.</li>
+<li><strong>voymasa</strong> — Shipped most of the oxygen tickets (PRs #334 and #357) and flagged a compile error in main, all with great enthusiasm.</li>
+<li><strong>Xelnath</strong> — Launched the narrative-twine site, wrote the dialogue-scene guide and SugarCube cheat sheet, fixed Miro access, and answered process questions directly.</li>
+<li><strong>CoffeeAddict (Ramiro)</strong> — Added underwater O2 drain (PR #338), cleaned up the oxygen indicator blueprints, picked up dbugslayer's ballast-controls (#288) and water post-process (#289) branches, and helped test the Borealis plugin.</li>
+</ul>
+<h2>Most active</h2>
+<ul>
+<li>dbugslayer: 161 messages</li>
+<li>Lianhua: 123 messages</li>
+<li>Xelnath: 111 messages</li>
+<li>Ridley: 65 messages</li>
+<li>voymasa: 59 messages</li>
+</ul>
+<hr />
+<h1>Channels</h1>
+<h2>#Gameplay</h2>
+<p><em>138 messages from 6 people</em></p>
+<p>A busy sprint week in #Gameplay for the ASGC Game Jam 2026 project (Project Atlantis). Much of the activity centred on voymasa's oxygen-resource work. In PR #331, dbugslayer flagged duplicated functionality, and they agreed that RestoreOxygen should mirror RequestOxygen: modifier methods do the math and pass the result to SetCurrentOxygen, which now returns a bool. voymasa also hit a C4459 'Mesh hides global declaration' compile error in main from AtlantisAIAnimation, and dbugslayer fixed it quickly by renaming the variable (PR #333). voymasa followed up with PR #334 (restore oxygen to full) and PR #357, which covers both #328 (increase/decrease O2 capacity) and #329 (current O2 unchanged on capacity increase). Only #327 (oxygen charges) remains, pending a design decision. Design questions about capacity behaviour were sent to the #Oxygen System channel. CoffeeAddict added underwater O2 drain in PR #338 and fixed a bug where drain stopped while SurfaceWalking (attached to an underwater surface; dbugslayer clarified 'we stick to ceilings, not walls').</p>
+<p>On interaction and dialogue, MM and cpgeiste discussed changes to the interact system before PR #277 (player-NPC dialogue) merged. MM wanted the BP_AtlantisPlayerCharacter and BPI_Interact file locks released, which led to a brief tense exchange that both resolved amicably ("We are cool"). cpgeiste released the locks on Oct 22 after dbugslayer's final review request. cpgeiste and dbugslayer also met to decide the dialogue system's implementation path. Xhemoz showed interest in puzzle level loading (puzzles described as Breath of the Wild–style shrines), was suggested to pair with Matt Barnes on his puzzle manager, and announced puzzle loading was done with a PR incoming. With the sprint ending Oct 24, dbugslayer asked who had free time, and CoffeeAddict took over branches issue-288-land-ballast-controls and issue-289-player-water-postprocess. Process notes: whoever gets to an approved PR first merges it, and only non-C++ assets need locking.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>dbugslayer and voymasa agreed SetCurrentOxygen will return a bool, with RequestOxygen and RestoreOxygen doing the math before calling it.</li>
+<li>voymasa found a compile error in main (C4459, 'Mesh' hides global declaration); dbugslayer fixed it within minutes via PR #333.</li>
+<li>CoffeeAddict added underwater oxygen drain (PR #338) and fixed a bug where drain stopped during SurfaceWalking.</li>
+<li>voymasa's PR #357 covers issues #328 and #329; only #327 (oxygen charges) remains, pending a design decision on canisters.</li>
+<li>A brief friction between MM and cpgeiste over the PR #277 review and file locks ended amicably, and the locks were released on Oct 22.</li>
+<li>Xhemoz announced the puzzle loading system is done, with a PR coming, after being pointed toward Matt Barnes's puzzle manager work.</li>
+<li>With the sprint ending, CoffeeAddict picked up dbugslayer's ballast-controls (#288) and water post-process (#289) branches.</li>
+<li>voymasa said the last couple of weeks contributing to tickets have been 'wild' and thanked the team for the opportunity.</li>
+</ul>
+<p><strong>Topics:</strong> Oxygen resource system, PR reviews and merging, File locking, Interact/dialogue system (PR #277), Underwater surface walking, Puzzle level loading, Sprint task reassignment, Build fix in main</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>If O2 capacity increases, should current O2 increase, and can capacity decrease? (Redirected to the #Oxygen System design channel.)</li>
+<li>Is 'Support a configurable Oxygen Charge amount if Charges stay in Alpha' still valid, i.e. will oxygen charges/canisters be included (issue #327)?</li>
+<li>Will puzzles be structured as separate levels or streamed within one large level?</li>
+<li>Which implementation path was chosen for the dialogue system? (Discussed privately between cpgeiste and dbugslayer.)</li>
+<li>PR #357 review: voymasa is still holding the WBP_OxygenIndicator lock.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<blockquote>
+<p>Is there any problem with the PR?
+I'm the problem 🙈 I keep requesting more changes. @cpgeiste I have one last request in #277. Have a look please. Once the error in there is suppressed, then the PR should be good to go.</p>
+</blockquote>
+<p>— <strong>dbugslayer</strong> in #Gameplay (<a href="https://discord.com/channels/1511905718419198013/1535347392956600470/1562611987937239091">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>We stick to ceilings. Not walls.</p>
+<p>— <strong>dbugslayer</strong> in #Gameplay (<a href="https://discord.com/channels/1511905718419198013/1535347392956600470/1562610982214434867">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Wow these last couple of weeks actually working on tickets and contributing, has been wild. Thanks for the opportunity!</p>
+<p>— <strong>voymasa</strong> in #Gameplay (<a href="https://discord.com/channels/1511905718419198013/1535347392956600470/1563754228453740606">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Puzzle loading is done. WIll make a PR for it right now</p>
+<p>— <strong>Xhemoz</strong> in #Gameplay (<a href="https://discord.com/channels/1511905718419198013/1535347392956600470/1563356834063188021">jump</a>)</p>
+</blockquote>
+<h2>#Characters and Cinematics Pod Discussions</h2>
+<p><em>128 messages from 11 people</em></p>
+<p>This week the C&amp;C pod moved its narrative work into Twine. Ridley laid out the plan (m5): the game's narrative flow goes into Twine (using SugarCube) ahead of Unreal implementation. That gives the team a portfolio piece, a way to QA the narrative flow, and a resume skill, with no change to existing deliverables. Pruthvi shared a commented sample seashell-collecting quest (.twee) showing flags, counters and loops, and recommended Adam Hammond's Twine guide. Xelnath collected GitHub usernames to give everyone access to the ASGC narrative-twine repo and published the site at asgc-game-jam.github.io/narrative-twine. Lianhua announced on Oct 21 that every character bio was complete, including jupiter's Dr. Longshore and Ashrah Coliary's Ranhuma.</p>
+<p>Ridley clarified that the MC is a Commander Shepherd-style blank slate with a few fixed background details (Oceanography Council researcher, former radio liaison for Sir Richard). Players will pick from tonal responses such as cold, snarky or kind. The 'trust' value in the example is a placeholder, possibly to be renamed 'approval', that could gate side quests, information and NPC support at the whodunnit ending. Xelnath posted a SugarCube cheat sheet and a HOW-TO-WRITE-A-DIALOGUE-SCENE.md guide built around reusable say/stage/choices/reply widgets. Mechanika Charlotte and Lianhua found the advanced example scene tough at first, so Ridley suggested starting with plain text and offered to work with Alex on writer-friendly resources. Lianhua pitched dialogue design ideas: consistent option ordering, removing already-chosen options, trust thresholds and item-gated choices. GJ added color-coded options, and Pruthvi showed with screenshots that Twine handles all of this through flags and counters. By Saturday, Lianhua had ported Aishui, King Lareas Refidal and Seayssal, and GJ had ported Serena Waves. Ridley decided bios should stay updated in both Google Docs and Twine, while dialogue samples can live mainly in Twine if linked from the bio doc. Xelnath floated a work-together dialogue call once everyone has ported their bio.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Ridley announced the Twine plan: narrative flow goes into Twine before Unreal, with C&amp;C first porting bios and then writing sample dialogue flows.</li>
+<li>Pruthvi made a commented seashell sample quest (.twee) demonstrating flags, counters and loops, and recommended Adam Hammond's Twine guide.</li>
+<li>Xelnath set up GitHub access for the team and launched the narrative-twine site.</li>
+<li>Lianhua announced on Oct 21 that every character bio was completed, which the team celebrated.</li>
+<li>Ridley defined the MC as a blank-slate character with tonal dialogue choices and explained that trust/approval could unlock side quests, information and endgame support.</li>
+<li>Xelnath published a writer-focused HOW-TO-WRITE-A-DIALOGUE-SCENE.md guide plus a SugarCube syntax cheat sheet.</li>
+<li>Pruthvi showed screenshots from a personal cRPG-style Twine project demonstrating conditional dialogue, locked options and trust counters.</li>
+<li>Lianhua (Aishui, King Lareas Refidal, Seayssal) and GJ (Serena Waves) ported bios to Twine, and Ridley ruled that bios stay updated in both Docs and Twine.</li>
+</ul>
+<p><strong>Topics:</strong> Twine / SugarCube adoption, GitHub repo access, Character bio completion, MC voice and dialogue choices, Trust/approval system, Dialogue design ideas, Porting bios to Twine, Source of truth: Docs vs Twine</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Who will write the MC bio, GJ or Skip? GJ offered, but it was not confirmed.</li>
+<li>Should 'trust' be renamed 'approval', and how will long-term tracking be coordinated with the quest team?</li>
+<li>Will Mechanika Charlotte's standard bio layout and step-by-step tutorial get made?</li>
+<li>When will the work-together dialogue call happen?</li>
+<li>Laurence's earlier questions for the dialogue feature pod are still pending a response.</li>
+<li>butchbear asked whether to request repo permission for design too, or just production; no one answered.</li>
+<li>Why did Pruthvi lack write access to the narrative-twine repo initially? Xelnath confirmed a fix was sent, but the cause was not explained.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>as a general communication tool, when who is responsible for something is ambiguous, I recommend the mindset:</p>
+<p>"I will write it up [in time interval] unless [X] objects."</p>
+<p>This prevents decisions from being gated by the other person, while still giving them the opportunity to step in and take over.</p>
+<p>— <strong>Xelnath</strong> in #Characters and Cinematics Pod Discussions (<a href="https://discord.com/channels/1511905718419198013/1534827929668947998/1562167532813557843">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Because I’m a hyper engineer who doesn’t think the way you do</p>
+<p>— <strong>Xelnath</strong> in #Characters and Cinematics Pod Discussions (<a href="https://discord.com/channels/1511905718419198013/1534827929668947998/1563204423273029653">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>These are just to address the concerns surrounding the capabilities of Twine. We're only limited by our own cognitive load, because the more flags and counters we create, the more dependencies we create, and the more frequently we must keep track of those dependencies. But Twine doesn't care, it'll do what you want as long as those dependencies exist.</p>
+<p>— <strong>Pruthvi</strong> in #Characters and Cinematics Pod Discussions (<a href="https://discord.com/channels/1511905718419198013/1534827929668947998/1563440218802102323">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Updated. We did it; every character has been completed! 🎉</p>
+<p>— <strong>Lianhua</strong> in #Characters and Cinematics Pod Discussions (<a href="https://discord.com/channels/1511905718419198013/1534827929668947998/1562430381641171037">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1534827929668947998/1563438355352518747">Pruthvi's cRPG-style Twine dialogue: an NPC calls out the player's chosen role</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1534827929668947998/1563438487980613672">An unnamed 'paladin amateur' whose name stays hidden until the player asks</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1534827929668947998/1563438763315826710">The same NPC responds differently to a Templar than to a Rogue</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1534827929668947998/1563438902331711519">The 'Who might you be?' option disappears once the character's name is learned</a></li>
+</ul>
+<h2>#🎸│general</h2>
+<p><em>77 messages from 23 people</em></p>
+<p>The week opened with Miro board access trouble: NateTheMood, Mechanika Charlotte, GJtheAutist and LockedInFish couldn't edit the sprint board until they sent team access requests. Xelnath then updated permissions. Xelnath explained that the Miro board is both an attendance sheet and a statement of intent for everyone in the jam. People don't have to pick between the green and blue boxes, and they can sign up twice. He also said the current sprint continues unchanged. On the narrative shift, he promised no rewrites: writers finish their current bios, move them from Google Docs to the public Twine page, then do the same for dialogue before planning the rest together. TebTheCat praised the Twine game's looping music, which NateTheMood credited to LockedInFish.</p>
+<p>Michelle M. asked four process questions: whether a 'released game' is still the goal, whether there will be a full sprint plan, whether a morale/coordination lead could be assigned, and how teams will be held accountable. Xelnath answered that release depends on everything coming together and that building beats predictive planning. He said morale is fixed by delivering, which is why there are three lanes. For blockers, people should escalate loudly and work around them. VibeBlind (Seth) argued for a clear minimum release scope and milestones, detailed planning only for the next few sprints, and earlier blocker escalation. He noted a possible move from sprints to kanban and that the focus is a concrete list for Alpha 2 (the Gameplay Lane). Michelle felt they were saying the same thing and signed off wishing the team well. Xelnath shared a game-jam news site and said he communicates directly, with no hidden messages. Later, dbugslayer pointed out that the ~100 Miro names don't match server activity. Daan and Henry described struggling to find a way in, citing unanswered offers, EU-unfriendly meeting times, and the cut combat pod. They were pointed toward level design, quests (sync with Matt) and QA. When dbugslayer asked whether anyone leads level design, Xelnath said he didn't know.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Xelnath fixed Miro edit permissions after several members sent access requests.</li>
+<li>The Miro board is an attendance check plus intent declaration for everyone in the jam; signing up for multiple lanes is allowed.</li>
+<li>Narrative plan: no rewrites; finish the current bios, transcribe them to the public Twine page, then dialogue, then plan collaboratively.</li>
+<li>Michelle M. raised questions about release goals, full planning, a morale lead and accountability; Xelnath and VibeBlind answered with a build-first, deliver-milestones philosophy.</li>
+<li>VibeBlind said the project may move from sprints to kanban, with the current focus on a concrete scope for Alpha 2 (the Gameplay Lane).</li>
+<li>Xelnath shared the game-jam news page: https://asgc-game-jam.github.io/game-jam-news/</li>
+<li>dbugslayer noted ~100 Miro names versus much lower visible activity; Daan and Henry shared why they haven't been able to contribute yet.</li>
+<li>Level design is needed but appears to have no owner; QA help is also welcome (ThePokePreston).</li>
+</ul>
+<p><strong>Topics:</strong> Miro board access, Sprint attendance, Narrative/Twine transition, Project planning philosophy, Blockers and accountability, Onboarding inactive members, Level design, QA</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Is anyone leading or actively building level design beyond the puzzle work? (Xelnath didn't know)</li>
+<li>Will the smaller version still be released as a shipped game for resumes? (depends on progress)</li>
+<li>Is the move from sprints to kanban confirmed?</li>
+<li>butchbear asked what information is important to track on Miro so it doesn't overflow; this wasn't fully answered.</li>
+<li>Will a coordination/morale role be assigned, or is this left to production?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>This is an <em>attendance sheet</em> and indicator of intent in one</p>
+<p>— <strong>Xelnath</strong> in #🎸│general (<a href="https://discord.com/channels/1511905718419198013/1515509844675661994/1561416330203238522">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>It will be grating sometimes. Always know it’s fine to ask for clarification if you think I have a hidden message - usually I don’t.</p>
+<p>— <strong>Xelnath</strong> in #🎸│general (<a href="https://discord.com/channels/1511905718419198013/1515509844675661994/1561445916936769538">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I just watched https://discord.com/channels/1511905718419198013/1511906647617044511/1562719985732943892 and ended up counting how many names are on the Miro board. I got to say, based on the activity on this server and the changes going into GitHub, it <strong>does not</strong> feel like there are ~100 people still involved with this jam. Great to see such a turnout though and even better will be to see all of this come together.</p>
+<p>For anyone feeling frustrated or loosing steam, don't fret! These things we're going through are in some ways a reflection of what sometimes happens some times in studios and is also a by product of our jam (experiment). In practice, the process tends to be messy and not ideal but what's important is that those involved have the grit to push through and deliver something that we're all proud of and hopefully have fun doing it. &lt;:HelmetHeart:1560065218254475314&gt;</p>
+<p>— <strong>dbugslayer</strong> in #🎸│general (<a href="https://discord.com/channels/1511905718419198013/1515509844675661994/1562852696074227837">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I was personally a fan of Business A, but it was Business B that really put it on the map</p>
+<p>— <strong>Xelnath</strong> in #🎸│general (<a href="https://discord.com/channels/1511905718419198013/1515509844675661994/1563241378702561291">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1515509844675661994/1563087169403494501">Google apparently knows all about the very rich Ian Vestor</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1515509844675661994/1561405643502649507">Where to find the Miro team access request link</a></li>
+</ul>
+<h2>#Investigation</h2>
+<p><em>77 messages from 13 people</em></p>
+<p>The week opened with members of the Investigation pod working out where they fit in Alex's new three-lane structure: Narrative/Character, Gameplay, and Beautiful Corner. VibeBlind explained that interactions and puzzles both sit in Gameplay alongside Matt, Diana and himself. He added that the main point was a team head count, and that the jam is a learning experience for ASGC, so suggestions are welcome. Anrakyr created a recurring Discord event for the weekly meetings, which will now be held in the design voice channel. The Monday Oct 19 meeting was lightly attended, and Anrakyr posted a summary based on Luke's notes. Key points were a big project restructuring, combat being axed entirely, and puzzles and investigation being raised in priority. Oxygen's role is still undefined, and pods remain but with more cross-pod collaboration. The meeting left the handling of implementation tasks to pullipulli and Patrizia, and pullipulli then decided with Anrakyr's blessing to drop the 24h task deadlines since only the two of them are working on it.</p>
+<p>On Oct 21 Matt Barnes announced the pod stays active as part of the Gameplay structure, with a shift from delivering one feature to being specialists who help upcoming deliverables. He pointed members to the new [Gameplay Deliverable] Puzzle Room 1 channel. Later in the week dbugslayer asked for collaborators on GitHub issue #142 (Investigation &amp; Puzzle Journal). Anrakyr shared the FDS-005 Investigation features doc and the Clue Source Types doc, and suggested binarie and Kurezar as backup points of contact while he deals with a possibly fried graphics card. Kurezar and Anrakyr noted that the Journal pod is better placed for journal-specific work. ogam said the journal currently has a stub for generic investigation data, and pullipulli confirmed no investigations are implemented yet. Finally, KingMoustachio asked whether clues can be discovered without interaction, and the consensus from Skullbuster and binarie was that all clues require some kind of interaction, including observations.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>VibeBlind described the three lanes as proof you can write, proof you can make a gameplay loop (including interactions), and proof you can make assets.</li>
+<li>Anrakyr set up a recurring Discord event for weekly meetings, now held in the design voice channel.</li>
+<li>The Oct 19 meeting summary confirmed combat has been completely axed and puzzles/investigation elevated in priority.</li>
+<li>pullipulli and Patrizia were given the call on implementation tasks, and the 24h deadlines were dropped as unnecessary for a two-person team.</li>
+<li>Matt Barnes kept the Investigation pod active under Gameplay, framing it as a specialist team supporting deliverables like Puzzle Room 1.</li>
+<li>dbugslayer is picking up GitHub issue #142 (Investigation &amp; Puzzle Journal) and was pointed to the FDS-005 Investigation and Clue Source Types docs.</li>
+<li>ogam noted the journal only has a generic data stub, and pullipulli said first investigation implementations are just starting.</li>
+<li>The pod agreed that all clues, including observations, require some form of player interaction.</li>
+</ul>
+<p><strong>Topics:</strong> Lane/pillar restructuring, Weekly meeting logistics, Combat axed, Implementation task deadlines, Puzzle Room 1 deliverable, Issue #142 Investigation &amp; Puzzle Journal, Clue discovery design, GitHub access</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Who needs GitHub access once all tasks move to GitHub? (butchbear asked; no one has been identified yet)</li>
+<li>Who in the Journal pod will collaborate with dbugslayer on #142?</li>
+<li>What exactly is Oxygen's role after the restructuring?</li>
+<li>How can the Investigation pod concretely help with Puzzle Room 1?</li>
+<li>What is the current status of the observation-type clue design?</li>
+<li>What new tasks will be created for members who currently have none?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>yes, keep in mind this game jam in itself is a learning experience for the ASGC community on how to handle things like this in the future. They trying to take the learnings of the first half and make the second half better</p>
+<p>— <strong>VibeBlind</strong> in #Investigation (<a href="https://discord.com/channels/1511905718419198013/1532930622669066300/1561441415802785974">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Update! I would like to keep this pod active if we think there is still a need for it. I want to shift our mindset from "We are working on delivering this feature" to "this team specializes in this feature, how can we help with the upcoming deliverable."  I would also like this to be considered part of the "Gameplay" structure. Don't worry if you individually are part of a different lane, that should continue to be your primary focus, but I do want to remove any "Limbo" status for pods. </p>
+<p>It is acceptable and expected to continue pod related conversations here, but there is a NEW channel for the upcoming deliverables, linked is the [Gameplay Deliverable] Puzzle Room 1. I want this pod to consider what we can do to help with this. If you are struggling, reach out to me and lets see if we can figure it out. 
+https://discord.com/channels/1511905718419198013/1560726515254173806</p>
+<p>— <strong>Matt Barnes</strong> in #Investigation (<a href="https://discord.com/channels/1511905718419198013/1532930622669066300/1562631433095221279">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Im kinda unavailable for TBD amount of time though because my graphics card decided to go crazy yesterday and been dealing with that</p>
+<p>— <strong>Anrakyr</strong> in #Investigation (<a href="https://discord.com/channels/1511905718419198013/1532930622669066300/1563270554021134379">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I don’t think so, recognizing a clue should be a conscious act of the player</p>
+<p>— <strong>Skullbuster</strong> in #Investigation (<a href="https://discord.com/channels/1511905718419198013/1532930622669066300/1563727390964973579">jump</a>)</p>
+</blockquote>
+<h2>#Oxygen System</h2>
+<p><em>69 messages from 9 people</em></p>
+<p>The week opened with Josue Monge asking whether oxygen might be cut. Matt Barnes said cutting the oxygen system is off the table, though depletion could be revisited as other mechanics get simpler. CoffeeAddict (Ramiro) opened PR #338, which adds oxygen drain while underwater, and flagged a bug where surface walking stops the drain; the PR was merged on Oct 23. Matt also announced that the pod stays active as a specialist team within the "Gameplay" structure, with no more "limbo" pods, and asked it to help with the new [Gameplay Deliverable] Puzzle Room 1 channel.</p>
+<p>On Oct 23 MM reported two bugs in WBP_OxygenIndicator. First, the indicator dropped to zero because voymasa had swapped the allocated and current oxygen pins; Ramiro's blueprint cleanup fixed this. Second, oxygen can't refill past 100 minus the amount allocated to ballast, which MM filed as issue #358. This led to a design discussion about how to show allocated oxygen on the HUD: a different-color bar, PEAK-style icons (underwolf), or a Path of Exile mana-reserve look (Hamm). MM framed two options: allocated oxygen is locked but not transferred, or it is transferred to the ballast, leaving refillable space. CoffeeAddict and underwolf initially backed transfer. Hamm countered that ballast oxygen was meant to be reserved and returned, to fit the cozy pillars, and CoffeeAddict agreed that fits better. MM held that it is transferred and that refilling could reward good management or enable puzzles. No final decision was reached. VibeBlind reminded everyone to link PRs to subtasks so QA has acceptance criteria.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Matt Barnes confirmed cutting the oxygen system is not on the table, though depletion may be revisited.</li>
+<li>CoffeeAddict's PR #338, which adds underwater O2 drain, was merged; a known bug where surface walking stops the drain was flagged for follow-up.</li>
+<li>Matt Barnes made the pod a standing specialist team under Gameplay and pointed it to the Puzzle Room 1 deliverable.</li>
+<li>MM found that swapped pins in WBP_OxygenIndicator made the HUD show zero; Ramiro's blueprint cleanup fixed it.</li>
+<li>MM filed issue #358: oxygen can't refill the space left by oxygen allocated to the ballast.</li>
+<li>HUD ideas for showing allocated oxygen included a separate color bar (core goal) and PEAK-style icons (stretch goal), with two tickets suggested.</li>
+<li>The team debated whether ballast oxygen is locked/reserved (Hamm, cozy pillars) or transferred and refillable (MM); this is unresolved.</li>
+<li>VibeBlind asked that PRs be attached to subtasks so QA can verify against acceptance criteria.</li>
+</ul>
+<p><strong>Topics:</strong> Oxygen depletion, PR #338 O2 drain, WBP_OxygenIndicator bugs, Ballast oxygen allocation, HUD design, Pod restructuring / Gameplay, QA process</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Should ballast-allocated oxygen be locked/reserved and returned, or transferred and refillable (with the possibility of exceeding max)?</li>
+<li>How should allocated oxygen be shown on the HUD (color bar, icons, PoE-style reserve)? Tickets were proposed but not confirmed as opened.</li>
+<li>How will multiple oxygen-consuming systems be represented, and will any exist?</li>
+<li>When will the surface-walking drain bug be fixed?</li>
+<li>How can the oxygen pod help with Puzzle Room 1?</li>
+<li>Does the 'restore to 100%' bug persist after Ramiro's fixes, or is it only a display problem? This is pending voymasa's merge so CoffeeAddict can unlock WBP_OxygenIndicator.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Cutting the oxygen system is not something on the table. We can have conversations around depletion and oxygen if we feel it is needed. It was excluded before to prevent unneeded stress and cognitive overload. As we simplify other mechanics it may be worth revisiting.</p>
+<p>— <strong>Matt Barnes</strong> in #Oxygen System (<a href="https://discord.com/channels/1511905718419198013/1533801825080315965/1561902925834358897">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>That's fine, it's your call. It doesn't actually look empty in action though. That darker part is metal that rotates down over the reserved portion while skills that reserve mana are in use. When you turn off a reserve skill, you get that mana back and the metal slides back to the top.</p>
+<p>Basically, it already is what we're doing. It's more a visual difference. Oxygen used for ballast isn't actually used up, it's reserved, as part of being a cozy game, meeting our pillars. Did this change?</p>
+<p>— <strong>Hamm</strong> in #Oxygen System (<a href="https://discord.com/channels/1511905718419198013/1533801825080315965/1563625457193058305">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Yeah, if they manage it correctly. If they switch to a state requiring a lower allocation right after filling the tank they lose the oxygen anyway. I think it adds to a game in a good way. It rewards good management. It could be used in puzzles as well. Maybe you need 105% max oxygen to complete a puzzle and you have to manage the oxygen, not perfectly, maybe even with a large margin for errors, but you need to.</p>
+<p>— <strong>MM</strong> in #Oxygen System (<a href="https://discord.com/channels/1511905718419198013/1533801825080315965/1563634874726879286">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I did also wanted to turn the ballast into a jetpack tho... hahaha</p>
+<p>— <strong>CoffeeAddict</strong> in #Oxygen System (<a href="https://discord.com/channels/1511905718419198013/1533801825080315965/1563627869375307887">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1533801825080315965/1563417863749111928">Path of Exile's mana-reserve orb, shared by Hamm as inspiration for showing reserved oxygen</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1533801825080315965/1563500930899517510">MM's screenshot of the current HUD with the ballast indicator bar under the oxygen display</a></li>
+</ul>
+<h2>#Coordinating changes in #348</h2>
+<p><em>56 messages from 4 people</em></p>
+<p>This week's thread was about coordinating file locks on shared Unreal assets for the ASGC Game Jam 2026 repo. dbugslayer arranged for MM (Michele Marando) to merge PR #348 (#136 hiding spots), which touched <code>BP_AtlantisInteractable.uasset</code> while Matt Barnes still had it locked. Matt agreed to let Michele merge first and released his lock. dbugslayer reviewed and merged #348 on Fri Oct 23. After a quick check that the BPI_Highlight lock was also cleared, Matt took over the interactable file. He plans to keep his work agnostic of <code>BP_AtlantisPlayerCharacter</code>, which Jacob Braunhut is editing.</p>
+<p>On Saturday, Jacob created a crouching branch and asked about unlocking the player character file, which MM is also waiting on. dbugslayer asked him to open a PR so locks aren't held for long. Jacob had never made a pull request, so dbugslayer walked him through the workflow using CONTRIBUTING.md and the GitHub docs. Jacob opened PR #365 (Crouch, not done). He was reminded to fill in the bot checklist, link the related issue, write a summary, and keep his lock until the merge. dbugslayer merged #365 that night and told Jacob he could unlock the file.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Matt Barnes let Michele's PR #348 merge before his own work on <code>BP_AtlantisInteractable</code> and released his lock.</li>
+<li>dbugslayer merged #348 (hiding spots) on Fri Oct 23 and unlocked the leftover BPI_Highlight lock.</li>
+<li>Matt plans to keep his interactable work agnostic so he won't need to touch <code>BP_AtlantisPlayerCharacter</code>, which Jacob is editing.</li>
+<li>Team policy was restated: don't push to <code>main</code>; use feature branches and PRs, and hold locks only briefly, keeping them until the PR is merged.</li>
+<li>dbugslayer walked Jacob Braunhut through his first pull request, which became PR #365 (Crouch).</li>
+<li>PR guidance covered updating the GitHub bot checklist, filling in the Related Issue section, and describing what the PR does and how to test it.</li>
+<li>dbugslayer merged #365 Saturday night and cleared Jacob to unlock the player character file.</li>
+</ul>
+<p><strong>Topics:</strong> File locking coordination, PR #348 hiding spots, PR #365 crouching, Git/PR workflow onboarding, BP_AtlantisInteractable, BP_AtlantisPlayerCharacter</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>MM asked to be told when <code>BP_AtlantisPlayerCharacter</code> is released; Jacob hadn't confirmed unlocking it after the merge by the end of the week.</li>
+<li>Jacob didn't name the issue number for the crouch work in chat, and the crouch animation itself is still unanimated.</li>
+<li>Matt's interactable work, expected over the weekend, had no status update yet.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Exactly. We don't push to <code>main</code>. We push changes to a feature branch and then create a pull request, so the changes can be reviewed prior to merging to <code>main</code>. Are you familiar with the workflow of creating a pull request?</p>
+<p>— <strong>dbugslayer</strong> in #Coordinating changes in #348 (<a href="https://discord.com/channels/1511905718419198013/1562963768269471755/1563756134911844353">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Submit a PR with your changes please. We want to try to minimize the time people hold on to locks to avoid blocking.</p>
+<p>— <strong>dbugslayer</strong> in #Coordinating changes in #348 (<a href="https://discord.com/channels/1511905718419198013/1562963768269471755/1563745723521179880">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Yeah. I realized I needed to do it on browser</p>
+<p>— <strong>Jacob Braunhut</strong> in #Coordinating changes in #348 (<a href="https://discord.com/channels/1511905718419198013/1562963768269471755/1563758724877914153">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1562963768269471755/1563302194265202758">Matt's screenshot showing BPI_Highlight still checked out after #348 merged.</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1562963768269471755/1563755789620084748">Jacob's screenshot of the error when trying to push straight to main.</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1562963768269471755/1563761708755984434">dbugslayer's screenshot showing where to edit a PR description.</a></li>
+</ul>
+<h2>#Production Handoffs</h2>
+<p><em>55 messages from 8 people</em></p>
+<p>This week in #Production Handoffs was mostly about onboarding, offboarding and a tooling switch for the Narrative team. Pruthvi reworked the Narrative Production SSOT spreadsheet and asked for it to be pinned, but butchbear couldn't pin in this channel. Pruthvi also suggested bringing Joseph, the new C&amp;C lead, into the channel. Ridley flagged that biestibelzer (Thomas) is leaving the jam. Kukey (Sanya) took on his offboarding, Ridley laid out what that covers (lead handoffs, pod status, exit feedback), and Cafedunoir confirmed there is an existing process and said they would update sheets and access for other departed members. On Ridley's request, GreenCat gave Abdullah Yusuf the Lead and Narrative Lead roles.</p>
+<p>YosephAlex4nder drove the move away from ClickUp to Miro, Twine and GitHub (Projects). He shared the ASGC Game Jam Miro board, a pitch deck review video and beginner guides for each tool. He named Xelnath as the Miro access contact and VibeBlind for GitHub, and asked leads only to make a best effort at learning the tools this week. He also cleaned up ClickUp down to 3 swim lanes and posted a roundup of key links: character bios done, WIP vertical slice mockup, pulse check doc, and the Joseph and Abdullah promotions. butchbear is stepping back for health reasons and confirmed no teams are waiting on them. Ahead of Saturday's Production Sync, Yoseph said Narrative was blocked on how to work in GitHub Projects alongside Miro and Twine. RocketDell and Pruthvi committed to attending, while Kukey was at work. Cafedunoir later pointed to a dedicated Narrative board in GitHub Projects.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Pruthvi revamped the Narrative Production SSOT spreadsheet and asked for it to be pinned, but butchbear lacked pin permissions here.</li>
+<li>Kukey took on Thomas (biestibelzer)'s offboarding, and Ridley outlined the steps: lead handoffs, pod status and exit feedback.</li>
+<li>Abdullah Yusuf was granted the Lead and Narrative Lead roles by GreenCat.</li>
+<li>Yoseph announced the transition from ClickUp to Miro, Twine and GitHub, sharing beginner guides and naming Xelnath (Miro) and VibeBlind (GitHub) as access contacts.</li>
+<li>Yoseph urged the team to let go of the sunk cost in ClickUp and asked leads only to make a best-effort attempt to learn the new tools this week.</li>
+<li>Character bios were marked complete, and a WIP vertical slice mockup was shared in Yoseph's roundup.</li>
+<li>butchbear is stepping back for health reasons after confirming none of their teams (quest, journal, puzzle room 1, etc.) are waiting on them.</li>
+<li>Cafedunoir shared a dedicated Narrative board in GitHub Projects after Yoseph said he couldn't find one.</li>
+</ul>
+<p><strong>Topics:</strong> Offboarding, Role promotions, Narrative Production SSOT, ClickUp to GitHub Projects transition, Miro/Twine/GitHub onboarding, Production Sync</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Who can pin the Narrative Production SSOT, and will it get pinned?</li>
+<li>Will Joseph (the new C&amp;C lead) be added to this channel?</li>
+<li>How should Narrative operate in GitHub Projects relative to Miro and Twine, and does the QA process apply to Narrative?</li>
+<li>Can Yoseph and the team see the Narrative GitHub Projects board Cafedunoir linked?</li>
+<li>Has the org chart been updated for Abdullah's promotion, and has Alex's card been updated to Game Director?</li>
+<li>Will Kukey's retrospective notes get submitted, given Kukey was at work during the sync?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>A note, as inspired from the Pitch Deck review video referencing sunk cost fallacy and killing your darlings.</p>
+<p>I know we've spent a ton of time trying to get ClickUp to work and to get our teams involved with it. I know that meant spending a great deal of your time trying to understand it and how it fits with the needs of this project.</p>
+<p>Twine, Miro, and Github may be new for some of you, and may require more time for you to get accustomed to before you can be an expert for your teams.</p>
+<p>My only expectation for you over the next week is to make your best attempt to understand each tool and to reach out to your peers for help.</p>
+<p>If you're an expert already, please help your teammates achieve competency with each tool.</p>
+<p>— <strong>YosephAlex4nder</strong> in #Production Handoffs (<a href="https://discord.com/channels/1511905718419198013/1529871369121038597/1561785844484931595">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>And to each of you, including @EMatter our freshly minted Production Lead assigned to Tech.</p>
+<p>Thank you so much for supporting your teams this far. I know some of our conversations and work can go unnoticed in production. I've been watching each of you move for the project. Keep that momentum going. Especially now as we make this transition.</p>
+<p>— <strong>YosephAlex4nder</strong> in #Production Handoffs (<a href="https://discord.com/channels/1511905718419198013/1529871369121038597/1561786990532497470">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I will be there actually! A Halloween miracle</p>
+<p>— <strong>RocketDell</strong> in #Production Handoffs (<a href="https://discord.com/channels/1511905718419198013/1529871369121038597/1563636248051064913">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Just here to drop that off real quick. I promise I will go back to taking a break. My day job hit me with stuff today too 😅</p>
+<p>I prefer to not be a blocker if I can fix it in under a minute.</p>
+<p>— <strong>YosephAlex4nder</strong> in #Production Handoffs (<a href="https://discord.com/channels/1511905718419198013/1529871369121038597/1561539802380374027">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1529871369121038597/1563080851577643118">Narrative status roundup: character bios complete, WIP vertical slice and promotions.</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1529871369121038597/1563082583560945794">Visual of the Narrative team structure ahead of the new process.</a></li>
+</ul>
+<h2>#🎯│tech-discussions</h2>
+<p><em>54 messages from 12 people</em></p>
+<p>The week in #tech-discussions opened with MM asking where documentation lives and what the "C++ base, Blueprint leaf" guideline means in practice. Xhemoz and cpgeiste weighed in, then dbugslayer gave the working rule: put core game logic in C++ and use Blueprints to configure, compose and iterate. Existing BPs get ported only as needed, and people should build whatever makes sense, including a BPI_Interface. Awesomeosity added Perception docs to the GitHub docs folder. Vilus hit Blueprint compile errors after pulling, which a rebuild fixed. dbugslayer advised always rebuilding after pulling, Vilus offered to add that to the README, and cpgeiste offered a git hook that auto-builds on branch switch. Elsewhere, Xhemoz asked about retooling dropped combat into 'booping' NPCs, and VibeBlind pointed to the stealth Knockout issue (#135).</p>
+<p>Git LFS locking took up a lot of Thursday. dbugslayer explained that <code>git lfs lock/unlock</code> must be done via the CLI and mentioned testing a UE git plugin with better LFS integration. Matt Barnes and MM had overlapping locks on BPI_Interact, and Matt chose to work off a duplicate for his Puzzle Logic. MM's lock on a misspelled path (ID 116) can't be removed, even with <code>git lfs unlock -i 116</code>, which returns an Internal Server Error. RicSan returned after a move and synced with dbugslayer. CaptainSoso stepped back from the jam to shadow progress. VibeBlind posted a well-received note that Design and Tech should collaborate from the start rather than hand off finished work, and that department labels aren't cages. Xelnath summed it up as "Defer to action." Cafedunoir asked how Tech wants to handle the ClickUp-to-GitHub task migration as sprint 7 ends.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>dbugslayer laid out the C++ vs Blueprint rule: core logic in C++, Blueprints for configuring and iterating, with existing BPs ported to C++ only as needed.</li>
+<li>Awesomeosity pushed the Perception system and added its documentation to the GitHub docs folder.</li>
+<li>Pulling C++ changes means rebuilding every time: Vilus wants to add this to the README, and cpgeiste offered an auto-build git hook.</li>
+<li>dbugslayer reminded everyone that Git LFS locks are done via the CLI and is testing a UE git plugin that may handle locking better.</li>
+<li>MM has a stuck LFS lock (ID 116) on a misspelled path that fails to unlock with an Internal Server Error.</li>
+<li>VibeBlind called for Design and Tech to collaborate from the start and for devs not to wait for perfectly defined tasks.</li>
+<li>Xelnath summarized the guidance: defer to action, don't overstep active people, and take steering once a base version exists.</li>
+<li>Cafedunoir wants to migrate ClickUp tasks to GitHub around the end of sprint 7 and asked Tech for input.</li>
+</ul>
+<p><strong>Topics:</strong> C++ vs Blueprint guidelines, Documentation location, Rebuilding after pulls, Git LFS file locking, Design/Tech collaboration, ClickUp to GitHub migration, Stealth knockout mechanic</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>How can MM's stuck LFS lock ID 116 (BP_AtlantisInteractable.uasset, wrong path) be cleared? dbugslayer said 'give me a sec' and there was no follow-up.</li>
+<li>What is the best way for Tech to support Cafedunoir's ClickUp-to-GitHub task migration, and on what date?</li>
+<li>Does UE show a prompt that modules need compiling after a pull? Vilus planned to re-test.</li>
+<li>Did Vilus open the README PR about rebuilding after pulls?</li>
+<li>Did anyone take cpgeiste up on the auto-build git hook?</li>
+<li>How will MM and Matt Barnes reconcile their parallel changes to BPI_Interact?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>C++ has a lot of pluses (two of them in fact) but rebuilding constantly is not one of them</p>
+<p>— <strong>Awesomeosity</strong> in #🎯│tech-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254441703968888/1562584751716565104">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I want to clarify something about how Tech and the other departments (especially Design) should be working together.</p>
+<p><strong>Gameplay features should be collaborative from the start</strong>. Design and Tech should be discussing how mechanics are supposed to work, what's feasible, working out implementation plans, and generally iterating together as we build. Not purely working separately and handing things off when they're finished. I was under the impression this was already happening in our pods, but it sounds like that hasn't consistently been the case. I'm sorry for that. Our Specs were explicitly designed to encourage those conversations, not replace them.</p>
+<p>And please don't wait for designers or producers to create perfectly defined tasks before jumping in. They are no more likely to know every technical nuance than we are to know every detail of their design intent. That’s why early dialogue is so critical. Discovery and planning are just as much a part of engineering as writing code. We shouldn't expect Design or Production to figure out everything that needs doing, break it into tasks, and hand it over for us to implement. That's a substantial amount of work to put on someone else (especially when those producers are also learning) (double especially when we're all volunteers) We should be figuring these things out together and sharing that workload.</p>
+<p>I also want to note that our department labels describe areas of responsibility and interest. They're not cages you're supposed to stay inside. You don't need permission from a lead to talk to another department, offer help, or contribute ideas. Leads are there to help coordinate, not be intermediaries for every conversation. That doesn't mean you can't ask for direction, assignments, or help (please do) but I want everyone to feel like they can take initiative, seek people out, and help move things forward. We're all trying to make the same game. We should be building it together.</p>
+<p>— <strong>VibeBlind</strong> in #🎯│tech-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254441703968888/1563009410379415615">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Guidance:
+Defer to action. Get started and be okay apologizing if someone gets mildly snubbed. 
+Don't intentionally overstep if someone is active. 
+Be collaborative - accept input and steering <em>after</em> the base version is available for experimentation.</p>
+<p>— <strong>Xelnath</strong> in #🎯│tech-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254441703968888/1563033751229956147">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>A useful rule: <strong>put core game logic in C++; use Blueprints to configure, compose, and iterate.</strong></p>
+<p>I believe what's in BPs will be ported to C++ on a as-needed basis, I don't see much benefit in rewriting it for the sake of moving it to C++. FWIW, the features I've built were all in C++. I thinks it's better suited for systems and pieces of the game that will grow in complexity, plus it's much easier to review and parallelize development than blueprints. </p>
+<blockquote>
+<p>What am I supposed to do if I need to implement a BPI_Interface? Should I convert it to c++ and redirect all the assets implementing the bp version to the c++ version or should I leave it as is and implement the bp version myself?</p>
+</blockquote>
+<p>Implement whatever you need in whichever means makes the most sense. If you need a <code>BPI_Interface</code> make one. If there's functionality that's in blueprint that should/needs to be moved to C++, then do so. We're a small team, so these things can be communicated easily.</p>
+<p><strong>A few practical checks:</strong>
+- Will this logic be reused or need tests? Lean C++.
+- Will someone want to tweak it often in the editor? Expose the knobs in C++ and tune them in Blueprint.
+- Is the Blueprint growing into a large, hard-to-follow graph? Move the stable logic into C++.
+- Does the feature depend on a specific level, animation, or visual asset? Blueprint is often a natural home.</p>
+<p>— <strong>dbugslayer</strong> in #🎯│tech-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254441703968888/1561824498368389242">jump</a>)</p>
+</blockquote>
+<h2>#[Gameplay Deliverable] Puzzle Room 1</h2>
+<p><em>46 messages from 13 people</em></p>
+<p>Matt Barnes kicked off the week by sharing a greybox of the first puzzle room (Drive link, later PR #337 'Initial Greybox setup for Puzzle 1') and asked how to work with existing tech like BP_AtlantisInteractable and BP_DoorFrame. He wants a material override so the door can be translucent, and a way to gate the interactable so the button only opens the door once power is restored. ogam suggested adding puzzle tags or a component (e.g. <code>Puzzle_1</code>, <code>Part A</code>) to support save/load. Matt proposed a general logic controller that tracks grouped steps, and Xhemoz suggested an interact-key UI widget and a blueprint interface for interactables. VibeBlind, who is busy moving production tracking to GitHub, directed Matt to work with dbugslayer (Daniel), the gameplay lead for tech. dbugslayer agreed to help. Matt confirmed that all designers can contribute puzzle ideas and that leads mainly filter information. cpgeiste praised the push for design and tech to work together.</p>
+<p>By the weekend, clarity on next steps was lacking. Vilus noted there are only two puzzle issues, both assigned to Matt, and that the room isn't hooked up yet. VibeBlind summarized Puzzle 1 as <code>Reconnect wire &gt; restore power &gt; Activate switch &gt; Open door</code> and Puzzle 2 as vaguely ballast-related. dbugslayer pointed to the FDS-012 Environmental Puzzles doc and said Matt plans to build a puzzle manager. Questions about the clue system, additional puzzle design and backlog tasks were still open when the week ended. VibeBlind asked producer Vincent to help turn design requests into backlog items, and Vincent asked for an ETA.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Matt Barnes shared the first puzzle room greybox, submitted as PR #337 on the ASGC game jam repo.</li>
+<li>Matt requested a door material override (for a translucent door) and power-gated interaction on BP_DoorFrame and BP_AtlantisInteractable.</li>
+<li>ogam proposed puzzle tags or a component like <code>Puzzle_1</code> / <code>Part A</code> to track completion for save/load.</li>
+<li>VibeBlind named dbugslayer (Daniel) as tech's gameplay lead and Matt's point of contact for blueprint changes.</li>
+<li>Matt confirmed all designers can contribute puzzle ideas, while leads handle structure and communication.</li>
+<li>VibeBlind defined Puzzle 1 as Reconnect wire &gt; restore power &gt; Activate switch &gt; Open door; Puzzle 2 is still unclear ('something to do with ballast?').</li>
+<li>dbugslayer shared the FDS-012 Environmental Puzzles doc and noted Matt plans a puzzle manager, but nothing is hooked up yet.</li>
+<li>Vilus raised questions about what work remains, whether the clue system ties into puzzles, and who is building it.</li>
+</ul>
+<p><strong>Topics:</strong> Puzzle 1 greybox, BP_AtlantisInteractable / BP_DoorFrame changes, Puzzle manager &amp; save/load tracking, Design–tech collaboration, Backlog &amp; task clarity, Puzzle 2 definition</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Are puzzles separate streamed levels or hidden within one level? (Xhemoz, m31)</li>
+<li>What else needs to be done beyond Matt's two assigned issues, and should others design more puzzles? (Vilus)</li>
+<li>Does the clue system tie into puzzles, and is anyone building it?</li>
+<li>What exactly is Puzzle 2 ('something to do with ballast?')?</li>
+<li>What is the ETA for design requests to be turned into backlog work items? (Vincent, m46)</li>
+<li>Will a door material override and power-gating be added to the existing blueprints, and how?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Whether I make those changes or someone else, doesn't matter to me. I want to be sure that things are being built together</p>
+<p>— <strong>Matt Barnes</strong> in #[Gameplay Deliverable] Puzzle Room 1 (<a href="https://discord.com/channels/1511905718419198013/1560726515254173806/1562259075214082079">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Puzzle 1 is <code>Reconnect wire &gt; restore power &gt; Activate switch &gt; Open door</code>
+Puzzle 2 is <code>something to do with ballast?</code></p>
+<p>— <strong>VibeBlind</strong> in #[Gameplay Deliverable] Puzzle Room 1 (<a href="https://discord.com/channels/1511905718419198013/1560726515254173806/1563730228415565896">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Great questions. I don't know. 🙈 Does@Matt Barnes @EMatter or anyone else knows the answer?</p>
+<p>— <strong>dbugslayer</strong> in #[Gameplay Deliverable] Puzzle Room 1 (<a href="https://discord.com/channels/1511905718419198013/1560726515254173806/1563760051724877865">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I've been meaning to speak for the issue of design/tech hardly working in conjunction since the beginning of the jam
+It's reassuring seeing someone who understands that and leads the ship to the right direction ❤️</p>
+<p>— <strong>cpgeiste</strong> in #[Gameplay Deliverable] Puzzle Room 1 (<a href="https://discord.com/channels/1511905718419198013/1560726515254173806/1562739636793516053">jump</a>)</p>
+</blockquote>
+<h2>#🎯│narrative-discussions</h2>
+<p><em>43 messages from 15 people</em></p>
+<p>A week of transitions and world-building housekeeping in narrative. biestibelzer announced they're leaving the project (warm send-offs from Ridley and Xelnath), and Anrakyr flagged that with Thomas leaving, Investigation needs a new point of contact. Ridley called investigation a core Act 1 feature that should be in the gameplay demo and asked butchbear and Pruthvi to factor it into updated PoC assignments. Mechanika Charlotte sorted out Miro access (Xelnath clarified the board is publicly editable and no approval is needed) to sign up for bios and sample dialogue, and Xelnath collected GitHub usernames from a batch of members.</p>
+<p>Lianhua drove World Bible work: Ridley agreed to a side-characters subtab and clarified naming status. Atlantis/Atlantean, Coraltech, The Wilds, districts 1–5 and the 'special coral' are open for brainstorming (naming the coral first may make naming the tech easier). Bleaching and Oceanography Council stay as final names, and 'hydropunk' is an internal-only term. Lianhua listed locations mentioned in the lore (Gumboh's Community Kitchen, Golden Oyster Tavern, Church of Sealos, etc.), which butchbear will share with the journal team as landmarks. Lianhua tagged all writers to pitch names and gave a heads-up about reduced activity until Nov 8 because of thatgamejam #02.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>biestibelzer announced they're leaving the project, and the team sent them off warmly with an open door to return.</li>
+<li>Anrakyr flagged that Investigation needs a new PoC after Thomas's departure; Ridley called it a core Act 1 feature for the gameplay demo.</li>
+<li>Xelnath clarified that the Miro board is publicly editable, and Mechanika Charlotte got in to take on bios and sample dialogue.</li>
+<li>Xelnath collected GitHub usernames from multiple members to add them to the repo.</li>
+<li>Ridley approved a side-characters subtab in the World Bible.</li>
+<li>Ridley opened Atlantis, Coraltech, The Wilds, districts 1–5 and the special coral for renaming; Bleaching and Oceanography Council are kept as final.</li>
+<li>Ridley explained that 'hydropunk' is an internal term only, since '___punk' naming feels out of step with the setting's era.</li>
+<li>butchbear will share Lianhua's list of lore locations with the journal team as landmarks.</li>
+</ul>
+<p><strong>Topics:</strong> Team departures, Investigation PoC, Miro access, GitHub onboarding, World Bible structure, Naming brainstorm, Locations &amp; landmarks</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Who will be the new PoC for Investigation?</li>
+<li>What will Atlantis, the special coral, Coraltech, The Wilds and districts 1–5 be named?</li>
+<li>Does anyone want to propose alternatives for the Oceanography Council?</li>
+<li>Which of the listed locations are confirmed landmarks?</li>
+<li>Several pinged members (e.g., Unholystagepresence) hadn't provided GitHub usernames yet.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Hey narrative people!
+I've just let Skip know that I have made the decision to leave this project.
+I wish you all the best, good luck and see you next time 🙂</p>
+<p>— <strong>biestibelzer</strong> in #🎯│narrative-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254556477161552/1561407080227938355">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I am open to renaming Atlantis/Atlantean, Coraltech, and The Wilds. I definitely want ideas for naming the 'special coral' something more interesting. It will probably help to name the special coral first, and then maybe the technology based on it will be easier to name. I'd be open to hearing thoughts on renaming the Oceanography Council-- I don't recall discussing possibilities on that much (apologies if that happened somewhere that I missed).</p>
+<p>People at the time that steam-based techology was a new thing didn't call it steampunk, so I think probably that and hydropunk are more 'internal use' sorts of terms for documentation and discussions than what the people in our world would actually say to refer to such things. The ___punk naming convention is a neologism that feels out of step with the time we are setting this in. I am totally fine with that being an internal use term we can be consistent with, but </p>
+<p>I think we kind of tried to rename Bleaching and ultimately didn't get a consensus on anything being better, in part because Bleaching is clear. If anyone has more suggestions to consider on that, I'm open to hearing them. I do also recall someone suggesting that perhaps different people might refer to it in different ways, but we do have to be careful of keeping that from getting confusing if we go that route.</p>
+<p>Please do go ahead and brainstorm names for Atlantis, the special coral, The Wilds, and districts 1-5. I'm open to Oceanography Council ideas if anyone feels strongly that they might have a better name for that.</p>
+<p>— <strong>Ridley</strong> in #🎯│narrative-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254556477161552/1562226199328071792">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Thanks for flagging this! I feel like investigation is kind of a core feature even in Act 1, and should be in the gameplay demo. Narrative needs to know how the feature is shaping up so we can provide the right dialogue/clues/etc. on the Twine side, too. </p>
+<p>@butchbear @Pruthvi looks like this is another thing to think about in terms of updating PoC assignments. 🙏</p>
+<p>— <strong>Ridley</strong> in #🎯│narrative-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254556477161552/1561661262209884181">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Maybe some of Aishui's shrines as well. I imagine these as small shrines scattered throughout the districts. Similar to Hokara or Kamidana shrines in Japan.</p>
+<p>— <strong>Lianhua</strong> in #🎯│narrative-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254556477161552/1562279106446622843">jump</a>)</p>
+</blockquote>
+<h2>#📝│narrative-lead-discussion</h2>
+<p><em>43 messages from 6 people</em></p>
+<p>biestibelzer announced they were leaving the project (m1), which left Game Writing (GWR) without a pod lead. sadegun93 (Stephen, Quest Design lead) worried the gap would slow Quest Design and suggested folding GWR into Quest Design for now. Ridley agreed. GWR members can choose between World Bible and Quest Design work, and GWR and C&amp;C can divide up dialogue later. Ridley offered the GWR lead role to Abdullah, who accepted on Oct 20 and welcomed the idea of GWR and Quest Design working together on current objectives.</p>
+<p>Midweek, sadegun93 asked how to approach the vertical slice sample quest now that the team is shifting to Twine. Xelnath explained that this sprint's example quest should show Seth's tech team which features the engine needs to support. The Twine work starts after this sprint and is meant to produce playtestable outlines; the three seashell Twine quest was only a SugarCube variables demo. Ridley advised keeping the quest simple, and if more time is needed, delivering the smallest fully ready piece on time for the alpha build. sadegun93 shared a WIP mock-up on Oct 22. Ridley's feedback: it uses the old B theme (acceptable, but C1/C2 should be avoided), and the specific clues still need defining, possibly with the pod's help. Ridley sent the doc to Seth and Matt Barnes. On Oct 24 Ridley suggested removing the themes section from the quest template, and sadegun93 agreed.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>biestibelzer left the project, leaving Game Writing without a pod lead.</li>
+<li>Abdullah accepted the GWR lead role and will combine efforts with Quest Design on current quest work.</li>
+<li>Xelnath clarified that this sprint's example quest is meant to tell Seth's tech team which features the engine must support; the Twine focus begins next sprint.</li>
+<li>The three seashell Twine quest was only a technical SugarCube demo, not a model for the game's content.</li>
+<li>Ridley outlined a minimal quest flow: talk to NPC, check journal, examine area for clues, pick up clue, return to NPC.</li>
+<li>sadegun93 shared a WIP Vertical Slice Quest Mock-Up; Ridley asked for specific clues and noted it uses the old B theme.</li>
+<li>Ridley proposed removing the themes section from the quest template, and sadegun93 agreed.</li>
+</ul>
+<p><strong>Topics:</strong> Team departure, Game Writing pod lead, Quest Design and GWR collaboration, Vertical slice sample quest, Twine/SugarCube workflow, Themes document, Quest template</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>What are the specific clues the player will find in the sample quest (beyond the optional list of names)?</li>
+<li>Does the mock-up give Seth's tech team enough detail, or does Seth need more?</li>
+<li>Will sadegun93 need an extension for the full sample quest?</li>
+<li>Should the old B theme be moved to the finalized tab of the themes doc?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>The vertical slice quest for Seth should be fairly simple. It’s a great two-birds-one-stone opportunity with giving quest designers an example to work from, but the main goal is keeping it simple while giving the player a reason to use a few different features for Seth’s team see how things need to be connected on the tech side.</p>
+<p>If you still need an extension for what you had in mind after checking in with Seth, start with the tiniest piece of mini quest that is still part of what you are planning and try to get that to Seth. This little piece should be totally ready for Seth to implement, complete with dialogue and some bits of text (so this little piece might include a little writing GWR would normally fill in). You can still use that piece in the quest you were designing, but give Tech what they need on time for the alpha build. The rest of that quest you are designing can serve as an example for your team/still go into the Twine in the near future.</p>
+<p>For example, something short with the basic flow like ‘talk to NPC &gt; NPC provides quest &gt; on-screen prompt for player to check journal for quest information &gt; back in-game: player goes to indicated spot to use ‘examine mode’ to look for clues &gt; player picks up clue &gt; player looks at clue info updated into journal quest information &gt; player returns to NPC to turn in clue and/or share what they learned.’</p>
+<p>— <strong>Ridley</strong> in #📝│narrative-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557907036836082/1562501648054485015">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>In general, quest design is usually the tour guide ensuring the players see the most interesting parts of the game world.</p>
+<p>— <strong>Xelnath</strong> in #📝│narrative-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557907036836082/1562469856803037194">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>If you have a bunch of interesting NPCs, how do we ensure you meet all of them in a way they don’t blur into a narrative smear.  Etc. </p>
+<p>Or how do you ensure players see the most interesting landmarks in the level design of an open world</p>
+<p>— <strong>Xelnath</strong> in #📝│narrative-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557907036836082/1562470165914845327">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Hey people!
+I've just let Skip know that I have made the decision to leave this project.
+I wish you all the best, good luck and see you next time 🙂</p>
+<p>— <strong>biestibelzer</strong> in #📝│narrative-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557907036836082/1561406878150430922">jump</a>)</p>
+</blockquote>
+<h2>#Journal</h2>
+<p><em>29 messages from 8 people</em></p>
+<p>Glenny shared a focus-update video (https://www.youtube.com/watch?v=Y-o_0eI6o-Q) about the shift starting Oct 26. The Journal pod joins the gameplay section and will narrow its work to UI objectives/instructions that guide players through puzzles, ideally in a journal style that can grow into the full journal later. Members were asked to add their names to the Miro board. Matt Barnes said the pod stays active as part of the Gameplay structure, with a 'how can we help the deliverable' mindset, and pointed to the new [Gameplay Deliverable] Puzzle Room 1 channel.</p>
+<p>Ridley asked on behalf of Narrative whether the journal would have a lore glossary. Glenny said none was planned, but clue descriptions that reveal lore and a collectables section could serve that role. ogam suggested Pillars of Eternity–style nested lore tooltips. ogam offered to prototype an editor tool to bake an overhead map, and explained to Xhemoz that the map approach depends on level layout; Xhemoz relayed from Seth that levels load in and out like BotW shrines. dbugslayer asked for collaborators on issue #142 (Investigation &amp; Puzzle Journal), proposing one journal entry tied to one investigation to work out the workflow, and asked about mockups.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>The Journal pod is refocusing on puzzle objective UI as part of the gameplay section, starting Oct 26.</li>
+<li>Matt Barnes kept the pod active under Gameplay and linked the new Puzzle Room 1 deliverable channel.</li>
+<li>Narrative asked about a lore glossary; a collectables section and lore-revealing clue descriptions were floated instead.</li>
+<li>ogam proposed nested lore tooltips in the style of Pillars of Eternity and shared an example screenshot.</li>
+<li>ogam offered to prototype an overhead-map baking editor tool, with the map built in parts.</li>
+<li>Per Seth (via Xhemoz), levels will load in and out like Breath of the Wild shrines, which affects map design.</li>
+<li>dbugslayer is seeking design collaborators for issue #142 and proposed a first entry tied to one investigation.</li>
+</ul>
+<p><strong>Topics:</strong> Journal refocus, Puzzle objectives UI, Lore glossary / collectables, Map system, Issue #142</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Are there any mockups or UI/UX designs for the journal? (dbugslayer)</li>
+<li>What do we want to display in the journal? (dbugslayer)</li>
+<li>How will the journal be visually put on screen? (Fefly)</li>
+<li>Who needs GitHub access? (butchbear)</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Update! I would like to keep this pod active if we think there is still a need for it. I want to shift our mindset from "We are working on delivering this feature" to "this team specializes in this feature, how can we help with the upcoming deliverable."  I would also like this to be considered part of the "Gameplay" structure. Don't worry if you individually are part of a different lane, that should continue to be your primary focus, but I do want to remove any "Limbo" status for pods. </p>
+<p>It is acceptable and expected to continue pod related conversations here, but there is a NEW channel for the upcoming deliverables, linked is the [Gameplay Deliverable] Puzzle Room 1. I want this pod to consider what we can do to help with this. If you are struggling, reach out to me and lets see if we can figure it out. 
+https://discord.com/channels/1511905718419198013/1560726515254173806</p>
+<p>— <strong>Matt Barnes</strong> in #Journal (<a href="https://discord.com/channels/1511905718419198013/1532924067567501392/1562631509083684976">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>if there's enough for lore then we could get something going for minimal amount of effort.
+are we going to have lore pop up from tooltips like pillars of eternity?</p>
+<p>i've done some from my own custom engine but haven't messed with it in unreal.
+endless levels of tooltips depending on the thing you're looking at</p>
+<p>— <strong>ogam</strong> in #Journal (<a href="https://discord.com/channels/1511905718419198013/1532924067567501392/1562254373437046914">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Hey Everyone on Journal! There have been some changes to the whole project. Make sure you watch this video: 
+https://www.youtube.com/watch?v=Y-o_0eI6o-Q
+It covers where the focus is shifting to starting next week Oct. 26</p>
+<p>We are going to be part of the gameplay section. So make sure to add your name to the miro board! </p>
+<p>We are going to be focusing on the UI instructions/objectives for the puzzles that the player will need. Think of it as narrowing down to just the objectives section of the journal. And how to display that to the player.</p>
+<p>Once the puzzle is known, we will create a UI system to update and guide the player to it's solution, updating as the player goes along. If we can, I think we should try and still implement this in a journal style that could be expanded into the whole journal feature we were working on. But we will cover that as we get moving on it.</p>
+<p>— <strong>Glenny</strong> in #Journal (<a href="https://discord.com/channels/1511905718419198013/1532924067567501392/1561600729238741013">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1532924067567501392/1562254373437046914">ogam's nested lore tooltip example from a custom engine.</a></li>
+</ul>
+<h2>#Quest Design Pod Discussions</h2>
+<p><em>28 messages from 9 people</em></p>
+<p>Following Alex's announcement, Ridley confirmed that Act 1 is the priority. The goal is to get the whole story, Acts 1-4, into Twine as a portfolio piece for narrative and concept artists. Xelnath published Pruthvi's example shell quest on the narrative Twine site, and Lianhua noted she has Arcweave experience but is new to Twine. Pimenefusarund said he felt idle and asked for tasks. Ridley suggested helping with the World Bible or with the character pod's Twine work.</p>
+<p>sadegun93 shared the Vertical Slice Quest Mock-Up and asked for brainstorming on three clues leading to the power washer schematics. Pruthvi added barks, clues, character and word counts, Loc IDs and a Dialogues tab. Pruthvi also noted that the theme section predates the revised single-theme approach, and sadegun93 agreed to remove it and possibly consolidate the format. sadegun93 then paired everyone off for outlining Acts 1-4, with choosing acts as priority #1 next sprint. Side quests can 'go wild' for now.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Act 1 is the priority, with the goal of getting Acts 1-4 into Twine.</li>
+<li>Pruthvi's example quest is live at asgc-game-jam.github.io/narrative-twine.</li>
+<li>Xelnath said he would use Arcweave if this were a commercial product.</li>
+<li>Pruthvi expanded the vertical slice quest mock-up with barks, clues, Loc IDs and a Dialogues tab.</li>
+<li>sadegun93 paired pod members for outlining Acts 1-4.</li>
+<li>Lianhua suggested renaming the 'Gopher Doodoo' clue to 'Shark Droppings'.</li>
+</ul>
+<p><strong>Topics:</strong> Act 1 priority, Twine, Vertical slice quest, Quest outlining pairs, World Bible</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will the quest format be revised beyond removing the theme section?</li>
+<li>Can someone from localization advise on the Loc ID approach?</li>
+<li>Which pair takes which act?</li>
+<li>Will 'Shark Droppings' replace 'Gopher Doodoo'?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Arcweave is what I would use if this was a commercial product</p>
+<p>— <strong>Xelnath</strong> in #Quest Design Pod Discussions (<a href="https://discord.com/channels/1511905718419198013/1534828038351491183/1561906990857326708">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>haha such a dumb quest lol</p>
+<p>(Do check it out in as a .twee file; if Hammond's course is too long to sit through, then seeing how this story is stitched up in the graph should be enough to show you how to make a basic quest. Over time, I'm sure you'll explore more.)</p>
+<p>— <strong>Pruthvi</strong> in #Quest Design Pod Discussions (<a href="https://discord.com/channels/1511905718419198013/1534828038351491183/1561846186908844103">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>@Pruthvi A suggestion for the "Gopher Doodoo" clue name, what if it was "Shark Droppings" instead?</p>
+<p>— <strong>Lianhua</strong> in #Quest Design Pod Discussions (<a href="https://discord.com/channels/1511905718419198013/1534828038351491183/1563692736392208525">jump</a>)</p>
+</blockquote>
+<h2>#🎯│production-discussions</h2>
+<p><em>26 messages from 9 people</em></p>
+<p>Vincent asked about the priority of basic NPC interaction now that the first playable is done. butchbear said the team is merging a dialogue box with NPC interaction and Reda is waiting on Daniel's review. butchbear also noted that Michelle M., believed to be an artist, has left the project. Following Alex's announcement, Cafedunoir proposed that Production move from ClickUp to GitHub and switch from Sprints to Kanban after Sprint 7. Up-to-date user stories with descriptions, Acceptance Criteria and priorities would let people pick up work themselves. butchbear was confused about how producers would use GitHub, so klight and dbugslayer explained GitHub Projects and linked the docs and the ASGC project board. butchbear got access but found the board overwhelming, and Cafedunoir promised to walk through it together after the sprint.</p>
+<p>On Oct 21 Cafedunoir shared post-Director-meeting updates: people should add their names to the Miro board, the Sprint 7 build demo is planned for the weekend, and the ClickUp→GitHub and Sprint→Kanban changes come after this sprint. butchbear announced a mental health break of up to 2 weeks. Ricchio added a Miro box for limited-bandwidth people and committed to staying the Windows build/Steamworks person. The Saturday meeting reviewed ClickUp ticket statuses before migration. Afterward, Cafedunoir asked Design and Art members he tagged to reply in their tickets or close them this week.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Cafedunoir announced the move from ClickUp to GitHub and from Sprints to Kanban after Sprint 7.</li>
+<li>klight and dbugslayer explained GitHub Projects and shared the org project board link.</li>
+<li>Michelle M., believed to be an artist, has left the project.</li>
+<li>butchbear is taking a mental health break of up to 2 weeks.</li>
+<li>Ricchio stays committed as the Windows build/Steamworks person but can't take on anything beyond that.</li>
+<li>The Sprint 7 build demo is being scheduled for the weekend.</li>
+<li>The Saturday meeting focused on confirming ClickUp ticket statuses before the GitHub transfer.</li>
+</ul>
+<p><strong>Topics:</strong> GitHub migration, Kanban, NPC interaction priority, Miro participation board, Team availability, Sprint 7</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Should producers start structuring backlogs with their pods now, or leave that to leads? (deferred until the end of the sprint)</li>
+<li>Should current tasks move to Kanban, or only new tasks?</li>
+<li>What is the best way to copy ClickUp tasks into GitHub? (awaiting VibeBlind)</li>
+<li>Is Michelle M. coming back, and were they a lead?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>@Production after our discussion yesterday and Alex's announcement today, I think the best way we as Production can help support this transition in the project is moving over from Click Up into GitHub and transition from Sprints to Kanban. </p>
+<p>GitHub as the center allows one center of truth for the entire team to rally around. What Alex was describing and since we will be in a more fluid environment sounds like Kanban will be a better approach than sprints. The best way to support our teams for Kanban is to ensure user stories in GitHub are up to date with descriptions, Acceptance Criteria and have a priority set to them so folks can easily tell what item they should grab next to work on. </p>
+<p>I'll work with @VibeBlind this week to help ensure a smooth transition to GitHub after the end of Sprint 7. I'll make a more formal announcement to the group later this week when I have details finalized. If you haven't gotten into GitHub yet, create a username just by going to GitHub's website and <a href="https://asgcgithub.pulli.me/">go to this link</a> to gain access to this project</p>
+<p>We should also continue to cheer our teams on and help with morale. We are at a fragile point now with changes, so let's keep supporting each other all the way to the finish line. ❤️  Appreciate you all so much and please let me know if you have any questions. I'll do my best to answer!</p>
+<p>— <strong>Cafedunoir</strong> in #🎯│production-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254677226848436/1561586376707674142">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>GitHub projects 😋</p>
+<p>— <strong>klight</strong> in #🎯│production-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254677226848436/1561808763650834526">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>i clicked on that oml its a bit overwhelming 😭</p>
+<p>— <strong>butchbear</strong> in #🎯│production-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254677226848436/1561844400844177571">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I created a separate box on the Miro for limited bandwidth people that generally know what to do, and added myself to it.  To confirm, I remain committed to being the Windows build/Steamworks monkey for the duration, but I can't commit to anything beyond that.  If that gives anyone heartburn, please let me know. ❤️</p>
+<p>— <strong>Ricchio</strong> in #🎯│production-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254677226848436/1563288837168439367">jump</a>)</p>
+</blockquote>
+<h2>#❔tech-questions❔</h2>
+<p><em>21 messages from 4 people</em></p>
+<p>Jacob Braunhut asked whether he had to wait to submit changes to BP_AtlantisPlayerCharacter, which was locked. cpgeiste pointed to the Git Hygiene doc: contact whoever holds the lock. Locks can be checked with <code>git lfs locks</code> or on Keystone. dbugslayer added that blueprints can't be edited by two people at once, so Jacob should wait for the other changes to merge and then redo his work on top of main.</p>
+<p>The lock holder was MM, whose PR #348 (hiding spots) dbugslayer later confirmed merged, and dbugslayer offered to unlock the file for MM. When Jacob asked for help merging, dbugslayer told him not to merge: blueprints can't be merged, so he must redo his changes on the latest main. They hopped on VC.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Rule: contact the lock holder as described in Git Hygiene.md.</li>
+<li>Locks can be checked with <code>git lfs locks</code> or on the Keystone locks page.</li>
+<li>Blueprints can't be merged, so changes must be redone on top of main.</li>
+<li>MM's PR #348 merged, and dbugslayer offered to unlock the file on MM's behalf.</li>
+</ul>
+<p><strong>Topics:</strong> Git LFS locks, Blueprints, Workflow</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Don't merge. You need to redo your changes on the lastest changes coming from main. Blueprints can't be merged that's why we lock them</p>
+<p>— <strong>dbugslayer</strong> in #❔tech-questions❔ (<a href="https://discord.com/channels/1511905718419198013/1528747716639985684/1563304024885821552">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Also @Jacob Braunhut if it's locked, you want to sync w/ the other person because the same blueprint can't be edited by more than one person at the same time. In this case, you'll most likely need to wait for those changes to be merged and then you can redo your changes on top of <code>main</code></p>
+<p>— <strong>dbugslayer</strong> in #❔tech-questions❔ (<a href="https://discord.com/channels/1511905718419198013/1528747716639985684/1563230652860469309">jump</a>)</p>
+</blockquote>
+<h2>#NPC/Creature Art</h2>
+<p><em>20 messages from 5 people</em></p>
+<p>Anki shared a rigged 1.8k-triangle jellyfish model from Sketchfab as a possible reference for animation setup and asked if anyone with rigging knowledge could judge the rig; Zef thought it looked reasonable but deferred to a real rigger. Vaporstar4x4 posted snail NPC concepts built on one shared base body, with three variants (vehicle plus two backpack options) where only mouth shape and colors change per snail, to churn out background NPCs quickly. Anki suggested 3D could make the snail modular, and mnstr_qn reported starting a jelly people base body, aiming to make good progress over the weekend.</p>
+<p>TebTheCat drew Castella's look under her clothes, including her special hair tentacles in red, to show a transparency effect. Zef found it hard to read and asked for a darker background. After a couple of tries (and a story about a pigeon at art club), the third version landed well and Zef called it perfection.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Anki shared a rigged 1.8k-triangle Sketchfab jellyfish as an animation/rigging reference.</li>
+<li>Vaporstar4x4 proposed snail NPCs on one base body with vehicle and two backpack variants, changing only mouth shape and colors.</li>
+<li>Anki suggested making the snail modular in 3D for lots of variation.</li>
+<li>mnstr_qn started a jelly people base body and hopes to get a good chunk done this weekend.</li>
+<li>TebTheCat drew Castella's under-clothes design with red hair tentacles showing transparency.</li>
+<li>After Zef's feedback on background contrast, TebTheCat's third version won strong approval (+6 reactions).</li>
+</ul>
+<p><strong>Topics:</strong> Jellyfish rigging reference, Snail NPC concepts, Modular base bodies, Jelly people base body, Castella design, Transparency readability</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Is the Sketchfab jellyfish rig actually a good one? Anki's question still needs an answer from someone with real rigging experience.</li>
+<li>Can someone who knows 3D confirm Vaporstar4x4's shared-base-body snail plan will save modeling and rigging time?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Thinking of having 3 options, the ones in the vehicle and then 2 backpack options. From there all that would be changed per snail would be the mouth shape and colors
+Hopefully this would let us make a good chuck of background NPCs really quick, but someone who actually knows 3D can correct me if I’m wrong</p>
+<p>— <strong>Vaporstar4x4</strong> in #NPC/Creature Art (<a href="https://discord.com/channels/1511905718419198013/1542014804057792593/1562657853884473470">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>-# I was drawing during art club and a pigeon flew in and wouldn't leave, so we turned the lights off trying to lead it out 🙃</p>
+<p>— <strong>TebTheCat</strong> in #NPC/Creature Art (<a href="https://discord.com/channels/1511905718419198013/1542014804057792593/1563018300907196499">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Nice! 
+Yeah if you make the background darker than your character, It will help us read the parts that are transparent a lot easier, currently shes getting lost in both backgrounds sadly</p>
+<p>— <strong>Zef</strong> in #NPC/Creature Art (<a href="https://discord.com/channels/1511905718419198013/1542014804057792593/1563027792021557293">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1542014804057792593/1562657838487048242">Vaporstar4x4's snail NPC variations on a shared base body</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1542014804057792593/1563030642709631088">TebTheCat's Castella with transparent hair tentacles, third version</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1542014804057792593/1562118511814254672">Screenshots of the rigged 1.8k-triangle jellyfish model</a></li>
+</ul>
+<h2>#World Bible - Magic</h2>
+<p><em>18 messages from 3 people</em></p>
+<p>Lianhua shared Seayssal's bio: their life energy makes a 'special coral' bloom more often, and Seayssal's health is tied to Atlantis's ecosystem. Ridley suggested showing the bleaching progressively through the game (dulled color, aches, fatigue, hunching), with a visible worsening when Sir Richard attacks.</p>
+<p>To fit the timeline, Laurence agreed to raise Skuttle's age to 62, so Seayssal and Aishui have been in Atlantis for 40 years. Ridley floated a migrating-ancient-being idea. Lianhua kept the found-family angle instead: an ancient, solitary Seayssal adopts the abandoned child Aishui, and Skuttle helps them settle. The pair are the newest gods in a Shinto-like pantheon. Ridley loved it. Lianhua updated both bios on Oct 23.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Seayssal will show worsening bleaching symptoms through the game.</li>
+<li>Skuttle's age was raised from 42 to 62 (Laurence agreed).</li>
+<li>Seayssal and Aishui have been in Atlantis for 40 years when the game begins.</li>
+<li>Lianhua shared the found-family origin of Seayssal and abandoned child Aishui.</li>
+<li>The religion is a Shinto-like pantheon with Seayssal and Aishui as the newest gods.</li>
+<li>Lianhua updated the bios on Oct 23.</li>
+</ul>
+<p><strong>Topics:</strong> Seayssal lore, Aishui, Skuttle, Religion, Timeline</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Yes, Seayssal would still be an ancient being that has lived on its own content as a loner for many years. Then one day, Seayssal encounters Aishui while wandering the open ocean and decides to take him in. At this time, Aishui is still a child and had been passed around from family to family, no one wanting to deal with his mischievous and overly playful nature that would often get him into some kind of trouble. Eventually, the last family he was with decided to abandon him in the open ocean to fend for himself. Seayssal reluctantly takes him in thinking it will just drop him off somewhere safe and be back on its way, but Aishui clings to it and Seayssal grows to love Aishui in return. After a very long journey, they find themselves at Atlantis. At first, Aishui is not comfortable with the Atlanteans due to his childhood and only mainly interacting with Seayssal for a long time which makes Skuttle an easy Atlantean to make friends with since they somewhat resemble Seayssal in appearance so Skuttle helps them settle into Atlantis.</p>
+<p>— <strong>Lianhua</strong> in #World Bible - Magic (<a href="https://discord.com/channels/1511905718419198013/1561937012272005271/1562232446714380371">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Cute, wholesome, pulls at the heart strings, and still makes sense.</p>
+<p>— <strong>Ridley</strong> in #World Bible - Magic (<a href="https://discord.com/channels/1511905718419198013/1561937012272005271/1562233164347211948">jump</a>)</p>
+</blockquote>
+<h2>#🎯│design-discussions</h2>
+<p><em>17 messages from 7 people</em></p>
+<p>Nitro asked how open-world the game will be, given the BotW/TotK comparisons. Matt Barnes said scope will scale with availability, and framed the goal as 'feels like it could fit in the Zelda franchise.' Matt directed level implementation work to the Puzzle Room 1 workzone, and Xelnath gave Vilus access to the broader channel. voymasa asked design about oxygen behavior. underwolf suggested charges restore a configurable flat amount and that capacity changes keep current oxygen the same. Josue Monge said depletion still needs discussion and that the mechanic may be simplified. voymasa implemented a blueprint-accessible RestoreOxygen function and capacity-decrease handling. He is keeping ticket 327 open until charges are confirmed and suggested a separate ticket to define the decrease behavior.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Matt Barnes: aim for 'fits in the Zelda franchise', not 'make Zelda'.</li>
+<li>Level implementation work currently lives in the Puzzle Room 1 workzone.</li>
+<li>voymasa built a blueprint-accessible RestoreOxygen C++ function.</li>
+<li>Oxygen depletion and simplification still need design discussion.</li>
+</ul>
+<p><strong>Topics:</strong> Game scope, Level implementation, Oxygen system</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will oxygen charges/canisters be included?</li>
+<li>How should decreasing oxygen capacity behave? (needs a ticket)</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>That is going to scale based on how much availability we have and how far the features can progress. </p>
+<p>Rather than thinking of "we want to make this zelda" try to think of it as "this feels like it could fit in the zelda franchise."</p>
+<p>— <strong>Matt Barnes</strong> in #🎯│design-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254315837100123/1561902105835348001">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Glad to help. This is the kind of work that's my jam. I love building things!</p>
+<p>— <strong>voymasa</strong> in #🎯│design-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254315837100123/1563371767261564970">jump</a>)</p>
+</blockquote>
+<h2>#ya sure thing! I genuinely love being</h2>
+<p><em>17 messages from 2 people</em></p>
+<p>dbugslayer asked Matt Barnes to test the Borealis git plugin by working on branch <code>dtavares/borealis-git-plugin</code>. Matt pulled the branch, rebuilt when prompted and connected to the right source control option. dbugslayer asked him to work normally and branch off the test branch so his changes could be separated later. Matt then got stuck on the credentials step. dbugslayer explained he needs his GitHub credentials, but set up on Gitea first, and they moved to voice to sort it out.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Matt Barnes volunteered to test the Borealis plugin branch.</li>
+<li>Matt should branch off the test branch so his work can be separated later.</li>
+<li>Credentials are GitHub ones but must be set up on Gitea first, and Matt got stuck there.</li>
+</ul>
+<p><strong>Topics:</strong> Git plugin testing, Gitea, LFS locking</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Was Matt's credential issue resolved? It moved to voice.</li>
+</ul>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1562903272891613379/1562912650948513842">Choosing the source control provider in the plugin</a></li>
+</ul>
+<h2>#💻│tech-lead-discussion</h2>
+<p><em>16 messages from 3 people</em></p>
+<p>dbugslayer flagged a code review bottleneck while Leith is away this week and found he couldn't merge his own PRs. GrandHawk reported that 319 was merged, 303 was showing as not mergeable, and he can't test 295 because he lacks macOS hardware. VibeBlind opened PR #332, updating CODEOWNERS so that any tech member (not just tech leads) can review source code; dbugslayer had already approved and merged it. VibeBlind also proposed a meeting on how to review PRs. Later, VibeBlind told @Adrian they need to work out how Artists submit assets into LFS and get more Gitea admins.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>PR review bottleneck flagged while Leith is away this week.</li>
+<li>PR #332 now lets any tech member, not only tech leads, review source code; already merged.</li>
+<li>VibeBlind suggested a meeting on how to review PRs.</li>
+<li>Open needs: an LFS asset submission workflow for artists and more Gitea admins.</li>
+</ul>
+<p><strong>Topics:</strong> Code reviews, CODEOWNERS, Git LFS, Gitea admin</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Can someone review PR #295 (macOS)?</li>
+<li>How will Artists submit assets into LFS?</li>
+<li>Who else will become a Gitea admin?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>https://klipy.com/gifs/anyone-17</p>
+<p>— <strong>dbugslayer</strong> in #💻│tech-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557141429551186/1561870629639032865">jump</a>)</p>
+</blockquote>
+<h2>#Dialogue</h2>
+<p><em>15 messages from 5 people</em></p>
+<p>Laurence, from the Narrative Characters pod, asked Sound how NPC dialogue will play out audio-wise and whether there are references. cpgeiste fixed an issue, and the PR was merged into main on Oct 22. After talking with Daniel about the dialogue system, cpgeiste has a clearer direction and plans to run experiments before setting up a call. He cautioned that tech work is easy to underestimate. KyotoRando missed Daniel's availability because of timezones, and cpgeiste said Daniel (ET) is fine with DMs. EMatter reshared a post from Matt for visibility.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>cpgeiste's dialogue fix PR was merged into main.</li>
+<li>cpgeiste has a better direction for the dialogue system after talking with Daniel, and a call will follow some experiments.</li>
+<li>Daniel is in the ET timezone and welcomes DMs.</li>
+</ul>
+<p><strong>Topics:</strong> NPC dialogue sound, Dialogue system, GitHub access</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>What is the sound direction for NPC dialogue, and are there references?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I don't wanna give anybody falls hopes, since tech work is always easy to underestimate
+so I'll let everybody know ASAP when I have enough visibility to organize a call</p>
+<p>— <strong>cpgeiste</strong> in #Dialogue (<a href="https://discord.com/channels/1511905718419198013/1534715260143931502/1562866937204183122">jump</a>)</p>
+</blockquote>
+<h2>#🎯│audio-discussions</h2>
+<p><em>15 messages from 3 people</em></p>
+<p>NateTheMood shared SteamCore_Passive_V1.wav after ClickUp rejected the upload, and Alex Connelly followed with SteamCore_Ambient_V1.wav. NateTheMood noted a few clashing #11s that don't disrupt the blend, then posted a fused mix, SteamCoreFused.mp3. LockedInFish is hesitant to keep working on the active arrangement now that combat has been cut, and plans to send a when2meet. NateTheMood prefers workshopping all 3 arrangements in one meeting and encouraged using percussion and fuller textures.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>SteamCore Passive and Ambient tracks were shared, then fused into one mix.</li>
+<li>Combat no longer exists, which changes the plan for the active arrangement.</li>
+<li>A meeting is planned to workshop all three arrangements together.</li>
+</ul>
+<p><strong>Topics:</strong> SteamCore music, Arrangements, Combat removal</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>When will the when2meet meeting happen?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I looped it once to prove it can</p>
+<p>— <strong>NateTheMood</strong> in #🎯│audio-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254504836890664/1561421799068139541">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I didn't demonstrate loop but trust</p>
+<p>— <strong>Alex Connelly</strong> in #🎯│audio-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254504836890664/1561495954618720478">jump</a>)</p>
+</blockquote>
+<h2>#Build/Release Pipeline</h2>
+<p><em>15 messages from 6 people</em></p>
+<p>Ricchio had the build ready but couldn't submit the version bump because of PR enforcement, which would have left the git tag inaccurate. He asked for an approval on PR #339 and whether such changes could get an override in the future. Hanhula approved it but argued against pipeline skips, since even a quick second look helps. Ricchio explained to voymasa that the block stops him tagging the exact commit the packaged build came from. That tag drives the GitHub release used for archiving, so a Steam release would fall out of sync with GitHub.</p>
+<p>Cafedunoir checked on a build demo of Alpha 2 to celebrate the end of Sprint 7. Ricchio will put together a Windows build Sunday morning, and Cafedunoir set the demo for Sunday evening, with the last changes landing Saturday. dbugslayer (Daniel) offered to make a Mac build, and Ricchio asked him to attach it to the 0.1.1 GitHub release for the Steamworks steps. Daniel is unsure he has the GitHub permissions and plans to build Sunday. Cafedunoir only has a Mac, so they're hoping for that Mac build or for someone to screen share.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Ricchio needed approval on PR #339 because PR enforcement blocked the version bump and accurate git tag.</li>
+<li>Hanhula approved but advised against bypassing the pipeline at all.</li>
+<li>Ricchio explained that the tag drives GitHub releases, which are used for archiving and should stay in sync with Steam.</li>
+<li>Alpha 2 / Sprint 7 build demo set for Sunday evening, with last changes merging Saturday.</li>
+<li>Ricchio will make a Windows build Sunday morning.</li>
+<li>dbugslayer will try to attach a Mac build to release 0.1.1 but may lack GitHub permissions.</li>
+<li>Cafedunoir has no way to run a Windows build and needs a Mac build or a screen-sharer.</li>
+</ul>
+<p><strong>Topics:</strong> Build pipeline, PR enforcement, Versioning, Alpha 2 demo, Mac build, Steam</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Should there be an override for version-bump changes? Hanhula prefers none.</li>
+<li>Does dbugslayer have GitHub permissions to attach release archives?</li>
+<li>Will a Mac build be ready for Cafedunoir's Sunday demo, or will someone screen share?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Approved CL for the minute so this can go in 🫡  Probably best to not have ways to skip the pipeline tbh, even a quick second pair of eyes looking is helpful</p>
+<p>— <strong>Hanhula</strong> in #Build/Release Pipeline (<a href="https://discord.com/channels/1511905718419198013/1532221338524061866/1562337560762654731">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>https://klipy.com/gifs/jobs-done</p>
+<p>— <strong>Ricchio</strong> in #Build/Release Pipeline (<a href="https://discord.com/channels/1511905718419198013/1532221338524061866/1562637072571826176">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Maybe I'm not aware of some Git-Fu, but it specifically blocks my ability to tag the repository with the exact change that I made the packaged build with.  That tag is also the basis of the GitHub release process (which we generally use for archiving at this point), so if I released the build on Steam, it would be out of sync with GitHub.  Not a huge deal, but I'd rather not leave things in a weird state, if I can avoid it.</p>
+<p>— <strong>Ricchio</strong> in #Build/Release Pipeline (<a href="https://discord.com/channels/1511905718419198013/1532221338524061866/1562628803363209288">jump</a>)</p>
+</blockquote>
+<h2>#Sprint 7 - Janitor Snail</h2>
+<p><em>14 messages from 3 people</em></p>
+<p>Diana Donado gave Brandon Trabon detailed critique of the Janitor Snail model. Her points: set scale using the human or UE Manny as reference, keep the snail and vehicle in one file, lower the polycount by using textures, study the concept and ask questions (such as the glass shelf door), and avoid unnecessary detail. Brandon shrank the character, remodeled the pipe, handle, shell and arms, and asked about the eyes. Zef said the eyes will use texture swaps, and asked for thicker arms, a sturdier craft and 'chonkier' pipes, with bolts handled in normal maps. Brandon then shared an update: a rounder sphere-based shell, shelf lips, handles, a squeegee and scrapers, a shorter propeller, shell stands, and the snail named 'Gary'. He uploaded a combined FBX to Google Drive. Zef sent video feedback and an edited FBX on Oct 24, and noted the moustache doesn't need straightening because shape retention beats facial movement.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Diana's critique covered scale, a single file, polycount, studying the concept and avoiding excess detail.</li>
+<li>Zef asked for 'chonkier' pipes and a sturdier craft, with bolts solved in textures.</li>
+<li>The snail has been named Gary.</li>
+<li>The combined FBX is on Google Drive, and Zef replied with video feedback and an edited FBX.</li>
+</ul>
+<p><strong>Topics:</strong> 3D modeling, Janitor Snail, Art critique</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Diana's review of the updated model is still pending.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Thanks for the input...I have added some thickness to the arms and moved the bottom ones a bit lower (I noticed the shirt is between the upper and lower arms), I'll make the craft look a bit more sturdy, I just (finally) added the handles to the shell, and am about to model the scrappers and squeegee, and I'll make the pipes look more "chonky". Thanks for the example not sure I could have figured out "chonky" 🤣 , I'll work to make them look better. Do you think adding some bolts to the connectors will help the overall look as well?</p>
+<p>— <strong>Brandon Trabon</strong> in #Sprint 7 - Janitor Snail (<a href="https://discord.com/channels/1511905718419198013/1559444880701522000/1562340159909929001">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>oops forgot to mention the 'stache doesn't need to be straightened for rigging, there will be minimal movement for it and for our art direction and purposes, shape retention is more important than complex facial movement</p>
+<p>— <strong>Zef</strong> in #Sprint 7 - Janitor Snail (<a href="https://discord.com/channels/1511905718419198013/1559444880701522000/1563573470430887937">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1559444880701522000/1561446537039446048">Diana's annotated critique of the snail vehicle polycount and views</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1559444880701522000/1562005182147989504">Brandon's resized snail progress</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1559444880701522000/1562338116008673280">Zef's CHONKY pipe reference</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1559444880701522000/1562711751550701598">Gary the snail with a rounder shell, tools and size comparison</a></li>
+</ul>
+<h2>#❔art-questions❔</h2>
+<p><em>13 messages from 7 people</em></p>
+<p>Anki offered to help add the fish schooling effect to the main menu. dbugslayer had already done it in PR #297, which was merged on Oct 19, and invited anyone to branch off main to polish the fish. Artists asked where to place themselves on Miro. Zef told Venom (Tristan) the character bio section fits, and suggested TebTheCat (Debra) move from Beautiful Corner to the characters side for now. Jess asked about an art meeting, and Zef said he'll go over concepts and targets after the directors' sync.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Fish schooling on the main menu was merged via PR #297 and is open for polish.</li>
+<li>2D character concept artists should sit in the character section of Miro for now.</li>
+<li>Zef will hold an art meeting on concepts and targets after the directors' sync.</li>
+</ul>
+<p><strong>Topics:</strong> Main menu fish schooling, Miro placement, Art meeting</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Nitro's question about where to put their name on the board got no direct reply.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>🙂‍↕️😭 apologies for all the concept people I think saw me and put their sticky in the same spot</p>
+<p>— <strong>TebTheCat</strong> in #❔art-questions❔ (<a href="https://discord.com/channels/1511905718419198013/1528746046744690698/1561923942724272149">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Yes I will be going over the concepts and the targets with the team once we get all our ducks in a row after the directors sync tonight</p>
+<p>— <strong>Zef</strong> in #❔art-questions❔ (<a href="https://discord.com/channels/1511905718419198013/1528746046744690698/1562136111697104987">jump</a>)</p>
+</blockquote>
+<h2>#"Atlantis/Atlantean" Name Ideas</h2>
+<p><em>13 messages from 3 people</em></p>
+<p>Lianhua opened a brainstorm for renaming "Atlantis/Atlantean," asking members to react with the HelmetHeart emoji on names they'd accept as finalists, with the original name kept as an option. Lianhua suggested Meros/Merosan, Mereas/Merean, Sireni/Sirenin, Meral/Meralka, Umis/Umian, Koraldom/Korals, Koralis/Koralean, Meropolis/Merean and Merlantis/Mers. Ashrah Coliary suggested Kuurangi/Kuuna Aurangi (Coral Kingdom), and Pimenefusarund later added corlton, Mulopolis ("mul" is water in Korean), wavestate, The city, Searen, Seaty and Poseity. No final name was chosen; Koralis/Koralean and the original Atlantis/Atlantean each have 2 reactions.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>The thread uses HelmetHeart emoji reactions to pick finalist names.</li>
+<li>Koralis/Koralean and the original Atlantis/Atlantean lead with 2 reactions each.</li>
+<li>Ashrah Coliary proposed Kuurangi/Kuuna Aurangi, meaning Coral Kingdom.</li>
+<li>Pimenefusarund added a batch of ideas, including Mulopolis ("mul" is Korean for water).</li>
+</ul>
+<p><strong>Topics:</strong> Renaming Atlantis, Worldbuilding names, Voting by reaction</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Which name will be chosen as the final replacement for Atlantis/Atlantean?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Koralis/Koralean</p>
+<p>— <strong>Lianhua</strong> in #"Atlantis/Atlantean" Name Ideas (<a href="https://discord.com/channels/1511905718419198013/1562245406774141049/1562485966307070017">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Kuurangi/Kuuna Aurangi - Coral Kingdom</p>
+<p>— <strong>Ashrah Coliary</strong> in #"Atlantis/Atlantean" Name Ideas (<a href="https://discord.com/channels/1511905718419198013/1562245406774141049/1562443442854957179">jump</a>)</p>
+</blockquote>
+<h2>#tech-voice-channel</h2>
+<p><em>13 messages from 5 people</em></p>
+<p>This was mostly link sharing during tech voice sessions. cpgeiste shared inkle's ink narrative scripting language. dbugslayer shared the repo SETUP.md, the <code>git lfs locks</code> command and issue #142 (Investigation &amp; Puzzle Journal). Matt Barnes shared the mcp-unreal MCP server and Ollama's Claude Code integration docs. dbugslayer asked Matt to hop on VC, and Jacob Braunhut joined later to share his screen.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>cpgeiste shared ink, inkle's narrative scripting language.</li>
+<li>Matt Barnes shared mcp-unreal and Ollama's Claude Code integration.</li>
+<li>dbugslayer pointed people to SETUP.md, <code>git lfs locks</code> and issue #142.</li>
+</ul>
+<p><strong>Topics:</strong> Tools, Narrative scripting, AI tooling, Git LFS</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I'm currently watching people cook dinner</p>
+<p>— <strong>Jacob Braunhut</strong> in #tech-voice-channel (<a href="https://discord.com/channels/1511905718419198013/1526439802478530651/1563304966716657747">jump</a>)</p>
+</blockquote>
+<h2>#"Special Coral" Name Ideas</h2>
+<p><em>12 messages from 1 people</em></p>
+<p>Lianhua opened a brainstorm for naming the special coral that powers coraltech, asking for HelmetHeart reactions on acceptable finalists. Lianhua listed Leafelk, Sunfox, Bubble Fan, Sea Carnation, Branched Bamboo, Acropora, Boulder Star, Foxtorch, Sungrail, Sapphire Xenia and Firelace. Sunfox, Branched Bamboo, Acropora, Sapphire Xenia and Firelace each have 1 reaction, and no decision was made.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Lianhua posted 11 name candidates for the coral that powers coraltech.</li>
+<li>Sunfox, Branched Bamboo, Acropora, Sapphire Xenia and Firelace each got 1 reaction.</li>
+</ul>
+<p><strong>Topics:</strong> Special coral naming, Coraltech lore</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Which name will the special coral get?</li>
+</ul>
+<h2>#🎨│art-lead-discussion</h2>
+<p><em>12 messages from 4 people</em></p>
+<p>Zef handed out art-team plans and asked Devang Parikh and Impyral (TJ) to set up a when2meet for an Art Team sync this weekend. The team has two initiatives: Devang leads Narrative &amp; Character and TJ leads the Beautiful Corner, or vice versa if they prefer. Zef will move the asset list into the team spreadsheet for sign-ups, and the team will connect with VibeBlind about uploading assets and tasks through GitHub. Naming conventions will extend the ones Tech already outlined in ClickUp.</p>
+<p>For characters, Act 1 characters seen in game get priority. The format is concept, orthographic and portrait, and a portrait is mandatory for every concepted character. Briefs should be trimmed for artists, and Castella is the character closest to modeling. A reusable base mesh for other Atlanteans is the main concern.</p>
+<p>The Beautiful Corner is a single in-game camera shot showing the target look. Every prop needs at least one artist, teams are capped at three, and a separate branch or committers may be set up with Seth and Tech. Tayla and the UI folks will work on UI with the design pods. Ridley noted that concepts missing from the Twine are linked in the characters spreadsheet. Impyral praised the clarity and said he'll need some time late this week because of an interview and Halloween events. Jake Goodheart asked about character rig progress; Zef shared a link to the current state and suggested testing Brandon's dummy rig with Unreal retargeting.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Zef asked Devang and Impyral for a when2meet to schedule a weekend Art Team sync.</li>
+<li>Devang is assigned Narrative &amp; Character and TJ (Impyral) the Beautiful Corner, with swapping allowed.</li>
+<li>A portrait is mandatory for every concepted character, and Act 1 on-screen characters come first.</li>
+<li>Castella is closest to modeling; a reusable Atlantean base mesh is the main goal.</li>
+<li>Beautiful Corner props each need at least one artist, in teams of up to three.</li>
+<li>Naming conventions will build on Tech's ClickUp doc, and GitHub uploads will be coordinated with VibeBlind.</li>
+<li>Impyral needs time at the end of the week for an interview and Halloween events.</li>
+<li>Rig progress is early; next step is testing Brandon's dummy rig with Unreal retargeting.</li>
+</ul>
+<p><strong>Topics:</strong> Art team planning, Character concepts, Beautiful Corner, Asset pipeline, Naming conventions, Rigging</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>When will the Art Team sync happen, and on Discord or Google?</li>
+<li>Who knows Unreal retargeting to test Brandon's dummy rig in engine?</li>
+<li>Will the art team get its own branch or designated committers? To be worked out with Seth and Tech.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Calling shots like a boss, I like it</p>
+<p>— <strong>Impyral</strong> in #🎨│art-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557587023892580/1562651852951126080">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Dude the clarity is amazing.  I need a little bit of time toward the end of this week - got an interview and starting peak kid-school-Halloween events but we'll get it done.</p>
+<p>— <strong>Impyral</strong> in #🎨│art-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557587023892580/1562652517953835072">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>lol just passing it down from on high as best i can</p>
+<p>— <strong>Zef</strong> in #🎨│art-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557587023892580/1562652139669684305">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1517557587023892580/1562645772812685437">Beautiful Corner target scene</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1517557587023892580/1562642472608473138">3D character art so far</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1517557587023892580/1562642268903440434">Character concept format: concept, orthographic, portrait</a></li>
+</ul>
+<h2>#Unlock git lfs file</h2>
+<p><em>11 messages from 2 people</em></p>
+<p>dbugslayer accidentally unlocked MM's BP_BlankHidingSpot. MM said that was fine since it's a new file he created. dbugslayer pointed out that BP_AtlantisInteractable.uasset is actually locked by Matt (MatthewStevenBarnes), not MM. MM got a "path not found" error, apparently because of a path mismatch (Interactable vs. Interactables), and they moved to voice to sort it out.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>BP_BlankHidingSpot was unlocked by mistake, which was harmless.</li>
+<li>BP_AtlantisInteractable is locked by Matt Barnes (ID:118), not MM.</li>
+<li>MM hit a path-not-found error on the interactable path.</li>
+</ul>
+<p><strong>Topics:</strong> Git LFS locks, File paths</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Why is the path/naming off? Discussed on VC.</li>
+</ul>
+<h2>#World Bible - Currency</h2>
+<p><em>10 messages from 2 people</em></p>
+<p>Lianhua shared currency ideas from the old steampunk bible: Atlanteans barter rather than exchange money with humans, and four gems serve as denominations (Whitby Jet 200, Baltic Amber 100, Agate 50, Quartz 25). She also listed name options such as Runlia, Pearlia and Meraqua. Ridley agreed there would be no human currency and said 1–2 gem types would be enough. Ridley likes Runlia but is open to a vote, and suggested condensing the gem values into a sentence or two.</p>
+<p>On whether the player needs currency, Ridley noted that economy and consumables were considered out of scope, but currency could add narrative flavor in quests. He gave an example of Gumboh sending the player for kelp bulbs, with trust rising depending on what the player does with the change. The currency breakdown could also appear in the journal. Ridley encouraged Lianhua not to overwork herself.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Gems act as larger denominations of a base currency.</li>
+<li>Ridley favors Runlia and suggests a vote on the final name.</li>
+<li>Ridley suggests 1–2 gem types instead of 4.</li>
+<li>Player economy was considered out of scope, but currency could serve as quest flavor.</li>
+<li>Ridley's Gumboh kelp-bulb errand shows how currency could tie into trust.</li>
+</ul>
+<p><strong>Topics:</strong> Atlantean currency, Runlia, Bartering, Quest design</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will the currency name go to a vote?</li>
+<li>Will there be any player-facing currency?</li>
+<li>Will the journal have an items/culture section?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I don't believe there has been much discussion of economy outside of narrative. Early on it was discussed with game design/tech, and the general vibe I got was that things like consumables or anything like that would be another feature and was considered out of scope before Leslie left. I think if we want to use the player exchanging Rulia/stones/etc. with NPCs as a type of quest thing so it isn't pure bartering and favors as the narrative flavor, we totally can. Like Gumboh says "Can you run to the general store for me and buy me a crate of kelp bulbs? I can give you the Runlia for it." Player says yes, Gumboh gives the player a baltic amber piece. Player goes and buys the supplies, and receives a quartz in change. If the player tries to give the quartz to gumboh as well as turning in the crate of bulbs, Gumboh tells the player to keep the quartz for their effort and trust goes up. The player has the option to tell Gumboh to keep it for the kitchen, and trust goes up a little extra.</p>
+<p>We don't have to have the characters explain the currency system per se, but maybe the breakdown of currencies could appear in the journal if it has a section on items or culture (which I should check into-- I'm not sure where they are at on that bit). Or maybe this is a detail that the player will see but not really need explained.</p>
+<p>— <strong>Ridley</strong> in #World Bible - Currency (<a href="https://discord.com/channels/1511905718419198013/1561930412039610450/1562240818377662505">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I appreciate how much work you're doing! The question asking is very helpful.</p>
+<p>Please make sure not to overwork yourself, though. 🙏  I know you have mentioned burnout, and I do want to make sure you don't feel like you have to do it all yourself.</p>
+<p>— <strong>Ridley</strong> in #World Bible - Currency (<a href="https://discord.com/channels/1511905718419198013/1561930412039610450/1562242901755302020">jump</a>)</p>
+</blockquote>
+<h2>#World Bible - Atlantean Fashion</h2>
+<p><em>10 messages from 3 people</em></p>
+<p>Lianhua posted fashion ideas by class from the old steampunk bible (Atlantean Hydropunk Fashion) and asked the art team to weigh in. Ridley thought the bras might clash with the Western Victorian modesty Zef described, and suggested shells work better as practical gear, such as kneepads or guard armor. Lianhua said the meeting notes left the vision unclear.</p>
+<p>Zef shared reference images and his art direction: efficiency, outfits as extensions of the body, and accessories that are ready-made or easily crafted in the ocean. Examples include Hermitfolk with barnacle 'hats' and Jellyfolk whose bodies read as Victorian clothing. His priorities are Functional, Clear, and Whimsical, in that order. His edits cut the bras, leather, pocket watches and metal jewelry for all classes (keeping it for upper class or royalty only). He also questioned gears in crowns, tridents for all royalty, and silk top hats. Lianhua and Ridley thanked him.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Zef's art direction: Functional, Clear, Whimsical, in that order.</li>
+<li>Outfits act as extensions of the body, as with Hermitfolk barnacle hats and Jellyfolk shaped like Victorian clothes.</li>
+<li>Cut items include clamshell bras, leather (it degrades in seawater) and pocket watches.</li>
+<li>Zef suggested limiting tridents to a single monarch or person of power, given their Poseidon iconography.</li>
+<li>Ridley suggested repurposing shells as kneepads or royal guard armor.</li>
+</ul>
+<p><strong>Topics:</strong> Atlantean fashion, Art direction, World Bible</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Hey @Lianhua and @Ridley here are my general notes and references in regards to clothing and fashion:</p>
+<p>My overarching goal for fashion and character designs is Efficiency: to minimize the amount to material and still communicate the visual influence effectively.</p>
+<p>The goal is for the characters to have their "outfits" be an extention of their bodies inso far as that is possible. My intnet is not tho morph biology to match a clothing item, but if their physiology can represent some kind of accessory that we as viewers recognize without compromising its integrity, the adjustment will be made to do so.</p>
+<p>Characters will also need to have accessories that are ready-made or easily crafted in the ocean. Although the influence of steampunk technology has been prevalent in this society for a number of years, the adoption of surface fashion simply for the sake of fashion is a bit too corny for our Art Direction.</p>
+<p>Some examples of this in action in the examples above: 
+- Hermitfolk with a variety of "hats" that are simple shaped barnacles, theirt shells will provide patterns and variety that speak to the owners personality
+- Jellyfolk would have bodies shaped to symbolize what we understand to be victorian era clothing, but they aren't <em>wearing</em> clothes, their bodies just kind of <em>are</em> clothes
+- Other merfolk will be more inclined to <em>wear</em> accesories, much liike we do, but again, efficiency. If a single shell type shoulder pad identifies you as a guard, then we can use that across any merfolk npc to make them a guard.
+- Also to Skip's point, we don't really need bras/outerwear in the same way its been done traditionally, mostly <em>because mammals</em> and anthropological and physiological reasons we dont need to review here.</p>
+<p>— <strong>Zef</strong> in #World Bible - Atlantean Fashion (<a href="https://discord.com/channels/1511905718419198013/1561934018373615666/1562273171321790485">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>All that said, Art Direction-wise, we are going for Functional, Clear, and Whimsical, in that order. So for what was previously listed, here would be my edits:</p>
+<p>All Classes: 
+~~- Metal jewelry (necklaces, bracelets, cuffs for their ears, fins, tails, etc.)~~ </p>
+<blockquote>
+<p>Keep to Upper Class if not only Royalty
+~~- Leather belts, holsters, and harnesses~~ 
+Leather does not hold up well to seawater and is then a question of underwater tanning processes
+- Coral accessories 
+- Seaweed used as ponytails, wrapped in braids, etc.
+- Shoulder pauldrons 
+- Waist wraps</p>
+</blockquote>
+<p>Royalty:
+- Hydropunk inspired crowns - coral mixed ~~with gears, cogs, etc.~~ </p>
+<blockquote>
+<p>question of why are they mixed with gears?
+- Pearls (necklaces, arm cuffs, earrings, body chains, etc.)
+~~- Clamshell bras~~
+- Tridents 
+(do all royalty have tridents as if they were canes or walking sticks? Trigents tend to be reserved t oa single monarh or person of power, seeing as that its traditionally tied to Poseidon in an iconographic sense)</p>
+</blockquote>
+<p>Upper Class:
+- Mechanical tail/fin braces </p>
+<blockquote>
+<p>are these aesthetic or functional? Raises the question of exposed cogwork in seawater
+- Top hats 
+question of material, silk and cloth dont hold up well underwater
+- Fascinators<br />
+representational ones sure, otherwise a question of material again 
+~~- Clamshell bras~~ 
+Clamshell would likely be akin to armor i think
+- Shell-plated armor</p>
+</blockquote>
+<p>Middle Class:
+~~- Pocket watches~~ (most mechanical stuff is gonna be useless unless in oxygenareas might be better to keep to royalty where they can afford to not care)
+~~- Starfish bras~~
+~~- Leather strap armor~~ (Need an alternate material or degradation solution)</p>
+<p>Lower Class:
+- Brass goggles (for workers only)
+- Draped fishing nets
+- Seaweed ~~bras~~ clothing in general is fine
+- Driftwood jewelry</p>
+<p>For every material as long as you go in with the mentality that any time you add one, theres technically a whole industry attached to it. 
+If there's kelp clothing, theres probably kelp farmers, handlers and sellers
+If there's surface items and they're rare, there's probably scavengers, merchants and black market dealers
+If there's leather, there's animal herders, killers, and tanners
+and so on.</p>
+<p>I hope that make sense, let me know if you guys have any questions!</p>
+<p>— <strong>Zef</strong> in #World Bible - Atlantean Fashion (<a href="https://discord.com/channels/1511905718419198013/1561934018373615666/1562273183048929372">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1561934018373615666/1562263905747869766">Zef's visual references for Atlantean fashion and character design.</a></li>
+</ul>
+<h2>#District Design</h2>
+<p><em>9 messages from 4 people</em></p>
+<p>WouldBe said he may need GitHub access, though butchbear turned out not to have permission to invite others. EMatter ran a district design meeting and posted its decisions: each puzzle will be its own sub-level for the prototype, there will be level loading, and World Partition with one file per actor is already the default. butchbear shared notes from the District Design x Leads/Directors meeting, and Matt Barnes posted the pod update linking the Puzzle Room 1 channel.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Decided: each puzzle is its own sub-level for the prototype.</li>
+<li>Decided: there will be level loading rather than seamless transitions.</li>
+<li>World Partition with one file per actor is already in use.</li>
+<li>butchbear shared the District Design x Leads/Directors meeting notes.</li>
+</ul>
+<p><strong>Topics:</strong> Level structure, World Partition, GitHub access</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>WouldBe's GitHub access is still unresolved.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Agenda
+-Will each "puzzle" be its own sub-level or integrated into a bigger level
+<em>Each puzzle will be its own sub-level for the intention of getting a prototype up</em>
+-Are we "level loading" or transitioning from level to level, or is it seamless
+<em>We will have level loading</em>
+-Are we using World Partition, or static levels.
+<em>We are already using world partition as default; one file per actor (1FP)</em></p>
+<p>— <strong>EMatter</strong> in #District Design (<a href="https://discord.com/channels/1511905718419198013/1537525414199566377/1562605853666705470">jump</a>)</p>
+</blockquote>
+<h2>#@Adrian Popoviciu | [Tech][EEST] We</h2>
+<p><em>9 messages from 2 people</em></p>
+<p>Adrian asked how the artists work, with a standard git client or an Unreal git plugin. He recommended the ProjectBorealis UEGitPlugin, a fork that is more stable than the built-in plugin and handles git locks from inside the editor, much like the P4V plugin. dbugslayer explained that artists have been using Google Drive and Seth wants them committing to git. Manual LFS locking from the command line would be friction for artists. dbugslayer, Matt Barnes and Ramiro are now testing the plugin on branch <code>dtavares/borealis-git-plugin</code>, with good results so far, before rolling it out more widely.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Adrian recommended the ProjectBorealis UEGitPlugin, which does in-editor LFS locking.</li>
+<li>Manual CLI lock/unlock was flagged as a friction point for artists.</li>
+<li>dbugslayer, Matt Barnes and Ramiro are testing the plugin on <code>dtavares/borealis-git-plugin</code>.</li>
+</ul>
+<p><strong>Topics:</strong> Git workflow, Unreal git plugin, LFS locking, Artist onboarding</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>When will the plugin roll out to the whole team?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>It is more stable over the one built into engine, this is also a fork which further has bug fixes and performance optimizations. </p>
+<p>Workflow wise, it works just like the P4V plugin</p>
+<p>— <strong>Adrian</strong> in #@Adrian Popoviciu | [Tech][EEST] We (<a href="https://discord.com/channels/1511905718419198013/1562639477564772393/1562842346712735759">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Great. I don't believe anyone is using it. At the very least no one has ever mentioned it. If it handles seamless editor integration with lfs locking/unlocking it'll certainly be worth using it. The current workflow is cumbersome with folks having to manually lock/unlock files via the cli. And that'll definitely be a point of friction w/ artists.</p>
+<p>— <strong>dbugslayer</strong> in #@Adrian Popoviciu | [Tech][EEST] We (<a href="https://discord.com/channels/1511905718419198013/1562639477564772393/1562848064094601337">jump</a>)</p>
+</blockquote>
+<h2>#📄│design-lead-discussion</h2>
+<p><em>8 messages from 3 people</em></p>
+<p>Matt Barnes pointed Design Leads to the announcement. After talking with Seth, he shifted pod focus from 'delivering this feature' to 'specializing in an area.' Pods without anything to contribute to the current 3-pillar deliverable will help those that do. Full-team talk moves to Deliverable workzone channels. The weekly design leads sync still happened on Oct 22, but Anrakyr missed it because his graphics card died.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Pods are refocused on specialization areas, with help shifting to the active deliverables.</li>
+<li>New Deliverable workzone channels will host full-team conversations.</li>
+<li>Anrakyr's graphics card died on the day of the sync.</li>
+</ul>
+<p><strong>Topics:</strong> Pod structure, Deliverable workzones, Design sync</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Sorry for missing it, my graphics card decided today was a good day to die and been wrestling with figuring out how to or if I can fix it…</p>
+<p>— <strong>Anrakyr</strong> in #📄│design-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517558304459591801/1563040788642791475">jump</a>)</p>
+</blockquote>
+<h2>#"The Wilds" Name Ideas</h2>
+<p><em>8 messages from 2 people</em></p>
+<p>Lianhua opened a brainstorm for renaming "The Wilds," asking for HelmetHeart reactions on acceptable finalists. Lianhua listed The Wilds, Edge, Seage, Asilge, Edeald and Koya, and Pimenefusarund added Outlands. Asilge and Koya each have 1 reaction, and no decision was made.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Asilge and Koya each picked up 1 reaction.</li>
+<li>Pimenefusarund suggested Outlands.</li>
+</ul>
+<p><strong>Topics:</strong> Renaming The Wilds, Worldbuilding names</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>What will The Wilds be called in the final version?</li>
+</ul>
+<h2>#3D Animation</h2>
+<p><em>8 messages from 3 people</em></p>
+<p>CamCamtehCamsta downloaded the character FBX and asked whether it should include bones or whether they should rig the blockout themselves. They then realized they hadn't downloaded Brandon's file yet. Zef said Brandon's file is rigged, but CamCamtehCamsta is welcome to rig the blank one to experiment with facial setup.</p>
+<p>CamCamtehCamsta praised the level of control in Brandon's rig and asked what the pins on the pole joints do. Brandon Trabon thinks they control elbow position. He mentioned a more elaborate rig he built on an early low-poly model that can even manipulate joint geometry. His other notes: box-shaped finger controls are easier to select than circles, the tool supports a reusable "fist" shape key he hasn't gotten working yet, and the automated weight painting is a big time saver.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Zef confirmed Brandon's file is already rigged; the blank one can be used to experiment with facial rigging.</li>
+<li>CamCamtehCamsta loves the level of control on Brandon's rig (3 reactions).</li>
+<li>Brandon thinks the pole-joint pins control elbow position.</li>
+<li>Brandon recommends box-shaped finger controls over circles because they're easier to select.</li>
+<li>The rigging tool supports a save-once, reuse-anywhere fist shape key, which Brandon hasn't gotten working yet.</li>
+<li>Brandon says automated weight painting works really well and saves a lot of time.</li>
+</ul>
+<p><strong>Topics:</strong> Rigging, Character animation, FBX, Weight painting</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>How to get the 'fist' shape key feature working.</li>
+<li>Brandon wasn't fully sure the pole pins control the elbow and planned to re-check the file.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I just want to say I love the level of control on  Brandon's rig</p>
+<p>— <strong>CamCamtehCamsta</strong> in #3D Animation (<a href="https://discord.com/channels/1511905718419198013/1539414366565175316/1563017246526275655">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I'd have to get back into the file, but I think that controls the elbow position. I did another one with an early version of the low poly character model where I threw the kitchen sink at it, and that one even has the ability to manipulate the joint geometry if we want that much control. Also I've found that choosing boxes instead of circles for the finger joint controls are easier to select and allows us to more easily manipulate each finger. Another thing this tool has (which I haven't figured out how to make work yet) is the ability to set "fist" shape keys allowing us to make a perfect looking fist instead of having to manipulate the fingers independently each time. You only need to do it once, save it and then it can be used each time.</p>
+<p>— <strong>Brandon Trabon</strong> in #3D Animation (<a href="https://discord.com/channels/1511905718419198013/1539414366565175316/1563023238085353493">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Oh wait I  forgor to download Brandon's file</p>
+<p>— <strong>CamCamtehCamsta</strong> in #3D Animation (<a href="https://discord.com/channels/1511905718419198013/1539414366565175316/1562689355812708384">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1539414366565175316/1562689039763644486">Unrigged character blockout FBX</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1539414366565175316/1563019634620375040">Pole joint controls on Brandon's rig</a></li>
+</ul>
+<h2>#🗓️│production-lead-discussion</h2>
+<p><em>7 messages from 3 people</em></p>
+<p>VibeBlind flagged a concern from a team member. Xelnath saw it as asking for certainty in an uncertain situation, where a plan acts as goal posts rather than fixing things. VibeBlind noted that junior devs expected more assigned tasks and hand-holding, and many left during the infrastructure phase. Cafedunoir agreed to move to a Kanban workflow and GitHub, which he had discussed with Seth, at the end of Sprint 7 to match Alex's transition, while keeping morale up.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Many junior devs left when there were no clear tasks for them.</li>
+<li>Production lead agreed on Kanban and GitHub after Sprint 7.</li>
+</ul>
+<p><strong>Topics:</strong> Team uncertainty, Junior dev retention, Kanban transition</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I can't tell if she's bee on a dev team before or not, but if not, there is an illusion that the plan fixes things rather than acts as goal posts.</p>
+<p>— <strong>Xelnath</strong> in #🗓️│production-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517558685956706534/1561441438385045639">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>and while we were building infra to even do the jam, most of them dipped because there wasn't clear tasks for them</p>
+<p>— <strong>VibeBlind</strong> in #🗓️│production-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517558685956706534/1561442139185881216">jump</a>)</p>
+</blockquote>
+<h2>#Starting a thread for the agenda for</h2>
+<p><em>7 messages from 2 people</em></p>
+<p>Cafedunoir laid out agenda items: keep the sprint Demo at the end of the current sprint, move from ClickUp to GitHub at the end of Sprint 7 to line up with Tech, and switch from Sprints to Kanban at the end of Sprint 7. Xelnath said the current sprint doesn't change: wrap it up as usual, then align everyone on the three initiatives.</p>
+<p>Cafedunoir noted that Seth mentioned builds are now weekly instead of bi-weekly, which makes Kanban a better fit. Xelnath said Kanban is totally okay with him; he just wants people laser-focused on the near-term deliverables. Cafedunoir later pinged @Director about the meeting starting.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Proposed: move from ClickUp to GitHub and from Sprints to Kanban at the end of Sprint 7.</li>
+<li>Xelnath: the current sprint wraps as normal, demo included, before aligning on the new initiatives.</li>
+<li>Weekly builds (per Seth) were the reason given for switching to Kanban.</li>
+<li>Xelnath approved Kanban and stressed laser focus on near-term deliverables.</li>
+</ul>
+<p><strong>Topics:</strong> Sprint demo, ClickUp to GitHub migration, Kanban workflow, Process changes</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I just want people to laser focus on these more near term deliverables and getting a feeling of capability to push those forward</p>
+<p>— <strong>Xelnath</strong> in #Starting a thread for the agenda for (<a href="https://discord.com/channels/1511905718419198013/1561587227404931073/1562097091604390040">jump</a>)</p>
+</blockquote>
+<h2>#NPC Interactions</h2>
+<p><em>7 messages from 5 people</em></p>
+<p>While waiting on the NPC dialogue and enemy perception PRs, ogam set up sequence/random animations triggered by actions like idle or talk (PR #313), and noted that the Atlantean-language text work can happen in parallel. Matt Barnes posted the pod update, linking the Puzzle Room 1 deliverable channel. Vincent asked whether the basic AI NPC interaction will still be implemented. Matt said it would help stealth puzzles, such as sneaking to overhear conversations, but the current focus is just 2 puzzles, and the 2nd isn't identified yet. He asked Cafedunoir to discuss scoping. Cafedunoir asked what the deliverable expectations are after the Alpha 2 build this weekend.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>ogam opened PR #313 for action-based sequence/random NPC animations.</li>
+<li>The NPC AI could support stealth puzzles, such as overhearing conversations.</li>
+<li>Current focus is delivering 2 puzzles; the second isn't identified yet.</li>
+<li>Scoping chat needed between Matt Barnes and Cafedunoir.</li>
+</ul>
+<p><strong>Topics:</strong> NPC animations, NPC AI, Puzzle deliverables, Alpha 2</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will the NPC AI interaction be in the 2nd puzzle deliverable or follow-up work?</li>
+<li>What are the deliverable expectations after the Alpha 2 build?</li>
+<li>Who needs GitHub access?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>That will be beneficial for stealth related puzzles. I think a part of investigation will involve sneaking to overhear conversations. That being said our current focus is on delivering just 2 puzzles. The 2nd one is not yet identified, but we need to do some scoping conversations to see if we want to consider this tech for the 2nd puzzle deliverable. @Cafedunoir we should probably have a chat to see if this is something we want to try and do for the upcoming deliverable, or to plan for as follow work</p>
+<p>— <strong>Matt Barnes</strong> in #NPC Interactions (<a href="https://discord.com/channels/1511905718419198013/1543368246101545040/1562883249896689705">jump</a>)</p>
+</blockquote>
+<h2>#"Atlantean" Name Ideas</h2>
+<p><em>7 messages from 1 people</em></p>
+<p>Lianhua opened a brainstorm for renaming "Atlantean," asking members to react with the HelmetHeart emoji on acceptable finalists, with the original name kept as an option. Lianhua listed Atlantean, Merosan, Merean, Sirenin, Meralka and Umian. No other members posted, nothing got reactions, and no decision was made.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Lianhua listed six candidates: Atlantean, Merosan, Merean, Sirenin, Meralka and Umian.</li>
+</ul>
+<p><strong>Topics:</strong> Renaming Atlantean, Voting by reaction</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Which name will replace or keep "Atlantean"?</li>
+</ul>
+<h2>#District 1 Name Ideas</h2>
+<p><em>7 messages from 1 people</em></p>
+<p>Lianhua opened a brainstorm for District 1 names, asking for HelmetHeart reactions on acceptable finalists. Lianhua listed Luxial, Exoplty, Relgal, Regmalen, Riyol and Yoxal. Nothing has been reacted to or decided yet.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Lianhua posted six candidates: Luxial, Exoplty, Relgal, Regmalen, Riyol and Yoxal.</li>
+</ul>
+<p><strong>Topics:</strong> District 1 naming</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>What will District 1 be named?</li>
+</ul>
+<h2>#For 319, it's Merged.</h2>
+<p><em>6 messages from 3 people</em></p>
+<p>dbugslayer explained that PR 303 had fallen behind main and rebased it. GrandHawk reviewed it and was ready to approve, but was waiting on GitHub permissions. dbugslayer asked whether the new review permissions only apply to new PRs, since Shane couldn't merge #303. VibeBlind said Shane is a tech lead and should have permission regardless.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>dbugslayer rebased PR 303 onto main.</li>
+<li>GrandHawk is ready to approve but is blocked on permissions.</li>
+<li>Shane couldn't merge #303 despite being a tech lead.</li>
+</ul>
+<p><strong>Topics:</strong> PR 303, GitHub permissions</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Why can't Shane merge #303, and do the permission changes only apply to new PRs?</li>
+</ul>
+<h2>#related, we need to actually get more</h2>
+<p><em>6 messages from 2 people</em></p>
+<p>Adrian asked whether there's a list of admin candidates. dbugslayer volunteered, noting that Adrian had added his SSH key but authentication failed. Adrian followed up by DM, and dbugslayer can now SSH into the box.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>dbugslayer volunteered as an admin candidate.</li>
+<li>His SSH access issue was resolved after Adrian followed up by DM.</li>
+</ul>
+<p><strong>Topics:</strong> Server admin, SSH access</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Are there other admin candidates beyond dbugslayer?</li>
+</ul>
+<h2>#[ASGC-Game-Jam/asgc-gamejam-2026] Pull r...</h2>
+<p><em>6 messages from 2 people</em></p>
+<p>This was a review of a pull request in the asgc-gamejam-2026 repo. MM's PR adds an example hiding spot to the main tutorial level, and dbugslayer asked how to test it. MM explained that everything except the perception part can be tested, because perception isn't on main yet. The hiding spot is near the end of the level, where the player has to ascend; a textual clue marks it, and you look at it and press E.</p>
+<p>dbugslayer found the spot, shared a screenshot and requested some minor changes. MM reported them done the same afternoon.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>MM's PR adds an example hiding spot to the main tutorial level.</li>
+<li>The perception part can't be tested yet because it isn't on main.</li>
+<li>The hiding spot sits near the end of the level where the player ascends; a text clue marks it, and you look at it and press E.</li>
+<li>dbugslayer found the spot and shared a screenshot.</li>
+<li>dbugslayer requested minor changes, and MM finished them the same day.</li>
+</ul>
+<p><strong>Topics:</strong> Pull request review, Hiding spot mechanic, Tutorial level, Testing instructions</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>you can test everything but the perception part since that is not on main yet. You can find an hiding spot when you arrive where you have to ascend toward the end of the level. There's a textual clue showing where the hiding spot is, just look at it and press E</p>
+<p>— <strong>MM</strong> in #[ASGC-Game-Jam/asgc-gamejam-2026] Pull r... (<a href="https://discord.com/channels/1511905718419198013/1562979125277364377/1563240580069203972">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1562979125277364377/1563241190088900658">dbugslayer's screenshot after finding the new hiding spot in the tutorial level.</a></li>
+</ul>
+<h2>#📢│production-announcements</h2>
+<p><em>5 messages from 1 people</em></p>
+<p>Cafedunoir asked Production to watch the video on how the jam changes after Sprint 7 and to add their names to the Miro board to confirm they're still participating. He announced three verticals: Gameplay (a playable prototype), Character/Narrative (presentable writing) and Beautiful Corner (a polished environment for portfolios). He also shared the Discord event for the Sprint 7 demo of the Alpha 2 build.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>The jam is splitting into three verticals: Gameplay, Character/Narrative and Beautiful Corner.</li>
+<li>Everyone should add their name to the Miro board to confirm participation.</li>
+<li>The Sprint 7 demo of the Alpha 2 build is scheduled as a Discord event.</li>
+</ul>
+<p><strong>Topics:</strong> Jam restructure, Miro board, Alpha 2 demo</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Hey folks - please check out the Miro board for some updates of how this will be set up moving forward. We are splitting into 3 different verticals:</p>
+<ul>
+<li>Gameplay: playable prototype that a programmer or designer can point to</li>
+<li>Character/Narrative: narrative work that a writer can present</li>
+<li>Beautiful Corner: polished environment for an artist's portfolio</li>
+</ul>
+<p>Check in with your director you are under for more details how you can best support that vertical</p>
+<p>— <strong>Cafedunoir</strong> in #📢│production-announcements (<a href="https://discord.com/channels/1511905718419198013/1521241957152718908/1562705943568064555">jump</a>)</p>
+</blockquote>
+<h2>#🫴│tech-mentoring</h2>
+<p><em>5 messages from 1 people</em></p>
+<p>Vilus held office hours on Mon Oct 19 and Tue Oct 20, limited to 1 hour. He cancelled Wednesday for babysitting and was stuck in work meetings on Friday, and invited people to DM or ping him anytime.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Office hours ran Mon and Tue.</li>
+<li>Wednesday was cancelled and Friday was disrupted by work meetings; questions are welcome by DM or ping.</li>
+</ul>
+<p><strong>Topics:</strong> Office hours, Tech mentoring</p>
+<h2>#🔕│leads-inactive-or-away</h2>
+<p><em>4 messages from 3 people</em></p>
+<p>MisterLaddie was out sick with an ear infection on Tuesday. Anrakyr may be MIA after his graphics card possibly died. dbugslayer was away for most of Saturday and planned to be back online that evening (ET).</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>MisterLaddie was resting on Tuesday due to illness and an ear infection.</li>
+<li>Anrakyr may be unavailable due to GPU failure.</li>
+<li>dbugslayer was away Saturday, back that evening (ET).</li>
+</ul>
+<p><strong>Topics:</strong> Availability</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>My graphics card potentially unalived itself so I may be MIA until I figure out whats going on, cant use my desktop at all right now</p>
+<p>— <strong>Anrakyr</strong> in #🔕│leads-inactive-or-away (<a href="https://discord.com/channels/1511905718419198013/1528068500365643907/1563263925359743107">jump</a>)</p>
+</blockquote>
+<h2>#"Coraltech" Name Ideas</h2>
+<p><em>4 messages from 1 people</em></p>
+<p>Lianhua opened a brainstorm for renaming "Coraltech," asking for HelmetHeart reactions on acceptable finalists and listing Coraltech and Koraltech. Lianhua also suggested naming it after whatever name the special coral ends up with. No decision was made.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Lianhua suggested Koraltech as an alternative to Coraltech.</li>
+<li>Lianhua proposed naming the tech after the special coral's final name.</li>
+</ul>
+<p><strong>Topics:</strong> Renaming Coraltech, Worldbuilding names</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will Coraltech be named after the special coral, and what will that name be?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Name based on the special coral name</p>
+<p>— <strong>Lianhua</strong> in #"Coraltech" Name Ideas (<a href="https://discord.com/channels/1511905718419198013/1562245829937471520/1563170319416430694">jump</a>)</p>
+</blockquote>
+<h2>#District 2 Name Ideas</h2>
+<p><em>4 messages from 1 people</em></p>
+<p>Lianhua opened a brainstorm for District 2 names, asking for HelmetHeart reactions on acceptable finalists. Lianhua suggested Inyamoni (a mix of "Reality" in Xhosa and Samoan), Ryamal and Norlmoni. No decision has been made.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Lianhua suggested Inyamoni, blending the words for "Reality" in Xhosa and Samoan.</li>
+</ul>
+<p><strong>Topics:</strong> District 2 naming</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>What will District 2 be named?</li>
+</ul>
+<h2>#District 5 Name Ideas</h2>
+<p><em>4 messages from 1 people</em></p>
+<p>Lianhua opened a brainstorm for District 5 names, asking for HelmetHeart reactions on acceptable finalists. Lianhua suggested Umbryss, Darksol and Eternyss. Umbryss leads with 2 reactions, but no decision has been made.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Umbryss leads with 2 reactions.</li>
+<li>Lianhua later added Darksol and Eternyss.</li>
+</ul>
+<p><strong>Topics:</strong> District 5 naming</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>What will District 5 be named?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Umbryss</p>
+<p>— <strong>Lianhua</strong> in #District 5 Name Ideas (<a href="https://discord.com/channels/1511905718419198013/1562247494610587740/1562271823322816683">jump</a>)</p>
+</blockquote>
+<h2>#"Hydropunk" Name Ideas</h2>
+<p><em>4 messages from 1 people</em></p>
+<p>Lianhua opened a thread to brainstorm what humans and Atlanteans would call Hydropunk in-game. Anyone who likes a name and would accept it as a final option is asked to react with the HelmetHeart emoji. Lianhua posted three candidates over the week: Hydrotech, Aquatech and Mizutech ("mizu" is Japanese for water). Nothing has been decided yet.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Lianhua started the in-lore naming brainstorm for Hydropunk and set HelmetHeart reactions as the way to vote.</li>
+<li>Three candidates so far: Hydrotech, Aquatech and Mizutech.</li>
+</ul>
+<p><strong>Topics:</strong> Worldbuilding, Naming, Hydropunk</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Which name will be picked as the final in-game term for Hydropunk?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Mizutech (Mizu is water in Japanese)</p>
+<p>— <strong>Lianhua</strong> in #"Hydropunk" Name Ideas (<a href="https://discord.com/channels/1511905718419198013/1562248310264430712/1562684345234227261">jump</a>)</p>
+</blockquote>
+<h2>#✂️│qa-clips</h2>
+<p><em>4 messages from 2 people</em></p>
+<p>Rha posted three QA clips:</p>
+<ul>
+<li>Swimming out of the hole above the spawn area instead of using Ascend causes air swimming.</li>
+<li>Cursor mode doesn't end properly after using the pause menu's "return to game".</li>
+<li>If something blocks the path while ascending, the player sticks to it and walks on it. Rha later marked this one as not a bug.</li>
+</ul>
+<p>Xelnath found that last behavior kinda cool.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Air-swimming bug when leaving the spawn hole without using Ascend.</li>
+<li>Cursor mode persists after 'return to game' from the pause menu.</li>
+<li>Ascend sticking to obstacles was marked 'not a bug', and Xelnath liked it.</li>
+</ul>
+<p><strong>Topics:</strong> QA, Bugs, Movement, UI</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will the air-swimming and cursor-mode bugs be ticketed and fixed?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>if you swim out of the hole above the spawn area instead of using Ascend, you get this gem</p>
+<p>— <strong>Rha 🥔</strong> in #✂️│qa-clips (<a href="https://discord.com/channels/1511905718419198013/1560381528096116746/1562865810203222056">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>that is kinda cool</p>
+<p>— <strong>Xelnath</strong> in #✂️│qa-clips (<a href="https://discord.com/channels/1511905718419198013/1560381528096116746/1563238883515179221">jump</a>)</p>
+</blockquote>
+<h2>#[ASGC-Game-Jam/asgc-gamejam-2026] Pull r...</h2>
+<p><em>4 messages from 2 people</em></p>
+<p>dbugslayer reminded Awesomeosity that he reviewed their PR two days ago. Awesomeosity has one item left to address and will do it after a water change for their fish. dbugslayer asked them to re-request review afterward so he gets notified.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Awesomeosity's PR has one review comment left to address.</li>
+<li>dbugslayer asked them to re-request review once it's done.</li>
+</ul>
+<p><strong>Topics:</strong> Code review</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Was the PR feedback addressed and merged?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I'll get that as soon as I'm done with a water change for my fish today (shouldn't take more than an hour)</p>
+<p>— <strong>Awesomeosity</strong> in #[ASGC-Game-Jam/asgc-gamejam-2026] Pull r... (<a href="https://discord.com/channels/1511905718419198013/1560373770517094422/1563225401701175387">jump</a>)</p>
+</blockquote>
+<h2>#hey tech friends - let me know what is</h2>
+<p><em>4 messages from 2 people</em></p>
+<p>A short coordination exchange. dbugslayer replied to an earlier message and said VibeBlind should coordinate this effort, since he has been heading it. VibeBlind confirmed he is already talking to some people and asked that anyone else who asks be pointed his way.</p>
+<p>He suggested the simplest approach is to create a batch of tasks, then sort them and apply the correct metadata so they appear in the right views.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>dbugslayer pointed people to @VibeBlind as the coordinator for the effort he has been leading.</li>
+<li>VibeBlind confirmed he is already in talks with people and asked that further inquiries be routed to him.</li>
+<li>VibeBlind proposed creating a batch of tasks first, then sorting them and tagging them with metadata so they show in the right views.</li>
+</ul>
+<p><strong>Topics:</strong> Task coordination, Task metadata and views, Ownership/point of contact</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Simplest is just make a bunch of tasks and we can work to sort them and apply the correct meta data so they show in the right views</p>
+<p>— <strong>VibeBlind</strong> in #hey tech friends - let me know what is (<a href="https://discord.com/channels/1511905718419198013/1563063759759478805/1563234711097319515">jump</a>)</p>
+</blockquote>
+<h2>#Gameplay/technical design mostly.</h2>
+<p><em>4 messages from 2 people</em></p>
+<p>dbugslayer asked EMatter to help find a level that Daan could build, so Daan has something to contribute. EMatter pointed Daan to a deliverable workspace thread (https://discord.com/channels/1511905718419198013/1560726515254173806). That team is working on one of two puzzle rooms for a deliverable, and the thread will be a primary workspace for the gameplay/tech side of deliverables.</p>
+<p>EMatter still needs to check exactly what level design help is needed. They noted the team may need someone to build levels from puzzles already drafted in that workspace, and the second puzzle room deliverable is another opportunity once it begins. Otherwise, EMatter suggested Daan re-introduce himself in the workspace and look for tasks that fit his interests.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>dbugslayer asked EMatter to help find a level for Daan to build.</li>
+<li>EMatter pointed Daan to the deliverable workspace where one of two puzzle rooms is being built.</li>
+<li>That workspace will be a primary hub for the gameplay/tech side of deliverables.</li>
+<li>The team may need someone to build levels from puzzles already drafted there.</li>
+<li>Puzzle room 2 is another opportunity once that deliverable begins.</li>
+</ul>
+<p><strong>Topics:</strong> Onboarding contributors, Level design, Puzzle rooms, Deliverables</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>EMatter still needs to confirm the current level design needs in the puzzle room workspace.</li>
+<li>Daan has not yet said whether he wants to build levels from the drafted puzzles.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>If you are interested, we may need someone who could contribute towards building the levels from some puzzles that have been drafted in that workspace.
+If not, it'd probably be best to re-introduce yourself in the deliverable workspace (https://discord.com/channels/1511905718419198013/1560726515254173806) and see what tasks align with your desires and the current deliverables.</p>
+<p>— <strong>EMatter</strong> in #Gameplay/technical design mostly. (<a href="https://discord.com/channels/1511905718419198013/1563257737918283797/1563267551398592613">jump</a>)</p>
+</blockquote>
+<h2>#🎵│audio-lead-discussion</h2>
+<p><em>3 messages from 3 people</em></p>
+<p>Jorge Daniel reported back from the producers' meeting. He asked the other producers to send the audio team any requests they have, to keep the team busier and more engaged. NateTheMood said ClickUp rejected a file upload because there 'wasn't enough available storage', which is different from a normal size cap. Cafedunoir told him to talk to tech, since GitHub has more space and the project will likely migrate there.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Jorge Daniel asked the other producers to send requests to the audio team so it stays busy and engaged.</li>
+<li>ClickUp ran out of available storage when NateTheMood tried to upload an audio file.</li>
+<li>Cafedunoir pointed to the likely migration to GitHub, which has more space.</li>
+</ul>
+<p><strong>Topics:</strong> Producer requests, ClickUp storage limits, GitHub migration</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>How will audio files be stored and shared once the move to GitHub happens?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Hello!
+Yesterday I attended the producers' meeting and asked the other producers to send us any requests they have. I think this will help keep our team busier and more engaged.</p>
+<p>— <strong>Jorge Daniel</strong> in #🎵│audio-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1519054987534008460/1561291673839996989">jump</a>)</p>
+</blockquote>
+<h2>#🎯│director-discussion</h2>
+<p><em>3 messages from 3 people</em></p>
+<p>Xelnath shared Alex's video announcing the project refocus into three teams (Narrative, Gameplay, Beautiful Corner) and an active attendance sheet. Cafedunoir started a thread for this week's Director call agenda. Zef gave moderators a heads-up that some late-game animators, including BountyHunter, recruited by Jake Goodheart, may be joining soon.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Alex's refocus video introduced three teams and an attendance sheet.</li>
+<li>New animators recruited by Jake Goodheart are expected to join.</li>
+</ul>
+<p><strong>Topics:</strong> Project refocus, Director call agenda, Animator recruiting</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Hey @Moderator </p>
+<p>We may have some late game animators that will likely be joining the chat soon, just to give you a heads up. BountyHunter is at least one username our Animation guy Jake Goodheart retrieved on his recruiting mission lol &lt;:salute:847750533534973982&gt;</p>
+<p>— <strong>Zef</strong> in #🎯│director-discussion (<a href="https://discord.com/channels/1511905718419198013/1512105827257946273/1563571855929905244">jump</a>)</p>
+</blockquote>
+<h2>#Sprint 5 - Player Character Model</h2>
+<p><em>3 messages from 3 people</em></p>
+<p>Jorge Daniel thanked Impyral for the feedback and said he'd review it with the team. After LazyMonkey (Cosmin) asked for updates, Diana Donado posted feedback on the player character model: it's almost there, but the arms, feet and chest still need fixes, and the gloves should be simplified to cut poly count and speed up the low poly. Once done, Cosmin can move on to the low poly. She advised studying the concepts closely before modeling, and asking whether each detail is actually needed or seen by the player.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Diana says the model is close to done; the low poly comes next.</li>
+<li>Arms, feet and chest repeat earlier issues; gloves should be simplified.</li>
+<li>Advice: study concepts before modeling and ask whether the player will actually see a detail.</li>
+</ul>
+<p><strong>Topics:</strong> Player character model, Art feedback, Low poly</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>@LazyMonkey Sorry my bad Cosmin. Here's the feedback. You're almost there. These bits should not take you long. Once done you can move to the low poly. Just send me some quick screenshots like these so I can quickly review and of course a link to the model. </p>
+<p>My advice to you is to really study and understand your concepts before modeling anything. I say this because I found out the same issues as before: the arms, feet and chest. Also the gloves need to be simplified a bit. When you have these type of cases just ask yourself if such details are needed. In here not really plus the gloves are pretty simple in the concept. By simplifying them, they will lower a bit the poly count and simplify or speedup the low poly, unless this is an artistic choice which can be, but again we go back to the same question is this needed or seen specifically by the player? </p>
+<p>Thanks again for the work and mostly the patience 🙂</p>
+<p>— <strong>Diana Donado</strong> in #Sprint 5 - Player Character Model (<a href="https://discord.com/channels/1511905718419198013/1550991795738120192/1562502484352696381">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1550991795738120192/1562502484352696381">Feedback renders of the player character model's arms, chest and feet.</a></li>
+</ul>
+<h2>#District 3 Name Ideas</h2>
+<p><em>3 messages from 1 people</em></p>
+<p>Lianhua opened a brainstorm for District 3 names, asking for HelmetHeart reactions on acceptable finalists. Lianhua suggested Makinalos and Thresan. No decision has been made.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Lianhua suggested Makinalos and Thresan.</li>
+</ul>
+<p><strong>Topics:</strong> District 3 naming</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>What will District 3 be named?</li>
+</ul>
+<h2>#District 4 Name Ideas</h2>
+<p><em>3 messages from 1 people</em></p>
+<p>Lianhua opened a brainstorm for District 4 names, asking for HelmetHeart reactions on acceptable finalists. Lianhua suggested Siqiku and Diyon, both built from mixes of "Fourth District" in Chinese and Japanese. No decision has been made.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Both suggestions, Siqiku and Diyon, blend "Fourth District" in Chinese and Japanese.</li>
+</ul>
+<p><strong>Topics:</strong> District 4 naming</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>What will District 4 be named?</li>
+</ul>
+<h2>#"Steampunk" Name Ideas</h2>
+<p><em>3 messages from 1 people</em></p>
+<p>Lianhua opened a brainstorm for what the humans and Atlanteans would call Steampunk in the game, asking for HelmetHeart reactions on acceptable finalists. Lianhua suggested Steamtech and Vaportech. No decision has been made.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Lianhua suggested Steamtech and Vaportech as the in-game term for Steampunk.</li>
+</ul>
+<p><strong>Topics:</strong> Steampunk in-game term</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>What in-game term will replace "Steampunk"?</li>
+</ul>
+<h2>#📢│art-announcements</h2>
+<p><em>3 messages from 1 people</em></p>
+<p>Zef invited the @Art team to meet and go over the next deliverables, collecting availability on MeetingBrew (https://meetingbrew.com/vozajj). He promised to record the meeting and to set up follow-up sessions or office hours for anyone who can't attend. On Saturday he narrowed the options to Sunday Oct 25 at 2:00 PM PT and/or Monday Oct 26 at 4:30 PM PT, and asked people to add availability by Saturday 7:00 PM PT.</p>
+<p>That evening he locked in the Art Sync for Monday Oct 26 at 4:30 PM PT in art-voice-channel, with a recording for those who can't make it. He will also hold office hours in voice chat around Sunday Oct 25 at 3:00 PM PT to give a heads-up and review things with people who can't make the main meeting.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Zef called an Art team meeting about the next deliverables and shared a MeetingBrew poll (12 reactions).</li>
+<li>The candidate times were Sunday Oct 25, 2:00 PM PT and Monday Oct 26, 4:30 PM PT.</li>
+<li>The availability deadline was Saturday Oct 24, 7:00 PM PT.</li>
+<li>The Art Sync is set for Monday Oct 26, 4:30 PM PT in art-voice-channel, and it will be recorded.</li>
+<li>Zef will host office hours in voice chat around Sunday Oct 25, 3:00 PM PT for those who can't attend the main meeting.</li>
+</ul>
+<p><strong>Topics:</strong> Art team sync, Meeting scheduling, Deliverables, Office hours</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<h1>Hey @Art ! I want to set up some time to meet this weekend to go over our next deliverables! 🗓️</h1>
+<p>Please put the time's that work best for you in here: https://meetingbrew.com/vozajj
+Regardless of the time we end up with, we'll record the meeting and figure out another time for a smaller (or bigger, depending on attendance) meeting later and/or office hours for those who can't make it!</p>
+<p>Thanks for all your help so far and sticking with it! &lt;:muscleright:1001562803292868670&gt;</p>
+<p>— <strong>Zef</strong> in #📢│art-announcements (<a href="https://discord.com/channels/1511905718419198013/1521241854291607652/1563326504278958210">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<h1>@Art Sync <t:1793057400:F></h1>
+<p>We'll be in art-voice-channel and I will record for those who can't make it!
+I'll also hop into the voice chat <t:1792965600:R> or so for office hours, and I can give a heads up and review things with those that can't make the main meeting.</p>
+<p>— <strong>Zef</strong> in #📢│art-announcements (<a href="https://discord.com/channels/1511905718419198013/1521241854291607652/1563762935992418408">jump</a>)</p>
+</blockquote>
+</main></body>
+</html>
