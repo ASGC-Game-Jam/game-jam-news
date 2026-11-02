@@ -1,0 +1,2090 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly Digest: full report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: dark;
+  --abyss:  #071f25;
+  --deep:   #0C343D;
+  --sea:    #134F5C;
+  --tide:   #45818E;
+  --foam:   #76A5AF;
+  --mist:   #D0E0E3;
+  --gold:   #E3B341;
+  --gold-2: #F2CF6B;
+  --ink:    #E6F0F2;
+  --muted:  #9FBCC2;
+  --card:   rgba(12, 52, 61, 0.82);
+  --line:   rgba(227, 179, 65, 0.35);
+}
+* { box-sizing: border-box; }
+html { background: var(--abyss); }
+body {
+  margin: 0; padding: 48px 0; min-height: 100vh; color: var(--ink);
+  font: 400 17px/1.7 "Poppins", "Segoe UI", Helvetica, Arial, sans-serif;
+  background:
+    radial-gradient(ellipse 80% 45% at 50% -5%, rgba(118, 165, 175, 0.35), transparent 70%),
+    radial-gradient(circle at 15% 85%, rgba(69, 129, 142, 0.18), transparent 40%),
+    linear-gradient(180deg, var(--sea) 0%, var(--deep) 35%, var(--abyss) 100%);
+}
+main {
+  position: relative; max-width: 760px; margin: 0 auto; padding: 8px 48px 40px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(208, 224, 227, 0.08);
+}
+@media (max-width: 800px) {
+  body { padding: 0; }
+  main { margin: 0; padding: 4px 16px 32px; border-radius: 0; border-left: 0; border-right: 0; }
+}
+
+/* Masthead: brass double rules like the deck's logo */
+.masthead { text-align: center; padding: 28px 0 6px; }
+.kicker {
+  display: inline-flex; align-items: center; gap: 14px;
+  color: var(--gold); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase;
+}
+.kicker::before, .kicker::after {
+  content: ""; width: 56px; height: 5px;
+  border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
+}
+h1 {
+  margin: 14px 0 8px; text-align: center;
+  font-size: clamp(1.7rem, 4.5vw, 2.5rem); line-height: 1.2; font-weight: 700;
+  color: var(--gold-2); text-shadow: 0 2px 18px rgba(227, 179, 65, 0.25);
+}
+h1 + p { text-align: center; margin: 0 0 28px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+h1 + p em { font-style: normal; color: var(--muted); font-size: 0.9rem; letter-spacing: 0.02em; }
+
+h2 {
+  display: flex; align-items: center; gap: 12px;
+  margin: 2.4em 0 0.8em; color: var(--gold); font-size: 1.35rem; font-weight: 600; line-height: 1.3;
+}
+h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--line), transparent); }
+h3 { color: var(--mist); font-weight: 600; margin: 1.8em 0 0.5em; }
+
+p, li { color: var(--ink); }
+strong { color: #fff; font-weight: 600; }
+a { color: var(--foam); text-decoration-color: rgba(118, 165, 175, 0.5); text-underline-offset: 3px; }
+a:hover { color: var(--gold-2); text-decoration-color: var(--gold-2); }
+ul, ol { padding-left: 1.3em; }
+li { margin: 0.35em 0; }
+li::marker { color: var(--gold); }
+code { background: rgba(7, 31, 37, 0.7); padding: 1px 6px; border-radius: 4px; font-size: 0.9em; }
+
+img {
+  display: block; max-width: 100%; margin: 22px auto 6px; border-radius: 12px;
+  border: 1px solid var(--line); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+img + em, main > p > em:only-child { display: block; text-align: center; color: var(--muted); font-size: 0.85rem; }
+
+blockquote {
+  position: relative; margin: 22px 0; padding: 16px 20px 14px 26px;
+  background: linear-gradient(135deg, rgba(19, 79, 92, 0.75), rgba(7, 31, 37, 0.6));
+  border: 1px solid rgba(118, 165, 175, 0.25); border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0;
+}
+blockquote::before {
+  content: "\201C"; position: absolute; left: 10px; top: -14px;
+  font-size: 3rem; line-height: 1; color: var(--gold); opacity: 0.6;
+}
+blockquote p { margin: 0.3em 0; }
+blockquote p:last-child { color: var(--muted); font-size: 0.9rem; }
+
+hr { border: 0; height: 5px; margin: 40px 0 24px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+hr + p { text-align: center; color: var(--mist); font-style: italic; }
+
+/* Archive list */
+.sub { text-align: center; color: var(--muted); margin: 0 0 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.editions { list-style: none; padding: 0; margin: 0; }
+.editions li { margin: 0; }
+.editions a {
+  display: block; padding: 16px 18px; margin: 10px 0; text-decoration: none;
+  border: 1px solid rgba(118, 165, 175, 0.2); border-radius: 12px; background: rgba(7, 31, 37, 0.45);
+  transition: border-color .15s, transform .15s, background .15s;
+}
+.editions a:hover { border-color: var(--gold); background: rgba(19, 79, 92, 0.6); transform: translateY(-1px); }
+.editions .title { display: block; color: var(--gold-2); font-weight: 600; font-size: 1.08rem; line-height: 1.35; }
+.editions .meta { display: block; color: var(--muted); font-size: 0.85rem; margin-top: 2px; }
+</style>
+</head>
+<body><main>
+<h1>Server report: Oct 25 – Nov 01, 2026</h1>
+<h2>v0.1.2 ships, ClickUp is laid to rest, and Project Atlantis goes all-in on puzzles for Alpha 2</h2>
+<p><strong>1135</strong> messages · <strong>92</strong> active members · <strong>59</strong> active channels</p>
+<p>It was a big week for the ASGC Game Jam 2026 team: 1,135 messages from 92 active members. It opened on Sunday Oct 25 with the Alpha 2 Build Demo, hosted by Cafedunoir with Xhemoz sharing his screen. dbugslayer stepped in when Ricchio was delayed, bumped the version to 0.1.2 in PR #369 and published the build on GitHub in time for the demo. QA then put v0.1.2 through its paces. Hamm found a Steam branch packaging issue and filed oxygen and hiding bugs #379–#383, and ThePokePreston was named the new QA Director. With combat officially cut, leadership set Alpha 2's priority as the two puzzle rooms. Puzzle Room 1 (the Flooded Laboratory door puzzle) saw Matt Barnes' Blueprint logic (PR #372) merged to main by Oct 28 after a friendly back-and-forth with Vilus's C++ puzzle manager. Puzzle Room 2 began scoping a stealth/eavesdropping scenario.</p>
+<p>On the process side, Cafedunoir announced on Oct 29 that all ClickUp tasks had moved to GitHub ('RIP Click Up'), with asgcgithub.pulli.me as the fix for board 404s. Narrative ported its Sprint 7 tickets (#389–#391, #396). QA and VibeBlind pushed for real acceptance criteria on tickets, and directors agreed to open all channels so disciplines can see each other's work. Tech debated dialogue systems. cpgeiste made the case for Ink/Inkpot and began integrating it, and the oxygen design (Allocation vs Spent, and whether to add passive drain) was argued across design channels.</p>
+<p>Art launched two sprints run by Zef. The Beautiful Corner is a single target-look shot built by every non-character artist, with pipes, seagrass, rocks, bleaching and water WIPs. The NPC Concept sprint for Act 1 had artists claiming Seayssal, King Lareas, Aishui, Dr. Longshore, Richard Black and Castella. Narrative writers turned character bios into playable Twine/SugarCube dialogue ahead of Nov 7 deadlines: Act 1 main quest outlines and 5–6 lines per character. Animators also organized around six player transition animations. The week wrapped with Halloween greetings and a cancelled Saturday sync for trick-or-treating.</p>
+<h2>Themes</h2>
+<ul>
+<li><strong>Alpha 2 refocus: two puzzle rooms after combat is cut</strong> — Leadership confirmed that combat is gone and Alpha 2 means the two puzzle rooms. Puzzle 1's logic merged after Matt and Vilus settled on one approach, and the handoff assigned MisterLaddie to player interaction, Glenny to the Journal/quest flow and Diana to a 'Permeable Membrane' stretch goal. Puzzle 2 is scoping stealth and eavesdropping on existing AI perception. Level architecture will stream puzzle sub-levels into a greyboxed, fully underwater hub built from L_Tutorial_District_Entrance (issues #344, #392, #393). Investigation is now a task theme supporting clues, with VibeBlind proposing a single DiscoverClue(ClueID) flow. (#[Gameplay Deliverable] Puzzle Room 1, #[Gameplay Deliverable] Puzzle Room 2, #[Gameplay Deliverable] Level Architecture, #🎯│tech-discussions, #Investigation, #Building da World, #🏕️│design-level-design, #❔production-questions❔)</li>
+<li><strong>Shipping and testing v0.1.2</strong> — dbugslayer bumped the version and built v0.1.2 for the Oct 25 demo, and Cafedunoir got the Mac build running with Gatekeeper's 'Open Anyway' step. QA found the Steam branch zip contained the Windows folder instead of its contents, filed oxygen softlock and hiding bugs #379–#383, and noted that several features only exist in Lvl_Showcase. That led to a request to separate engine-only features from Steam-testable ones in build announcements, and ThePokePreston added a Location column to the tracking sheet. The interaction system's finickiness came up repeatedly, including voymasa's oxygen refill station. (#Build/Release Pipeline, #🎯│qa-discussions, #✂️│qa-clips, #I also did a first pass verification of, #Hide prompt doesn't give the controller, #Why buttons, WHY?, #Gameplay, #📌│tech-status-update, #❔qa-questions❔)</li>
+<li><strong>Goodbye ClickUp, hello GitHub, and opening up the server</strong> — Task tracking fully moved to the GitHub org project, with a 10-step guide and asgcgithub.pulli.me fixing the 404s. Narrative ported its tickets and built a board view, though QA flagged that the tickets need descriptions and acceptance criteria. Directors agreed to make all channels visible, allow outside invites with QA as the top need, encourage streaming playtests on Twitch, and named ThePokePreston QA Director. (#Production Handoffs, #📢│production-announcements, #🎯│production-discussions, #🎯│director-discussion, #📝│narrative-lead-discussion, #🎯│narrative-discussions, #art-voice-channel)</li>
+<li><strong>Oxygen design and the dialogue tech debate</strong> — Matt Barnes reshared his original Allocation vs Spent oxygen model and said he is now more open to passive drain, though he still prefers keeping things cozy with easy refills like air vents and Kelp Balls. underwolf ran a passive-drain poll and will do a first balancing pass, and MM proposed folding the ballast bar into the oxygen meter. cpgeiste evaluated dialogue systems, recommended Ink/Inkpot and started integrating it. dbugslayer said Ink could handle dialogue, journal and quests in one go. (#Oxygen System, #🎯│design-discussions, #Gameplay, #Dialogue, #UI/UX, #Journal)</li>
+<li><strong>Art sprints: Beautiful Corner and Act 1 NPCs</strong> — Zef launched the Beautiful Corner snapshot sprint, with assets claimed from pipes to water, and the Act 1 NPC concept sprint, with a mandatory portrait for every concepted character. He also handed out base-mesh tasks for jellyfolk, merfolk and hermitfolk. The player character model moved to low-poly, the Janitor Snail base and Gary models were finalized, and Jake Goodheart organized six transition animations for the incoming animators. Matt also opened director feedback on the underwater tint being too dark and blue. (#Beautiful Corner (Sprint #GoTime lol), #Narrative Corner (Sprint #GoTime lol), #3D Environment Art, #3D Character Corner (Sprint #GoTimeSupplemental), #3D Animation Pod, #Sprint 5 - Player Character Model, #Sprint 7 - Janitor Snail, #Director Game Feedback Thread, #3D Animation)</li>
+<li><strong>Narrative brings characters to life in Twine</strong> — Writers cut long codex bios in favor of playable SugarCube scenes. Lianhua finished King Lareas Refidal's and Seayssal's scenes, and GJtheAutist got Serena Waves working with help from Pruthvi and Xelnath. Nov 7 deadlines cover the Act 1 main quest outlines and 5–6 lines of dialogue per character, and quest Acts were assigned to writer pairs through a poll. Naming brainstorms covered currency and the manta ray hub. (#Characters and Cinematics Pod Discussions, #📝│narrative-lead-discussion, #Quest Design Pod Discussions, #Thanks, everyone!, #Manta Ray Transportation Hub Name Ideas, #🎯│narrative-discussions, #Abdullah and Caitlin - Act 1 Quests Workzone)</li>
+</ul>
+<h2>Shoutouts</h2>
+<ul>
+<li><strong>dbugslayer</strong> — Top poster. He built and published v0.1.2 for the demo, resolved PR conflicts with Matt, landed the asset-locking plugin PR #374, and kept nudging everyone toward small PRs and reviews.</li>
+<li><strong>Matt Barnes</strong> — Got Puzzle 1's logic merged and handed it off with clear assignments. He also scoped Puzzle Room 2, set up the level architecture and hub workroom, and anchored the oxygen design discussion.</li>
+<li><strong>Hamm</strong> — Ran thorough QA on v0.1.2, filed bugs #379–#382 with clips, caught the Steam packaging issue, and offered to help onboard new testers.</li>
+<li><strong>Zef</strong> — Launched and ran the Beautiful Corner and NPC concept sprints, handed out base-mesh tasks, and gave detailed feedback to dozens of artists.</li>
+<li><strong>cpgeiste</strong> — Put together a thorough dialogue system comparison, shared the Inkpot resources, began integrating Inkpot, and helped debug the oxygen refill interaction.</li>
+</ul>
+<h2>Most active</h2>
+<ul>
+<li>dbugslayer: 129 messages</li>
+<li>Matt Barnes: 90 messages</li>
+<li>Zef: 78 messages</li>
+<li>VibeBlind: 59 messages</li>
+<li>YosephAlex4nder: 50 messages</li>
+</ul>
+<hr />
+<h1>Channels</h1>
+<h2>#[Gameplay Deliverable] Puzzle Room 1</h2>
+<p><em>87 messages from 6 people</em></p>
+<p>The week in Puzzle Room 1 centered on getting the logic for the first puzzle, the 'Flooded Laboratory' / door room (issue #335), built and merged. EMatter pointed to the design doc and subtasks, and Matt Barnes confirmed that puzzles will be built as independent levels and integrated into the playable level via World Partition. Vilus built a C++ puzzle manager in parallel with Matt's Blueprint puzzle logic. The manager uses puzzle tasks with begin and end states plus completion actions. Vilus demoed it in a video where the player cuts power, fixes the pipes and restores power to turn the button green, then opened PR #370 at dbugslayer's urging to push small WIP slices. Matt hit player character compile errors from a missing BPI_Interact. With help from ogam (git checkout of a single file) and a recompile, he got it fixed and opened PR #372 from branch borealis-puzzle-logic-test.</p>
+<p>Matt and Vilus found they had solved the problem the same way with different approaches, and each kept deferring to the other's. dbugslayer pushed to settle on a single implementation that same day. Vilus then said to go with Matt's Blueprint approach, and it was merged to main by Wed Oct 28. Matt handed off next steps. MisterLaddie will integrate puzzle interactions into BP_AtlantisPlayerCharacter, with Vilus as a resource. Glenny will build the Journal/quest flow: find the item in the flooded room, fix power to the door button, purge the water, open the door, get the item, and deliver it. Diana Donado will own direction and a stretch goal: proving out oxygenated-to-swimmable transitions using a 'Permeable Membrane' concept, with Star Wars reference images.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Vilus posted a video demo of his C++ puzzle manager, in which the player cuts power, fixes the pipes and restores power to turn the button from red to green.</li>
+<li>dbugslayer encouraged pushing incomplete WIP branches to keep PRs small, which led to Vilus opening PR #370.</li>
+<li>Matt Barnes fixed his broken player character, caused by a missing BPI_Interact, with ogam's help on a call plus a recompile, then opened PR #372.</li>
+<li>After going back and forth, Vilus told the team to 'Just go with Matt Barnes approach!', and Matt's Blueprint logic was merged to main by Oct 28.</li>
+<li>Matt laid out the handoff: MisterLaddie on player interaction integration, Glenny on the quest/Journal flow, and Diana Donado on direction plus an oxygenated/swimmable 'Permeable Membrane' transition stretch goal.</li>
+<li>Xhemoz suggested a keypad puzzle where players use examine mode to find the code.</li>
+<li>Puzzles will be built as independent levels and integrated into the main playable level via World Partition.</li>
+</ul>
+<p><strong>Topics:</strong> Flooded Laboratory puzzle, Puzzle system C++ vs Blueprints, PR #370 and #372, Git troubleshooting, File locks, Handoff and next steps, Quest/Journal integration, Oxygenated-to-swimmable transitions</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Who on the tech team will assist MisterLaddie and Glenny with coding?</li>
+<li>Who will build the level? Daan had expressed interest in level design.</li>
+<li>What will the second puzzle be?</li>
+<li>Does the puzzle 1 door need multiple meshes for the frame or just one? (Xhemoz)</li>
+<li>Will Xhemoz's keypad/examine-mode puzzle idea be used?</li>
+<li>What happens to Vilus's PR #370: shelved, or partly incorporated, e.g. his 'on begin' interactable-state logic?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Just go with @Matt Barnes  approach! The main reason I made an alternate approach was to allow for puzzle progress. But since Matt is done with his work, the work is moot!</p>
+<p>Please feel free to review his branch, and merge his work in so we can get others to start building on top of it</p>
+<p>— <strong>Vilus</strong> in #[Gameplay Deliverable] Puzzle Room 1 (<a href="https://discord.com/channels/1511905718419198013/1560726515254173806/1564402913919373343">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I'm hoping we could make a decision today too. I don't see the need to involve more people to settle on something. Both of you guys keep on preferring the others approach.</p>
+<p>— <strong>dbugslayer</strong> in #[Gameplay Deliverable] Puzzle Room 1 (<a href="https://discord.com/channels/1511905718419198013/1560726515254173806/1564394441723224095">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>It's the good old WIP 🙂  Depending on what's being worked on, I actually prefer to have smaller incremental slices than to go on for a long time and end up with a huge set of changes.</p>
+<p>— <strong>dbugslayer</strong> in #[Gameplay Deliverable] Puzzle Room 1 (<a href="https://discord.com/channels/1511905718419198013/1560726515254173806/1564079225785290773">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Yeah. I can do that hopefully soon. Just on hold waiting to reschedule a doctors appointment. Been on hold for more than 40 minutes.. 💀</p>
+<p>— <strong>Vilus</strong> in #[Gameplay Deliverable] Puzzle Room 1 (<a href="https://discord.com/channels/1511905718419198013/1560726515254173806/1564352183577608195">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1560726515254173806/1563874867215081594">Subtasks for the Puzzle 1 gameplay deliverable (issue #335)</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1560726515254173806/1564329508197244988">Matt's BP_AtlantisPlayerCharacter showing compile errors from the missing BPI_Interact</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1560726515254173806/1565097398848458762">Star Wars reference shots for the 'Permeable Membrane' water barrier concept</a></li>
+</ul>
+<h2>#🎯│qa-discussions</h2>
+<p><em>68 messages from 10 people</em></p>
+<p>A busy week in QA for the ASGC Game Jam 2026 project. asjaspa shared draft Smoke and Sanity test templates (Journal, Investigation and Dialogue tests still to come). Hamm and Rha 🥔 reviewed them and liked them; Hamm pointed out that the health test can go because the game only has an oxygen system, and asjaspa agreed it was a leftover from the old Combat pod. VibeBlind posted the list of 1.2 tickets to confirm, and later asked ThePokePreston to mark completed tasks as done. Hamm found that the v0.1.2 QA_testing Steam branch failed to launch because the exe sat inside a Windows subfolder. Xandemon traced this to the build being zipped with the folder rather than its contents; dbugslayer said he made the builds and Ricchio uploaded them to Steam. Hamm verified the 0.1.1 bugs on v0.1.2 and opened issues #379–#382, covering oxygen softlocks in the tutorial, oxygen not refilling outside water, the missing controller Hide tutorial, and Hide being hard to use. He couldn't verify two 0.1.1 tasks because nothing in game used them. ThePokePreston also noted that several 0.1.2 oxygen-refill items have no in-game trigger and asked the tech folks about it.</p>
+<p>On process, VibeBlind encouraged streaming playtests for morale. After checking at the directors' meeting, it was confirmed that streaming on Twitch is OK and even encouraged, and dbugslayer praised Hamm's #qa-clips videos. Hamm asked that build announcements separate engine-only (showcase level) features from features testable on Steam. Ricchio agreed, dbugslayer asked for it to be filed on GitHub, and ThePokePreston added a Location column (build vs engine) to the tracking sheet. The Thursday weekly meeting had essentially no attendance. Newcomers NamasteGeek and One Bad Hombre said they weren't sure where to start with game QA, so ThePokePreston offered a walkthrough call on Sunday or Monday, with Hamm joining to share his bug-ticket experience.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>asjaspa shared draft Smoke and Sanity test templates, which got positive feedback; the health test will be removed since the game only has oxygen.</li>
+<li>The v0.1.2 QA_testing Steam branch failed to launch because the build zip contained the Windows folder itself instead of its contents.</li>
+<li>Hamm opened bugs #379–#382 on oxygen softlocks, oxygen not refilling, the missing controller Hide tutorial, and Hide usability.</li>
+<li>Several 0.1.2 oxygen-refill tasks appear to have no in-game trigger, so they can't be tested yet; tech has been asked.</li>
+<li>After the directors' meeting, streaming playtests on Twitch was confirmed as OK and even encouraged.</li>
+<li>Hamm asked that build announcements separate engine-only features from features testable on Steam; ThePokePreston added a Location column to the tracking sheet.</li>
+<li>Hardly anyone attended the Thursday weekly QA meeting.</li>
+<li>New testers NamasteGeek and One Bad Hombre asked for onboarding, and a walkthrough call with ThePokePreston and Hamm is being scheduled.</li>
+</ul>
+<p><strong>Topics:</strong> Smoke/Sanity test templates, v0.1.2 Steam build issue, Bug reports #379–#382, Oxygen refill testing, Streaming playtests, Build announcement format, QA tracking spreadsheet, Onboarding new testers</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Has the v0.1.2 Steam build been re-uploaded with the correct zip structure?</li>
+<li>How are the 0.1.2 oxygen-refill features meant to be triggered or tested in game? (asked of tech)</li>
+<li>Did Hamm file the build-announcement feedback on GitHub as dbugslayer requested?</li>
+<li>ThePokePreston's temp check: what is the biggest challenge testers face with QA right now?</li>
+<li>What time was finally agreed for the onboarding call with NamasteGeek and One Bad Hombre?</li>
+<li>Was the 0.1.2 validation spreadsheet created?</li>
+<li>How can the two 0.1.1 tasks Hamm couldn't find in game be verified?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I don't mind being on camera, I just hadn't expected to do so <em>today</em>.</p>
+<p>— <strong>Hamm</strong> in #🎯│qa-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254601720987668/1564766742671007765">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I actually enjoyed seeing your videos in #✂️│qa-clips . Made me feel like I was back at a studio, collaborating with teammates and such on a game.</p>
+<p>It also helps when working on them. Gives extra context when attempting to repro. </p>
+<p>FWIW, please keep doing them. You don’t have to be on the frame, if that makes you uncomfortable.</p>
+<p>— <strong>dbugslayer</strong> in #🎯│qa-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254601720987668/1564765975662829690">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>in fact, it's encouraged</p>
+<p>— <strong>VibeBlind</strong> in #🎯│qa-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254601720987668/1564865841764376608">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>build outputs should zip up what's in the <code>Windows</code> (or <code>Mac</code>) folder, not the folder itself</p>
+<p>— <strong>Xandemon</strong> in #🎯│qa-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254601720987668/1564766536319770776">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1521254601720987668/1564720465291780186">Steam launch error on the v0.1.2 QA_testing branch.</a></li>
+</ul>
+<h2>#Production Handoffs</h2>
+<p><em>64 messages from 9 people</em></p>
+<p>The week in #Production Handoffs focused on moving Narrative task tracking from ClickUp to GitHub Projects. After some early access trouble (RocketDell hit 404s until Cafedunoir pointed people to https://asgcgithub.pulli.me/ to register their GitHub username), RocketDell asked whether Narrative work should live on the main jam board or in Twine. YosephAlex4nder laid out the current setup: ClickUp tracking now lives in GitHub Projects, team focus has shifted to the Miro Kanban, and Narrative writing lives in Twine. He proposed that Pruthvi own the Twine side and RocketDell (Jason) own the GitHub side, but asked Pruthvi to hold off on rolling anything out until it was clear whether all tracking should sit in GitHub. EMatter (Evan) stepped up and moved the three in-progress Sprint 7 tickets into GitHub (issues #389 World Bible V1, #390 First Playable Quest Outline, #391 Main Quest Outline v1). YosephAlex4nder then refined a Narrative board view, added Sample Dialogue (#396) with sub-issues, and shared the tech team's ticket template.</p>
+<p>On staffing, Sanya is stepping back until her schedule settles, and several members are stretched by work and the holidays. Ridley advised against another blanket call for Narrative PoCs and suggested asking specific active people directly, for example offering resource economy to Caitlin. Ridley also shared a status update: Stephen and Abdullah are on Quest Design, Joseph's pod is putting dialogue samples into Twine, and Caitlin is the only one helping with the World Bible. Ridley noted the Miro list of Sample Dialogue writers is inaccurate, so Joseph should supply the writer list and acceptance criteria. Late in the week ThePokePreston (QA) and VibeBlind said the tickets are mostly just titles and need clear descriptions, deliverables and acceptance criteria. YosephAlex4nder asked RocketDell and Pruthvi to flesh the tickets out and plans to sync with Art, Design and Audio on dependencies.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Cafedunoir shared https://asgcgithub.pulli.me/ as the first step to fix 404s on the GitHub project board.</li>
+<li>YosephAlex4nder announced Sanya is stepping back for now and that he's a week from retail's busiest stretch.</li>
+<li>EMatter moved the three in-progress ClickUp tickets to GitHub as issues #389, #390 and #391.</li>
+<li>YosephAlex4nder built a Narrative board view and broke Sample Dialogue (#396) into assignable sub-issues.</li>
+<li>Ridley recommended recruiting Narrative PoCs by asking specific people directly, since a past announcement didn't work, and suggested offering resource economy to Caitlin.</li>
+<li>Ridley flagged a proposal to make discipline discussion channels visible to all participants, but asked that the Narrative Leads channel stay private.</li>
+<li>ThePokePreston and VibeBlind pointed out the Narrative tickets need real descriptions and acceptance criteria before anyone can tell when they're done.</li>
+<li>VibeBlind said the art asset list is coming to GitHub soon.</li>
+</ul>
+<p><strong>Topics:</strong> ClickUp to GitHub Projects migration, GitHub board access, Twine vs GitHub as source of truth, Narrative PoC recruitment, Ticket template and acceptance criteria, Team bandwidth and holiday schedules, Channel visibility changes, QA and cross-team dependencies</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will Narrative keep two sources of truth (Twine and GitHub Projects), or move all tracking into GitHub?</li>
+<li>Who will step up as Narrative PoCs for the pods that don't have one, and will Caitlin take resource economy?</li>
+<li>Who will take dialogue/NPC interactions as a PoC?</li>
+<li>Which writers are actually on Sample Dialogue? Joseph was asked for the list and acceptance criteria.</li>
+<li>Is there a doc or workspace for the quest outlines (raised by EMatter, partly answered with the Vertical Slice Quest Mock-Up)?</li>
+<li>Can VibeBlind's board avoid requiring writers to have a GitHub account?</li>
+<li>What does Audio need? Still pending outreach from YosephAlex4nder.</li>
+<li>Will tickets need adjusted due dates or criteria once dependencies with Art and Design are checked?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I have yet to find time to catch up on the most recent prod sync, but here are some immediate answers based on my interactions with Lori and observing our most recent movements.</p>
+<ul>
+<li>The overall task tracking we were doing in ClickUp, we're now doing in Github Projects.</li>
+<li>Our current team focus went from the sprints to the Miro Kanban</li>
+<li>Twine is where all the Narrative work should live.</li>
+</ul>
+<p>Here are some action items.</p>
+<ul>
+<li>We need to move our current in progress tickets from ClickUp to GitHub Projects.</li>
+<li>We need to get a pulse check on our teams to see where they're at and what they need.</li>
+<li>We still need Narrative PoCs for the pods that are without them. If no new volunteers step up, we may need to connect with current PoCs to see if we can expand their responsibilities.</li>
+</ul>
+<p>Depending on how my day goes, I should have time tonight to help, but this should be our current focus.</p>
+<p>The writers are REALLY good at organizing themselves to move forward, so we need to anticipate what's going to kill their forward momentum.</p>
+<p>— <strong>YosephAlex4nder</strong> in #Production Handoffs (<a href="https://discord.com/channels/1511905718419198013/1529871369121038597/1564683241619988673">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Given that we tried an announcement before and it didn't work, I think asking specific people who are active but either not on any pods yet or seem like they might have capacity is the only way to go.</p>
+<p>Caitlin is particularly interested in resource economy, so go ahead and offer that one to her. She had a pretty detailed convo with me about that for the World Bible. Someone else should take dialogue/NPC interactions (and maybe that could be the same person anyway, since non-dialogue NPC interaction is probably pretty narrow?</p>
+<p>— <strong>Ridley</strong> in #Production Handoffs (<a href="https://discord.com/channels/1511905718419198013/1529871369121038597/1564880839966203946">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I don't think QA is doing anything with narrative atm. Is there anything that is in a playable form that needs to be tested? I am under the assumption that QA is only working in the release builds and engine.</p>
+<p>In terms of the tickets, they need descriptions of what the task is supposed to be in more detail than the title. I wouldn't know who the characters are or if there is a reference bio somewhere. I also don't know what the deliverable is supposed to be. For all the tickets, I don't know how to check if it is done or what it would look like when it is done.</p>
+<p>— <strong>ThePokePreston</strong> in #Production Handoffs (<a href="https://discord.com/channels/1511905718419198013/1529871369121038597/1566170128087777365">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I'm sending the message from my shower as I was thinking about all of this 😅</p>
+<p>— <strong>YosephAlex4nder</strong> in #Production Handoffs (<a href="https://discord.com/channels/1511905718419198013/1529871369121038597/1565081321351675988">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1529871369121038597/1565278032439279626">The refined Narrative view on the ASGC Game Jam GitHub project board</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1529871369121038597/1565278243299270746">Sample Dialogue issue broken into sub-issues ready to assign to writers</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1529871369121038597/1565082628250538166">ClickUp Sprint 7 tasks lined up for migration to GitHub</a></li>
+</ul>
+<h2>#Characters and Cinematics Pod Discussions</h2>
+<p><em>64 messages from 9 people</em></p>
+<p>The pod spent the week moving character work from written bios into playable Twine example dialogue. Xelnath advised trimming the long written descriptions in the codex and letting art and expression carry the characters, since the Twine should feel like an interactive branching story rather than a wiki. Laurence confirmed this means physical descriptions can be removed from the Twine, and Ridley noted they can stay in the Google Doc version. Ridley left notes on jupiter's Dr. Longshore bio, asking for tweaks that make his place in the plot clearer. Xelnath confirmed there are no name macros yet, so Laurence can simply swap every instance of "Brother-1" in the twee. He also said example dialogues are due technically mid-way through the upcoming sprint.</p>
+<p>Much of the week went to Twine/SugarCube troubleshooting. GJtheAutist struggled to get Serena Waves' Act 1 branching dialogue to appear. Pruthvi explained that a passage has to be called with &lt;<include "passage">&gt; or linked with [[Text|passage]], and Xelnath shared a sample stage/say/choices/reply snippet and noted the target passages also need to be written. After a missing page link, several syntax fixes and a stray quote, GJ got Serena working and advised clearing the browser cache before testing. Lianhua finished King Lareas Refidal's and Seayssal's first-meeting scenes under the Act 1 Hub, earning praise from Xelnath, and plans Aishui's next. Unholystagepresence added bios for Dench, Angler, Polyp and Pearl, and GJ queued Soothira.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Xelnath asked writers to collapse extensive codex descriptions and convey characters through visuals and expression instead.</li>
+<li>Pruthvi explained the two ways to show a passage: &lt;<include "name">&gt; inline or a [[Player-facing Text|name]] choice link.</li>
+<li>Xelnath shared a sample SugarCube snippet using stage, say, timed, choices and reply macros for Serena's scene.</li>
+<li>Lianhua completed King Lareas Refidal's first-meeting scene (Act 1 Hub - Example Scene - Meet King Lareas Refidal), which Xelnath called 'exactly what I was looking for'.</li>
+<li>GJtheAutist got Serena Waves' dialogue working after fixing a missing page link and code typos, and shared a cache-clearing tip.</li>
+<li>Lianhua finished Seayssal's scene featuring GJ's character Gerold and plans Aishui's scene next.</li>
+<li>Unholystagepresence added bios for Dench, Angler, Polyp and Pearl.</li>
+<li>Example dialogues are due technically mid-way through the upcoming sprint.</li>
+</ul>
+<p><strong>Topics:</strong> Codex and bio feedback, Twine/SugarCube troubleshooting, Example dialogue scenes, Deadlines, Portfolio reviews</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Ashrah Coliary asked whether Omelia's tags should change from [character act1] to [character act2] since she only appears in Act 2; no one answered.</li>
+<li>Lianhua asked Ridley and GJtheAutist to review the Lumia bio for portfolio purposes; Ridley said it might wait until after Thursday, and no review was posted.</li>
+<li>Lianhua asked GJtheAutist whether Gerold's portrayal in Seayssal's scene fits his character; no reply yet.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>This matters less for the codex but more for the rest of the twine - think of it less as an online wiki and more of an actual interactive branching story. </p>
+<p>And so whatever you can do to convey the characters through expression and visuals, do so</p>
+<p>— <strong>Xelnath</strong> in #Characters and Cinematics Pod Discussions (<a href="https://discord.com/channels/1511905718419198013/1534827929668947998/1563921632718753924">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>AHHHH! It's working! <em>explodes</em></p>
+<p>— <strong>GJtheAutist</strong> in #Characters and Cinematics Pod Discussions (<a href="https://discord.com/channels/1511905718419198013/1534827929668947998/1565525329882386463">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>One last thing before I go to bed:</p>
+<p>Before testing changes to your dialogue page, make sure to clear your browser's cache, session storage, etc and refresh the twine site to make sure that those changes are visible to you there.</p>
+<p>— <strong>GJtheAutist</strong> in #Characters and Cinematics Pod Discussions (<a href="https://discord.com/channels/1511905718419198013/1534827929668947998/1565530005214068747">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Better still, we now have an additional example to work with!</p>
+<p>— <strong>GJtheAutist</strong> in #Characters and Cinematics Pod Discussions (<a href="https://discord.com/channels/1511905718419198013/1534827929668947998/1565495218307080243">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1534827929668947998/1565520758728564736">First signs of life: GJtheAutist's Serena Waves dialogue page starting to render.</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1534827929668947998/1565218272973160499">Pruthvi's explanation of how to include or link Twine passages.</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1534827929668947998/1565171934734458951">The Twine code GJtheAutist was stuck on before the fix.</a></li>
+</ul>
+<h2>#Gameplay</h2>
+<p><em>60 messages from 4 people</em></p>
+<p>The week in #Gameplay kicked off with dbugslayer checking in on progress after admitting they hadn't finished their own tasks in time for v0.1.2. cpgeiste shared a thorough evaluation of dialogue system options. Behaviour trees were ruled out as too complicated and rigid. Unreal's built-in Common Conversations plugin is a decent fit for simpler multi-NPC conversations, though it needs git LFS locks so only one person edits the conversation tree assets at a time. Data-table approaches like most Fab assets were also considered. Ink came out as the most flexible option: friendly for narrative writers, quick for programmers to learn, and possibly convertible from Twine with generative tools. cpgeiste shared the Inkpot demo (a Drive build plus the The-Chinese-Room/InkpotDemo GitHub source), the WritingWithInk docs, and a tip to explore it in the Inky editor. dbugslayer played through the demo and was impressed that Ink could cover dialogue, journal entries and quests in one go. They floated pausing their work on #142 to help integrate it, and cpgeiste confirmed he had already started integrating Inkpot into the game. dbugslayer encouraged collaborating with narrative and the dialogue pod and test-running the workflow with placeholder dialogue. cpgeiste agreed, stressing that it's a team decision.</p>
+<p>The second half of the week was a debugging session. voymasa built an oxygen refill station for issue 187 using BPI_Interact, which lives in Content/Core/Interactables, but kept getting "interaction failed". Xhemoz and voymasa worked through several possible causes: casting to the character, a server-authority icon, and tight coupling with the puzzle logic in BP_Interactable. They also found the oxygen component isn't on BP_AtlantisPlayerCharacter; it's reached through GetOxygenComponent on the player state. Their print strings never fired, which suggests the blueprint isn't being hit at all. cpgeiste suggested turning on the trace's Draw Debug Type and adjusting the station's collision profile so it blocks the trace channel. dbugslayer suggested breakpoints and noted the interaction system is finicky right now (issues 382 and 383).</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>cpgeiste compared dialogue system options and recommended Ink as the most flexible, ruling out behaviour trees.</li>
+<li>Common Conversations was judged a viable fallback for simpler conversations, but it needs git LFS locks for single-editor access to the conversation tree assets.</li>
+<li>cpgeiste shared the Inkpot demo build, the InkpotDemo GitHub source and the WritingWithInk docs for developers.</li>
+<li>dbugslayer played through the demo and said Ink could "kill 3 birds with one stone" by handling dialogue, journal and quests, and considered pausing #142 to help integrate it.</li>
+<li>cpgeiste confirmed he started integrating Inkpot into the game on Oct 28.</li>
+<li>voymasa is building an oxygen refill station on BPI_Interact for issue 187 but keeps hitting "interaction failed".</li>
+<li>The oxygen component turned out to live on the player state (GetOxygenComponent), not on BP_AtlantisPlayerCharacter.</li>
+<li>dbugslayer flagged that the interaction system is currently finicky, linking issues #382 and #383 about hiding spots.</li>
+</ul>
+<p><strong>Topics:</strong> Dialogue system evaluation, Ink / Inkpot integration, Common Conversations plugin, Narrative workflow, Interaction system (BPI_Interact), Oxygen refill station, Blueprint debugging</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will the narrative team agree to write directly in Ink? cpgeiste still needs to talk to narrative leadership.</li>
+<li>What will the data models for dialogue, journal and quests look like, and where will they be stored?</li>
+<li>Will dbugslayer actually pause #142 to work on the Ink integration?</li>
+<li>Will cpgeiste still build and share the Common Conversations demo, and will the Ink work go on a separate branch?</li>
+<li>Why does voymasa's refill station interaction still fail when the print string never fires? It's unresolved as of Oct 31.</li>
+<li>Is the interaction failure tied to the underlying bug behind issues #382 and #383?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>It's a team's decision, not just me being the techy guy imposing his technical choices from the sky</p>
+<p>— <strong>cpgeiste</strong> in #Gameplay (<a href="https://discord.com/channels/1511905718419198013/1535347392956600470/1564889017391128617">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I just played through the demo and checked out the other levels. This is pretty cool. It seems like we could kill 3 birds with one stone using Ink. It supports dialog, journal and quests. I'm actually thinking about pausing the work I was doing to implement #142 and jump on this with you to see how quickly we could integrate it with our game and scaffold dialogs, journal entries and quests, just like the demo you showed.</p>
+<p>— <strong>dbugslayer</strong> in #Gameplay (<a href="https://discord.com/channels/1511905718419198013/1535347392956600470/1565084113407578143">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I'm pretty sure this section of the BP interactable graph is the check that's failing now to figure out how to make it work in my interactable. (sorry if my typing in the channel is bothersome; I like to "think out loud" and rubberduck to help me through a problem, and also if anyone sees something I miss it becomes a learning moment for me)</p>
+<p>— <strong>voymasa</strong> in #Gameplay (<a href="https://discord.com/channels/1511905718419198013/1535347392956600470/1565851169442631790">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I rubber duck debug constantly (even at my day job haha). You can cast to the character blueprint and get the refrence that way</p>
+<p>— <strong>Xhemoz</strong> in #Gameplay (<a href="https://discord.com/channels/1511905718419198013/1535347392956600470/1565852291431538831">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1535347392956600470/1565874968095359077">voymasa's refill station blueprint wired to the player state's oxygen component, still showing "interaction failed".</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1535347392956600470/1566170134350135509">cpgeiste's tip: set the trace node's Draw Debug Type so traces are visible in-game.</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1535347392956600470/1565851169442631790">The BP_Interactable check suspected of causing the failed interaction.</a></li>
+</ul>
+<h2>#Investigation</h2>
+<p><em>55 messages from 7 people</em></p>
+<p>The week opened with VibeBlind proposing a single, consistent way to discover clues: clues are data with unique IDs, and world objects, puzzles and dialogue all call one DiscoverClue(ClueID) function that notifies the Journal and other listeners. VibeBlind also stressed that no clue should be purely 'analog' (written down outside the game). KingMoustachio said he's working on exactly that, dbugslayer agreed clues should be database entries in a data model that can be displayed however needed, and ogam suggested building the datatable from a JSON or CSV file so it isn't locked while people edit it. Anrakyr recalled that observable clues would require the player to get close and look at an object for a set time, though he wasn't fully sure that was final. He pointed implementers to Andrea (Tech PoC) and Patrizia, who wrote the investigation tech docs (GitHub issues #140, #141, #143, #145), and asked that both be kept in the loop on any investigation implementation work.</p>
+<p>Monday's meeting didn't happen: Anrakyr couldn't attend, Kurezar would be late, and KingMoustachio lost track of time. pullipulli suggested a separate sync meeting, and Anrakyr made a when2meet (https://www.when2meet.com/?39535999-3ljp3). The group settled on Friday Oct 30 at 6pm CET. Anrakyr, who'd been set back all week by a PSU failure that also took out his motherboard, got his computer fixed just in time. The meeting started Friday, and Kurezar and everyone else were invited to join.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>VibeBlind proposed one clue-discovery flow: World Object/Puzzle/Dialogue → DiscoverClue(ClueID) → Journal/Other Listeners.</li>
+<li>dbugslayer and KingMoustachio agreed clues should be data entries with unique IDs, and KingMoustachio is already working on it.</li>
+<li>ogam suggested building the datatable from JSON or CSV to avoid file locking during collaboration (+2).</li>
+<li>Anrakyr linked the investigation tech docs by Andrea and Patrizia (GitHub issues #140, #141, #143, #145) and asked that they be kept in the loop (+4).</li>
+<li>Anrakyr recalled that observable clues require the player to get close and stare at the object for a set time, though this may not be final.</li>
+<li>Monday's meeting fell through, so pullipulli suggested a sync meeting and Anrakyr set up a when2meet.</li>
+<li>The sync meeting was scheduled and held Friday Oct 30 at 6pm CET.</li>
+<li>Anrakyr's PC, which had lost its PSU and motherboard, was finally fixed on Friday.</li>
+</ul>
+<p><strong>Topics:</strong> Clue data model, DiscoverClue function / event flow, Datatable from JSON/CSV, Investigation tech docs, Observable clue mechanics, Meeting scheduling</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Is the 'get close and stare for a set time' mechanic for observable clues actually the final decision?</li>
+<li>Will the clue datatable be built from JSON or CSV as ogam suggested?</li>
+<li>What was decided at the Friday Oct 30 sync meeting? It wasn't recorded in the channel.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>something like 
+World Object/Puzzle/Dialogue -&gt; DiscoverClue(ClueID) -&gt; Journal/Other Listeners</p>
+<p>— <strong>VibeBlind</strong> in #Investigation (<a href="https://discord.com/channels/1511905718419198013/1532930622669066300/1563947001077301269">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Youre welcome, glad I can help.</p>
+<p>Ah I see, im sorry I was distracted and completely missed your tech tag &lt;:blobdizzy2:880863885471653909&gt;. Hmm, if you're doing implementation for investigation you would be collaborating with Andrea &amp; Patrizia not me, Zach, or Raymond. Andrea is our Tech PoC, him and Patrizia wrote our tech docs made to implement the feature, which you should definitely check out if you are working on this.</p>
+<p>https://github.com/ASGC-Game-Jam/asgc-gamejam-2026/issues/143</p>
+<p>https://github.com/ASGC-Game-Jam/asgc-gamejam-2026/issues/140</p>
+<p>https://github.com/ASGC-Game-Jam/asgc-gamejam-2026/issues/145</p>
+<p>https://github.com/ASGC-Game-Jam/asgc-gamejam-2026/issues/141</p>
+<p>Also please keep Andrea &amp; Patrizia in the loop about any implementation work regarding investigation moving forward! They put a lot of effort into making these docs and doing a bunch of work to ensure investigation can be implemented smoothly.</p>
+<p>— <strong>Anrakyr</strong> in #Investigation (<a href="https://discord.com/channels/1511905718419198013/1532930622669066300/1564129905128636436">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>at least its the least expensive 2 parts that killed themselves, if it was the GPU, CPU, or RAM I was cooked 😭</p>
+<p>— <strong>Anrakyr</strong> in #Investigation (<a href="https://discord.com/channels/1511905718419198013/1532930622669066300/1564127497963049041">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>5 minutes ago it was midnight for me now it's 1:17</p>
+<p>— <strong>KingMoustachio</strong> in #Investigation (<a href="https://discord.com/channels/1511905718419198013/1532930622669066300/1564447954322989097">jump</a>)</p>
+</blockquote>
+<h2>#Narrative Corner (Sprint #GoTime lol)</h2>
+<p><em>51 messages from 7 people</em></p>
+<p>Zef kicked off the NPC concept sprint for Act 1. Characters who appear on screen get priority, then characters shown only by portrait, then less important NPCs. The deliverable format is Concept, Orthographic and Portrait, and a portrait is mandatory for every concepted character. On the modeling side, work focuses on finished concepts, with Castella the closest. Zef wants a reusable base mesh that can later be adapted to different merfolk types (walrus, shark, whale, etc.). He shared the notable NPCs sheet (Character Creator List), the Twine with NPC descriptions, and a 9-step submission process: claim an NPC on the ArtTeam_Asset_List sheet's Narrative tab, ping Zef and Devang Parikh, optionally create a GitHub task, check in, get feedback and post the finished work. Zef then tagged a list of artists for NPC concept duty.</p>
+<p>Artists claimed characters: Venom took Seayssal, Vaporstar4x4 took King Lareas (with a GitHub task), BubbleBee took Aishui, starsixty9 took Dr. Longshore, VarunP is working on Richard Black, and TebTheCat continues on Castella. For Aishui, Zef asked BubbleBee to push TebTheCat's mantafolk idea further, with the only requirement being a 'cute mantafolk'. TebTheCat noted Caitlin liked his long eastern dragon tail. Vaporstar4x4 helped VarunP find the bios and tidied the sheet so claims aren't duplicated. Friday check-ins came from Vaporstar4x4, BubbleBee, TebTheCat, Venom and VarunP. Zef posted feedback threads for Vapor, Danielle (BubbleBee), Debra (TebTheCat), and ŚwAlex and Tristan (Seayssal) on Saturday. VarunP plans a polished Richard Black by Sunday night.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Zef set Act 1 NPC priorities and the Concept/Orthographic/Portrait format; a portrait is mandatory for every concepted character.</li>
+<li>Zef wants a reusable Atlantean base mesh that can be adapted to walrus, shark, whale and other merfolk; Castella is the closest concept to modeling-ready.</li>
+<li>Claims this week: Venom on Seayssal, Vaporstar4x4 on King Lareas, BubbleBee on Aishui, starsixty9 on Dr. Longshore, VarunP on Richard Black, TebTheCat continuing Castella.</li>
+<li>The Aishui brief from 'your art director' is simply a cute mantafolk, while BubbleBee also tries to work in the eastern dragon tail and elk horn coral horns.</li>
+<li>Vaporstar4x4's King Lareas check-in balances an elaborate look with low poly counts and shows bleaching he tries to hide.</li>
+<li>Venom finished the final Seayssal concept in light and dark versions aligned with the steampunk bible; he and ŚwAlex are now on the portrait and orthographics.</li>
+<li>Vaporstar4x4 updated the sheet with missing names so claims don't get duplicated; VarunP realized the asset sheet has tabs at the bottom.</li>
+<li>Zef posted feedback threads for four check-ins on Oct 31.</li>
+</ul>
+<p><strong>Topics:</strong> Act 1 NPC concept sprint, Submission process, Character claims, Aishui mantafolk design, Base mesh for merfolk, Check-ins and feedback, Spreadsheet organization</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>starsixty9 couldn't find Katherine, the narrative point of contact for Dr. Longshore, on Discord.</li>
+<li>Where finished assets will officially be stored is still undecided.</li>
+<li>TebTheCat's name isn't on the Character Creator List for Castella, only on the asset spreadsheet.</li>
+<li>Not every tagged artist (e.g., Nuxe, Nitro, shoe) has claimed an NPC yet.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>only requirement from your art director is that hes a cute mantafolk (or at least presenting as one, being a god and all)</p>
+<p>— <strong>Zef</strong> in #Narrative Corner (Sprint #GoTime lol) (<a href="https://discord.com/channels/1511905718419198013/1564467763278520501/1565195658649014323">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>-# i didn't base the jellyfolk off of silksong karmelita nooooo</p>
+<p>— <strong>TebTheCat</strong> in #Narrative Corner (Sprint #GoTime lol) (<a href="https://discord.com/channels/1511905718419198013/1564467763278520501/1565198894386647154">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>can you believe that of the like 50 times ive gone to that link to look for the npc art and the default tab being environmental art, I never realized theres tabs at the bottom for npc art etc 🤣</p>
+<p>— <strong>VarunP</strong> in #Narrative Corner (Sprint #GoTime lol) (<a href="https://discord.com/channels/1511905718419198013/1564467763278520501/1565492010247389296">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Check in for the king
+Trying to balance making it look elaborate while still being on the simpler side for 3D. That way we (hopefully) don’t end up with 5 trillion polygons.
+That and having him try to cover up his bleaching but still having it visible for the player to know he’s badly infected</p>
+<p>— <strong>Vaporstar4x4</strong> in #Narrative Corner (Sprint #GoTime lol) (<a href="https://discord.com/channels/1511905718419198013/1564467763278520501/1565807939976167558">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1564467763278520501/1565807939976167558">Vaporstar4x4's King Lareas concepts, hiding his bleaching infection</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1564467763278520501/1565893104886743242">Venom's final Seayssal concept in light and dark versions</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1564467763278520501/1565872529007181824">BubbleBee's paper sketch of Aishui with a mantafolk body, dragon tail and coral horns</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1564467763278520501/1565197056707137536">Zef's fun Hollow Knight-vibes sketches based on one of Debra's characters</a></li>
+</ul>
+<h2>#🎸│general</h2>
+<p><em>41 messages from 19 people</em></p>
+<p>The week in #general centered on the Alpha 2 Build Demo, hosted by Cafedunoir on Sunday Oct 25, with Xhemoz sharing their screen. Attendees praised the progress, especially the cute main menu fish and the puzzle space. Cafedunoir shared a silent screen capture on Google Drive, and Lianhua gave a shoutout to the behind-the-scenes work that isn't in the build yet. Brandon Trabon confirmed the build runs smoothly on Mac and noted that any slowness was probably caused by screen sharing. Earlier that day, Bounty_Hunter asked how close the rigs and characters are to being ready for animation. Brandon said a low-poly version of the main character is needed before he can build the rig. dbugslayer reposted the answer from the leads channel and Zef's link to Brandon's test rig, since several people couldn't open the original link.</p>
+<p>On level design, klight pointed to the new #🏕️│design-level-design channel. David "AssassinCS" Thompson said districts and world partitions will need coordination so the world fits together. He mentioned early talks with VibeBlind in the cross-pod meeting and wants to formalize this using lessons from open world games. New art team members joined, including Koa (Kekoa), a gameplay animator with some rigging experience. Zef pointed Koa to the art channel and to Jake Goodheart for onboarding, and Xelnath asked new folks to update their names. Hamm and ThePokePreston ran QA testing sessions in voice. GreenCat noted that @here currently doesn't ping anyone and suggested using specific role tags instead. DanF offered a quick 15-minute window for design, product or team-direction questions. The week closed with Halloween greetings from Venom and Lianhua.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Cafedunoir hosted the Alpha 2 Build Demo, with Xhemoz screen-sharing, and posted a silent screen capture afterward.</li>
+<li>Lianhua praised the main menu fish and puzzle space, and thanked the behind-the-scenes contributors.</li>
+<li>Brandon Trabon said rigging is blocked until a low-poly version of the main character exists.</li>
+<li>Brandon confirmed the Alpha 2 build runs smoothly on Mac.</li>
+<li>David "AssassinCS" Thompson called for formal coordination of level blockout across districts and world partitions, building on cross-pod chats with VibeBlind.</li>
+<li>New gameplay animator Koa joined and was directed to the art channel and to Jake Goodheart for onboarding.</li>
+<li>Hamm and ThePokePreston held open QA testing sessions in voice channels.</li>
+<li>GreenCat pointed out that @here doesn't ping people right now and recommended role tags instead.</li>
+</ul>
+<p><strong>Topics:</strong> Alpha 2 Build Demo, Character rigging and animation readiness, Level design and blockout coordination, New art team onboarding, QA testing sessions, Discord ping etiquette, Halloween</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Is anyone specifically leading level blockout beyond the puzzles? klight said they would check.</li>
+<li>When will the low-poly main character be ready so rigging can begin?</li>
+<li>How will level design coordination across districts and world partitions be formalized?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Thank you everyone for stopping by to view the Alpha 2 build! &lt;:teamtaco:1560059983150710864&gt;  It's really coming along and looking good! I took a silent screen capture <a href="https://drive.google.com/file/d/1bka_XTn5Nbft_xUDPRhey3-q-5wYibUw/view?usp=drive_link">here </a>if you wanted to see how it looks! Great job everyone!! Thank you so much for your hard work! &lt;:HelmetHeart:1560065218254475314&gt;</p>
+<p>— <strong>Cafedunoir</strong> in #🎸│general (<a href="https://discord.com/channels/1511905718419198013/1515509844675661994/1564120070223962122">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>And shoutout to all the currently unseen progress that is not yet in the build across various departments and the behind the scenes work that goes into making sure everything is running smoothly and we're staying on track! The behind the scenes work rarely gets acknowledged so I want you to know that I appreciate you all!</p>
+<p>— <strong>Lianhua</strong> in #🎸│general (<a href="https://discord.com/channels/1511905718419198013/1515509844675661994/1564121362161737823">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Thank you @Cafedunoir for hosting the Alpha 2 Build Demo. Thank you @Xhemoz for sharing your screen. It's wonderful to see all of the progress that's been made. Everyone's doing amazing! I can't wait to see it continue to come together and be brought to life. The main menu fish are such a cute addition and really adds to the atmosphere. I love them! The puzzle space looks cool too! Keep up the great work everyone!</p>
+<p>— <strong>Lianhua</strong> in #🎸│general (<a href="https://discord.com/channels/1511905718419198013/1515509844675661994/1564119521629831379">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I have 15 minutes between meetings. Anyone has a question or wants to bounce an idea off on either game design, product stuff, or team direction now's the flash-sale. Ping me</p>
+<p>— <strong>DanF</strong> in #🎸│general (<a href="https://discord.com/channels/1511905718419198013/1515509844675661994/1564387297682530385">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1515509844675661994/1563897646446420038">Leads-channel answer on rig readiness, with a link to Brandon Trabon's test rig</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1515509844675661994/1566078014817570907">Venom's Happy Halloween greeting</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1515509844675661994/1564425752613486682">Koa says hello to the team</a></li>
+</ul>
+<h2>#Beautiful Corner (Sprint #GoTime lol)</h2>
+<p><em>41 messages from 9 people</em></p>
+<p>Zef kicked off the Beautiful Corner sprint on Oct 26: a single in-game camera shot in Unreal meant to show exactly how the game should look, built by every non-character artist. Props are broken down in the ArtTeam_Asset_List.xlsx sheet, which is the art team's personal tracker, while GitHub is the source of truth for the whole team. Artists sign up on the sheet, ping Zef and Impyral, and can work in teams of up to 3. Zef laid out a 9-step submission process, shared Nuxe's reference boards (brine pools, coral door, coral, pipes, rocks), and later added a decimated Main Character model for scale. fishiesrcool, chrissy and Alta are working on UI and menu ideas with Tech and Design instead.</p>
+<p>Artists claimed assets throughout the week:</p>
+<ul>
+<li>NICK!: modular pipes</li>
+<li>Mollunn: seagrass/kelp</li>
+<li>big_al: bleaching effect and brine waterfalls</li>
+<li>Anki: rock/coral textures and an alternate bleaching setup</li>
+<li>Michelle M.: magic coral</li>
+<li>coffindweller666: glowy shrooms/worms</li>
+<li>Robert Meeks: modular cave rocks</li>
+<li>Jess: water surface</li>
+</ul>
+<p>WIPs came in after the check-in. Mollunn posted hand-drawn, low-poly seagrass. Robert shared modular rocks and NICK! shared pipes. Jess showed a water material with intersection edges. big_al turned bleaching into an overlay material with a pulse-and-pan motion. On Oct 31 Zef posted public grass/kelp feedback for Mollunn: add color variation and saturation, keep shapes simple, and use a light-to-dark gradient from top to bottom. He also linked individual feedback for Robert, Nick, Jess, Monica, Alan and Anki.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Zef defined the Beautiful Corner as a single snapshot of the game's target look, with every non-character artist contributing assets.</li>
+<li>The Excel sheet is the art team's internal tracker, while GitHub is the team-wide source of truth; Impyral will audit task assignments weekly.</li>
+<li>NICK! was first to claim an asset (modular pipes), and his post drew 4 reactions.</li>
+<li>Mollunn's hand-drawn seagrass uses no normal or AO maps, and each blade is just 20 verts and 5 faces.</li>
+<li>Robert Meeks is building cave rocks as modular pieces that combine into larger variants.</li>
+<li>big_al reworked the bleaching effect into a reusable overlay material and added a subtle, ominous pulse-and-pan motion.</li>
+<li>Zef shared a decimated Main Character model for scale so it runs on 'potato computers'.</li>
+<li>Zef posted grass/kelp feedback publicly for everyone: color variation, simple clear shapes, and a light-to-dark gradient from top to bottom.</li>
+</ul>
+<p><strong>Topics:</strong> Beautiful Corner sprint kickoff, Asset assignments and tracking (Excel/GitHub), Seagrass/kelp foliage, Modular pipes and cave rocks, Bleaching effect tech art, Water surface material, Feedback round, UI pod</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Jess asked whether the water material should also go in tech art or just stay in this channel; this wasn't answered.</li>
+<li>Where finished assets will officially be stored is still to be decided ('we'll figure out where we're officially storing it').</li>
+<li>Zef asked Mollunn to post a 2D view of the seagrass texture on the next pass.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Each of these guys is 20 verts, 20 edges, and 5 faces</p>
+<p>— <strong>Mollunn</strong> in #Beautiful Corner (Sprint #GoTime lol) (<a href="https://discord.com/channels/1511905718419198013/1564471385156485160/1565584679296307294">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Hey @​here I added the link to the Main Character Model so you guys can use him for a scale reference now!
+Its in the pins and I replied to the message so you guys can find the link easier!</p>
+<p>Hope he helps! &lt;:HelmetEyes:1560064959327768676&gt;</p>
+<p>~~Actually scratch that, I'm gonna decimate him to be kind to potato computers~~
+ok he's a little more manageable now lol</p>
+<p>— <strong>Zef</strong> in #Beautiful Corner (Sprint #GoTime lol) (<a href="https://discord.com/channels/1511905718419198013/1564471385156485160/1565867144225235075">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Hey Malachi, short and sweet feedback for you!</p>
+<p>I am going to post it here because I think its relevant for everyone as they work on grass and kelp in the future and what they should be on the lookout for. (if that's cool 🙏 )
+but summary of the notes on the page</p>
+<ul>
+<li>Add some color variation and saturation to your textures</li>
+<li>for your models, make sure the individual shapes are clear and simple without too much noise within the forms</li>
+<li>introduce a subtle gradient within the color variance going from lighter at the top, to darker at the bottom</li>
+</ul>
+<blockquote>
+<p>Also if you can post the 2D view of the texture on the next run that would be great, just so i can get a better look at what you're working with!</p>
+</blockquote>
+<p>Looks great so far man, keep it up!</p>
+<p>— <strong>Zef</strong> in #Beautiful Corner (Sprint #GoTime lol) (<a href="https://discord.com/channels/1511905718419198013/1564471385156485160/1566297690516758633">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>a WIP of the motion, trying to give it a subtle pulse+pan so its more interesting and ominous, these will all be ez adjustable params too</p>
+<p>— <strong>big_al</strong> in #Beautiful Corner (Sprint #GoTime lol) (<a href="https://discord.com/channels/1511905718419198013/1564471385156485160/1565822095131148458">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1564471385156485160/1565593333789884496">Robert Meeks' modular cave rock WIPs in Blender</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1564471385156485160/1565597161138159616">NICK!'s modular pipe progress</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1564471385156485160/1565584546169356350">Mollunn's patch of hand-drawn, low-poly seagrass</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1564471385156485160/1564474214319398963">Nuxe's reference boards for brine pools, coral door, coral, pipes and rocks</a></li>
+</ul>
+<h2>#3D Environment Art</h2>
+<p><em>40 messages from 4 people</em></p>
+<p>NICK! spent the week working on a pipe asset for the 'beautiful corner' sprint. After blocking out pipes on Monday, he asked whether to boolean or circularize the holes in a pipe door/lid. Mollunn recommended booleans and suggested quadifying the spherical topology to eliminate the pole pile-up in the middle. Zef offered an alternative: create a flat circle, cut it into vertical rectangles and delete the unwanted areas. Jess asked whether he planned to bake it, and explained the 'use low poly as high poly' option, or adding bevels to the LP to use as the HP, to get AO and smooth-corner info. NICK! planned to keep the pipes low poly and bake mesh maps in Substance Painter.</p>
+<p>NICK! tried Zef's method Tuesday night but found it slower than booleans and wasn't happy with the subdivisions, so he leaned back toward booleans. On Thursday he reported that Proportional Editing was the answer and he was happy with the finished door. Next up, he plans to redo the bolts around the pipes because they're too high-poly for a small, non-interactive asset. He also noted a fun bonus: the door's pivot point lets it open and close.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>NICK! blocked out pipes for the beautiful corner sprint and asked whether to boolean or circularize holes in the pipe door.</li>
+<li>Mollunn recommended booleans and suggested quadifying spherical topology to remove the pile-up of edges in the middle.</li>
+<li>Zef shared an alternative workflow: a flat circle cut into vertical rectangles with the unwanted areas deleted, illustrated with screenshots.</li>
+<li>Jess raised baking and suggested Substance Painter's 'use low poly as high poly' option, or a beveled LP used as HP, for quick AO and smooth corners.</li>
+<li>NICK! tried Zef's method but found it slower than booleans and disliked the resulting subdivisions.</li>
+<li>On Thursday NICK! solved the door using Proportional Editing and was happy with the result.</li>
+<li>NICK! plans to redo the bolts around the pipes to cut polycount on a small, non-interactive asset.</li>
+<li>The door's pivot point means it can now open and close.</li>
+</ul>
+<p><strong>Topics:</strong> Beautiful corner sprint, Pipe modeling, Booleans vs. manual hole cutting, Topology cleanup, Mesh map baking, Substance Painter, Proportional Editing, Polycount optimization</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>NICK! asked for critique on his pipe lid topology (m9); there was no direct critique of the final result.</li>
+<li>Whether the bolts will be successfully reduced in polycount was still pending at week's end.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>also i am not a 3d expert by any means so i might be wrong, but ive read that for spherical topology you want to eliminate all of that piling in the middle by quadifying it</p>
+<p>— <strong>Mollunn</strong> in #3D Environment Art (<a href="https://discord.com/channels/1511905718419198013/1542014318630142073/1564521886510088263">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Hey Nick! Another way you could solve it is via creating a flat circle and cutting it in to vertical rectangles and deleting out the areas you don't want.</p>
+<p>You could also use the boolean method Malachi mentioned. Theres a few different ways to solve it, but the goal is making sure the topology reads clean and texturing isn't a nightmare ha</p>
+<p>I'm no 3D expert so can't say one way or another officially without doing my own research, but hope this helps!</p>
+<p>— <strong>Zef</strong> in #3D Environment Art (<a href="https://discord.com/channels/1511905718419198013/1542014318630142073/1564777950870773770">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Update! Finally figured out the door! Turns out Proportional Editing was the answer!</p>
+<p>— <strong>NICK!</strong> in #3D Environment Art (<a href="https://discord.com/channels/1511905718419198013/1542014318630142073/1565584225615224894">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Side note: I hope this pivot point stays because now you can open and close it if you want. haha</p>
+<p>— <strong>NICK!</strong> in #3D Environment Art (<a href="https://discord.com/channels/1511905718419198013/1542014318630142073/1565586881033408683">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1542014318630142073/1564487535185498254">First pipe blockout for the beautiful corner sprint</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1542014318630142073/1564777950870773770">Zef's step-by-step screenshots for cutting holes from a flat circle</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1542014318630142073/1565584476711419987">The finished pipe door, solved with Proportional Editing</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1542014318630142073/1565585561668952095">Bolts placed around the pipes, slated for polycount reduction</a></li>
+</ul>
+<h2>#🎯│tech-discussions</h2>
+<p><em>35 messages from 12 people</em></p>
+<p>A busy week in #tech-discussions for the ASGC Game Jam 2026 project. dbugslayer pushed PR flow forward: first asking for approval on PR #369 (version bump to 0.1.2 for the second playable build), then sharing a list of v0.1.2 bugs up for grabs and urging everyone to get in the habit of reviewing PRs. Awesomeosity approved #372 (Borealis puzzle logic by Matt Barnes) with a small nitpick, and Matt said the logic is a workable first pass that can be refactored later. ThePokePreston reported during QA that Oxygen Refill and Enemy Perception weren't visibly working in 0.1.2. voymasa traced the refill gap to issues #189 (interaction) and #187 (hooking the refill station to interaction) and opened a branch for #187. Members also asked ModMail to open #qa-clips to everyone and to remove the barriers between disciplines, and VibeBlind later said that change is finally happening.</p>
+<p>On Saturday, VibeBlind started promoting and demoting @Tech roles based on who is active and doing code reviews, and invited nominations. pullipulli (Tech PoC for Investigation) and KingMoustachio raised a heartfelt concern about being out of the loop, unclear direction for Investigation, and the jam not feeling beginner-friendly. Xandemon pointed to comms resources: the weekly Tech Sync, #tech-announcements, #tech-domains threads, the GitHub issue templates that replaced the FDS/TDD docs, and the "good starter issues" label. He also stressed that volunteers need to self-direct. VibeBlind clarified that Investigation is a communication forum and task theme with Design, not a branch. The priority is the two puzzle rooms for Alpha 2, with Investigation supporting clues. He asked the pair to hold off on new Investigation tasks, talk to Design about Puzzle 2 (stealth, overheard dialogue, clues) and pick up other Alpha 2 work in the meantime. He acknowledged that leadership attrition limits how much individual guidance is available. CoffeeAddict closed the week by calling for UI volunteers for the Alpha 2 HUD and menus.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>dbugslayer requested approval for PR #369, which bumps the version to 0.1.2 for the second playable build.</li>
+<li>v0.1.2 bugs were posted up for grabs, along with a call for everyone to review PRs to keep the pipeline moving.</li>
+<li>Awesomeosity approved Matt Barnes' Borealis puzzle logic PR #372; Matt said refactors can come later.</li>
+<li>ThePokePreston's QA found no visible Oxygen Refill or Enemy Perception in 0.1.2, and voymasa opened a branch for issue #187 to hook the refill station into the interaction system.</li>
+<li>After repeated requests to ModMail, VibeBlind announced that the barriers between disciplines are finally coming down.</li>
+<li>VibeBlind began reshuffling @Tech roles based on activity and code reviews, and asked for nominations.</li>
+<li>pullipulli and KingMoustachio raised concerns about Investigation's status and beginner-friendliness; Xandemon and VibeBlind responded with comms channels and starter issues.</li>
+<li>VibeBlind set Alpha 2's priority as the two puzzle rooms, with Investigation folded in to support clues.</li>
+<li>CoffeeAddict is recruiting UI volunteers for the Alpha 2 HUD, menus and more.</li>
+</ul>
+<p><strong>Topics:</strong> PR reviews, v0.1.2 build and bugs, QA findings, Oxygen refill / interaction system, Channel access between disciplines, Tech role reshuffle, Investigation pod direction, Beginner-friendliness and comms, Alpha 2 priorities, UI recruitment</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Is Enemy Perception actually working in the 0.1.2 build? ThePokePreston couldn't tell, and no one answered.</li>
+<li>Will #qa-clips be opened up to the rest of the server?</li>
+<li>What exactly does Design need from Investigation for Puzzle 2?</li>
+<li>What concrete steps will make the project more beginner-friendly, such as more starter issues or a guide on writing tasks?</li>
+<li>Who will volunteer for Alpha 2 UI work?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>It's where we get to watch QA turn the game inside out and do things that we never consider doing 😂</p>
+<p>— <strong>dbugslayer</strong> in #🎯│tech-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254441703968888/1564751214736842864">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>@ModMail can we finally remove the barrier between the disciplines, no one wants it and it's been requested like a million times</p>
+<p>— <strong>VibeBlind</strong> in #🎯│tech-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254441703968888/1564758265311535127">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>https://klipy.com/gifs/punching-punch-wall</p>
+<p>— <strong>VibeBlind</strong> in #🎯│tech-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254441703968888/1564865436636414003">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Let me start by trying to answer the question. #Investigation is not a branch. It's the communication forum with Design. It's a theme for tasks.
+I wouldn't continue Investigation at full scope right now. Our priority is the two puzzle rooms for Alpha 2, and Investigation should support those. Clues are important.
+https://discord.com/channels/1511905718419198013/1560726515254173806
+https://discord.com/channels/1511905718419198013/1565098040593743922
+https://discord.com/channels/1511905718419198013/1565084183322169344</p>
+<p>As far as I know, Puzzle 2 involves stealth, overhearing dialogue, and finding clues, so some of your work should still be relevant, but Design hasn't figured out enough of it yet to know what we actually need. I'd hold off on making more Investigation tasks until we get that clarified with Design (meaning go talk to Design, not waiting for them to tell us what to do). In the meantime, you and Patrizia can pick up other Alpha 2 work. I don't want either of you (or anyone) waiting around or building things we'll end up cutting</p>
+<p>The problem is that much of the leadership we originally relied on has since left the project. We simply don't have enough experienced people available to provide the individual guidance and support everyone is asking for. That's part of why I've been reviewing who's still active and who can realistically take on those responsibilities. It's also why I've been pushing for vision documents (which eventually became the pitch) and working to make information and tools more accessible across departments. The goal has been to give people enough visibility and direction to be self-sufficient, rather than constantly depending on someone else to tell them what to do or grant them access</p>
+<p>However, opening things up also means cleaning things up. We've got outdated plans, ghosted tasks, and unnecessary channels making it hard to tell what's still relevant, and disagreements over what is "relevant" leaving things sitting in limbo. I understand that telling people to look at GitHub doesn't help much when the work isn't defined or the direction keeps changing (why I've been constantly asking for help actually drafting tasks). I don't think this project has been particularly friendly to anyone (especially beginners) and I assure you the frustration is shared. BUT we're also not in a position to always assign everyone individual tasks. Like Leith said, we need people to be nosy. Please ask questions often. If you want to do something, then find opportunities and help define work where it's missing. We're trying to give people enough direction to actually do that. If there's one thing worth learning from this jam, it's how to do that.</p>
+<p>And Andrea, I also want to address something you said earlier about being "no one here". I've never considered you a nobody in this project. I explicitly deputized you as lead over a month ago because you had stepped up with the Heroku app and again taking responsibility for Investigation. I recognized that initiative then and I still recognize it now. The fact that Investigation has been caught up in shifting priorities and all the stuff intended to make scope more reasonable (and to be frank, higher level organizational problems) doesn't invalidate the work you and Patrizia have done. I don't want you to feel that your contributions have gone unnoticed or that you're being judged for circumstances outside your control. Again, if anything, you were one of the people I saw and made a lead</p>
+<p>— <strong>VibeBlind</strong> in #🎯│tech-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254441703968888/1566253749004017735">jump</a>)</p>
+</blockquote>
+<h2>#Build/Release Pipeline</h2>
+<p><em>32 messages from 3 people</em></p>
+<p>On Sunday Oct 25, Cafedunoir asked for an update on the second playable build needed for that evening's demo. Ricchio got delayed, so dbugslayer (Daniel) stepped in. He opened PR #369 to bump the version to 0.1.2, Ricchio approved it, and Daniel tagged the release and made the builds. He published Project Atlantis v0.1.2 on GitHub around 7:10pm so Cafedunoir (who was preparing the demo for Lori) could download it directly. Ricchio agreed to handle the Steam publishing and GitHub bookkeeping afterward, and asked that getting the build to Lori come first. Daniel noted his Steam account can't publish builds and asked for access so he can run a full release on his own if needed.</p>
+<p>Cafedunoir got the Mac build running on her M2 Pro after using the Privacy &amp; Security 'Open Anyway' workaround. Daniel noted this build may only support Apple silicon, so Intel Macs might need a rebuild. The game launches fullscreen with no window settings yet; Daniel had started on that feature but didn't finish it for this release. He suggested Control + arrow keys to switch desktops. Later, Cafedunoir reported that pressing E at a hiding spot did nothing. Daniel confirmed it's a bug caused by finicky interactables, and she filed issue #383.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Daniel (dbugslayer) bumped the project version to 0.1.2 in PR #369, which Ricchio approved within minutes.</li>
+<li>Project Atlantis v0.1.2 was published on GitHub so Cafedunoir could grab it for the demo, ahead of the Steam upload.</li>
+<li>Ricchio asked the team to prioritize getting Lori the build and offered to handle the bookkeeping afterward.</li>
+<li>The Mac build appears to be Apple silicon only, so Intel compatibility may require a rebuild.</li>
+<li>macOS Gatekeeper blocked the app at first; the 'Open Anyway' step in Privacy &amp; Security fixed it.</li>
+<li>The game runs fullscreen with no window options yet; Daniel's work on window settings didn't make this release.</li>
+<li>Daniel requested Steam publishing access so he can handle a full release solo in the future.</li>
+<li>The hiding spot interaction (E) isn't working because interactables are finicky; this is tracked in issue #383.</li>
+</ul>
+<p><strong>Topics:</strong> v0.1.2 release, Mac build, Steam publishing, GitHub releases, macOS Gatekeeper, Fullscreen/window settings, Hiding spot bug</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will Daniel be given Steam access to publish builds himself?</li>
+<li>Has v0.1.2 been pushed to Steam yet? Ricchio said he'd handle it, but no confirmation appears.</li>
+<li>Does the Mac build need to be rebuilt for Intel Macs?</li>
+<li>When will the hiding spot / interactables bug (#383) be fixed?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Also, you are a legend for getting this done.  Thank you. ❤️</p>
+<p>— <strong>Ricchio</strong> in #Build/Release Pipeline (<a href="https://discord.com/channels/1511905718419198013/1532221338524061866/1564097088210472983">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I'll still try archiving the release in GitHub. That way I'll find out if I have permission or not 😬</p>
+<p>— <strong>dbugslayer</strong> in #Build/Release Pipeline (<a href="https://discord.com/channels/1511905718419198013/1532221338524061866/1564095342155407373">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I’m wrapping up dinner with my kids and will get to it right after</p>
+<p>— <strong>dbugslayer</strong> in #Build/Release Pipeline (<a href="https://discord.com/channels/1511905718419198013/1532221338524061866/1564069922110312532">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1532221338524061866/1564100660054593687">macOS security prompt blocking the v0.1.2 Mac build before the 'Open Anyway' fix.</a></li>
+</ul>
+<h2>#Prepping for a coding test around data</h2>
+<p><em>27 messages from 4 people</em></p>
+<p>Xhemoz was preparing for a C# coding test for a corporate SWE internship his sister helped him apply to, and was nervous about data structures and algorithms. VibeBlind joked that "the answer is hashmaps" and shared NeetCode for practice, and others cheered him on. After the test, Xhemoz solved the first problem. The second asked for a binary tree, and he got tripped up parsing the string "8 52" into ints. He was happy he solved one, though the bare-bones editor made things harder with his dyslexia. dbugslayer encouraged him to keep practicing.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>VibeBlind shared NeetCode as an interview prep resource.</li>
+<li>Xhemoz solved the first problem; the binary tree problem got stuck on string parsing.</li>
+<li>The bare-bones test editor made the challenge harder with his dyslexia.</li>
+</ul>
+<p><strong>Topics:</strong> interview prep, coding tests, data structures, C#</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>the answer is hashmaps</p>
+<p>— <strong>VibeBlind</strong> in #Prepping for a coding test around data (<a href="https://discord.com/channels/1511905718419198013/1564798449524670647/1564843312316285119">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>that's literally true for every C++ interview 🤣</p>
+<p>— <strong>cpgeiste</strong> in #Prepping for a coding test around data (<a href="https://discord.com/channels/1511905718419198013/1564798449524670647/1564886746133434450">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I'm happy i was able to do one of the problems at least. Thought I wouldn't be able to do any of them</p>
+<p>— <strong>Xhemoz</strong> in #Prepping for a coding test around data (<a href="https://discord.com/channels/1511905718419198013/1564798449524670647/1565817110914015293">jump</a>)</p>
+</blockquote>
+<h2>#[Gameplay Deliverable] Puzzle Room 2</h2>
+<p><em>27 messages from 3 people</em></p>
+<p>Matt Barnes opened this room for anyone delivering the 2nd puzzle room. He proposed a scenario where the player sneaks into position to overhear a conversation, for example to learn how to unlock the bulwark. He asked Awesomeosity and ogam which features exist: sneaking, AI pathing, AI detection with an escapable meter, and a reset if caught. Awesomeosity said hiding objects exist and AI perception works, including a PerceptionTest map. However, because combat was cut, the AI has no idle behaviors and does nothing once it sees the player. Matt framed combat as one use of shared tools (stealth, perception, AI behavior) and said the needed stealth and perception behaviors now just have to be defined. Awesomeosity agreed. A simple fail state on full detection is trivial, and "sorta most" of a middle tier (enemy alerted, player must hide or be discovered) is built; the open work is idle and patrol behavior.</p>
+<p>Matt asked for tiered scope options. He was candid that he expects this scenario to be out of scope for the Gameplay Deliverable, but wants to know what is realistic before choosing it or a puzzle that needs no new tech. MM wants to work on AI pathing and suggested patrols, hiding spots and noise distractions. MM noted there is a hiding spot in the main tutorial level, and raised an open question about whether hidden players should stay visible through openings in line of sight (currently they can be seen). MM also relayed an idea from the oxygen channel about using more than 100% oxygen. Matt replied with his original oxygen model: Allocation (reserved, returned when an action stops) versus Spent (lost to damage, powerful tools and the like). With combat cut and a major Spent trigger gone, he is now more open to passive drain.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Matt Barnes proposed an eavesdropping stealth scenario for Puzzle Room 2 and listed the features it needs.</li>
+<li>Awesomeosity: AI perception works, but enemies have no idle or reaction behavior since combat was cut.</li>
+<li>Matt reframed combat removal as keeping the stealth, perception and AI behavior tools while dropping combat as an action.</li>
+<li>Awesomeosity: a fail state on full detection is trivial, and most of tier 2 (alert, then hide or be discovered) is already backed.</li>
+<li>Matt expects the scenario may be out of scope but wants tiered scope options before deciding.</li>
+<li>MM volunteered for AI pathing and suggested noise distractions and patrols.</li>
+<li>MM asked whether hidden players should be visible through openings in hiding spots; they currently are.</li>
+<li>Matt explained Allocation vs Spent oxygen and said he is now more open to passive drain.</li>
+</ul>
+<p><strong>Topics:</strong> Puzzle Room 2, Stealth, AI perception and behavior, Hiding spots, Oxygen economy, Scope</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Should hidden players be invisible to enemies regardless of line of sight through hiding-spot openings?</li>
+<li>Where is the sneaking feature currently at?</li>
+<li>Will the stealth scenario be used for Puzzle 2, or a puzzle needing no new tech?</li>
+<li>What should enemies do when idle and patrolling?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>ah that makes sense. So the top down view of combat being cut is like this:
+Combat is an action 
+tools are stealth, ai perception, ai behavior. </p>
+<p>We use those tools to perform combat, exploration, investigation. 
+We now are just no longer going to include combat, but I don't expect we need to reduce scope of functionality from those tools. 
+It sounds to me like this is at just the right time where we have not developed combat behavior that was lost, we just need to identify the behavior we need in regards to stealth and perception. Is that about correct?</p>
+<p>— <strong>Matt Barnes</strong> in #[Gameplay Deliverable] Puzzle Room 2 (<a href="https://discord.com/channels/1511905718419198013/1565098040593743922/1565120193011785729">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>For full transparency, my EXPECTATIONS is this puzzle scenario will be entirely out of scope for the [Gameplay Delieverable] but I don't want to make assumptions and would like to see what is realistic</p>
+<p>— <strong>Matt Barnes</strong> in #[Gameplay Deliverable] Puzzle Room 2 (<a href="https://discord.com/channels/1511905718419198013/1565098040593743922/1565136264406241311">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Ya, I think there can be an amount of that. My original intent was there was 2 kinds of oxygen use. 
+1. Allocation: This uses x# (Static amount, lets say 10) to perorm an action (say wander) and that is removed from your total pool, but is not lost. When you stop using that action, the oxygen is re-allocated to your oxygen pool. So in this scenario, you always have 100% but while using that action you only have 90% more available. This adds to action economy and means you have to think about your total. 
+2. Spent: This would be a LOSS of amount. This would be things like taking damage, using a powerful tool, straining abilities, etc. These would be determined amounts, and would cause your available oxygen to go down, limiting your overall action economy. So the more SPENT actions or situations you  run into, the lower total Allocation you have less action economy to work with. </p>
+<p>Overall that is a puzzle for every scenario that goes wrong for you. This is one of the reasons I wanted to avoid a passive drain so that things are more straight forward to understand from an action economy PoV. But now with combat removed, that removes one of the major "Spent" triggers. So I am more open to passive drain again.</p>
+<p>— <strong>Matt Barnes</strong> in #[Gameplay Deliverable] Puzzle Room 2 (<a href="https://discord.com/channels/1511905718419198013/1565098040593743922/1565140660053344297">jump</a>)</p>
+</blockquote>
+<h2>#📝│narrative-lead-discussion</h2>
+<p><em>23 messages from 6 people</em></p>
+<p>Xelnath confirmed that combat has been removed and the game will focus on puzzles. Ridley said the plot outline doesn't need changes; the focus is on quests and dialogue in Twine, starting with Act 1. Ridley set two Nov 7 deliverables:</p>
+<ul>
+<li>The quest outline deadline now covers only Act 1's main quests.</li>
+<li>5-6 lines of dialogue per character must be entered into Twine. GJtheAutist is the pod lead for this; plain text is fine if the macros don't work out.</li>
+</ul>
+<p>Ridley shared Seth and Matt's feedback on the vertical slice outline. They want a separate Implementation Brief tab and the themes section removed, and they loved the draw.io link. Ridley also set up a MeetingBrew poll so sadegun93 and Luolang can talk puzzles with Matt. sadegun93 and GJtheAutist posted completion criteria for their pods. YosephAlex4nder shared the GitHub project board and encouraged everyone to create tickets themselves.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Combat was removed; the game is now puzzle-focused.</li>
+<li>The Nov 7 quest outline deadline is limited to Act 1.</li>
+<li>Each character needs 5-6 lines of dialogue in Twine by Nov 7.</li>
+<li>Feedback from Matt and Seth: add an Implementation Brief tab, drop themes, keep the draw.io link.</li>
+<li>A MeetingBrew poll was set up for a Matt x narrative puzzle meeting.</li>
+<li>The project board (github.com/orgs/ASGC-Game-Jam/projects/1/views/15) is open, and people can create their own tickets.</li>
+</ul>
+<p><strong>Topics:</strong> Narrative direction, Twine dialogue, Quest outlines, Project board</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Is a Friday time set for the meeting with Matt?</li>
+<li>Is it feasible to get all quests done in that time frame?</li>
+<li>How will the GitHub username confusion be solved?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Combat removed.  Puzzle focus. </p>
+<p>Please start thinking about how to execute the plot within an interactive experience lense. </p>
+<p>As well as how characters might express themselves in dialogue.</p>
+<p>— <strong>Xelnath</strong> in #📝│narrative-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557907036836082/1563947630311247934">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I find mismatched expectations around meeting purposes/styles often result in frustration.</p>
+<p>— <strong>Ridley</strong> in #📝│narrative-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557907036836082/1564884207174680657">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Don't be afraid to generate new tickets on your own. We don't want you to wait on someone before you can do something. Production will work on refining and adjusting as needed.</p>
+<p>— <strong>YosephAlex4nder</strong> in #📝│narrative-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557907036836082/1566160572679061717">jump</a>)</p>
+</blockquote>
+<h2>#Quest Design Pod Discussions</h2>
+<p><em>19 messages from 5 people</em></p>
+<p>Pruthvi clarified that the Munson/Gopher quest was only a hypothetical example and will not be in the game. Following his idea, Lianhua ran a poll to assign Acts to pairings:</p>
+<ul>
+<li>Act 1: Luolang and Lianhua</li>
+<li>Act 2: sadegun93 and Dione</li>
+<li>Act 3: Pimenefusarund and Pruthvi</li>
+<li>Act 4: possibly Mechanika Charlotte and Laurence</li>
+</ul>
+<p>sadegun93 confirmed that the Nov 7 end-of-sprint deadline covers only the outlines for Act 1's four main quests. Xelnath advised pacing for the 9 weeks left: aim to finish in half the remaining time, with a shitty rough draft (SRD) in half of that. On Oct 30 sadegun93 posted the Version 1 completion criteria: quest client, trigger and prerequisites, outcomes, and a brief objective overview.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>The Munson/Gopher quest is only an example and should be removed from the test quest.</li>
+<li>Act pairings were set through a poll.</li>
+<li>The Nov 7 deadline covers only the outlines for Act 1's four main quests.</li>
+<li>Xelnath: 9 weeks left, so aim for half the time, with a rough draft in half of that.</li>
+<li>V1 outline criteria: client, trigger and prerequisites, outcomes, brief objectives.</li>
+</ul>
+<p><strong>Topics:</strong> Quest design, Act assignments, Deadlines, Outline criteria</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will Mechanika Charlotte and Laurence take Act 4?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>which means a shitty rough draft (SRD) in half of that time, so others can move forward while you iterate</p>
+<p>— <strong>Xelnath</strong> in #Quest Design Pod Discussions (<a href="https://discord.com/channels/1511905718419198013/1534828038351491183/1564848883509624835">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>@Luolang @Lianhua The 11/7 deadline is just for Act 1.</p>
+<p>@Pimenefusarund  and @Pruthvi should still try to discuss things about Act 3, and I'll try to start thinking on Act 2 with @Dione, but the current focus is just getting an outline for the four main quests of Act 1.</p>
+<p>Starting to think a <em>little</em> bit about sidequests should also be fine, but the main quests are the current focus.</p>
+<p>— <strong>sadegun93</strong> in #Quest Design Pod Discussions (<a href="https://discord.com/channels/1511905718419198013/1534828038351491183/1564861188142141542">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>@Luolang @Lianhua @Pimenefusarund @Pruthvi @Dione </p>
+<ul>
+<li>[] The four main quests identified for Act 1 have been outlined. For Version 1, that will include</li>
+<li>[] Quest Client</li>
+<li>[] Quest trigger and prerequisites</li>
+<li>[] Quest outcome(s)</li>
+<li>[] Brief Quest Objective Overview</li>
+</ul>
+<p>More detailed outcomes and specific rewards, as well as more in-depth objectives (along with any specific narrative content that may need to be written by another pod) can be completed with a later version.</p>
+<p>The primary focus is currently on Act 1, but Acts 2 - 4 can also be worked on in a similar manner at this time.</p>
+<p>— <strong>sadegun93</strong> in #Quest Design Pod Discussions (<a href="https://discord.com/channels/1511905718419198013/1534828038351491183/1565795966672707625">jump</a>)</p>
+</blockquote>
+<h2>#art-voice-channel</h2>
+<p><em>19 messages from 5 people</em></p>
+<p>This channel accompanied an art voice chat. Zef shared the asset sheet and links, and VibeBlind shared the GitHub Art board along with an invite helper (asgcgithub.pulli.me). CamCamtehCamsta requested access and asked whether the tutorial will have NPCs. VibeBlind noted the scale: 1 Unreal Unit = 1 cm, and the player mannequin is 180 uu.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>The asset sheet and GitHub Art board were shared.</li>
+<li>GitHub access is requested via asgcgithub.pulli.me.</li>
+<li>Scale: 1 uu = 1 cm, and the mannequin is 180 uu.</li>
+</ul>
+<p><strong>Topics:</strong> Onboarding, Unreal scale</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will there be NPCs in the tutorial?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>the player mannequin is 180 uu</p>
+<p>— <strong>VibeBlind</strong> in #art-voice-channel (<a href="https://discord.com/channels/1511905718419198013/1526439925996720199/1564433729827373168">jump</a>)</p>
+</blockquote>
+<h2>#[ASGC-Game-Jam/asgc-gamejam-2026] Pull r...</h2>
+<p><em>18 messages from 2 people</em></p>
+<p>dbugslayer requested changes on Matt Barnes's PR and offered to make them himself. The two resolved conflicts in BP_Interact and BP_AtlantisPlayerCharacter together on Oct 27. Matt tested the branch and confirmed his content was in and working. dbugslayer had also made changes, so GitHub required a second reviewer, and he asked Vilus to review. The PR was approved and merged on Oct 28.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Conflicts in BP_Interact and BP_AtlantisPlayerCharacter were resolved together.</li>
+<li>Matt confirmed that all his content works on the branch.</li>
+<li>Vilus was asked for the second required approval, and the PR was merged on Oct 28.</li>
+</ul>
+<p><strong>Topics:</strong> pull request review, merge conflicts</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>DOPE</p>
+<p>— <strong>Matt Barnes</strong> in #[ASGC-Game-Jam/asgc-gamejam-2026] Pull r... (<a href="https://discord.com/channels/1511905718419198013/1564375824575107164/1565088946491498600">jump</a>)</p>
+</blockquote>
+<h2>#I also did a first pass verification of</h2>
+<p><em>17 messages from 2 people</em></p>
+<p>dbugslayer offered to give Hamm context on issues he's verifying, since he has reviewed most PRs. Hamm couldn't verify #292 (schooling fish VFX) or #199 (water spraying) in game. dbugslayer explained both VFX only exist in the Lvl_Showcase level, opened through the Unreal project, though he had added the schooling fish to the main menu. He commented on both issues for future reference. Hamm suggested changing build announcements, because the auto-generated feature list includes merged PRs that aren't actually in the game. dbugslayer agreed it needs filtering or more detail in the issues. Hamm said QA tests anything tagged QA on the backlog plus the release notes, tracked in Preston's QA Weekly Build Testing sheet, with two QA sign-offs needed before closing an issue.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>VFX issues #292 and #199 only live in the Lvl_Showcase level.</li>
+<li>dbugslayer added the schooling fish to the main menu.</li>
+<li>Build announcement notes are auto-generated from merged PRs, which can mislead QA.</li>
+<li>Closing an issue needs two QA sign-offs, tracked in Preston's QA Weekly Build Testing spreadsheet.</li>
+</ul>
+<p><strong>Topics:</strong> QA verification, VFX, build announcements, QA process</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>How will build announcements be filtered, or issue details improved, so QA knows what is actually testable?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I think I should suggest that we do our build announcements differently then.  If they're pinging QA saying build is available on QA_testing, and list all these features available for test...but they aren't actually in the game...it's a bit misleading</p>
+<p>— <strong>Hamm</strong> in #I also did a first pass verification of (<a href="https://discord.com/channels/1511905718419198013/1564747311194570804/1564770705898213477">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>#292: Those were vfx added to the <code>Lvl_Showcase</code> level. They’re not in the game yet.</p>
+<p>So far, tech art has only been making the effects and putting them on the showcase level.</p>
+<p>— <strong>dbugslayer</strong> in #I also did a first pass verification of (<a href="https://discord.com/channels/1511905718419198013/1564747311194570804/1564769478099730604">jump</a>)</p>
+</blockquote>
+<h2>#Oxygen System</h2>
+<p><em>17 messages from 6 people</em></p>
+<p>Xhemoz explained Path of Exile's mana reservation efficiency as a comparison for oxygen allocation. Matt Barnes cross-posted his original Allocation/Spent oxygen intent, noting it is not a directive. underwolf liked the original model and felt going above 100% would be niche and likely seen as a bug. underwolf was torn on passive drain, but would accept it alongside oxygen shards and an "electrolysis" meditation to regain oxygen, with no resets. Matt prefers not exceeding the maximum and instead letting the oxygen total be upgraded over time. His lore idea: after the intro, the Atlanteans replace the player's tank with tech compatible with their systems.</p>
+<p>Matt proposed a process: list actions for the Allocation, Cost and Drain states; trim them; assign first values; test 3 gameplay scenarios for mental load; and judge coziness and whether passive drain helps. underwolf will do a first pass and was directed to take the cross-pod tools conversation to #🎯│design-discussions. MM suggested replacing the ballast bar with locking feedback on the oxygen bar. Josue asked what happens to the ballast code, and dbugslayer said it would just be disabled or removed, since what matters is implementing the wanted features.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>underwolf felt going above 100% oxygen would be niche and read as a bug.</li>
+<li>Matt prefers an upgradable max oxygen, explained in lore by Atlanteans replacing the player's tank.</li>
+<li>Matt outlined a 5-step process for mapping and balancing oxygen actions.</li>
+<li>underwolf suggested oxygen shards and meditation ('electrolysis') if passive drain is added.</li>
+<li>MM proposed removing the ballast bar in favor of locking visuals on the oxygen bar.</li>
+<li>dbugslayer: ballast code can simply be disabled or removed.</li>
+</ul>
+<p><strong>Topics:</strong> Oxygen system, Passive drain, Ballast UI, Action economy, Lore</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Is there a list of all the tools the player will have access to?</li>
+<li>Should passive drain be included?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I think I would prefer to not go over maximum, but with the ability for your oxygen total to be upgradable over time. 
+The intent after the Intro is the player reaches district one after essentially depleting their oxygen. Atlanteans "do some stuff" and effectively replace your tank with what's compatible with their systems/technology. Now we can explain away certain logic issuess and can have it be a system that can upgrade as the story progresses.</p>
+<p>— <strong>Matt Barnes</strong> in #Oxygen System (<a href="https://discord.com/channels/1511905718419198013/1533801825080315965/1565148877584211983">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>We just disable or remove it. I don’t think it matters much. What’s important is that we implement the features we want to see in the game.</p>
+<p>— <strong>dbugslayer</strong> in #Oxygen System (<a href="https://discord.com/channels/1511905718419198013/1533801825080315965/1566182177459408999">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I think that the original works super well, it adds the action economy, and its easy to understand how it works. </p>
+<p>As for the idea of going over the maximum 100%, i can see it working, but i feel like it would be a super niche mechanic and difficult to communicate to players, and I'm sure a lot of people would perceive it as a bug and not as an intended mechanic.</p>
+<p>For the passive drain I'm honestly torn about it, i don't think it is a super important mechanic and maybe it adds unnecessary cognitive overload to players, as well as stirring us away from the cozy ideation. But at the same time a lot of people will look at the oxygen bar and expect it to drain because it makes sense. Overall I wouldn't mind having the drain, if we can add the oxygen shards and the "electrolysis" idea(meditating to regain oxygen). If the player gets to the low oxygen state, they would just need to meditate/consume a shard no resets, should keep it cozy and still adds a bit of a challenge.</p>
+<p>— <strong>underwolf</strong> in #Oxygen System (<a href="https://discord.com/channels/1511905718419198013/1533801825080315965/1565147316699136022">jump</a>)</p>
+</blockquote>
+<h2>#Dialogue</h2>
+<p><em>16 messages from 5 people</em></p>
+<p>ogam suggested that dialogue options should check conditions such as investigation done, clue found, NPC reputation or puzzle state. cpgeiste confirmed he is studying dialogue system options with this in mind. KyotoRando offered to share his experience, but may soon be away for a week or two because of a new arrival in his family.</p>
+<p>cpgeiste asked for a narrative and design call next week, and EMatter will help organize it while safronio is unavailable. EMatter noted that the jam is focused on the 3 pillars and puzzles, so it's not yet clear where dialogue fits. cpgeiste asked that his idea not be broadcast until it is settled, and VibeBlind removed it.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Dialogue choices may be gated on investigation, clues, reputation or puzzles.</li>
+<li>cpgeiste is researching a dialogue system.</li>
+<li>EMatter will help set up a narrative and design call.</li>
+<li>KyotoRando may be away soon for a new family arrival.</li>
+</ul>
+<p><strong>Topics:</strong> Dialogue system, Meetings</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>When is the call with narrative and design?</li>
+<li>Where does dialogue fit in a puzzle-focused jam?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I posted this in the inactive/away channel, but we're in the "could happen at any moment" phase of a new arrival in our family, so if I don't respond within a day, there's a good chance that I just had to pick up and run and I won't be around for a week or two.</p>
+<p>— <strong>KyotoRando</strong> in #Dialogue (<a href="https://discord.com/channels/1511905718419198013/1534715260143931502/1565511824588152973">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>https://discord.com/channels/1511905718419198013/1532930622669066300/1563947001077301269
+hey @cpgeiste are you working on the dialogue system?
+looking at Seth's comment we should probably have something similar for dialogue options also to determine if a choice is available.
+looking at twine i see there's also reputation with each npc, i didn't see it being used anywhere but i might have overlooked it.</p>
+<p>so it might be an and/or check if investigation has been completed, clue found, reputation level check, maybe puzzle</p>
+<p>— <strong>ogam</strong> in #Dialogue (<a href="https://discord.com/channels/1511905718419198013/1534715260143931502/1564008030461497494">jump</a>)</p>
+</blockquote>
+<h2>#Sprint 5 - Player Character Model</h2>
+<p><em>16 messages from 5 people</em></p>
+<p>LazyMonkey posted fixes to the player character model, mostly to the arms and legs, and asked whether to add a welded texture on the neck or move on to the low-poly version. Zef approved and pinged Xelnath and Diana Donado for final say. Xelnath was fine with getting it into the game. He mused that stubby legs might suit a game with so much swimming, since long limbs look flailing with the procedural animation when the player flips to walk on the ceiling. He agreed that switching to chibi now doesn't make sense and called it a note for a future game. Jake Goodheart pitched a flip idea: the character tilts its head forward and the head's weight rotates the body upside down.</p>
+<p>Diana said the arms and helmet issues remained and that she'd review the .fbx. LazyMonkey's ZBrush export was crashing, which delayed the file. On Oct 30, LazyMonkey shared a Drive folder with the model and started on the low-poly version.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>LazyMonkey shared updated arm and leg fixes on the player character model.</li>
+<li>Xelnath floated stubby legs for swimming but agreed a chibi change is too big for now.</li>
+<li>Jake Goodheart proposed a head-led flip for the ceiling-walk animation.</li>
+<li>Diana Donado flagged lingering arm and helmet issues and promised feedback after reviewing the .fbx.</li>
+<li>LazyMonkey fixed ZBrush export crashes, shared the model via Google Drive and began the low-poly version.</li>
+</ul>
+<p><strong>Topics:</strong> player character model, low-poly, animation, feedback</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will the neck get a welded texture?</li>
+<li>What is Diana's final feedback on the arms and helmet?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>no, no, I was just imagining the player fipping over to walk on the ceiling, which is something people have loved</p>
+<p>— <strong>Xelnath</strong> in #Sprint 5 - Player Character Model (<a href="https://discord.com/channels/1511905718419198013/1550991795738120192/1564320300815093781">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I have a few ideas what that looks like, my first one is that the character tilt's their head forward and turns so the wieight of the head causing their body to rotate upisode down. but that's something we'll have to discuss.</p>
+<p>— <strong>Jake Goodheart</strong> in #Sprint 5 - Player Character Model (<a href="https://discord.com/channels/1511905718419198013/1550991795738120192/1564362117312946259">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1550991795738120192/1564312623087099925">Player character model with arm and leg fixes</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1550991795738120192/1565738760891670631">Player character high-poly model shared for review</a></li>
+</ul>
+<h2>#Building da World</h2>
+<p><em>15 messages from 3 people</em></p>
+<p>dbugslayer found L_Tutorial_District_Entrance pitch black. Matt Barnes explained that it is an asset placed in L_Tutorial_Main, which provides its lighting; you can view it in Unlit mode or drop in the other layer's assets. This setup lets people work on the district area without locking out work on the tutorial area. Henry offered to help but needed direction. On Oct 28 Matt created a Hub World workroom for Henry, David 'AssassinCS' Thompson and dbugslayer.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>The district level is lit by L_Tutorial_Main.</li>
+<li>Splitting the level into separate actors avoids file locks.</li>
+<li>Matt opened a Hub World workroom.</li>
+</ul>
+<p><strong>Topics:</strong> Hub level, Unreal level setup</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Has a GitHub issue been created for the hub level?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>The advantage of this is someone can check out and work on the district area and not lock out work for the tutorial area</p>
+<p>— <strong>Matt Barnes</strong> in #Building da World (<a href="https://discord.com/channels/1511905718419198013/1564055219535483004/1564084462768365649">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1564055219535483004/1564057433226215564">Pitch-black district entrance level</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1564055219535483004/1564063732118593667">Layer setup in L_Tutorial_Main</a></li>
+</ul>
+<h2>#Journal</h2>
+<p><em>14 messages from 7 people</em></p>
+<p>The team discussed how to get the Journal UI moving. Ogam has a journal prototype, but there is no finalized UI design yet. Glenny proposed starting with two tabs: Objectives, led by Fefly and/or ogam, and Clues, for dbugslayer. dbugslayer pushed for parallel work, since things have been moving too slowly, and asked for GitHub issues to track it.</p>
+<p>The journal producer, butchbear, is taking a break of up to about two weeks, so Glenny plans to ask Rark (the investigation producer) to cover. Matt Barnes suggested that the hub level, which will host both puzzles, can be built in parallel while he finishes puzzle 1. dbugslayer asked Daan and Henry to pick up the hub work; Daan said he might have time, and Henry asked who was taking it.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>The Journal will start with two tabs: Objectives (Fefly/ogam) and Clues (dbugslayer).</li>
+<li>dbugslayer warned that work needs to speed up and asked for GitHub issues.</li>
+<li>butchbear is taking a break of up to about two weeks; Rark may cover journal production.</li>
+<li>Matt Barnes suggested building the hub level in parallel with the puzzles.</li>
+</ul>
+<p><strong>Topics:</strong> Journal UI, Production coverage, GitHub backlog, Hub level</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Who will create the GitHub issues for the journal work?</li>
+<li>Has Rark confirmed he will cover production?</li>
+<li>Who between Daan and Henry will take on the hub level?</li>
+<li>Should the team work in a copy of puzzle room 1 while Matt finishes it?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>What kind of go ahead do you need? @Matt Barnes is building puzzle room 1. The more we can build in parallel the better. Things have been moving too slow, so we need to find ways to speed things up a bit otherwise we'll end this jam without much to show for.</p>
+<p>Has any of this been captured in issues in our GitHub backlog? If not, can we do that please? Who'd be the producer to run point on that?</p>
+<p>— <strong>dbugslayer</strong> in #Journal (<a href="https://discord.com/channels/1511905718419198013/1532924067567501392/1564080013257740440">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>im sorry i said this in production and narrative leads channels - im taking a short break atm for a few days - almost 2 weeks at most - atm im in a mental fog</p>
+<p>— <strong>butchbear</strong> in #Journal (<a href="https://discord.com/channels/1511905718419198013/1532924067567501392/1564087547548926075">jump</a>)</p>
+</blockquote>
+<h2>#[Gameplay Deliverable] Level Architecture</h2>
+<p><em>14 messages from 6 people</em></p>
+<p>Matt Barnes set up this channel for level work on the gameplay deliverable. Puzzle rooms and points of interest will be built as independent levels streamed into a main world level using World Partition. A greyboxed hub, based on the District 1 concept art and built from L_Tutorial_District_Entrance with the L_Tutorial_Main lighting, will connect 2+ puzzles and could later become the District 1 center. The hub will be entirely underwater, with oxygenated areas added as needed. Xhemoz noted his merged LevelTransition blueprint is ready to place. VibeBlind asked whether Design would own feature definitions, then created issues #344 (World Partition), #392 (hub greybox) and #393 (puzzle room streaming). Matt said his post was for alignment and he'll help with tasks. Awesomeosity confirmed that puzzle rooms need to be sub-levels of the hub for streaming.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Puzzle rooms will be independent levels streamed into a main world level.</li>
+<li>The hub will be a greybox of the District 1 concept, entirely underwater.</li>
+<li>Xhemoz's LevelTransition blueprint is merged and ready to place.</li>
+<li>VibeBlind created GitHub issues #344, #392 and #393.</li>
+<li>Puzzle rooms need to be sub-levels of the hub for streaming to work.</li>
+</ul>
+<p><strong>Topics:</strong> level architecture, World Partition, level streaming, greyboxing, task ownership</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Who will build the hub level?</li>
+<li>Which producer or lead will help VibeBlind create the tasks (Cafedunoir asked David Thompson)?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Awesome, thank you for taking point on this. Just to clarify, are you asking Tech and Production to help break these down into implementation tasks, or to write the feature requests ourselves? I'm happy to have Tech work through the implementation details and help flesh out the backlog, but I'd hope Design would own some part of task creation (specifically defining what the feature is supposed to do and the expected player experience in the form of user story or at least description)</p>
+<p>— <strong>VibeBlind</strong> in #[Gameplay Deliverable] Level Architecture (<a href="https://discord.com/channels/1511905718419198013/1565084183322169344/1565185514024341515">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I think that is TBD for District 1 but I expect it's primary state will be underwater, and supports smaller oxygenated environments based on narrative needs. </p>
+<p>For the purposes of the HUB lets have it entirely under water, and we can determine oxygenated enviroments on an as-needed basis</p>
+<p>— <strong>Matt Barnes</strong> in #[Gameplay Deliverable] Level Architecture (<a href="https://discord.com/channels/1511905718419198013/1565084183322169344/1565111110258917467">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1565084183322169344/1565084183322169344">District 1 concept art for the gameplay hub</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1565084183322169344/1565087955519934474">Reference image for the hub level structure</a></li>
+</ul>
+<h2>#🎯│director-discussion</h2>
+<p><em>13 messages from 6 people</em></p>
+<p>Matt Barnes opened a Director Game Feedback Thread, and Zef flagged two new animators, Koa:D and Tim_F, for the moderators. After Tuesday's call, Cafedunoir congratulated ThePokePreston as the new QA Director. Cafedunoir asked GreenCat and Michal Fried to open all server channels to all participants. The director channel stays Director-only, and lead channels become visible to all but writable only by Leads. Xelnath asked that the request go through a modmail ticket.</p>
+<p>Cafedunoir raised the question of whether milestones still apply under the new structure. ThePokePreston summarized the current goals: gameplay on Alpha 2 (puzzles and stealth), art on the beautiful corner, and narrative on the world bible. He noted the team is on 0.1.3. VibeBlind said the Git milestones need updating since the team is still in Alpha 2. VibeBlind also asked whether milestones should be split per lane until integration resumes. This was added to next Tuesday's agenda.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>ThePokePreston was named the new QA Director.</li>
+<li>Cafedunoir requested opening all channels to participants, with lead channels kept read-only for non-leads.</li>
+<li>Xelnath asked for a modmail ticket for the permissions change.</li>
+<li>The team is still in Alpha 2 (build 0.1.3), and the GitHub milestones need updating.</li>
+<li>Splitting milestones per lane is on next Tuesday's agenda.</li>
+</ul>
+<p><strong>Topics:</strong> new QA Director, channel permissions, milestones, GitHub</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Should milestones be split per lane?</li>
+<li>Should the team keep the Ian vestor doc dates or move to weekly builds with 1-2 goals per team?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>hey all - thanks for a great call this evening! Official congrats to our newest director @ThePokePreston 🥳  welcome Preston!! Preston will be our new QA Director. Huge congrats!</p>
+<p>Also @GreenCat @Michal Fried we have a request for you when you have a moment this week please and thank you. 🙏  Let me know if you have any questions. Please open all of the channels in the server to all participants except 
+- This channel #🎯│director-discussion will remain vis and write only to Director level
+- Leads channels will be vis to all but only writeable by Leads role - #🔕│leads-inactive-or-away #📄│design-lead-discussion #💻│tech-lead-discussion #🎨│art-lead-discussion #📝│narrative-lead-discussion #📚│lead-only-resources #🎯│leads-discussion #🗓️│production-lead-discussion #📊│analytics-lead-discussion #🎵│audio-lead-discussion</p>
+<p>— <strong>Cafedunoir</strong> in #🎯│director-discussion (<a href="https://discord.com/channels/1511905718419198013/1512105827257946273/1564880560546119712">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I assume gameplay wise, we are working on Alpha 2 being puzzles and stealth? art should be working on assets for the beautiful corner, and ~~idk what narrative's goals are currently~~ narrative is working on the world bible</p>
+<p>— <strong>ThePokePreston</strong> in #🎯│director-discussion (<a href="https://discord.com/channels/1511905718419198013/1512105827257946273/1565219173372526655">jump</a>)</p>
+</blockquote>
+<h2>#🎯│narrative-discussions</h2>
+<p><em>12 messages from 7 people</em></p>
+<p>Naming work for the setting continued. Lunaz_xo suggested shell icons for the currency and said she'd lean toward any name that resembles shells. Lianhua replied that no currency has been defined yet, and the game may not have one at all. Earlier ideas from the steampunk bible were Whitby Jet, Baltic Amber, Agate and Quartz, and a unique seashell would also fit. Pimenefusarund asked for a catchy, pun-ish name for the manta ray station, and Lianhua said she'd start a thread for name ideas. Pruthvi plans to weigh in on the names from Friday.</p>
+<p>YosephAlex4nder asked narrative members for their GitHub usernames so they could be added to the project board. GJtheAutist shared his, and Lianhua confirmed she has access. Yoseph admitted it's hard to identify teammates by username on the board and said a fix is coming. Until then, people can contact RocketDell, Pruthvi or Yoseph with board questions, and take narrative-specific questions to the leads (sadegun93, GJtheAutist, Luolang).</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Lunaz_xo proposed shell icons for the in-game currency, which got 5 reactions.</li>
+<li>Lianhua noted the currency is undefined; past steampunk bible ideas were Whitby Jet, Baltic Amber, Agate and Quartz.</li>
+<li>Pimenefusarund asked for a punny name for the manta ray station, and Lianhua is creating a thread for ideas.</li>
+<li>YosephAlex4nder collected GitHub usernames to add narrative members to the project board.</li>
+<li>The project board link was shared, with RocketDell, Pruthvi and Yoseph as contacts for board questions.</li>
+</ul>
+<p><strong>Topics:</strong> currency naming, manta ray station name, GitHub project board onboarding</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will the game have a currency at all, and what will it be called?</li>
+<li>What will the manta ray station be named?</li>
+<li>How will teammates be identified by username on the project board?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I had an idea way back of using shell icons for the currency so if any name ideas resembles shells i’d perhaps be biased towards that one 🫣🥰</p>
+<p>— <strong>✧･ﾟ: * 𝓛𝓾𝓷𝓪𝔃_𝔁𝓸 ꨄ *:･ﾟ✧</strong> in #🎯│narrative-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254556477161552/1564422079514943509">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>None of the names were originally made with shells in mind, but I think any of these could work for that! We could have a unique shell. The actual currency itself has not been defined and we may not even have one at all. Some previous ideas that were discussed in the steampunk bible were Whitby Jet, Baltic Amber, Agate, and Quartz. A type of seashell is also a great idea!</p>
+<p>— <strong>Lianhua</strong> in #🎯│narrative-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254556477161552/1564467203103789190">jump</a>)</p>
+</blockquote>
+<h2>#Director Game Feedback Thread</h2>
+<p><em>12 messages from 5 people</em></p>
+<p>Matt Barnes started a thread for director-level feedback. His first point was that the underwater color feels too dark and blue and may set a dark tone for the game. He suggested a neutral look in the starting areas, with darkening at deeper levels, and shared screenshots. Ridley asked which deliverable this was about, and Matt said gameplay and the beautiful corner. Zef said it's an easy fix because the current look came straight from the test zone, and that visual clarity and gameplay needs come first. DanF explained that evoking water, even lightly, helps playtesters intuit motion and reduces distorted feedback. Diana Donado said the change involves shaders, so the team will find a tech artist rather than overload Seth, and noted that UE has the tools needed.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Matt Barnes proposed a neutral underwater tint in the starting areas, with darkening at later depths.</li>
+<li>Zef said the current look is from the test zone and easy to tweak, with visual clarity coming first.</li>
+<li>DanF argued that evoking water helps playtesters read motion and improves feedback.</li>
+<li>Diana Donado plans to find a tech artist for the water shaders.</li>
+</ul>
+<p><strong>Topics:</strong> underwater color grading, shaders, playtest feedback</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Which tech artist will handle the water shaders?</li>
+<li>What tint will the team settle on for the starting areas?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I'm not a director on this project, feel free to ignore this if unhelpful:</p>
+<p>Devs, especially less experienced devs, often have trouble intuiting motion if key spatial metaphors are missing. It often feels a little off to them, even if it wouldn't feel that way in the final version. It's easy to misinterpret that cognitive discomfort as an issue with the gameplay.</p>
+<p>The more you can remind them they're underwater, even if it's just evoking it slightly, the less 'distortion' you tend to get on playtest feedback - and players tend to feel better about it too.</p>
+<p>Even if you can't make it look like water, in a time-efficient way lightly evoking it still helps.</p>
+<p>— <strong>DanF</strong> in #Director Game Feedback Thread (<a href="https://discord.com/channels/1511905718419198013/1564330106917486594/1564390748441280547">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Example, I feel like the color of being in the water is too dark and blue. Not because it's not realistic, I just worry that it will set an overall "darkness" tone to the game. </p>
+<p>I wonder if we can have a more neutral "not colored/tinted" at the first level as we adjust to being under water. Maybe we start darkening at the next depth?</p>
+<p>— <strong>Matt Barnes</strong> in #Director Game Feedback Thread (<a href="https://discord.com/channels/1511905718419198013/1564330106917486594/1564330673160847501">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1564330106917486594/1564341842600788029">Current underwater color in-game</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1564330106917486594/1564342003695886378">The scene without post-processing for comparison</a></li>
+</ul>
+<h2>#🎯│design-discussions</h2>
+<p><em>12 messages from 6 people</em></p>
+<p>underwolf asked design pods to list their tools and systems so the oxygen pod can balance oxygen use; ballast and stealth are already known. underwolf also polled whether to add passive drain. Matt shared the Equipment Tracker sheet and asked what other sub-feature tracking exists. Nitro argued constant depletion suits Subnautica-style known refill points but not a semi-open world. Nitro suggested it could add tension in deeper sections, tied to psi pressure. Anrakyr held off voting until better informed.</p>
+<p>Matt still prefers avoiding passive drain because it pulls the game out of cozy territory. He described easy-to-find refills such as seafloor air vents and collectible "Kelp Balls", and a less stressful, Resident Evil–style health bar. He clarified that oxygen's main purpose is action economy, replacing health and stamina. Early abilities would be gated by a small pool that grows through upgrades, and returning to hubs is one secondary use. Later, CoffeeAddict recruited UI volunteers for the Alpha 2 HUD and menus.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>underwolf requested a full list of player tools and systems for oxygen balancing.</li>
+<li>underwolf posted a passive-drain yes/no poll (+5 reactions).</li>
+<li>Matt shared the Equipment Tracker spreadsheet.</li>
+<li>Nitro argued constant drain doesn't fit a semi-open world, though it could work in deep sections.</li>
+<li>Matt prefers no passive drain, with refills like air vents and Kelp Balls.</li>
+<li>Matt: oxygen's primary purpose is action economy, with upgrades unlocking more tool use.</li>
+<li>CoffeeAddict called for UI volunteers for Alpha 2.</li>
+</ul>
+<p><strong>Topics:</strong> Oxygen design, Passive drain poll, Tools inventory, UI recruitment</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>What tools or systems do other pods plan?</li>
+<li>What other sub-feature tracking exists besides the Equipment Tracker?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I still prefer avoiding passive drain if possible, because even if it is more  realistic and understandable, its one of the first things for me that pulls it out of cozy territory. I think replacing the tank with atlantean tech out the gate is any easy way to explain away the need for oxygen draining if needed. </p>
+<p>My intention was also that oxygen "refill" would be available to the player in easy to identify and navigate while exploring. Whether that is from "air vents" on the sea floor that are a steam of bubbles, "Kelp Balls" that are a collectable resource that provide "x" oxygen (like a health potion) or other ways like that. I want the player to be <em>aware</em> of and interact with their oxygen, for it to function to help guide and control action economy, but its something that I don't want the player thinking about so much that it's a stress and the game becomes an "oxygen management simulator."</p>
+<p>Im thinking more like a (less stressful) resident evil health bar. It just is what state it is, and things you do make it go up or down, and you have things to renew it when needed.</p>
+<p>— <strong>Matt Barnes</strong> in #🎯│design-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254315837100123/1565797319910105139">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<blockquote>
+<p>player back towards safer areas and cities
+Id say it could be used for that, but it is not necessarily what it is there for. 
+It's main use is to be our driving force of player economy. Rather than tracking things like health, stamina, energy, etc., we want to simplify things as much as possible into just "Oxygen." </p>
+</blockquote>
+<p>So it should begin with its ability to manage the players action economy. Things like abilities, such as "Ballast: Ascend" or a particularly power tool might require oxygen. We can "gate" early ability limitations by enforcing a smaller overall oxygen pool. As we progress through story, we can allow for "upgrades" as our equipment and ability pools increase. This will allow for greater flexibility and usibility of earlier tools, especially if they can now be used in ways they may have been "unable" to before, do to oxygen limitations. (E.g. using a tool 3 times in a row, rather than once)</p>
+<p>So imo, it's primary reason for being? Action Economy. How do we use it? Limiting exploration and focing the loop of returning to central areas is for sure one of them</p>
+<p>— <strong>Matt Barnes</strong> in #🎯│design-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254315837100123/1565812997367009322">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>The oxygen system in Subnautica worked cause you always knew where the oxygen was, whether it was just by going up to the surface or going back to your vehicle; so that’s why I don’t think constant depletion is good in a semi-open world game. And it works in games with refill bubbles  like Mario Galaxy or 2D Sonic cause despite it being anxious it’s only for a short period and is there for that tension, this could be utilized for the deeper sections of the game if we want (playing into psi pressure), but not all the time.</p>
+<p>— <strong>Nitro</strong> in #🎯│design-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254315837100123/1565180561721659536">jump</a>)</p>
+</blockquote>
+<h2>#3D Character Corner (Sprint #GoTimeSupplemental)</h2>
+<p><em>11 messages from 6 people</em></p>
+<p>Zef handed out supplemental base-mesh tasks. LazyMonkey and Brandon Trabon will finish their current models at their own pace. mnstr_qn takes the jellyfolk base mesh, with Castella as the first test subject. Eidethea takes the Merfolk base mesh. Faded Boo was offered the hermitfolk base mesh. Rigging and animation folks (Jake Goodheart, CamCamtehCamsta, Koa:D, Tim_F, Bounty_Hunter) will get models soon, with Jake as their lead. Zef welcomed newcomers Bounty_Hunter, Koa:D and Tim_F.</p>
+<p>Faded Boo asked for a separate hermitfolk reference, with the body and shell apart. Zef shared a Drive link with the blockouts and noted that the shells and barnacles should be swappable for variety. mnstr_qn has started but is swamped with her day job. Jake said the team needs six main character animations, plus three that currently have stand-ins. Eidethea shared Merfolk progress, and Zef gave feedback.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Base mesh assignments: jellyfolk (mnstr_qn), Merfolk (Eidethea), hermitfolk (Faded Boo).</li>
+<li>Bounty_Hunter, Koa:D and Tim_F were welcomed to the team.</li>
+<li>Zef shared hermitfolk blockouts and asked for swappable shells and barnacles.</li>
+<li>Jake listed 6 needed main character animations plus 3 with stand-ins.</li>
+<li>Eidethea shared Merfolk base mesh progress.</li>
+</ul>
+<p><strong>Topics:</strong> base meshes, rigging, animation, onboarding</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Which specific animations are still unclaimed?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I have started, just been swamped with my day job 😂</p>
+<p>— <strong>mnstr_qn</strong> in #3D Character Corner (Sprint #GoTimeSupplemental) (<a href="https://discord.com/channels/1511905718419198013/1564545474797772850/1564718632297042020">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1564545474797772850/1564545474797772850">Character concepts for the base mesh tasks</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1564545474797772850/1564640116046045215">Hermitfolk low-poly blockout</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1564545474797772850/1565625398203514980">Merfolk base mesh in progress</a></li>
+</ul>
+<h2>#3D Animation Pod</h2>
+<p><em>11 messages from 4 people</em></p>
+<p>Jake Goodheart welcomed the 3D Animation team (Tim_F, Bounty_Hunter, Koa:D) and laid out six primary transition animations. These are swimming to and from terrestrial movement, descent and ascent swimming to surface walking, and surface walking (floor or ceiling) back to swimming. Secondary goals are original walking, swimming and idle animations to replace the stand-ins. The jam has about 10 weeks left, ending at the start of January, so he targets 5–6 weeks for each person's two primaries. The ceiling case is a visual example; in game the character rotates to align with whatever surface it attaches to.</p>
+<p>Tim_F will be away for a couple of weeks. Jake is checking with the rig team on when the player rig will be ready, with a test rig as a fallback. Assignments are first come, first served and paired (a transition plus its reverse). Koa:D claimed animations 1 and 2 and asked whether they are all underwater. Jake said he will look into getting the current walk, swim and idle animations for reference.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Jake Goodheart listed six primary transition animations, with original walking, swimming and idle as secondary goals.</li>
+<li>The deadline target is 5–6 weeks for primaries, with the jam ending at the start of January.</li>
+<li>Assignments are first come, first served and paired with their reverse transition.</li>
+<li>Koa:D claimed animations 1 and 2 (swimming to terrestrial and back).</li>
+<li>The player rig timing is pending with the rig team, with a test rig as a fallback.</li>
+<li>Tim_F is away for a couple of weeks.</li>
+</ul>
+<p><strong>Topics:</strong> Animation assignments, Transition animations, Rigging, Schedule</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will all of these animations take place underwater? (Koa:D)</li>
+<li>When will the player character rig be available?</li>
+<li>Who takes animations 3–6?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Good questions:
+1.) We have 10 weeks left in the jam, so about three months left, ending at the start of January. 
+For the primary animations, I want to push for having these done as soon as possible. So I would say 5 to 6 weeks for both of the animations assigned to you. If it takes longer than that, then it's fine these are the primaries for a reason. </p>
+<p>2.) As I understand it, the player character can transfer from swimming to going either on the floor, or any surface. I put ceiling as a way to beter visualize it. Ideally we can just use the ceiling as a clear example, and when he does it in game, we simply rotate the character to allign with surface they're attaching to.</p>
+<p>— <strong>Jake Goodheart</strong> in #3D Animation Pod (<a href="https://discord.com/channels/1511905718419198013/1565123519031939325/1565130181625118801">jump</a>)</p>
+</blockquote>
+<h2>#🎯│art-discussions</h2>
+<p><em>10 messages from 5 people</em></p>
+<p>Laurence from narrative asked who made the 'Gumboh' art. Zef credited Michael Xu's concept B, and Zef's personal favorite was the fish crossing guard. CoffeeAddict put out a call for help with Alpha 2 UI work, including the HUD and menus. Alta offered to make 2D mockups, and VarunP has designs nearly ready to share.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Michael Xu's concept B was chosen for Gumboh.</li>
+<li>CoffeeAddict is recruiting for Alpha 2 UI and asked people to join #UI/UX.</li>
+<li>Alta and VarunP volunteered for UI work.</li>
+</ul>
+<p><strong>Topics:</strong> Character concepts, UI for Alpha 2</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>What has already been done for each menu?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>haha yeah the fish crossing guard was my personal favorite lol</p>
+<p>— <strong>Zef</strong> in #🎯│art-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254470951108608/1564032416077578313">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p><strong>UI PEEPS</strong>
+Hey everyone! We’re getting started on UI for Alpha 2 and I want to know who’s interested in building the HUD, menus, and whatever else comes up.
+If you’re interested, reply here or DM me with what you’d like to work on (design, implementation, or both).
+@2D Artist</p>
+<p>— <strong>CoffeeAddict</strong> in #🎯│art-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254470951108608/1566271238509428878">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1521254470951108608/1564025144035377224">Michael Xu's Gumboh concepts, featuring a fish crossing guard</a></li>
+</ul>
+<h2>#Traversal</h2>
+<p><em>9 messages from 2 people</em></p>
+<p>Jake Goodheart asked for the stand-in swimming, walking and jumping animation files so the animation team can build transitions. dbugslayer linked the GitHub assets: placeholder Quaternius CC0 swim clips in UAL_Swimming.glb, eight-directional MF_Unarmed_Walk clips driven by BS_Idle_Walk_Run, and the MM_Jump, MM_Fall_Loop and MM_Land jump assets. Walking and jumping are Unreal defaults. Jake said the team will do the transitions first, then original versions of these. He clarified he wanted the source animation files, and dbugslayer pointed to UAL_Swimming.glb as containing both original swim clips.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>dbugslayer linked the current swim, walk and jump assets on GitHub.</li>
+<li>The swim animations are Quaternius CC0 placeholders, and the walk and jump are Unreal defaults.</li>
+<li>The source swim clips are in SourceArt/Animations/Swimming/UAL_Swimming.glb.</li>
+</ul>
+<p><strong>Topics:</strong> Animation assets, Placeholders, Source files</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Source files for walking and jumping weren't explicitly provided beyond the .uasset links.</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Is this what you're looking for?</p>
+<p><strong>Swimming:</strong>
+* <a href="https://github.com/ASGC-Game-Jam/asgc-gamejam-2026/blob/main/Content/ProjectAtlantis/Characters/Common/Animations/Swimming/A_Swim_Fwd.uasset">Forward</a>
+* <a href="https://github.com/ASGC-Game-Jam/asgc-gamejam-2026/blob/main/Content/ProjectAtlantis/Characters/Common/Animations/Swimming/A_Swim_Idle.uasset">Idle</a>
+* <a href="https://github.com/ASGC-Game-Jam/asgc-gamejam-2026/blob/main/SourceArt/Animations/Swimming/UAL_Swimming.glb">Swimming source file</a>: contains <code>Swim_Fwd_Loop</code> and <code>Swim_IdleLoop</code>. These are <a href="https://quaternius.com/packs/universalanimationlibrary.html">Quaternius CC0 animations</a>.</p>
+<p><strong>Walking:</strong>  Eight directional <code>MF_Unarmed_Walk_*</code> clips in the <a href="https://github.com/ASGC-Game-Jam/asgc-gamejam-2026/tree/main/Content/ProjectAtlantis/Characters/Common/Animations/Unarmed/Walk">Walk folder</a>, driven by <code>BS_Idle_Walk_Run</code></p>
+<p><strong>Jumping:</strong> <a href="https://github.com/ASGC-Game-Jam/asgc-gamejam-2026/blob/main/Content/ProjectAtlantis/Characters/Common/Animations/Unarmed/Jump/MM_Jump.uasset"><code>MM_Jump.uasset</code></a> → <a href="https://github.com/ASGC-Game-Jam/asgc-gamejam-2026/blob/main/Content/ProjectAtlantis/Characters/Common/Animations/Unarmed/Jump/MM_Fall_Loop.uasset"><code>MM_Fall_Loop.uasset</code></a> → <a href="https://github.com/ASGC-Game-Jam/asgc-gamejam-2026/blob/main/Content/ProjectAtlantis/Characters/Common/Animations/Unarmed/Jump/MM_Land.uasset"><code>MM_Land.uasset</code></a></p>
+<p>Walking and jumping are Unreal's default animations.</p>
+<p>— <strong>dbugslayer</strong> in #Traversal (<a href="https://discord.com/channels/1511905718419198013/1534979340440178729/1565544430583422996">jump</a>)</p>
+</blockquote>
+<h2>#Sprint 7 - Janitor Snail</h2>
+<p><em>8 messages from 2 people</em></p>
+<p>Brandon Trabon kept iterating on the Janitor Snail model based on Zef's feedback. He separated the moustache from the face, gave the shell a rounded, seashell-like shape, and added a glass door, a tank and a pipe connected to it. He also enlarged the handles and pipe, reworked the propeller and scrappers, and cut the geometry to about 1/5 of its original size. The model is now a reusable base snail that the different snail concepts can be built from.</p>
+<p>On Oct 28 Zef posted the Snail Final Base Model and the Gary Final Model (CHAR_snail_base.fbx, CHAR_snail_gary.fbx). His final tweaks were thicker arms, more visually interesting tools and handles, and a new button on the left side. He flagged both models for Xelnath to verify they are ready for retopology, rigging and texturing. Brandon has already started retopology with Retopoflow, ahead of approval.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Brandon applied all of Zef's suggestions, including a glass door, a tank at the back, bigger handles and a propeller closer to the concept.</li>
+<li>Geometry was reduced to about 1/5 of the original size, and the model became a reusable base snail.</li>
+<li>Zef posted the final base and Gary models with thicker arms, refined tools and a new door button.</li>
+<li>The models are awaiting Xelnath's sign-off for retopology, rigging and textures.</li>
+<li>Brandon began retopology in Retopoflow and shared about 1.5 hours of progress.</li>
+</ul>
+<p><strong>Topics:</strong> 3D character modeling, Janitor snail, Retopology, Asset approval</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will Xelnath approve the snail models for retopology, rig and textures?</li>
+<li>Does Gary still need his shirt added?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Snail Final Base Model:
+https://drive.google.com/file/d/1Zelp34rd4ei9fC1EhuJdAEdNtwAgwa1Y/view?usp=drive_link</p>
+<p>Gary Final Model: (unless you still want to add his shirt)
+https://drive.google.com/file/d/1dg52wbypbo5QgdJNYJ3l1f3r0vV9Epjp/view?usp=drive_link</p>
+<p>just made minor adjustments:
+- made the arms a bit thicker
+- Adjusted the handles and tools and edited them a bit to add more visual interest
+- Added a button (that opens the door or something) because the left side felt too empty</p>
+<p>Should be ready for @Xelnath to verify that its ready for retopology, rig, and textures!</p>
+<p>— <strong>Zef</strong> in #Sprint 7 - Janitor Snail (<a href="https://discord.com/channels/1511905718419198013/1559444880701522000/1565174790526996480">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Love the button BTW</p>
+<p>— <strong>Brandon Trabon</strong> in #Sprint 7 - Janitor Snail (<a href="https://discord.com/channels/1511905718419198013/1559444880701522000/1565194915523338293">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I'm starting on the retopology in the hopes that the character is approved...I'm using retopoflow for the task and this is how easy it is to create geometry. This is how much I have done in about an hour and a half.</p>
+<p>— <strong>Brandon Trabon</strong> in #Sprint 7 - Janitor Snail (<a href="https://discord.com/channels/1511905718419198013/1559444880701522000/1565617661545549905">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1559444880701522000/1563809874616516678">Reworked Janitor Snail with seashell-like shell, glass door and tank</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1559444880701522000/1564507815203053599">Base snail with improved scrappers and squeegee</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1559444880701522000/1565174790526996480">Snail final base model with Zef's final tweaks</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1559444880701522000/1565617661545549905">Retopology progress in Retopoflow</a></li>
+</ul>
+<h2>#❔tech-questions❔</h2>
+<p><em>8 messages from 3 people</em></p>
+<p>MM had pushed a commit to a branch that was already merged. dbugslayer explained that branches are just pointers to commits and can be deleted after they are merged into main. Jake Goodheart asked whether 'surface to swimming' animations should cover any surface; that question went unanswered.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Advice: delete branches after they are merged into main and use a new branch for new changes.</li>
+<li>Jake asked about the scope of surface-to-swim animations.</li>
+</ul>
+<p><strong>Topics:</strong> Git workflow, Animation</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Do surface-to-swim transitions apply to any surface?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Sup? (7 hours later 🙈 🥷 )</p>
+<p>— <strong>dbugslayer</strong> in #❔tech-questions❔ (<a href="https://discord.com/channels/1511905718419198013/1528747716639985684/1564053571245178973">jump</a>)</p>
+</blockquote>
+<h2>#🎯│production-discussions</h2>
+<p><em>8 messages from 5 people</em></p>
+<p>Cafedunoir shared updates from the director meeting. ThePokePreston was promoted to QA Director. The team may now invite outside people to the server, with QA the biggest need; anyone can help by playing the build and streaming it on Discord, and whoever invites someone should post here so their role can be tagged. All channels are planned to open up to everyone for visibility across disciplines. New tasks and bugs should go in the GitHub project. Devang got a 404 on the GitHub link, which was fixed by accepting the invite at asgcgithub.pulli.me (YosephAlex4nder also noted being logged in helps). The Saturday sync was canceled for Halloween.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>ThePokePreston was promoted to QA Director.</li>
+<li>Outside invites are now allowed, with QA as the top need.</li>
+<li>All channels will be opened so everyone can see them.</li>
+<li>New tasks and bugs go in the ASGC-Game-Jam GitHub project.</li>
+<li>Accepting the project via asgcgithub.pulli.me fixes the GitHub 404.</li>
+<li>The Oct 31 sync was canceled for Halloween.</li>
+</ul>
+<p><strong>Topics:</strong> director updates, recruiting, GitHub access, QA, scheduling</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>hey @Production just a few updates from our director meeting this week. Thank you all as always for being best💖 </p>
+<ol>
+<li>Congrats @ThePokePreston for moving on up to QA Director 🥳  great work!!</li>
+<li>We have been given blessings to start inviting outside folks to the server. 🎉  So feel free to do so keeping in mind that QA is one of our biggest needs right now (and a good reminder that anyone can help out QA by just downloading and playing the build - and feel free to stream in the discord server so folks can see and help build community). Just maybe drop a line here after you add someone with what area they want to focus on so I can tag their profile appropriately (so when people @ art or @ production they get pinged)</li>
+<li>We are looking to open 🚪  up the server so all folks can see all channels to provide more visibility and give the opportunity for folks to look at how other disciplines work - so just keep a look out for that if folks have questions or anything</li>
+<li>Please start adding new tasks and bugs in <a href="https://github.com/orgs/ASGC-Game-Jam/projects/1/views/1">GitHub</a>. Let me know if you have any questions or concerns about how to do that</li>
+</ol>
+<p>— <strong>Cafedunoir</strong> in #🎯│production-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254677226848436/1564892091283144785">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>Go to this link first to accept into the project https://asgcgithub.pulli.me/ that might also be an issue</p>
+<p>— <strong>Cafedunoir</strong> in #🎯│production-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254677226848436/1565210283234820179">jump</a>)</p>
+</blockquote>
+<h2>#Thanks, everyone!</h2>
+<p><em>8 messages from 3 people</em></p>
+<p>MagneticMemory, originally on the plot team, offered to help write dialogue this weekend. GJtheAutist noted that character creators are writing their own characters' dialogue. Ashrah Coliary invited MagneticMemory to write for Sabelle or Ranhuma, since Ranhuma may change. MagneticMemory chose Sabelle and will write scenes from the Plot Beats interactions with the MC, not barks.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>MagneticMemory volunteered to write dialogue.</li>
+<li>Ashrah Coliary offered Sabelle or Ranhuma; MagneticMemory took Sabelle.</li>
+<li>The decision is to write full scenes based on the Plot Beats.</li>
+</ul>
+<p><strong>Topics:</strong> Dialogue writing, Characters</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will Ranhuma be changed?</li>
+</ul>
+<h2>#Manta Ray Transportation Hub Name Ideas</h2>
+<p><em>7 messages from 2 people</em></p>
+<p>Lianhua started a thread to brainstorm names for the transportation hub that uses the manta ray ornithopters. Pimenefusarund suggested "Ray-line", and Lianhua added Mantastation, Raystion, Mantaport, Maray Line and Rayma Line. No name was picked yet.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Pimenefusarund kicked things off with "Ray-line".</li>
+<li>Lianhua added five more options, including Mantaport and Raystion.</li>
+</ul>
+<p><strong>Topics:</strong> naming, worldbuilding, manta ray ornithopters</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Which name will be chosen for the manta ray transportation hub?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Raystion</p>
+<p>— <strong>Lianhua</strong> in #Manta Ray Transportation Hub Name Ideas (<a href="https://discord.com/channels/1511905718419198013/1564717485356351499/1564755482495680623">jump</a>)</p>
+</blockquote>
+<h2>#✂️│qa-clips</h2>
+<p><em>7 messages from 2 people</em></p>
+<p>Hamm posted several QA clips. An apparent controls bug ("Why buttons, WHY?") turned out to be a tutorial problem: the player's oxygen runs out and there's no way to restore it. Hamm also reported that the player can't walk off ledges in ascend mode, and that the hide prompt doesn't show the controller button and hiding is far too location sensitive. dbugslayer took partial credit for one issue and said another behavior is an intentional feature from the design docs.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>The "buttons" bug was really the tutorial having no way to regenerate oxygen.</li>
+<li>The player fails to walk off ledges in ascend mode.</li>
+<li>The hide prompt is missing the controller button, and hiding is very location sensitive.</li>
+<li>dbugslayer said one reported behavior was intentional per the design docs.</li>
+</ul>
+<p><strong>Topics:</strong> QA, oxygen, controls, hiding, tutorial</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Why buttons, WHY?</p>
+<p>— <strong>Hamm</strong> in #✂️│qa-clips (<a href="https://discord.com/channels/1511905718419198013/1560381528096116746/1564728718226755784">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>I'll take partial credit for that one 🫠</p>
+<p>— <strong>dbugslayer</strong> in #✂️│qa-clips (<a href="https://discord.com/channels/1511905718419198013/1560381528096116746/1564751459931787267">jump</a>)</p>
+</blockquote>
+<h2>#UI/UX</h2>
+<p><em>7 messages from 3 people</em></p>
+<p>Swart Tigerhorn confirmed he is no longer necessarily leading UI/UX and the role can be passed on. CoffeeAddict kicked off Alpha 2 UI work, recruiting people for the HUD and menus, and shared an oxygen meter concept. The first priorities are an oxygen meter and surface walking feedback. The meter would show current vs max O2, with allocated (Ballast) O2 as its own segment, plus refill feedback and a low-O2 warning, though the allocation system is still up in the air. For surface walking, an icon plus vignette would make the state clear rather than seem like a bug. The goal is to make programmer art clearer and more readable.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Swart Tigerhorn said UI leadership can be passed forward.</li>
+<li>CoffeeAddict is recruiting for Alpha 2 UI work.</li>
+<li>CoffeeAddict shared an oxygen meter concept.</li>
+<li>Priorities are an oxygen meter with an allocated segment and surface walking feedback (icon plus vignette).</li>
+</ul>
+<p><strong>Topics:</strong> UI leadership, Oxygen meter, Surface walking feedback, Alpha 2</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Who will lead UI/UX going forward?</li>
+<li>How will allocated oxygen ultimately work?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Hey UI peeps! Quick update on where we're focusing first for Alpha 2:</p>
+<p><strong>1. Oxygen meter</strong> 
+Current vs max O2, with <strong>allocated O2 (Ballast)</strong> shown as its own segment so players can tell what they can actually breathe. Refill feedback and a low-O2 warning too, as for rn the allocated o2 system is kinda in the air</p>
+<p><strong>2. Surface walking feedback</strong>
+Right now it can feel like a bug when movement suddenly changes. My idea was an <strong>icon + a vignette</strong> when you enter surface walking, so it's clear it's a state and not a glitch.</p>
+<p>— <strong>CoffeeAddict</strong> in #UI/UX (<a href="https://discord.com/channels/1511905718419198013/1535350575930024169/1566316678089015307">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1535350575930024169/1566313022413344838">CoffeeAddict's oxygen meter concept</a></li>
+</ul>
+<h2>#3D Animation</h2>
+<p><em>6 messages from 3 people</em></p>
+<p>CamCamtehCamsta considered using a sprite sheet for the NPC eyes and eyebrows and blend shapes for the mouth. Zef liked the sprite sheet because it can be reused across species, but wondered whether mouth blend shapes would translate across model types. CamCamtehCamsta posted a mockup of an expression flipbook and considered adding a row of teary eyes. Jake Goodheart said it matches what they want for the eyes and asked about mouths. CamCamtehCamsta plans to make mouths too, so modelers have one less step. Zef counted at most 8 face "objects", or 7 if happy and sad eyes are flipped. He asked whether to use swappable textures or small modeled 3D shapes, using 2D mouth textures for now.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Proposal: sprite sheets for eyes and blend shapes for mouths.</li>
+<li>CamCamtehCamsta shared an expression flipbook mockup, which got 5 reactions.</li>
+<li>Mouths will also be done so modelers have one less step.</li>
+<li>Zef counted up to 8 face objects and asked about textures versus 3D shapes.</li>
+</ul>
+<p><strong>Topics:</strong> facial expressions, sprite sheets, blend shapes</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Should the faces use swappable textures or modeled 3D shapes?</li>
+<li>Will mouth blend shapes translate across model types?</li>
+<li>Will there be a row of teary-eye expressions?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Hey Cami, just posting the quick feedback for this here!</p>
+<p>I separated the face "objects" we'd have to make and looks like at most 8 (we could get away with 7 if we're just flipping happy and sad eyes lol)
+but wanted to see if you think it'd be better to just make our textures to swap or if we should model little shapes in 3D, could be fun.</p>
+<p>I don't remember where we landed on mouths but figured we can have the 2D texture fill ins for now wither way</p>
+<p>— <strong>Zef</strong> in #3D Animation (<a href="https://discord.com/channels/1511905718419198013/1539414366565175316/1566309147853721764">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1539414366565175316/1565197269500690455">Expression flipbook texture concept</a></li>
+<li><a href="https://discord.com/channels/1511905718419198013/1539414366565175316/1566309147853721764">Zef's breakdown of the face objects</a></li>
+</ul>
+<h2>#❔qa-questions❔</h2>
+<p><em>6 messages from 3 people</em></p>
+<p>dbugslayer asked whether the bugs posted in #qa-clips had been reported on GitHub. Hamm confirmed his were, and noted that he and dbugslayer account for 13 of the 17 bugs on GitHub. Rha said time is tight but they'll set aside Fridays for submitting bugs to GitHub.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Hamm's bugs are all logged on GitHub.</li>
+<li>Hamm and dbugslayer filed 13 of the 17 GitHub bugs.</li>
+<li>Rha will use Fridays for submitting bugs to GitHub.</li>
+</ul>
+<p><strong>Topics:</strong> QA process, GitHub bug reporting</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>you and I combined account for 13 of the 17 bugs reported on github.  &lt;:HammHype:1230951844411605024&gt;</p>
+<p>— <strong>Hamm</strong> in #❔qa-questions❔ (<a href="https://discord.com/channels/1511905718419198013/1528748019770724454/1564765541208432741">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>my time is a little tight at the moment, but I'm going to set aside fridays for submitting my bugs to github 😅</p>
+<p>— <strong>Rha 🥔</strong> in #❔qa-questions❔ (<a href="https://discord.com/channels/1511905718419198013/1528748019770724454/1565064120280285305">jump</a>)</p>
+</blockquote>
+<h2>#📌│tech-status-update</h2>
+<p><em>6 messages from 1 people</em></p>
+<p>VibeBlind posted a backlog of weekly tech status updates. The Sept 25 Milestone 1 update covered stable Git LFS and locking, packaged builds working again with 0.0.6, greybox #173, and integration as the main risk. On Oct 2 (0.0.7), swimming merged (#203, #207), the ballast state model landed (#202), and the oxygen/ballast questions in #211 remained open. On Oct 9 (0.0.8), ballast and movement work advanced and Surface Walking (#47) was the biggest gap. On Oct 16 (0.1.0, the Alpha 1 target), Surface Walking was implemented in #281, along with the Journal, dialogue playback, fish schooling and leak VFX.</p>
+<p>On Oct 23 (0.1.1, Alpha 2), the oxygen refactor, restoration and passive consumption were merged, along with NPC interaction, enemy perception, and the Puzzle 1 greybox (#337). On Oct 30 (0.1.2, #369), the clue DataTable (#367) merged. LFS locking in the Content Browser (#374) is still open. Oxygen capacity controls, hiding fixes, level transitions, the puzzle management system and audio pieces were also merged. QA flagged bugs #379–#383: getting stuck at zero oxygen in Descend, oxygen not restored after leaving water, missing controller hiding instructions, and hiding interaction problems or failures.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Surface Walking was implemented in #281 for Alpha 1 (0.1.0).</li>
+<li>Passive underwater oxygen consumption was added in #338, and the oxygen refactor (#300) was merged.</li>
+<li>Enemy perception with detection buildup was merged in #301.</li>
+<li>The Puzzle 1 greybox was set up in #337, and the puzzle management system was added in #372.</li>
+<li>Version 0.1.2 packaged successfully, with smoke testing reported as successful.</li>
+<li>QA reported bugs #379–#383 around oxygen and hiding.</li>
+<li>#374 brings Git LFS locking into the Unreal Content Browser.</li>
+</ul>
+<p><strong>Topics:</strong> Tech status, Releases, Oxygen, Traversal, Hiding spots, QA bugs, Source control</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>How should ballast and oxygen interact (#211)?</li>
+<li>Is the ledge issue #290 confirmed fixed in a packaged build?</li>
+<li>Will QA bugs #379–#383 be resolved?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Tech / Alpha 2 Status Update, Oct 30
+The project was bumped to <code>0.1.2</code> in #369.
+Windows packaging and initial smoke testing were reported as successful.</p>
+<p>Source control, puzzles, audio, and general gameplay work progressed this week.</p>
+<p>Initial clue data structure and DataTable merged through #367.
+Further Investigation and Puzzle Journal work submitted for review.</p>
+<p>PR #374 is adding Git LFS locking directly into the Unreal Content Browser.
+Windows build and LFS tests are passing, but the PR is still open.</p>
+<p>There is also follow-up work around retaining locks during PR review (#425), fixing changelist submissions (#426), and exporting Blueprint graphs with asset commits (#422).</p>
+<p>On the gameplay side, #357 added oxygen capacity controls.
+#359 and #366 addressed hiding movement and input issues.
+#356 added level transition triggers, and #372 added the initial Blueprint puzzle management system.</p>
+<p>The audio side also had several pieces merged, including the data router, payload registry, and gameplay-to-audio interface work.</p>
+<p>Current risk is mostly bugs coming out of packaged build testing.</p>
+<p><strong>QA reported several issues against <code>0.1.2</code>:</strong>
+- #379 player can get stuck if Oxygen reaches zero while in Descend
+- #380 Oxygen is not restored after leaving the water
+- #381 controller players are missing hiding instructions
+- #382 hiding spots can be difficult to interact with
+- #383 hiding can fail entirely
+These are currently the main issues I would prioritize over adding more to the playable.</p>
+<p>The Gameplay Hub (#392), World Partition setup (#344), and related puzzle-room work are also still in progress.</p>
+<p><strong>Current priorities:</strong>
+- Fix the Oxygen softlock in #379
+- Resolve the remaining hiding issues
+- Finish and validate the Unreal LFS locking integration
+- Test Oxygen, traversal, hiding, and interaction together in a packaged build
+- Continue Gameplay Hub and puzzle integration
+- Keep validating the manual packaging process</p>
+<p>Automated Unreal CI remains intentionally deferred because of cost and is not considered a blocker.</p>
+<p>Current focus is fixing issues found in the packaged Alpha builds and making the existing systems reliable before expanding scope further.</p>
+<p>— <strong>VibeBlind</strong> in #📌│tech-status-update (<a href="https://discord.com/channels/1511905718419198013/1521248430540718090/1566238458140426303">jump</a>)</p>
+</blockquote>
+<h2>#UI buddies!</h2>
+<p><em>5 messages from 3 people</em></p>
+<p>Alta asked whether the UI has a specific inspiration. Zef shared the team Excalidraw board of references and the Game UI Database, and mentioned that fishiesrcool has her own ideas. fishiesrcool shared Riot's "So You Wanna Make Games?? Episode 9: User Interface Design" video as workflow inspiration for building a design system from concept art. She is currently exploring themes and shape language for the UI.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>UI references are collected on the team Excalidraw board and in the Game UI Database.</li>
+<li>fishiesrcool shared Riot's UI design system video as workflow inspiration.</li>
+<li>The UI's themes and shape language are still being explored.</li>
+</ul>
+<p><strong>Topics:</strong> UI inspiration, design systems</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>What visual theme and shape language will the UI use?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>That's right, yall wouldnt know what to press without us</p>
+<p>— <strong>Zef</strong> in #UI buddies! (<a href="https://discord.com/channels/1511905718419198013/1564550942769160222/1564550942769160222">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>This is more of a workflow inspiration than visual but I find this video from riot helpful: https://www.youtube.com/watch?v=sc3h5JXtIzw</p>
+<p>They talk about defining the design system for one of their games to create visual consistency. I like that it's a pretty solid example of taking inspiration from concept art and translating it into design elements with the same theme.</p>
+<p>One of my goals for right now is exploring the themes, shape language, etc. for the UI since that's still very much being determined.</p>
+<p>— <strong>fishiesrcool</strong> in #UI buddies! (<a href="https://discord.com/channels/1511905718419198013/1564550942769160222/1565131510032371734">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1564550942769160222/1564860364531826728">UI reference board</a></li>
+</ul>
+<h2>#Why buttons, WHY?</h2>
+<p><em>5 messages from 2 people</em></p>
+<p>dbugslayer asked Hamm for repro steps and wondered whether the issue came from debug controls mapped to V, B, M and N that restrict or unrestrict input, adding that those should probably be removed now. Hamm explained the real cause: oxygen runs out and there's no way to restore it. dbugslayer called it a nice catch.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Debug input controls on the V/B/M/N keys may be leftover and should probably be removed.</li>
+<li>The root cause is that oxygen can't be restored once it runs out.</li>
+</ul>
+<p><strong>Topics:</strong> bug triage, debug controls, oxygen</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Will the V/B/M/N debug controls be removed?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>and therefore the actual problem is there's no ability to restore oxygen</p>
+<p>— <strong>Hamm</strong> in #Why buttons, WHY? (<a href="https://discord.com/channels/1511905718419198013/1564728718226755784/1564757287267205161">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1564728718226755784/1564755422802350121">dbugslayer's screenshot related to the debug input controls</a></li>
+</ul>
+<h2>#@Director thread for agenda topics for</h2>
+<p><em>4 messages from 3 people</em></p>
+<p>Cafedunoir set the agenda for the weekly director meeting. Topics were how the new verticals are working, the ClickUp-to-GitHub migration (to wrap up this week) and the cadence for future demos, which have been good for morale. VibeBlind suggested asking QA to stream their playtests. Ridley might miss the meeting or arrive late.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>The agenda covered the new verticals, the GitHub migration and demo cadence.</li>
+<li>VibeBlind suggested that QA stream their playtests.</li>
+</ul>
+<p><strong>Topics:</strong> meeting agenda, demos, GitHub migration</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>What should the demo cadence be?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>We should ask QA to stream when they are doing playtests</p>
+<p>— <strong>VibeBlind</strong> in #@Director thread for agenda topics for (<a href="https://discord.com/channels/1511905718419198013/1564481496620867637/1564728789882241076">jump</a>)</p>
+</blockquote>
+<h2>#Abdullah and Caitlin - Act 1 Quests Workzone</h2>
+<p><em>4 messages from 2 people</em></p>
+<p>Lianhua opened this thread for herself and Luolang to start working together on the Act 1 quests, and added an Act 1 subtab to the Quest Design brainstorming doc. Luolang said they'd touch base. On Thursday Lianhua said she can't put time into this until early next week because of the character pod assignment due this weekend, her work shifts, and another game jam.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Lianhua created an Act 1 QD subtab in the Quest Design - Quest Brainstorming Google Doc.</li>
+<li>Act 1 quest work is paused until early next week because of Lianhua's other commitments.</li>
+</ul>
+<p><strong>Topics:</strong> Act 1 quests, quest design, scheduling</p>
+<h2>#🫴│tech-mentoring</h2>
+<p><em>4 messages from 3 people</em></p>
+<p>Vilus offered office hours and invited people to ping him. voymasa is building their first blueprint, an oxygen refill station, and asked whether to commit just the .uasset or also the bpgraph.json. cpgeiste said to commit both, adding that it's okay if the bpgraph was forgotten before.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Vilus is available for office-hours pings.</li>
+<li>voymasa is building an oxygen refill station blueprint.</li>
+<li>cpgeiste confirmed that blueprint commits should include both the .uasset and the bpgraph.json.</li>
+</ul>
+<p><strong>Topics:</strong> office hours, Unreal blueprints, version control</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>both</p>
+<p>— <strong>cpgeiste</strong> in #🫴│tech-mentoring (<a href="https://discord.com/channels/1511905718419198013/1521253748872188004/1565445624042754200">jump</a>)</p>
+</blockquote>
+<h2>#Hide prompt doesn't give the controller</h2>
+<p><em>4 messages from 2 people</em></p>
+<p>dbugslayer agreed that interactables are currently very finicky and shouldn't require such a precise position and facing. The same problem affects talking to the opening NPC and interacting with the placeholder sphere, since they all share one interact action. Hamm admitted he didn't even know the NPC did anything.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Interactables need to be less position- and direction-sensitive.</li>
+<li>The opening NPC and the placeholder sphere share the same interact action and have the same issue.</li>
+</ul>
+<p><strong>Topics:</strong> interaction, UX, QA</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>honestly, I didn't even know the NPC did anything.</p>
+<p>— <strong>Hamm</strong> in #Hide prompt doesn't give the controller (<a href="https://discord.com/channels/1511905718419198013/1564744073024376872/1564758672578445443">jump</a>)</p>
+</blockquote>
+<h2>#@Adrian Popoviciu | [Tech][EEST] We</h2>
+<p><em>4 messages from 2 people</em></p>
+<p>dbugslayer's PR #374, which integrates the Project Borealis Git plugin for Unreal asset locking, got Matt's approval and needed one more reviewer before rolling out to the whole team. Adrian reviewed it and noted that git-lfs.exe wasn't tracked by git lfs. dbugslayer decided the bundled binaries are unnecessary and switched the configuration to use the installed git lfs, which the project already requires.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>PR #374 adds the Project Borealis Git plugin for asset locking.</li>
+<li>Adrian flagged that git-lfs.exe was untracked by LFS.</li>
+<li>dbugslayer switched the plugin to the system-installed git lfs.</li>
+</ul>
+<p><strong>Topics:</strong> git plugin, asset locking, code review, Git LFS</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Good catch. Working on that now. I realized that having those binaries in there is unnecessary because the plug-in support using the installed git lfs, given that's already a requirement for the project, I'm switching the configuration to that.</p>
+<p>— <strong>dbugslayer</strong> in #@Adrian Popoviciu | [Tech][EEST] We (<a href="https://discord.com/channels/1511905718419198013/1562639477564772393/1565032231699751072">jump</a>)</p>
+</blockquote>
+<h2>#tech-voice-channel</h2>
+<p><em>4 messages from 3 people</em></p>
+<p>Light chatter in the tech voice channel: ogam suggested "dr dobbs", dbugslayer posted a "hey there" GIF that got 5 reactions, and people signed off for the night.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>dbugslayer's GIF got 5 reactions.</li>
+</ul>
+<p><strong>Topics:</strong> Social</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>https://klipy.com/gifs/hey-girl-hey-hey-there</p>
+<p>— <strong>dbugslayer</strong> in #tech-voice-channel (<a href="https://discord.com/channels/1511905718419198013/1526439802478530651/1566273607842275358">jump</a>)</p>
+</blockquote>
+<h2>#🎨│art-lead-discussion</h2>
+<p><em>3 messages from 2 people</em></p>
+<p>Devang Parikh praised Zef and asked to get on a call with him this week. Zef agreed to set up a time soon.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Devang praised Zef's earlier message.</li>
+<li>Zef agreed to a call with Devang this week.</li>
+</ul>
+<p><strong>Topics:</strong> Art lead coordination</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>When will the Devang and Zef call happen?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Could not have said it much better, you are amazing @Zef</p>
+<p>— <strong>Devang Parikh (Gamedoora.Com)</strong> in #🎨│art-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517557587023892580/1563839429431394335">jump</a>)</p>
+</blockquote>
+<h2>#🏕️│design-level-design</h2>
+<p><em>3 messages from 3 people</em></p>
+<p>klight asked whether anyone is leading level blockout. dbugslayer noted that little has been done and asked for a larger World Partition playable level, grayboxed with placeholders, plus GitHub issues to track it. Matt Barnes pointed to L_Tutorial_District_Entrance as the starting point for a new hub world. That level would host the 2 puzzles short term and could later become District 1. He welcomed anyone who wants to start on it now.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Little level blockout has happened so far.</li>
+<li>L_Tutorial_District_Entrance is the proposed base for the hub world and District 1.</li>
+<li>dbugslayer asked for GitHub issues and graybox placeholders.</li>
+</ul>
+<p><strong>Topics:</strong> Level blockout, Hub world, World Partition</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>Who will lead the hub level blockout?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>@klight In-engine right now we have the "end of tutorial" and "grey box representation of district one city center."</p>
+<p>\Content\ProjectAtlantis\Maps\Tutorial\L_Tutorial_District_Entrance</p>
+<p>I would like us to build a new level using this as a starting point to function as our "hub world" but also serve as a starting point for building out district 1. </p>
+<p>Short term, it can serve as the "gameplay level" that hosts the 2 puzzles. And if we continue forward, convert it into district 1. </p>
+<p>My intention was to build up that starting point after making the foundations of puzzle one and two, but if someone wants to start on that now, I would happily encourage it.</p>
+<p>— <strong>Matt Barnes</strong> in #🏕️│design-level-design (<a href="https://discord.com/channels/1511905718419198013/1542416671652839544/1564055219535483004">jump</a>)</p>
+</blockquote>
+<h2>#📌│art-status-update</h2>
+<p><em>3 messages from 1 people</em></p>
+<p>Zef asked the Art team to add their names next to their assets in the Art Team asset Excel sheet and ping him and their area producer. Check-in was Oct 30. At check-in, he asked everyone to post screenshots in the submission channels and said he'd personally check on anyone still not on the sheet.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Artists should sign up for assets in the Excel sheet.</li>
+<li>The Oct 30 check-in asks for progress screenshots.</li>
+</ul>
+<p><strong>Topics:</strong> Art task tracking, Check-ins</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Time's Up for Check-in!</p>
+<p><strong>Please post a screenshot of where you're at in your respective <a href="https://discord.com/channels/1511905718419198013/1528573141289402508">Submission channels</a> so we can see what you guys are up to!</strong> (even if you don't think its pretty lol) 🧑‍🎨 </p>
+<p>If your name is still not on the <a href="https://docs.google.com/spreadsheets/d/187bjDS6AZOa3a_bgd1FfVwfWmbKUd28X/edit?pli=1&amp;gid=965946606#gid=965946606">Excel Sheet</a> next to something, I will be personally checking on you to make sure you're alive enough to make something this weekend lol &lt;:help_blob:831943094982803517&gt; </p>
+<p>You guys are doing awesome and I'm excited to see the bits of work you guys have already posted. I'll be giving some notes and feedback on what I see to help you guys a long, but great work so far @Art! </p>
+<p>Keep it up! 💪 &lt;:SadMan:544701583624110114&gt; &lt;:muscleright:1001562803292868670&gt;</p>
+<p>— <strong>Zef</strong> in #📌│art-status-update (<a href="https://discord.com/channels/1511905718419198013/1521248871290769458/1565863340473843812">jump</a>)</p>
+</blockquote>
+<h2>#🎯│audio-discussions</h2>
+<p><em>3 messages from 2 people</em></p>
+<p>LockedInFish shared a draft of the active arrangement, "theSteamCoreActiveArrangement.mp3", noting that a lot of mix work and MIDI CC still needs fixing. LockedInFish is away until Monday morning and asked when the team could meet to workshop the arrangements. They also suggested that significant Twine areas, such as the listed Locations and places with major characters like the Throne Room, could get their own music if the team has spare time. CoffeeAddict called for UI volunteers for Alpha 2, including UI sounds, HUD feedback and menu transitions.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>LockedInFish shared the Steam Core active arrangement draft, which got 5 reactions.</li>
+<li>LockedInFish proposed unique music for major Twine locations like the Throne Room.</li>
+<li>CoffeeAddict is recruiting people for Alpha 2 UI work, including UI sounds and menu transitions.</li>
+</ul>
+<p><strong>Topics:</strong> music arrangement, location themes, Alpha 2 UI sounds</p>
+<p><strong>Open questions</strong></p>
+<ul>
+<li>When will the team meet to workshop the arrangements?</li>
+<li>Who will volunteer for the Alpha 2 UI and sound work?</li>
+</ul>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Hey people, I'm pretty sure I'm away until Monday morning, but wanted to see if there were any ideas on when we should meet to workshop the arrangements?</p>
+<p>Also, while navigating the Twine, I noticed that there are some areas that seem significant enough to have their own music (mainly the ones listed under "Locations" but also places where you talk to major characters like the Throne Room). If we find ourselves with not much to do, that's something.</p>
+<p>— <strong>LockedInFish</strong> in #🎯│audio-discussions (<a href="https://discord.com/channels/1511905718419198013/1521254504836890664/1565760061186515096">jump</a>)</p>
+</blockquote>
+<h2>#🔕│leads-inactive-or-away</h2>
+<p><em>3 messages from 3 people</em></p>
+<p>Several leads posted availability updates. Kukey has mandatory overtime, 60-hour weeks, until a new hire arrives and will be unavailable until then. KyotoRando is four weeks out from a new arrival and may go MIA for a week or two within the next 4-6 weeks. MisterLaddie will be limited this week and unavailable Friday 10/30 from 12:30–7:30pm and Sunday 11/1 from 1:30–9:30pm.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Kukey is on 60-hour work weeks and stepping back until hours return to 40 (17 reactions).</li>
+<li>KyotoRando may be away for a week or two in the coming 4-6 weeks due to a new arrival.</li>
+<li>MisterLaddie is unavailable Fri 10/30 12:30–7:30pm and Sun 11/1 1:30–9:30pm.</li>
+</ul>
+<p><strong>Topics:</strong> availability, leaves</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>I just got the news that my job is requiring mandatory overtime until we get new hire. So I will be getting 60 hour work weeks so I wont be able to give my time till it goes back down to 40. 😢</p>
+<p>— <strong>Kukey</strong> in #🔕│leads-inactive-or-away (<a href="https://discord.com/channels/1511905718419198013/1528068500365643907/1564305028800454727">jump</a>)</p>
+</blockquote>
+<h2>#📢│production-announcements</h2>
+<p><em>3 messages from 2 people</em></p>
+<p>Cafedunoir cancelled Saturday's Producer sync to host trick-or-treating, and asked Production to update or close out their Sprint 7 tickets in ClickUp. Devang Parikh wished everyone a Happy Halloween. On Oct 29, Cafedunoir announced that all ClickUp tasks had moved to GitHub ("RIP Click Up"). The post included a 10-step guide with screenshots, covering connecting a username via asgcgithub.pulli.me and adding items on the org project board.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>Saturday's Producer sync was cancelled for Halloween.</li>
+<li>The ClickUp-to-GitHub migration is complete, and all new tasks and bugs go in GitHub.</li>
+<li>A 10-step guide with screenshots was shared for creating GitHub tickets.</li>
+</ul>
+<p><strong>Topics:</strong> GitHub migration, production process</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>Hey @Production I’m hosting trick or treat for my kid and like half the neighborhood lol so imma cancel the Producer sync for Saturday. Please please go into Click Up this week and update/close out tickeys from sprint 7 so I can wrap up the migration to GitHub this week. Please and thank you!</p>
+<p>— <strong>Cafedunoir</strong> in #📢│production-announcements (<a href="https://discord.com/channels/1511905718419198013/1521241957152718908/1564483475157819463">jump</a>)</p>
+</blockquote>
+<div></div>
+
+<blockquote>
+<p>@Production @VibeBlind We did it! 🥳  All Click Up tasks should now be moved over to GitHub!! 🎉  RIP Click Up 🪦  If you have a task or bug moving forward, please place it in GitHub! Here's a little step by step to get started in GitHub if you are nervous or not not know how to use it</p>
+<ol>
+<li>Get a GitHub username</li>
+<li>Go to <a href="https://asgcgithub.pulli.me/">here</a> to connect GitHub username</li>
+<li>Navigate to <a href="https://github.com/orgs/ASGC-Game-Jam/projects/1">here</a>. At the top you will see lots of tabs. Click on the one that makes sense to what you are working on (Art, Narrative, etc...)</li>
+<li>In the Draft column if you hover you should see an Add Item at the bottom</li>
+<li>Click on Add Item!</li>
+<li>Give it a title and hit Enter</li>
+<li>Click on the type of ticket it is (bug, task, etc...)</li>
+<li>A nice template appears! Fill it out!</li>
+<li>At the bottom of the ticket, click on all the fields that make sense (Domain, label, assignee, etc...)</li>
+<li>Once that is all filled out click Create
+🥳</li>
+</ol>
+<p>— <strong>Cafedunoir</strong> in #📢│production-announcements (<a href="https://discord.com/channels/1511905718419198013/1521241957152718908/1565610595728891934">jump</a>)</p>
+</blockquote>
+<p><strong>Images</strong></p>
+<ul>
+<li><a href="https://discord.com/channels/1511905718419198013/1521241957152718908/1565610595728891934">Step-by-step screenshots for creating a GitHub ticket</a></li>
+</ul>
+<h2>#❔production-questions❔</h2>
+<p><em>3 messages from 2 people</em></p>
+<p>dbugslayer asked which milestone the team is working toward. VibeBlind confirmed it is Alpha 2, which is the two puzzles for the gameplay lane.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>VibeBlind confirmed Alpha 2 is the current milestone: the 2 puzzles for the gameplay lane.</li>
+</ul>
+<p><strong>Topics:</strong> Milestones, Alpha 2</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>alpha 2 is the 2 puzzles for the gameplay lane</p>
+<p>— <strong>VibeBlind</strong> in #❔production-questions❔ (<a href="https://discord.com/channels/1511905718419198013/1528748163886878943/1565527639127625731">jump</a>)</p>
+</blockquote>
+<h2>#📄│design-lead-discussion</h2>
+<p><em>3 messages from 3 people</em></p>
+<p>klight gave a heads-up about being at the beach Thursday through Sunday. Matt joked about sunburn, and Xelnath quipped that he never said he'd be there while the sun is up.</p>
+<p><strong>Highlights</strong></p>
+<ul>
+<li>klight is away at the beach Thursday through Sunday.</li>
+<li>Xelnath's sunburn comeback drew 8 reactions.</li>
+</ul>
+<p><strong>Topics:</strong> Availability</p>
+<p><strong>Notable messages</strong></p>
+<blockquote>
+<p>To be fair he didn’t say he’ll be at the beach while the sun is up</p>
+<p>— <strong>Xelnath</strong> in #📄│design-lead-discussion (<a href="https://discord.com/channels/1511905718419198013/1517558304459591801/1565170322330619935">jump</a>)</p>
+</blockquote>
+</main></body>
+</html>
